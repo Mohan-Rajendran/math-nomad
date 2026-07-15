@@ -18,7 +18,7 @@ website:
   title: "Math Nomad"
   site-url: "https://mathnomad.in"
   description: "Journeys through mathematics, exploration and teaching."
-  favicon: assets/favicon.svg
+  favicon: assets/mathnomad-logo.png
   open-graph: true
   twitter-card: true
   search:
@@ -26,7 +26,7 @@ website:
     type: overlay
   back-to-top-navigation: true
   navbar:
-    logo: assets/logo-mark.svg
+    logo: assets/mathnomad-logo.png
     title: "Math Nomad"
     background: light
     pinned: true
