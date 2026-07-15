@@ -6,8 +6,9 @@ $body-bg: #fbf8f1;
 $body-color: #2d241f;
 $link-color: #8d3f24;
 $headings-color: #2b211c;
-$font-family-sans-serif: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
-$headings-font-family: Georgia, "Times New Roman", serif;
+$font-family-serif: "STIX Two Text", Georgia, "Times New Roman", serif;
+$font-family-sans-serif: "STIX Two Text", Georgia, "Times New Roman", serif;
+$headings-font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
 $border-radius: 0.35rem;
 $navbar-light-color: #342821;
 $navbar-light-hover-color: #a34f2e;
@@ -32,7 +33,9 @@ html {
 }
 
 body {
-  letter-spacing: 0.005em;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  letter-spacing: 0;
 }
 
 h1,
@@ -61,6 +64,17 @@ li {
   line-height: 1.72;
 }
 
+math {
+  font-family: "STIX Two Math", "STIX Two Text", serif;
+  font-size: 1.04em;
+}
+
+#quarto-document-content > p,
+#quarto-document-content > ul,
+#quarto-document-content > ol {
+  font-size: 1.08rem;
+}
+
 a {
   text-underline-offset: 0.18em;
   text-decoration-thickness: 0.06em;
@@ -74,7 +88,7 @@ a {
 }
 
 .navbar-brand {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
   font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -87,7 +101,7 @@ a {
 
 .navbar-nav .nav-link {
   font-size: 0.88rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: 0.045em;
   text-transform: uppercase;
 }
@@ -117,7 +131,7 @@ a {
 .mn-kicker {
   color: var(--mn-terracotta);
   font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.16em;
   line-height: 1.35;
   margin-bottom: 1.15rem;
@@ -148,7 +162,7 @@ a {
 
 .mn-hero-copy > p:not(.mn-kicker) {
   color: #5f5148;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
   font-size: clamp(1.18rem, 2vw, 1.55rem);
   line-height: 1.55;
   margin-top: 1.8rem;
@@ -170,7 +184,7 @@ a {
 .btn {
   border-radius: 0.2rem;
   font-size: 0.82rem;
-  font-weight: 750;
+  font-weight: 600;
   letter-spacing: 0.045em;
   padding: 0.78rem 1.15rem;
   text-transform: uppercase;
@@ -194,7 +208,7 @@ a {
 
 .mn-intro p {
   color: var(--mn-muted);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
   font-size: 1.25rem;
   margin-inline: auto;
   max-width: 780px;
@@ -235,7 +249,7 @@ a {
 }
 
 .mn-path-card a {
-  font-weight: 750;
+  font-weight: 600;
 }
 
 .mn-feature-band {
@@ -271,7 +285,7 @@ a {
 .mn-text-link {
   display: inline-block;
   font-size: 0.82rem;
-  font-weight: 750;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -290,7 +304,7 @@ a {
 }
 
 .mn-feature-facts strong {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
   font-size: 3rem;
   font-weight: 500;
 }
@@ -319,7 +333,7 @@ a {
 
 .mn-note-mark {
   color: var(--mn-terracotta);
-  font-family: Georgia, serif;
+  font-family: "STIX Two Text", Georgia, serif;
   font-size: 2.5rem;
 }
 
@@ -341,7 +355,7 @@ a {
 
 .mn-page-lead {
   color: var(--mn-muted);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
   font-size: clamp(1.2rem, 2.2vw, 1.55rem);
   max-width: 1180px;
   padding-block: 1rem 4rem;
@@ -422,7 +436,7 @@ a {
 }
 
 .quarto-grid-item .card-title {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
 }
 
 .mn-teach-card {
@@ -513,7 +527,7 @@ a {
 }
 
 .mn-about-main p {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
   font-size: 1.2rem;
 }
 
@@ -534,7 +548,7 @@ a {
 
 .mn-empty-page p {
   color: var(--mn-muted);
-  font-family: Georgia, serif;
+  font-family: "STIX Two Text", Georgia, serif;
   font-size: 1.3rem;
 }
 

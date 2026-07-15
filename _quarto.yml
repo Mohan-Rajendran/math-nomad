@@ -61,6 +61,8 @@ format:
     theme:
       - cosmo
       - styles.scss
+    include-in-header: includes/fonts.html
+    html-math-method: mathml
     toc: true
     toc-depth: 3
     smooth-scroll: true
