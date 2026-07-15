@@ -1,0 +1,103 @@
+---
+title: "Math Nomad"
+page-layout: full
+toc: false
+title-block-banner: false
+---
+
+::: {.mn-hero}
+::: {.mn-hero-copy}
+<p class="mn-kicker">MATHEMATICS · EXPLORATION · TEACHING</p>
+
+# Mathematics is a place to wander.
+
+Math Nomad is a home for visual investigations, interactive tools, careful exposition and problems worth carrying with you.
+
+::: {.mn-actions}
+[Explore the interactives](explore/index.qmd){.btn .btn-primary .btn-lg}
+[Read the first note](read/articles/binary-kolam-tiles/index.qmd){.btn .btn-outline-dark .btn-lg}
+:::
+:::
+
+::: {.mn-hero-art}
+![A field of sixteen square kolam tiles, each with a different pattern of openings.](assets/kolam-field.svg){.img-fluid}
+:::
+:::
+
+::: {.mn-intro .content-block}
+## Three ways to enter
+
+Choose an object to manipulate, an idea to understand, or an investigation to take into a classroom. The same mathematics often appears in all three forms.
+:::
+
+::: {.mn-three-up .content-block}
+::: {.mn-path-card}
+<span class="mn-card-number">01</span>
+
+### Explore
+
+Interact with a mathematical object. Make a conjecture, test it and notice what refuses to change.
+
+[Open the laboratory →](explore/index.qmd)
+:::
+
+::: {.mn-path-card}
+<span class="mn-card-number">02</span>
+
+### Read
+
+Follow an idea from experiment to definition, proof and computation without hiding the interesting turns.
+
+[Browse the notes →](read/index.qmd)
+:::
+
+::: {.mn-path-card}
+<span class="mn-card-number">03</span>
+
+### Teach
+
+Use investigations designed for discussion, group work and the productive pause before an answer appears.
+
+[Find classroom material →](teach/index.qmd)
+:::
+:::
+
+::: {.mn-feature-band}
+::: {.content-block .mn-feature-grid}
+::: {.mn-feature-copy}
+<p class="mn-kicker">FEATURED EXPLORATION</p>
+
+## Sixteen kolam tiles
+
+Every four-bit word encodes a square tile. The bits record openings in the order east–north–west–south. Arrange all sixteen tiles so that neighbouring edges agree, the boundary closes and the drawing is connected.
+
+The construction board, a sliding puzzle and an orbit challenge turn one small tile set into three distinct mathematical experiments.
+
+[Enter the Kolam Lab](https://kolam-tile-builder.littleboy300.chatgpt.site){.btn .btn-light .btn-lg}
+[Understand the encoding](read/articles/binary-kolam-tiles/index.qmd){.mn-text-link}
+:::
+
+::: {.mn-feature-facts}
+<div><strong>16</strong><span>binary tiles</span></div>
+<div><strong>4</strong><span>edge directions</span></div>
+<div><strong>1</strong><span>connected drawing</span></div>
+:::
+:::
+:::
+
+::: {.mn-notes .content-block}
+## Recently added
+
+::: {.mn-note-row}
+<div class="mn-note-mark">∿</div>
+<div>
+
+### [How four bits become a kolam](read/articles/binary-kolam-tiles/index.qmd)
+
+A first look at the encoding, the local matching equations and the global connectedness condition.
+
+</div>
+<span class="mn-note-type">NOTE</span>
+:::
+:::
+

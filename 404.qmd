@@ -1,0 +1,13 @@
+---
+title: "This path has wandered"
+page-layout: full
+toc: false
+---
+
+::: {.content-block .mn-empty-page}
+The page you asked for is not here, but the mathematics is still nearby.
+
+[Return home](index.qmd){.btn .btn-primary}
+[Explore the laboratory](explore/index.qmd){.btn .btn-outline-dark}
+:::
+

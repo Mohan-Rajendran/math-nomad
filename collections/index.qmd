@@ -1,0 +1,47 @@
+---
+title: "Collections"
+subtitle: "Ideas gathered by mathematical landscape rather than by format."
+page-layout: full
+toc: false
+---
+
+::: {.content-block .mn-page-lead}
+A collection may contain an interactive, an essay, a problem sequence and classroom notes. This makes it possible to revisit one idea at different levels of formality and from different points of view.
+:::
+
+::: {.content-block .mn-collection-grid}
+::: {.mn-collection-card .mn-collection-live}
+<p class="mn-kicker">ACTIVE COLLECTION</p>
+
+## Kolams, tiles and sliding orbits
+
+Binary encodings, edge constraints, graph connectivity, enumeration and the parity structure of the 15-puzzle.
+
+[Explore the collection →](../explore/index.qmd)
+:::
+
+::: {.mn-collection-card}
+<p class="mn-kicker">PLANNED</p>
+
+## Geometry in motion
+
+Configurations that reveal their structure only when a point, line or circle is allowed to move.
+:::
+
+::: {.mn-collection-card}
+<p class="mn-kicker">PLANNED</p>
+
+## Algebra made visible
+
+Roots of unity, symmetry and transformations viewed through diagrams and computation.
+:::
+
+::: {.mn-collection-card}
+<p class="mn-kicker">PLANNED</p>
+
+## Problems that grow
+
+Olympiad-style questions extended into families, variants and open-ended investigations.
+:::
+:::
+

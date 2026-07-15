@@ -1,0 +1,75 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "explore/**/*.qmd"
+    - "read/**/*.qmd"
+    - "teach/**/*.qmd"
+    - "problems/**/*.qmd"
+    - "collections/**/*.qmd"
+  preview:
+    port: 4200
+    browser: true
+
+lang: en-GB
+
+website:
+  title: "Math Nomad"
+  site-url: "https://mathnomad.in"
+  description: "Journeys through mathematics, exploration and teaching."
+  favicon: assets/favicon.svg
+  open-graph: true
+  twitter-card: true
+  search:
+    location: navbar
+    type: overlay
+  back-to-top-navigation: true
+  navbar:
+    logo: assets/logo-mark.svg
+    title: "Math Nomad"
+    background: light
+    pinned: true
+    collapse-below: lg
+    left:
+      - text: Explore
+        href: explore/index.qmd
+      - text: Read
+        href: read/index.qmd
+      - text: Teach
+        href: teach/index.qmd
+      - text: Problems
+        href: problems/index.qmd
+      - text: Collections
+        href: collections/index.qmd
+      - text: About
+        href: about.qmd
+    right:
+      - icon: github
+        href: "https://github.com/Mohan-Rajendran/math-nomad"
+        aria-label: "Math Nomad on GitHub"
+  page-footer:
+    border: false
+    left: "© 2026 Mohan Rajendran · Math Nomad"
+    center: "Mathematics is better when it can be touched, tested and shared."
+    right:
+      - text: About
+        href: about.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - styles.scss
+    toc: true
+    toc-depth: 3
+    smooth-scroll: true
+    code-copy: true
+    link-external-newwindow: true
+    anchor-sections: true
+
+execute:
+  freeze: auto
+
+resources:
+  - assets/**

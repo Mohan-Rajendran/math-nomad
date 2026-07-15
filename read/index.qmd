@@ -1,0 +1,19 @@
+---
+title: "Read"
+subtitle: "Notes that move between experiment, structure and proof."
+page-layout: full
+toc: false
+listing:
+  contents: articles
+  sort: "date desc"
+  type: grid
+  grid-columns: 2
+  categories: true
+  fields: [image, title, description, date, categories]
+  feed: true
+---
+
+::: {.content-block .mn-page-lead}
+These essays are written for mathematically curious readers. Computation and pictures may suggest the route, but definitions and arguments are expected to carry their own weight.
+:::
+

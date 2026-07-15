@@ -1,0 +1,62 @@
+---
+title: "Explore"
+subtitle: "Interactive mathematics for conjecturing with your hands."
+page-layout: full
+toc: false
+---
+
+::: {.content-block .mn-page-lead}
+An interactive is not an illustration after the mathematics. It is a place where the mathematics can begin: move something, watch a constraint, and ask what remains possible.
+:::
+
+::: {.mn-lab-card .content-block}
+::: {.mn-lab-visual}
+![A four by four arrangement of binary kolam tiles.](../assets/kolam-field.svg)
+:::
+
+::: {.mn-lab-copy}
+<p class="mn-kicker">LIVE LAB · TILINGS AND INVARIANTS</p>
+
+## The Kolam Tile Laboratory
+
+Build a closed connected kolam from sixteen binary tiles, investigate legal moves in a 15-puzzle, and try to navigate between configurations in the same orbit.
+
+::: {.mn-chip-row}
+<span>Tile matching</span><span>Connectivity</span><span>Parity</span><span>Algorithms</span>
+:::
+
+[Open the interactive](https://kolam-tile-builder.littleboy300.chatgpt.site){.btn .btn-primary .btn-lg}
+[Read the companion note](../read/articles/binary-kolam-tiles/index.qmd){.btn .btn-outline-dark .btn-lg}
+:::
+:::
+
+::: {.content-block}
+## A rhythm for exploration
+
+::: {.mn-three-up}
+::: {.mn-path-card}
+### Play
+
+Begin without instructions beyond the goal. Let the constraints become visible through failed and successful moves.
+:::
+
+::: {.mn-path-card}
+### Understand
+
+Name the patterns you notice, translate them into mathematical statements, and decide what would count as evidence.
+:::
+
+::: {.mn-path-card}
+### Teach
+
+Use the same object as a classroom investigation, with prompts that preserve room for student decisions.
+:::
+:::
+:::
+
+::: {.content-block .mn-coming-soon}
+## More journeys are being prepared
+
+Future laboratories will grow from geometry, algebra, number theory and mathematical games. Math Nomad will favour a small collection of carefully developed interactives over a long catalogue of disconnected demonstrations.
+:::
+

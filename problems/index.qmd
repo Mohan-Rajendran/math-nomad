@@ -1,0 +1,37 @@
+---
+title: "Problems"
+subtitle: "Questions with room for experiments, examples and more than one useful route."
+page-layout: full
+toc: false
+---
+
+::: {.content-block .mn-page-lead}
+Try the problems before opening an interactive or writing a program. Small cases, diagrams and deliberately chosen failures are all legitimate beginnings.
+:::
+
+::: {.content-block .mn-problem-list}
+::: {.mn-problem}
+<span class="mn-card-number">01</span>
+
+### Counting boundary bits
+
+The sixteen four-bit tiles contain thirty-two (1)s in total. If all boundary bits of a (4\times4) arrangement are (0), what does this force about the number of active shared edges inside the board? What necessary conditions can you extract before attempting a construction?
+:::
+
+::: {.mn-problem}
+<span class="mn-card-number">02</span>
+
+### Local rules, multiple loops
+
+Construct an arrangement in which the boundary closes and every adjacent pair matches, but the drawing has more than one connected component. What is the smallest board on which this can happen if repeated tiles are allowed?
+:::
+
+::: {.mn-problem}
+<span class="mn-card-number">03</span>
+
+### Sliding between valid boards
+
+Start and finish with valid connected configurations, but allow arbitrary intermediate configurations. Which features of the labelled 15-puzzle are unchanged by every legal slide? How would you compute the invariant without first finding a path?
+:::
+:::
+
