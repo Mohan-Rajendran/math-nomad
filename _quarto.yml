@@ -26,7 +26,8 @@ website:
     type: overlay
   back-to-top-navigation: true
   navbar:
-    logo: assets/mathnomad-logo.png
+    logo: assets/mathnomad-nav-monogram.png
+    logo-alt: "Math Nomad home"
     title: "Math Nomad"
     background: light
     pinned: true
