@@ -1,0 +1,71 @@
+---
+title: "Sixteen tiles, one closed kolam"
+description: "A classroom-ready investigation using binary tiles to explore local constraints, connectivity and sliding-puzzle invariants."
+date: 2026-07-15
+author: "Mohan Rajendran"
+categories: [School teachers, Undergraduate, Course resource, Combinatorics]
+image: ../../../assets/kolam-field.svg
+image-alt: "A four by four arrangement of binary kolam tiles"
+audience: [school-teachers, undergraduate]
+kind: course-resource
+featured: true
+toc: true
+---
+
+This investigation begins with an object students can act on, then moves from observation to mathematical language. It can be used with upper-secondary students, undergraduate problem-solving groups, teacher circles or mathematics clubs.
+
+**Central question:** Can every binary tile from $0000$ to $1111$ be used exactly once in a $4\times4$ square so that the boundary is closed, adjacent sides match and the drawing is connected?
+
+[Launch the construction board](https://kolam-tile-builder.littleboy300.chatgpt.site){.btn .btn-primary}
+[Read the mathematical exposition](../../../writing/articles/binary-kolam-tiles/index.qmd){.btn .btn-outline-dark}
+
+## A possible classroom rhythm
+
+::: {.mn-two-up}
+::: {}
+### Begin
+
+Let groups work on the construction board with only the goal visible. Ask them to keep one failed arrangement that taught them something.
+:::
+
+::: {}
+### Discuss
+
+Which requirements can be checked one edge at a time? Which can only be checked after seeing the whole board? What quantities might be counted before searching?
+:::
+:::
+
+::: {.mn-two-up}
+::: {}
+### Extend
+
+Set aside the $0000$ tile and permit only sliding moves into its empty position. Ask whether every correct arrangement can now reach every other correct arrangement.
+:::
+
+::: {}
+### Record
+
+Invite groups to state one conjecture, one piece of evidence and one question their evidence does not settle.
+:::
+:::
+
+## Problems to carry further
+
+### Counting boundary bits
+
+The sixteen four-bit tiles contain thirty-two $1$s in total. If all boundary bits of a $4\times4$ arrangement are $0$, what does this force about the number of active shared edges inside the board? What necessary conditions can you extract before attempting a construction?
+
+### Local rules, multiple loops
+
+Construct an arrangement in which the boundary closes and every adjacent pair matches, but the drawing has more than one connected component. What is the smallest board on which this can happen if repeated tiles are allowed?
+
+### Sliding between valid boards
+
+Start and finish with valid connected configurations, but allow arbitrary intermediate configurations. Which features of the labelled 15-puzzle are unchanged by every legal slide? How would you compute the invariant without first finding a path?
+
+## Teacher notes
+
+- Do not introduce the bit order until students need a compact way to record tiles.
+- Treat a nearly correct board as data: a boundary leak, mismatched edge or extra component suggests a different invariant.
+- When sliding begins, say explicitly that intermediate positions may violate the kolam conditions.
+- Separate evidence from proof. A complete computer enumeration can verify a finite claim, but students should still identify what was enumerated and why the program covers every case.

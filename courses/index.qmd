@@ -1,0 +1,71 @@
+---
+title: "Courses"
+subtitle: "Course hubs for notes, interactives, exercises and further reading."
+page-layout: full
+toc: false
+listing:
+  - id: mn-courses-featured
+    contents: resources
+    include:
+      featured: true
+    sort: "date desc"
+    type: grid
+    grid-columns: 2
+    max-items: 4
+    fields: [image, title, description, date, categories]
+    sort-ui: false
+    filter-ui: false
+  - id: mn-courses-latest
+    contents: resources
+    sort: "date desc"
+    type: grid
+    grid-columns: 2
+    fields: [image, title, description, date, categories]
+    sort-ui: false
+    filter-ui: true
+    feed:
+      items: 20
+      type: partial
+      title: "Math Nomad course materials"
+---
+
+::: {.content-block .mn-page-lead}
+Each course will have a home of its own. Lecture notes, interactives, exercises and references stay together so that a student can follow the course without hunting across the website.
+:::
+
+::: {.content-block .mn-course-structure}
+::: {.mn-status-card}
+<p class="mn-kicker">CURRENT COURSES</p>
+
+## Course hubs will appear here
+
+Active courses will be pinned in this space, with the current week and newest material easy to find. When a course finishes, its hub will move to an archive organised by academic year.
+:::
+
+::: {.mn-structure-list}
+<span>OVERVIEW</span>
+<span>LECTURE NOTES</span>
+<span>INTERACTIVES</span>
+<span>EXERCISES</span>
+<span>RESOURCES & LINKS</span>
+:::
+:::
+
+::: {.content-block .mn-listing-section}
+<p class="mn-kicker">PINNED</p>
+
+## Featured course resources
+
+::: {#mn-courses-featured}
+:::
+:::
+
+::: {.content-block .mn-listing-section}
+## Latest course materials
+
+Use the filter to search titles, descriptions and labels as this collection grows.
+
+::: {#mn-courses-latest}
+:::
+:::
+

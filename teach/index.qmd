@@ -1,60 +1,17 @@
 ---
-title: "Teach"
-subtitle: "Classroom investigations that leave consequential choices to students."
+title: "Teach has moved"
 page-layout: full
 toc: false
+search: false
 ---
 
-::: {.content-block .mn-page-lead}
-The materials here are invitations rather than scripts. Each begins with an object students can act on, then offers prompts for moving from observation to mathematical language.
-:::
+::: {.content-block .mn-legacy-note}
+<p class="mn-kicker">NEW HOME</p>
 
-::: {.content-block .mn-teach-card}
-<p class="mn-kicker">CLASSROOM INVESTIGATION · 45–60 MINUTES</p>
+## Teaching material now lives under Courses
 
-## Sixteen tiles, one closed kolam
+Classroom investigations are kept beside related lecture notes, interactives, exercises and resources.
 
-**Suitable for:** upper secondary students, undergraduate problem-solving groups, teacher circles and maths clubs.
-
-**Central question:** Can every binary tile from (0000) to (1111) be used exactly once in a (4\times4) square so that the boundary is closed, adjacent sides match and the drawing is connected?
-
-::: {.mn-two-up}
-::: {}
-### Begin
-
-Let groups work on the construction board with only the goal visible. Ask them to keep one failed arrangement that taught them something.
-:::
-
-::: {}
-### Discuss
-
-Which requirements can be checked one edge at a time? Which can only be checked after seeing the whole board? What quantities might be counted before searching?
-:::
-:::
-
-::: {.mn-two-up}
-::: {}
-### Extend
-
-Set aside the (0000) tile and permit only sliding moves into its empty position. Ask whether every correct arrangement can now reach every other correct arrangement.
-:::
-
-::: {}
-### Record
-
-Invite groups to state one conjecture, one piece of evidence and one question their evidence does not settle.
-:::
-:::
-
-[Launch the construction board](https://kolam-tile-builder.littleboy300.chatgpt.site){.btn .btn-primary}
-[Read the mathematical note](../read/articles/binary-kolam-tiles/index.qmd){.btn .btn-outline-dark}
-:::
-
-::: {.content-block}
-## Teacher notes
-
-- Do not introduce the bit order until students need a compact way to record tiles.
-- Treat a nearly correct board as data: a boundary leak, mismatched edge or extra component suggests a different invariant.
-- When sliding begins, say explicitly that intermediate positions may violate the kolam conditions.
-- Separate evidence from proof. A complete computer enumeration can verify a finite claim, but students should still identify what was enumerated and why the program covers every case.
+[Browse course materials](../courses/index.qmd){.btn .btn-primary}
+[Open the kolam investigation](../courses/resources/kolam-investigation/index.qmd){.btn .btn-outline-dark}
 :::

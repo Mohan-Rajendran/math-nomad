@@ -3,6 +3,11 @@ project:
   output-dir: _site
   render:
     - "*.qmd"
+    - "courses/**/*.qmd"
+    - "writing/**/*.qmd"
+    - "videos/**/*.qmd"
+    - "projects/**/*.qmd"
+    # Keep the former routes available as signposts to the new sections.
     - "explore/**/*.qmd"
     - "read/**/*.qmd"
     - "teach/**/*.qmd"
@@ -33,16 +38,14 @@ website:
     pinned: true
     collapse-below: lg
     left:
-      - text: Explore
-        href: explore/index.qmd
-      - text: Read
-        href: read/index.qmd
-      - text: Teach
-        href: teach/index.qmd
-      - text: Problems
-        href: problems/index.qmd
-      - text: Collections
-        href: collections/index.qmd
+      - text: Courses
+        href: courses/index.qmd
+      - text: Writing
+        href: writing/index.qmd
+      - text: Videos
+        href: videos/index.qmd
+      - text: Projects
+        href: projects/index.qmd
       - text: About
         href: about.qmd
     right:
@@ -62,8 +65,11 @@ format:
     theme:
       - cosmo
       - styles.scss
-    include-in-header: includes/fonts.html
-    html-math-method: mathml
+    include-in-header:
+      - includes/fonts.html
+      - includes/mathjax.html
+    template: includes/html-mathjax.html
+    html-math-method: mathjax
     toc: true
     toc-depth: 3
     smooth-scroll: true

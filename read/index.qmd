@@ -1,19 +1,17 @@
 ---
-title: "Read"
-subtitle: "Notes that move between experiment, structure and proof."
+title: "Read has moved"
 page-layout: full
 toc: false
-listing:
-  contents: articles
-  sort: "date desc"
-  type: grid
-  grid-columns: 2
-  categories: true
-  fields: [image, title, description, date, categories]
-  feed: true
+search: false
 ---
 
-::: {.content-block .mn-page-lead}
-These essays are written for mathematically curious readers. Computation and pictures may suggest the route, but definitions and arguments are expected to carry their own weight.
+::: {.content-block .mn-legacy-note}
+<p class="mn-kicker">NEW HOME</p>
+
+## Notes and essays are now Writing
+
+Research, exposition, outreach and teaching reflections now share one searchable, filterable collection.
+
+[Browse the Writing section](../writing/index.qmd){.btn .btn-primary}
 :::
 

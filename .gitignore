@@ -9,3 +9,5 @@ Thumbs.db
 
 
 **/*.quarto_ipynb
+**/*-listing.json
+**/*.feed-*-staged

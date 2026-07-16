@@ -8,21 +8,21 @@ toc: false
 ::: {.mn-about-main}
 ## A travelling workshop for mathematical ideas
 
-Math Nomad is an independent project by **Mohan Rajendran**, a mathematician and educator at Azim Premji University. It brings together research-informed exposition, classroom investigations, Olympiad-style problems and interactive tools.
+Math Nomad is an independent project by **Mohan Rajendran**, a mathematician and educator at Azim Premji University. It brings together course materials, research-informed exposition, outreach, videos and interactive projects.
 
 The project is built around a simple principle: a mathematical idea becomes more generous when readers can meet it in several ways. They may manipulate an example, read an argument, take a problem to a classroom, or inspect the computation behind a finite claim.
 
-The intended audience includes students, teachers, problem solvers and anyone who likes mathematics enough to pause over a pattern.
+The intended audience includes curious members of the public, school teachers, undergraduate and graduate students, researchers, problem solvers and anyone who likes mathematics enough to pause over a pattern.
 :::
 
 ::: {.mn-about-aside}
 ### What you will find here
 
-- visual and interactive investigations;
-- essays connecting experiments to proof;
-- classroom-ready prompts and teacher notes;
-- problems that invite extension;
-- reproducible computation where it adds evidence.
+- course hubs with notes, exercises, interactives and useful links;
+- writing at several levels, from public exposition to research ideas;
+- video companions with references and extended descriptions;
+- active projects with visible progress and related outputs;
+- reusable classroom investigations and teacher notes.
 :::
 :::
 
@@ -51,4 +51,3 @@ Pair an interactive with enough mathematical and pedagogical context for another
 :::
 :::
 :::
-

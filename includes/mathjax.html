@@ -1,0 +1,45 @@
+<script>
+(() => {
+  const mathSelector = ".math";
+  const mathJaxUrl = "/assets/vendor/mathjax/tex-chtml-full.js";
+  let loadingMathJax;
+
+  const ensureMathJax = () => {
+    if (typeof window.MathJax?.typesetPromise === "function") {
+      return Promise.resolve(window.MathJax);
+    }
+
+    if (!loadingMathJax) {
+      loadingMathJax = new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.id = "MathJax-script";
+        script.src = mathJaxUrl;
+        script.async = true;
+        script.addEventListener("load", () => {
+          Promise.resolve(window.MathJax?.startup?.promise)
+            .then(() => resolve(window.MathJax), reject);
+        });
+        script.addEventListener("error", () => {
+          reject(new Error("MathJax could not be loaded."));
+        });
+        document.head.appendChild(script);
+      });
+    }
+
+    return loadingMathJax;
+  };
+
+  window.Quarto = window.Quarto || {};
+  window.Quarto.typesetMath = async (element) => {
+    const mathJax = await ensureMathJax();
+    mathJax.typesetClear?.([element]);
+    await mathJax.typesetPromise([element]);
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.querySelector(mathSelector)) {
+      ensureMathJax().catch((error) => console.error(error));
+    }
+  });
+})();
+</script>
