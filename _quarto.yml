@@ -55,7 +55,11 @@ website:
   page-footer:
     border: false
     left: "© 2026 Mohan Rajendran · Math Nomad"
-    center: "Mathematics is better when it can be touched, tested and shared."
+    center: |
+      <figure class="mn-footer-quote">
+        <blockquote>“Mathematics, you see, is not a spectator sport. To understand mathematics means to be able to do mathematics. And what does it mean [to be] doing mathematics? In the first place, it means to be able to solve mathematical problems.”</blockquote>
+        <figcaption>— George Pólya, <cite>How to Solve It: A New Aspect of Mathematical Method</cite></figcaption>
+      </figure>
     right:
       - text: About
         href: about.qmd
