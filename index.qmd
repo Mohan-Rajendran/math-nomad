@@ -3,19 +3,37 @@ title: "Math Nomad"
 page-layout: full
 toc: false
 title-block-banner: false
+body-classes: mn-home-page
+listing:
+  - id: mn-home-latest
+    contents:
+      - courses/resources
+      - writing/articles
+      - videos/entries
+      - projects/entries
+    sort: "date desc"
+    type: default
+    max-items: 6
+    fields: [image, title, description, date, categories]
+    sort-ui: false
+    filter-ui: false
+    feed:
+      items: 20
+      type: partial
+      title: "Latest from Math Nomad"
 ---
 
 ::: {.mn-hero}
 ::: {.mn-hero-copy}
-<p class="mn-kicker">MATHEMATICS · EXPLORATION · TEACHING</p>
+<p class="mn-kicker">COURSES · WRITING · VIDEOS · PROJECTS</p>
 
-# Mathematics is a place to wander.
+# Mathematics worth returning to.
 
-Math Nomad is a home for visual investigations, interactive tools, careful exposition and problems worth carrying with you.
+Math Nomad is a growing home for course materials, mathematical exposition, videos and projects in progress—written for curious readers at several stages of their journey.
 
 ::: {.mn-actions}
-[Explore the interactives](explore/index.qmd){.btn .btn-primary .btn-lg}
-[Read the first note](read/articles/binary-kolam-tiles/index.qmd){.btn .btn-outline-dark .btn-lg}
+[Browse the writing](writing/index.qmd){.btn .btn-primary .btn-lg}
+[See current projects](projects/index.qmd){.btn .btn-outline-dark .btn-lg}
 :::
 :::
 
@@ -25,56 +43,83 @@ Math Nomad is a home for visual investigations, interactive tools, careful expos
 :::
 
 ::: {.mn-intro .content-block}
-## Three ways to enter
+## Find your way
 
-Choose an object to manipulate, an idea to understand, or an investigation to take into a classroom. The same mathematics often appears in all three forms.
+Follow a course, settle into an essay, watch an idea develop, or look over the shoulder of a project still being made.
 :::
 
-::: {.mn-three-up .content-block}
+::: {.mn-four-up .content-block}
 ::: {.mn-path-card}
 <span class="mn-card-number">01</span>
 
-### Explore
+### Courses
 
-Interact with a mathematical object. Make a conjecture, test it and notice what refuses to change.
+Lecture notes, interactives, exercises and useful links gathered into course hubs.
 
-[Open the laboratory →](explore/index.qmd)
+[Visit the courses →](courses/index.qmd)
 :::
 
 ::: {.mn-path-card}
 <span class="mn-card-number">02</span>
 
-### Read
+### Writing
 
-Follow an idea from experiment to definition, proof and computation without hiding the interesting turns.
+Research, exposition, outreach and teaching ideas for readers at different levels.
 
-[Browse the notes →](read/index.qmd)
+[Browse the writing →](writing/index.qmd)
 :::
 
 ::: {.mn-path-card}
 <span class="mn-card-number">03</span>
 
-### Teach
+### Videos
 
-Use investigations designed for discussion, group work and the productive pause before an answer appears.
+YouTube videos accompanied by context, references and a longer account of the mathematics.
 
-[Find classroom material →](teach/index.qmd)
+[Watch and read →](videos/index.qmd)
+:::
+
+::: {.mn-path-card}
+<span class="mn-card-number">04</span>
+
+### Projects
+
+Active investigations, experiments and longer pieces of work, with updates as they develop.
+
+[See what is in progress →](projects/index.qmd)
+:::
+:::
+
+::: {.mn-audience-band}
+::: {.content-block .mn-audience-grid}
+::: {}
+<p class="mn-kicker">EXPLORE BY AUDIENCE</p>
+
+## Begin at the level that suits you
+
+The same mathematical idea may appear in more than one form. Audience labels are guides, not gates.
+:::
+
+::: {.mn-audience-links}
+[Everyone](writing/index.qmd#category=Everyone)
+[School teachers](writing/index.qmd#category=School%20teachers)
+[Undergraduate](writing/index.qmd#category=Undergraduate)
+[Graduate & research](writing/index.qmd#category=Graduate%20%26%20research)
+:::
 :::
 :::
 
 ::: {.mn-feature-band}
 ::: {.content-block .mn-feature-grid}
 ::: {.mn-feature-copy}
-<p class="mn-kicker">FEATURED EXPLORATION</p>
+<p class="mn-kicker">FEATURED PROJECT</p>
 
 ## Sixteen kolam tiles
 
-Every four-bit word encodes a square tile. The bits record openings in the order east–north–west–south. Arrange all sixteen tiles so that neighbouring edges agree, the boundary closes and the drawing is connected.
+Every four-bit word encodes a square tile. Arrange all sixteen so that neighbouring edges agree, the boundary closes and the drawing is connected—then ask what changes when the board becomes a sliding puzzle.
 
-The construction board, a sliding puzzle and an orbit challenge turn one small tile set into three distinct mathematical experiments.
-
-[Enter the Kolam Lab](https://kolam-tile-builder.littleboy300.chatgpt.site){.btn .btn-light .btn-lg}
-[Understand the encoding](read/articles/binary-kolam-tiles/index.qmd){.mn-text-link}
+[Visit the project](projects/entries/kolam-tile-laboratory/index.qmd){.btn .btn-light .btn-lg}
+[Read the exposition](writing/articles/binary-kolam-tiles/index.qmd){.mn-text-link}
 :::
 
 ::: {.mn-feature-facts}
@@ -85,19 +130,13 @@ The construction board, a sliding puzzle and an orbit challenge turn one small t
 :::
 :::
 
-::: {.mn-notes .content-block}
-## Recently added
+::: {.content-block .mn-listing-section .mn-home-latest}
+<p class="mn-kicker">RECENTLY PUBLISHED</p>
 
-::: {.mn-note-row}
-<div class="mn-note-mark">∿</div>
-<div>
+## Latest from Math Nomad
 
-### [How four bits become a kolam](read/articles/binary-kolam-tiles/index.qmd)
+New course resources, articles, video companions and project updates appear here in publication order.
 
-A first look at the encoding, the local matching equations and the global connectedness condition.
-
-</div>
-<span class="mn-note-type">NOTE</span>
+::: {#mn-home-latest}
 :::
 :::
-

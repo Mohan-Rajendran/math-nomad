@@ -1,0 +1,73 @@
+---
+title: "Kolam Tile Laboratory"
+description: "An interactive project connecting binary edge encodings, closed kolam constructions, graph connectivity and sliding-puzzle orbits."
+date: 2026-07-15
+date-modified: 2026-07-15
+author: "Mohan Rajendran"
+categories: [Working on now, Interactive, Combinatorics, Kolams]
+image: ../../../assets/kolam-field.svg
+image-alt: "A field of sixteen square binary kolam tiles"
+status: active
+featured: true
+toc: true
+---
+
+::: {.mn-project-summary}
+::: {}
+<p class="mn-kicker">STATUS · WORKING ON NOW</p>
+
+## The question
+
+What becomes visible when the sixteen four-bit tiles are treated at once as a construction problem, a graph and a labelled sliding puzzle?
+:::
+
+::: {}
+**Current focus**  
+Developing the interactive laboratory and its companion explanations.
+
+**Latest update**  
+The construction board, sliding puzzle and orbit challenge are available to explore.
+:::
+:::
+
+[Open the interactive laboratory](https://kolam-tile-builder.littleboy300.chatgpt.site){.btn .btn-primary .btn-lg}
+
+## Why this project
+
+Each of the sixteen four-bit words describes the openings of a square tile in the directions east, north, west and south. The local rule is simple: adjacent bits must match. A closed boundary adds another family of local constraints, while requiring one connected drawing introduces a genuinely global condition.
+
+Setting aside the (0000) tile turns the same objects into a labelled 15-puzzle. The question changes from *which boards are valid?* to *which valid boards can be joined by legal slides?* This brings parity and orbit structure into the picture.
+
+## Project strands
+
+::: {.mn-three-up}
+::: {.mn-path-card}
+### Build
+
+Arrange all sixteen tiles while the board reports edge mismatches, boundary leaks and disconnected components.
+:::
+
+::: {.mn-path-card}
+### Move
+
+Treat the zero tile as an empty square and examine what is preserved by every legal slide.
+:::
+
+::: {.mn-path-card}
+### Explain
+
+Connect the experiments to binary encodings, graph connectivity, enumeration and proof.
+:::
+:::
+
+## Related material
+
+- [How four bits become a kolam](../../../writing/articles/binary-kolam-tiles/index.qmd) — mathematical exposition.
+- [Sixteen tiles, one closed kolam](../../../courses/resources/kolam-investigation/index.qmd) — a classroom-ready investigation.
+
+## Next steps
+
+- expand the orbit challenge and explanations of its invariant;
+- add downloadable classroom material;
+- record a video walkthrough with a full companion page;
+- document computational experiments where they provide useful evidence.

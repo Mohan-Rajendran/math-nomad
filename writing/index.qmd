@@ -1,0 +1,77 @@
+---
+title: "Writing"
+subtitle: "Research, exposition, outreach and teaching ideas for readers at different levels."
+page-layout: full
+toc: false
+listing:
+  - id: mn-writing-featured
+    contents: articles
+    include:
+      featured: true
+    sort: "date desc"
+    type: grid
+    grid-columns: 2
+    max-items: 4
+    fields: [image, title, description, date, categories]
+    sort-ui: false
+    filter-ui: false
+  - id: mn-writing-latest
+    contents: articles
+    sort: "date desc"
+    type: grid
+    grid-columns: 2
+    fields: [image, title, description, date, reading-time, categories]
+    sort-ui: [date, title]
+    filter-ui: [title, description, categories]
+    feed:
+      items: 20
+      type: partial
+      title: "Writing from Math Nomad"
+---
+
+::: {.content-block .mn-page-lead}
+This is the intellectual notebook of Math Nomad: polished exposition beside research notes, outreach ideas and reflections on teaching. Audience labels suggest a starting point without placing a fence around the mathematics.
+:::
+
+::: {.content-block .mn-taxonomy}
+::: {}
+<p class="mn-kicker">BROWSE BY AUDIENCE</p>
+
+::: {.mn-chip-row .mn-chip-links}
+[Everyone](#category=Everyone)
+[School teachers](#category=School%20teachers)
+[Undergraduate](#category=Undergraduate)
+[Graduate & research](#category=Graduate%20%26%20research)
+:::
+:::
+
+::: {}
+<p class="mn-kicker">KINDS OF WRITING</p>
+
+::: {.mn-chip-row .mn-chip-links}
+[Exposition](#category=Exposition)
+[Research](#category=Research)
+[Outreach](#category=Outreach)
+[Teaching](#category=Teaching)
+[Reflections](#category=Reflections)
+:::
+:::
+:::
+
+::: {.content-block .mn-listing-section}
+<p class="mn-kicker">PINNED</p>
+
+## Featured writing
+
+::: {#mn-writing-featured}
+:::
+:::
+
+::: {.content-block .mn-listing-section}
+## Latest writing
+
+Newest pieces appear first. Use the categories or search box to narrow the collection by audience, kind or mathematical topic.
+
+::: {#mn-writing-latest}
+:::
+:::

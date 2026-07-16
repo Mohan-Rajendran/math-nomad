@@ -1,0 +1,72 @@
+---
+title: "Videos"
+subtitle: "Video companions with context, references and room to continue the mathematics."
+page-layout: full
+toc: false
+listing:
+  - id: mn-videos-featured
+    contents: entries
+    include:
+      featured: true
+    sort: "date desc"
+    type: grid
+    grid-columns: 2
+    max-items: 4
+    fields: [image, title, description, date, categories]
+    sort-ui: false
+    filter-ui: false
+  - id: mn-videos-latest
+    contents: entries
+    sort: "date desc"
+    type: grid
+    grid-columns: 2
+    fields: [image, title, description, date, categories]
+    sort-ui: false
+    filter-ui: false
+    feed:
+      items: 20
+      type: partial
+      title: "Videos from Math Nomad"
+---
+
+::: {.content-block .mn-page-lead}
+Each YouTube video will have a companion page here: an extended description, key ideas, references, related notes and any corrections or later developments.
+:::
+
+::: {.content-block .mn-video-anatomy}
+::: {}
+<p class="mn-kicker">EACH COMPANION PAGE</p>
+
+## More than an embed
+
+A video page is designed to remain useful after watching. It will connect the spoken explanation to definitions, examples and places to continue.
+:::
+
+::: {.mn-structure-list}
+<span>VIDEO</span>
+<span>EXTENDED DESCRIPTION</span>
+<span>KEY IDEAS & TIMESTAMPS</span>
+<span>REFERENCES</span>
+<span>RELATED MATERIAL</span>
+:::
+:::
+
+::: {.content-block .mn-listing-section}
+<p class="mn-kicker">PINNED</p>
+
+## Featured videos
+
+::: {#mn-videos-featured}
+:::
+:::
+
+::: {.content-block .mn-listing-section}
+## Latest videos
+
+::: {.mn-empty-state}
+The first video companion is being prepared. Once published, new videos will automatically appear here with the latest at the top.
+:::
+
+::: {#mn-videos-latest}
+:::
+:::

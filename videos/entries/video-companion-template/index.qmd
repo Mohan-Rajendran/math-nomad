@@ -1,0 +1,32 @@
+---
+title: "Video companion title"
+description: "Replace this sentence with a concise account of the video."
+date: 2026-07-16
+author: "Mohan Rajendran"
+categories: [Everyone, Exposition]
+image: ../../../assets/kolam-field.svg
+image-alt: "Replace this with a description of the video thumbnail"
+audience: [everyone]
+kind: video
+featured: false
+draft: true
+toc: true
+---
+
+{{< video https://www.youtube.com/watch?v=VIDEO_ID >}}
+
+## Extended description
+
+Describe the mathematical journey of the video and what the viewer should watch for.
+
+## Key ideas and timestamps
+
+- **00:00** — Opening question
+
+## References and further reading
+
+Add books, papers, websites and related Math Nomad pages here.
+
+## Corrections and updates
+
+Record any correction or development after publication. Delete this section if it is not needed.

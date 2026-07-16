@@ -1,0 +1,73 @@
+---
+title: "Projects"
+subtitle: "Mathematical work in progress, from first question to finished outcome."
+page-layout: full
+toc: false
+listing:
+  - id: mn-projects-featured
+    contents: entries
+    include:
+      featured: true
+    sort: "date desc"
+    type: grid
+    grid-columns: 2
+    max-items: 4
+    fields: [image, title, description, date, categories]
+    sort-ui: false
+    filter-ui: false
+  - id: mn-projects-all
+    contents: entries
+    sort: "date desc"
+    type: grid
+    grid-columns: 2
+    fields: [image, title, description, date, categories]
+    sort-ui: [date, title]
+    filter-ui: [title, description, categories]
+    feed:
+      items: 20
+      type: partial
+      title: "Projects from Math Nomad"
+---
+
+::: {.content-block .mn-page-lead}
+Projects show the work while it is moving. Each page records the central question, why it matters, the present state of the work and the writing, videos or resources that grow from it.
+:::
+
+::: {.content-block .mn-project-key}
+::: {.mn-project-state}
+<span class="mn-state-dot mn-state-active"></span>
+<strong>Working on now</strong>
+<span>Active development and regular updates</span>
+:::
+
+::: {.mn-project-state}
+<span class="mn-state-dot mn-state-exploring"></span>
+<strong>Exploring</strong>
+<span>Questions taking shape</span>
+:::
+
+::: {.mn-project-state}
+<span class="mn-state-dot mn-state-complete"></span>
+<strong>Completed</strong>
+<span>Finished work kept as an archive</span>
+:::
+:::
+
+::: {.content-block .mn-listing-section}
+<p class="mn-kicker">WORKING ON NOW</p>
+
+## Featured projects
+
+::: {#mn-projects-featured}
+:::
+:::
+
+::: {.content-block .mn-listing-section}
+## All projects
+
+Newest project pages and substantial updates appear first.
+
+::: {#mn-projects-all}
+:::
+:::
+
