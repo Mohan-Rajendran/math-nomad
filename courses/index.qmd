@@ -4,6 +4,16 @@ subtitle: "Course hubs for notes, interactives, exercises and further reading."
 page-layout: full
 toc: false
 listing:
+  - id: mn-course-catalogue
+    contents: "*/index.qmd"
+    include:
+      kind: course
+    sort: "course-order asc"
+    type: grid
+    grid-columns: 4
+    fields: [title, description]
+    sort-ui: false
+    filter-ui: false
   - id: mn-courses-featured
     contents: resources
     include:
@@ -33,21 +43,14 @@ listing:
 Each course will have a home of its own. Lecture notes, interactives, exercises and references stay together so that a student can follow the course without hunting across the website.
 :::
 
-::: {.content-block .mn-course-structure}
-::: {.mn-status-card}
-<p class="mn-kicker">CURRENT COURSES</p>
+::: {.content-block .mn-listing-section}
+<p class="mn-kicker">COURSE DIRECTORY</p>
 
-## Course hubs will appear here
+## Browse the courses
 
-Active courses will be pinned in this space, with the current week and newest material easy to find. When a course finishes, its hub will move to an archive organised by academic year.
-:::
+Choose a course to find its growing collection of notes, interactives, exercises, resources and useful links.
 
-::: {.mn-structure-list}
-<span>OVERVIEW</span>
-<span>LECTURE NOTES</span>
-<span>INTERACTIVES</span>
-<span>EXERCISES</span>
-<span>RESOURCES & LINKS</span>
+::: {#mn-course-catalogue}
 :::
 :::
 
@@ -68,4 +71,3 @@ Use the filter to search titles, descriptions and labels as this collection grow
 ::: {#mn-courses-latest}
 :::
 :::
-
