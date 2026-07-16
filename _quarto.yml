@@ -65,8 +65,11 @@ format:
     theme:
       - cosmo
       - styles.scss
-    include-in-header: includes/fonts.html
-    html-math-method: mathml
+    include-in-header:
+      - includes/fonts.html
+      - includes/mathjax.html
+    template: includes/html-mathjax.html
+    html-math-method: mathjax
     toc: true
     toc-depth: 3
     smooth-scroll: true

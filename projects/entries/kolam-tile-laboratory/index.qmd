@@ -36,7 +36,7 @@ The construction board, sliding puzzle and orbit challenge are available to expl
 
 Each of the sixteen four-bit words describes the openings of a square tile in the directions east, north, west and south. The local rule is simple: adjacent bits must match. A closed boundary adds another family of local constraints, while requiring one connected drawing introduces a genuinely global condition.
 
-Setting aside the (0000) tile turns the same objects into a labelled 15-puzzle. The question changes from *which boards are valid?* to *which valid boards can be joined by legal slides?* This brings parity and orbit structure into the picture.
+Setting aside the $0000$ tile turns the same objects into a labelled 15-puzzle. The question changes from *which boards are valid?* to *which valid boards can be joined by legal slides?* This brings parity and orbit structure into the picture.
 
 ## Project strands
 

@@ -6,6 +6,7 @@ $body-bg: #fbf8f1;
 $body-color: #2d241f;
 $link-color: #8d3f24;
 $headings-color: #2b211c;
+$web-font-path: false;
 $font-family-serif: "STIX Two Text", Georgia, "Times New Roman", serif;
 $font-family-sans-serif: "STIX Two Text", Georgia, "Times New Roman", serif;
 $headings-font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
@@ -67,6 +68,20 @@ li {
 math {
   font-family: "STIX Two Math", "STIX Two Text", serif;
   font-size: 1.04em;
+}
+
+/* Keep MathJax legible alongside STIX Two and usable on narrow screens. */
+mjx-container {
+  font-size: 1.04em;
+}
+
+mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.2rem;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
 }
 
 #quarto-document-content > p,

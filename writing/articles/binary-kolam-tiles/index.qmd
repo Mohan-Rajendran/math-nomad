@@ -12,50 +12,50 @@ featured: true
 toc: true
 ---
 
-Take a square, mark its centre and the midpoint of each side, and choose which of the four midpoints should be connected to the centre. There are (2^4=16) choices. A four-bit word records one choice completely.
+Take a square, mark its centre and the midpoint of each side, and choose which of the four midpoints should be connected to the centre. There are $2^4=16$ choices. A four-bit word records one choice completely.
 
 We shall read the bits in the order
 
-\[
+$$
 E\;N\;W\;S.
-\]
+$$
 
-Thus (1010) has an opening to the east and west, while (0111) has openings to the north, west and south.
+Thus $1010$ has an opening to the east and west, while $0111$ has openings to the north, west and south.
 
 ## From bits to a drawing
 
 The straight segments are the combinatorial skeleton. In the kolam rendering, the same edge data is drawn as a smooth white strand on a coloured square. The visual style changes; the information does not.
 
-Write the tile in column (x), row (y) as
+Write the tile in column $x$, row $y$ as
 
-\[
+$$
 t_{x,y}=(e_{x,y},n_{x,y},w_{x,y},s_{x,y}).
-\]
+$$
 
 Two horizontally adjacent tiles match precisely when
 
-\[
+$$
 e_{x,y}=w_{x+1,y},
-\]
+$$
 
 and two vertically adjacent tiles match when
 
-\[
+$$
 n_{x,y}=s_{x,y+1}.
-\]
+$$
 
 These are *local* equations: each one looks at only a single shared edge.
 
 ## Closing the boundary
 
-For a (4\times4) board, no strand should leave the outer square. With rows numbered upwards, this says
+For a $4\times4$ board, no strand should leave the outer square. With rows numbered upwards, this says
 
-\[
+$$
 \begin{aligned}
 w_{1,y}&=0, & e_{4,y}&=0,\\
 s_{x,1}&=0, & n_{x,4}&=0.
 \end{aligned}
-\]
+$$
 
 The matching and boundary equations guarantee that the small pieces join without loose ends. They do **not** guarantee a single kolam: the board may contain several disjoint loops.
 
@@ -73,7 +73,7 @@ An arrangement can satisfy every local equation and still fail the global test.
 
 ## Why turn it into a 15-puzzle?
 
-Set aside the (0000) tile, regard its position as the empty square, and allow only the usual slide into that square. During a slide sequence, intermediate boards need not satisfy the kolam conditions. We can then ask a different question:
+Set aside the $0000$ tile, regard its position as the empty square, and allow only the usual slide into that square. During a slide sequence, intermediate boards need not satisfy the kolam conditions. We can then ask a different question:
 
 > Which valid kolam configurations can be reached from which others by legal 15-puzzle moves?
 

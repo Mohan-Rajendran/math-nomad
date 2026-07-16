@@ -101,6 +101,24 @@ Give each course a folder inside `courses/`. A full course hub can contain its o
 
 Reusable material that does not belong to only one course can go in `courses/resources/`.
 
+## Write mathematics with MathJax
+
+The website renders LaTeX notation with MathJax. Put inline mathematics between single dollar signs:
+
+```markdown
+There are $2^4=16$ possible tiles.
+```
+
+Put a displayed equation between double dollar signs:
+
+```markdown
+$$
+e_{x,y}=w_{x+1,y}.
+$$
+```
+
+Standard LaTeX structures such as `aligned`, `matrix`, `cases`, `\newcommand` and `\newenvironment` are supported. Always use math delimiters; ordinary parentheses such as `(4\times4)` do not tell Quarto to run MathJax.
+
 ## Safe publishing habit
 
 For a small text correction, committing to `main` is fine. For a new section, interactive or major redesign, use a separate branch and preview it before merging.
