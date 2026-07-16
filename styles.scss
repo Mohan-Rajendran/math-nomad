@@ -111,7 +111,7 @@ a {
 .navbar-brand-logo {
   align-items: center;
   display: flex;
-  height: 3rem;
+  height: 6rem;
   margin-right: 0;
   overflow: visible;
   width: auto;
@@ -125,8 +125,8 @@ a {
   display: block;
   height: auto;
   margin: 0;
-  max-height: 2.75rem;
-  max-width: min(16rem, 45vw);
+  max-height: 5.5rem;
+  max-width: min(32rem, 90vw);
   object-fit: contain;
   transform: none;
   width: auto;
@@ -915,6 +915,12 @@ a {
   }
 }
 
+@media (min-width: 992px) and (max-width: 1199px) {
+  .navbar-nav.me-auto .nav-link {
+    padding-inline: 0.35rem;
+  }
+}
+
 @media (max-width: 991px) {
   .mn-hero {
     grid-template-columns: 1fr;
@@ -957,6 +963,10 @@ a {
 }
 
 @media (max-width: 720px) {
+  .navbar-logo {
+    max-width: calc(100vw - 6.5rem);
+  }
+
   .content-block,
   .quarto-listing-container-grid,
   .quarto-listing-container-default {
