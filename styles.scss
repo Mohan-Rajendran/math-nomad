@@ -882,15 +882,85 @@ a {
   font-size: 1.3rem;
 }
 
-.page-footer {
+footer.footer .nav-footer {
   background: var(--mn-ink);
   color: #e5dacf;
+  display: grid;
   font-size: 0.78rem;
-  padding-block: 2rem;
+  gap: 1.5rem 1rem;
+  grid-template-areas:
+    "quote quote"
+    "legal links";
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 2rem clamp(1rem, 3vw, 3rem) 6rem;
 }
 
-.page-footer a {
+footer.footer .nav-footer a {
   color: #fff;
+}
+
+footer.footer .nav-footer-left {
+  grid-area: legal;
+  text-align: left;
+}
+
+footer.footer .nav-footer-center {
+  grid-area: quote;
+  min-height: 0;
+  text-align: left;
+}
+
+footer.footer .nav-footer-right {
+  grid-area: links;
+  text-align: right;
+}
+
+footer.footer .nav-footer-left,
+footer.footer .nav-footer-center,
+footer.footer .nav-footer-right {
+  flex: none;
+  margin: 0;
+  min-width: 0;
+  order: initial;
+}
+
+.mn-footer-quote {
+  margin: 0 auto;
+  max-width: 44rem;
+  text-align: left;
+}
+
+.mn-footer-quote blockquote {
+  border-left: 2px solid rgba(193, 138, 62, 0.8);
+  color: #f4ece3;
+  font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
+  font-size: clamp(0.88rem, 1vw, 1rem);
+  font-style: italic;
+  line-height: 1.55;
+  margin: 0;
+  padding: 0 0 0 1.15rem;
+}
+
+.mn-footer-quote figcaption {
+  color: #c9b9aa;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  margin-top: 0.75rem;
+  padding-left: calc(1.15rem + 2px);
+}
+
+.mn-footer-quote cite {
+  color: #e5dacf;
+}
+
+@media (min-width: 768px) {
+  footer.footer .nav-footer {
+    align-items: center;
+    column-gap: clamp(1.25rem, 3vw, 3rem);
+    grid-template-areas: "legal quote links";
+    grid-template-columns: minmax(10rem, 0.8fr) minmax(0, 2.4fr) minmax(5rem, 0.8fr);
+    row-gap: 0;
+  }
 }
 
 @media (min-width: 992px) {
