@@ -1,0 +1,25 @@
+---
+title: "This path has wandered"
+description: "The requested Math Nomad page could not be found."
+page-layout: full
+toc: false
+search: false
+sitemap: false
+format:
+  html:
+    include-in-header:
+      text: |
+        <meta name="robots" content="noindex">
+---
+
+::: {.content-block .mn-empty-page .mn-not-found}
+<p class="mn-kicker">404 · PAGE NOT FOUND</p>
+
+## The page is not here, but the mathematics is still nearby.
+
+The address may have changed, or the path may never have existed. Begin again from the homepage, browse the latest writing, or open the interactive laboratory.
+
+[Return home](index.qmd){.btn .btn-primary}
+[Browse writing](writing/index.qmd){.btn .btn-outline-dark}
+[Open the laboratory](https://lab.mathnomad.in/){.btn .btn-outline-dark}
+:::

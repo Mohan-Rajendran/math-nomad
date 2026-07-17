@@ -1,11 +1,11 @@
 ---
-title: "Sixteen tiles, one closed kolam"
+title: "Sixteen Tiles, One Kolam Puzzle"
 description: "A classroom-ready investigation using binary tiles to explore local constraints, connectivity and sliding-puzzle invariants."
 date: 2026-07-15
 author: "Mohan Rajendran"
 categories: [School teachers, Undergraduate, Course resource, Combinatorics]
-image: ../../../assets/kolam-field.svg
-image-alt: "A four by four arrangement of binary kolam tiles"
+image: ../../../writing/articles/binary-kolam-tiles/kolam-tiles.webp
+image-alt: "The sixteen binary kolam tiles arranged as a catalogue"
 audience: [school-teachers, undergraduate]
 kind: course-resource
 featured: true
@@ -14,7 +14,7 @@ toc: true
 
 This investigation begins with an object students can act on, then moves from observation to mathematical language. It can be used with upper-secondary students, undergraduate problem-solving groups, teacher circles or mathematics clubs.
 
-**Central question:** Can every binary tile from $0000$ to $1111$ be used exactly once in a $4\times4$ square so that the boundary is closed, adjacent sides match and the drawing is connected?
+**Central question:** Can every binary tile from $0000$ to $1111$ be used exactly once in a $4\times4$ square so that the boundary is closed, adjacent sides match and the fifteen nonzero tiles form one connected network?
 
 [Launch the construction board](https://lab.mathnomad.in/square-kolam-tile-challenge/){.btn .btn-primary}
 [Read the mathematical exposition](../../../writing/articles/binary-kolam-tiles/index.qmd){.btn .btn-outline-dark}
@@ -61,7 +61,7 @@ Construct an arrangement in which the boundary closes and every adjacent pair ma
 
 ### Sliding between valid boards
 
-Start and finish with valid connected configurations, but allow arbitrary intermediate configurations. Which features of the labelled 15-puzzle are unchanged by every legal slide? How would you compute the invariant without first finding a path?
+Start and finish with accepted configurations, but allow arbitrary intermediate configurations. Which features of the labelled 15-puzzle are unchanged by every legal slide? How would you compute the invariant without first finding a path?
 
 ## Teacher notes
 

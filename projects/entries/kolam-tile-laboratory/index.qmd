@@ -4,9 +4,9 @@ description: "An interactive project connecting binary edge encodings, closed ko
 date: 2026-07-15
 date-modified: 2026-07-15
 author: "Mohan Rajendran"
-categories: [Working on now, Interactive, Combinatorics, Kolams]
-image: ../../../assets/kolam-field.svg
-image-alt: "A field of sixteen square binary kolam tiles"
+categories: [Active now, Interactive, Combinatorics, Kolams]
+image: ../../../writing/articles/binary-kolam-tiles/kolam-01-eight-square-symmetries.webp
+image-alt: "A square kolam shown under the eight symmetries of the square"
 status: active
 featured: true
 toc: true
@@ -14,7 +14,7 @@ toc: true
 
 ::: {.mn-project-summary}
 ::: {}
-<p class="mn-kicker">STATUS · WORKING ON NOW</p>
+<p class="mn-kicker">STATUS · ACTIVE NOW</p>
 
 ## The question
 
@@ -34,7 +34,7 @@ The construction board, sliding puzzle and orbit challenge are available to expl
 
 ## Why this project
 
-Each of the sixteen four-bit words describes the openings of a square tile in the directions east, north, west and south. The local rule is simple: adjacent bits must match. A closed boundary adds another family of local constraints, while requiring one connected drawing introduces a genuinely global condition.
+Each of the sixteen four-bit words describes the openings of a square tile in the directions east, north, west and south. The local rule is simple: adjacent bits must match. A closed boundary adds another family of local constraints, while requiring the fifteen nonzero tiles to form one connected network introduces a genuinely global condition.
 
 Setting aside the $0000$ tile turns the same objects into a labelled 15-puzzle. The question changes from *which boards are valid?* to *which valid boards can be joined by legal slides?* This brings parity and orbit structure into the picture.
 
@@ -62,7 +62,7 @@ Connect the experiments to binary encodings, graph connectivity, enumeration and
 
 ## Related material
 
-- [How four bits become a kolam](../../../writing/articles/binary-kolam-tiles/index.qmd) — mathematical exposition.
+- [From Sixteen Tiles to Fifty-One Kolams](../../../writing/articles/binary-kolam-tiles/index.qmd) — mathematical exposition.
 - [Sixteen tiles, one closed kolam](../../../courses/resources/kolam-investigation/index.qmd) — a classroom-ready investigation.
 
 ## Next steps

@@ -1,5 +1,5 @@
 ---
-title: "How four bits become a kolam"
+title: "From Sixteen Tiles to Fifty-One Kolams"
 description: "This article has moved to the Writing section."
 page-layout: full
 toc: false
@@ -13,5 +13,5 @@ search: false
 
 The permanent article and all future mathematical exposition are collected in the new Writing section.
 
-[Continue to “How four bits become a kolam”](../../../writing/articles/binary-kolam-tiles/index.qmd){.btn .btn-primary}
+[Continue to “From Sixteen Tiles to Fifty-One Kolams”](../../../writing/articles/binary-kolam-tiles/index.qmd){.btn .btn-primary}
 :::

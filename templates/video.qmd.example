@@ -1,11 +1,11 @@
 ---
-title: "Video companion title"
-description: "Replace this sentence with a concise account of the video."
-date: 2026-07-16
+title: "A clear video title"
+description: "One sentence used on listing cards and in search results."
+date: YYYY-MM-DD
 author: "Mohan Rajendran"
-categories: [Everyone, Exposition]
-image: ../../../assets/kolam-field.svg
-image-alt: "Replace this with a description of the video thumbnail"
+categories: [Everyone, Exposition, Topic]
+image: thumbnail.webp
+image-alt: "Describe the video thumbnail"
 audience: [everyone]
 kind: video
 featured: false

@@ -2,6 +2,7 @@
 title: "About Math Nomad"
 page-layout: full
 toc: false
+body-classes: mn-about-page
 ---
 
 ::: {.content-block .mn-about}
@@ -18,7 +19,7 @@ The intended audience includes curious members of the public, school teachers, u
 ::: {.mn-about-aside}
 ### What you will find here
 
-- course hubs with notes, exercises, interactives and useful links;
+- curated course pathways through notes, exercises, interactives and useful links;
 - writing at several levels, from public exposition to research ideas;
 - video companions with references and extended descriptions;
 - active projects with visible progress and related outputs;
@@ -40,7 +41,7 @@ Begin with a question, object or phenomenon that gives the reader something mean
 ::: {.mn-path-card}
 ### Explain honestly
 
-Distinguish experiment, computation, conjecture and proof. Each has a valuable but different role.
+Distinguish experiment, computation, conjecture and proof. Each has a distinct and valuable role.
 :::
 
 ::: {.mn-path-card}
@@ -48,6 +49,28 @@ Distinguish experiment, computation, conjecture and proof. Each has a valuable b
 
 Pair an interactive with enough mathematical and pedagogical context for another person to use it well.
 :::
+:::
+:::
+:::
+
+::: {.content-block .mn-about-publishing}
+::: {.mn-two-up}
+::: {}
+<p class="mn-kicker">HOW THE SITE FITS</p>
+
+## A companion to formal publication
+
+Journals and institutional venues remain the formal record for work published there. Math Nomad complements that record with material for which those formats rarely have room: interactives, code, catalogues, classroom adaptations, computational appendices and behind-the-paper notes.
+
+When a piece is connected to a journal publication, the version shared here will comply with that venue’s copyright and self-archiving policies. The aim is to extend the work, not to duplicate a version whose distribution is restricted.
+:::
+
+::: {}
+<p class="mn-kicker">FOLLOW AT A HUMAN PACE</p>
+
+## Return when something is ready
+
+Math Nomad is intended to grow steadily, without turning publication into a treadmill. [The main RSS feed](index.xml) carries every new publication. A low-frequency email digest, bringing together the strongest recent work three or four times a year, is planned.
 :::
 :::
 :::

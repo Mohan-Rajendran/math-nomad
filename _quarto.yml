@@ -3,6 +3,8 @@ project:
   output-dir: _site
   pre-render:
     - node scripts/build-topic-index.mjs
+  post-render:
+    - node scripts/build-404.mjs
   render:
     - "*.qmd"
     - "courses/**/*.qmd"
@@ -24,7 +26,7 @@ lang: en-GB
 website:
   title: "Math Nomad"
   site-url: "https://mathnomad.in"
-  description: "Journeys through mathematics, exploration and teaching."
+  description: "Mathematics worth returning to: exposition, courses, interactives, videos and projects."
   google-analytics:
     tracking-id: "G-61VRW5QTFH"
     anonymize-ip: true
@@ -47,10 +49,10 @@ website:
     pinned: true
     collapse-below: lg
     left:
-      - text: Courses
-        href: courses/index.qmd
       - text: Writing
         href: writing/index.qmd
+      - text: Courses
+        href: courses/index.qmd
       - text: Videos
         href: videos/index.qmd
       - text: Projects
@@ -72,6 +74,10 @@ website:
     right:
       - text: About
         href: about.qmd
+      - text: GitHub
+        href: "https://github.com/Mohan-Rajendran/math-nomad"
+      - text: RSS
+        href: index.xml
 
 format:
   html:
@@ -81,6 +87,8 @@ format:
     include-in-header:
       - includes/fonts.html
       - includes/mathjax.html
+    include-after-body:
+      - includes/site.js
     template: includes/html-mathjax.html
     html-math-method: mathjax
     toc: true

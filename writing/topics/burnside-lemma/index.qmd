@@ -13,7 +13,7 @@ listing:
 ---
 
 ::: {.content-block .mn-page-lead}
-Burnside’s lemma turns a symmetry-counting problem into an average of fixed-point counts. This is the stable topic page for the lemma: a fuller exposition will be published here, while the list below updates automatically whenever an article is tagged **Burnside's lemma**.
+Burnside’s lemma turns a symmetry-counting problem into an average of fixed-point counts. This is the stable topic page for the lemma: a fuller exposition will be published here, while the list below updates automatically whenever an article is tagged **Burnside’s lemma**.
 :::
 
 ## Articles that use Burnside’s lemma
