@@ -80,5 +80,5 @@ Set aside the $0000$ tile, regard its position as the empty square, and allow on
 This introduces a classical parity invariant, but now the target arrangements come from a highly structured family. The interactive laboratory lets you investigate the construction problem and the sliding problem separately before putting them together.
 
 ::: {.callout-note title="Continue the journey"}
-[Open the Kolam Tile Laboratory](https://kolam-tile-builder.littleboy300.chatgpt.site) to build a configuration, inspect violated conditions and try the orbit challenge. You can also [follow the project as it develops](../../../projects/entries/kolam-tile-laboratory/index.qmd).
+[Open the Square Kolam Tile Challenge](https://lab.mathnomad.in/square-kolam-tile-challenge/) to build a configuration and inspect violated conditions. The [Kolam Lab home](https://lab.mathnomad.in/) also links to the sliding and orbit sandboxes. You can [follow the project as it develops](../../../projects/entries/kolam-tile-laboratory/index.qmd).
 :::

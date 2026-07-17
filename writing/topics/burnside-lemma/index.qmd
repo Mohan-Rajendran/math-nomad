@@ -1,0 +1,28 @@
+---
+title: "Burnside’s lemma"
+description: "A topic page connecting the orbit-counting lemma to every Math Nomad article that uses it."
+page-layout: full
+toc: true
+listing:
+  id: uses-burnside
+  contents: ../../articles
+  template: ../topic-articles.ejs.md
+  template-params:
+    topic: "Burnside's lemma"
+  sort: "date desc"
+  sort-ui: false
+  filter-ui: false
+---
+
+::: {.content-block .mn-page-lead}
+Burnside’s lemma turns a symmetry-counting problem into an average of fixed-point counts. This is the stable topic page for the lemma: a fuller exposition will be published here, while the list below updates automatically whenever an article is tagged **Burnside's lemma**.
+:::
+
+## Articles that use Burnside’s lemma
+
+::: {#uses-burnside}
+:::
+
+## How the cross-links work
+
+Every article that uses the lemma carries the shared topic tag and links back to this page. This page reads that tag at build time and lists those articles, so the relationship is maintained in both directions without duplicating a hand-written list.
