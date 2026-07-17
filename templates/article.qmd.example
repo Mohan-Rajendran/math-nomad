@@ -1,0 +1,30 @@
+---
+title: "A clear, specific title"
+description: "One sentence used on listing cards and in search results."
+date: YYYY-MM-DD
+author: "Mohan Rajendran"
+categories: [Everyone, Exposition, Topic]
+audience: [everyone]
+kind: exposition
+featured: false
+draft: true
+toc: true
+---
+
+Begin with the question, object or phenomenon that gives the reader a reason to continue.
+
+## The central idea
+
+Develop the mathematical story here. Distinguish clearly between experiment, computation, conjecture and proof.
+
+## A question to try
+
+Give the reader a meaningful point of entry before resolving the whole argument.
+
+## Where to continue
+
+Link to relevant interactives, course pathways, projects, videos, papers or further reading.
+
+## Citation
+
+Add a citation block when the piece is ready for publication. Remove `draft: true` only after checking every link, image description, mathematical expression and source.

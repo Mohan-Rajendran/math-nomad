@@ -14,7 +14,7 @@ listing:
     sort: "date desc"
     type: default
     max-items: 6
-    fields: [image, title, description, date, categories]
+    fields: [image, title, description, date]
     sort-ui: false
     filter-ui: false
     feed:
@@ -25,8 +25,6 @@ listing:
 
 ::: {.mn-hero}
 ::: {.mn-hero-copy}
-<p class="mn-kicker">COURSES · WRITING · VIDEOS · PROJECTS</p>
-
 # Mathematics worth returning to.
 
 Math Nomad is a growing home for course materials, mathematical exposition, videos and projects in progress—written for curious readers at several stages of their journey.
@@ -38,7 +36,28 @@ Math Nomad is a growing home for course materials, mathematical exposition, vide
 :::
 
 ::: {.mn-hero-art}
-![A field of sixteen square kolam tiles, each with a different pattern of openings.](assets/kolam-field.svg){.img-fluid}
+<img class="img-fluid" src="assets/kolam-field.svg" alt="A field of sixteen square kolam tiles, each with a different pattern of openings.">
+:::
+:::
+
+::: {.mn-feature-band}
+::: {.content-block .mn-feature-grid}
+::: {.mn-feature-copy}
+<p class="mn-kicker">FEATURED INVESTIGATION</p>
+
+## From sixteen tiles to fifty-one kolams
+
+Every four-bit word encodes a square tile. Arrange all sixteen so that neighbouring edges match and the boundary closes, with the nonzero tiles forming one connected network. Then classify the accepted boards up to the symmetries of the square.
+
+[Read the exposition](writing/articles/binary-kolam-tiles/index.qmd){.btn .btn-light .btn-lg}
+[Visit the project](projects/entries/kolam-tile-laboratory/index.qmd){.mn-text-link}
+:::
+
+::: {.mn-feature-facts}
+<div><strong>16</strong><span>binary tiles</span></div>
+<div><strong>408</strong><span>accepted boards</span></div>
+<div><strong>51</strong><span>symmetry classes</span></div>
+:::
 :::
 :::
 
@@ -50,18 +69,14 @@ Follow a course, settle into an essay, watch an idea develop, or look over the s
 
 ::: {.mn-four-up .content-block}
 ::: {.mn-path-card}
-<span class="mn-card-number">01</span>
-
 ### Courses
 
-Lecture notes, interactives, exercises and useful links gathered into course hubs.
+Curated pathways through notes, interactives, exercises and further reading.
 
 [Visit the courses →](courses/index.qmd)
 :::
 
 ::: {.mn-path-card}
-<span class="mn-card-number">02</span>
-
 ### Writing
 
 Research, exposition, outreach and teaching ideas for readers at different levels.
@@ -70,8 +85,6 @@ Research, exposition, outreach and teaching ideas for readers at different level
 :::
 
 ::: {.mn-path-card}
-<span class="mn-card-number">03</span>
-
 ### Videos
 
 YouTube videos accompanied by context, references and a longer account of the mathematics.
@@ -80,53 +93,11 @@ YouTube videos accompanied by context, references and a longer account of the ma
 :::
 
 ::: {.mn-path-card}
-<span class="mn-card-number">04</span>
-
 ### Projects
 
 Active investigations, experiments and longer pieces of work, with updates as they develop.
 
 [See what is in progress →](projects/index.qmd)
-:::
-:::
-
-::: {.mn-audience-band}
-::: {.content-block .mn-audience-grid}
-::: {}
-<p class="mn-kicker">EXPLORE BY AUDIENCE</p>
-
-## Begin at the level that suits you
-
-The same mathematical idea may appear in more than one form. Audience labels are guides, not gates.
-:::
-
-::: {.mn-audience-links}
-[Everyone](writing/index.qmd#category=Everyone)
-[School teachers](writing/index.qmd#category=School%20teachers)
-[Undergraduate](writing/index.qmd#category=Undergraduate)
-[Graduate & research](writing/index.qmd#category=Graduate%20%26%20research)
-:::
-:::
-:::
-
-::: {.mn-feature-band}
-::: {.content-block .mn-feature-grid}
-::: {.mn-feature-copy}
-<p class="mn-kicker">FEATURED PROJECT</p>
-
-## Sixteen kolam tiles
-
-Every four-bit word encodes a square tile. Arrange all sixteen so that neighbouring edges agree, the boundary closes and the drawing is connected—then ask what changes when the board becomes a sliding puzzle.
-
-[Visit the project](projects/entries/kolam-tile-laboratory/index.qmd){.btn .btn-light .btn-lg}
-[Read the exposition](writing/articles/binary-kolam-tiles/index.qmd){.mn-text-link}
-:::
-
-::: {.mn-feature-facts}
-<div><strong>16</strong><span>binary tiles</span></div>
-<div><strong>4</strong><span>edge directions</span></div>
-<div><strong>1</strong><span>connected drawing</span></div>
-:::
 :::
 :::
 
@@ -138,5 +109,26 @@ Every four-bit word encodes a square tile. Arrange all sixteen so that neighbour
 New course resources, articles, video companions and project updates appear here in publication order.
 
 ::: {#mn-home-latest}
+:::
+:::
+
+::: {.mn-follow-band}
+::: {.content-block .mn-follow-grid}
+::: {.mn-follow-copy}
+<p class="mn-kicker">RETURN WHEN THERE IS SOMETHING NEW</p>
+
+## Follow at a human pace
+
+Use the [RSS feed](index.xml) for every new publication. A quarterly email digest featuring a small selection of writing, resources and project updates is planned.
+:::
+
+```{=html}
+<div class="mn-digest-panel">
+  <p class="mn-kicker">QUARTERLY DIGEST</p>
+  <h3>In preparation</h3>
+  <p>A short selection is planned three or four times a year. Until sign-up is ready, RSS is the dependable way to follow every publication.</p>
+  <a class="btn btn-primary" href="index.xml">Follow via RSS</a>
+</div>
+```
 :::
 :::

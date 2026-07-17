@@ -1,5 +1,5 @@
 /*
- * Article-specific visual system for “From Sixteen Tiles to Fifty One Kolams”.
+ * Article-specific visual system for “From Sixteen Tiles to Fifty-One Kolams”.
  *
  * The selectors are deliberately rooted at body.mn-kolam-page.  This lets the
  * article reproduce the editorial preview while the rest of Math Nomad keeps
@@ -7,24 +7,22 @@
  */
 
 body.mn-kolam-page {
-  --paper: #fbf8f1;
-  --paper-deep: #f1e9dc;
+  --paper: var(--mn-paper);
+  --paper-deep: var(--mn-paper-deep);
   --paper-white: #fffdf8;
-  --ink: #2d241f;
-  --ink-soft: #6d5f56;
-  --terracotta: #a34f2e;
-  --terracotta-deep: #78351f;
+  --ink: var(--mn-ink);
+  --ink-soft: var(--mn-muted);
+  --terracotta: var(--mn-terracotta);
+  --terracotta-deep: var(--mn-terracotta-dark);
   --terracotta-pale: #ecd2c3;
   --sage: #3f6b62;
   --sage-pale: #dbe6df;
   --gold: #bd8a38;
-  --rule: #d9cabc;
+  --rule: var(--mn-line);
   --serif:
     "STIX Two Text", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
     serif;
-  --sans:
-    Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  --sans: "STIX Two Text", Georgia, "Times New Roman", serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --shadow: 0 24px 70px rgba(75, 46, 31, 0.12);
   background: var(--paper);
@@ -59,8 +57,9 @@ body.mn-kolam-page a:hover {
 
 body.mn-kolam-page :focus-visible {
   border-radius: 3px;
-  outline: 3px solid color-mix(in srgb, var(--sage) 55%, white);
-  outline-offset: 4px;
+  outline: 3px solid #fffdf9;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #642814;
 }
 
 body.mn-kolam-page .mn-reading-progress {
@@ -109,44 +108,6 @@ body.mn-kolam-page main.content > :first-child {
 body.mn-kolam-page .navbar,
 body.mn-kolam-page .nav-footer {
   font-family: var(--serif);
-}
-
-/*
- * Quarto's shared site logo is intentionally generous on landing pages.  On
- * this long-form article, use the preview's compact 72px reading header while
- * retaining the real navigation, search, collapse control and GitHub link.
- */
-body.mn-kolam-page.nav-fixed {
-  padding-top: 72px !important;
-}
-
-body.mn-kolam-page #quarto-header .navbar {
-  min-height: 72px;
-  padding: 0 4.5vw !important;
-}
-
-body.mn-kolam-page #quarto-header .navbar-container {
-  width: 100%;
-  min-height: 72px;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
-
-body.mn-kolam-page #quarto-header .navbar-brand-logo {
-  display: flex;
-  width: auto;
-  height: 56px;
-  align-items: center;
-  overflow: visible;
-}
-
-body.mn-kolam-page #quarto-header .navbar-logo {
-  width: auto;
-  height: auto;
-  max-width: min(170px, 34vw);
-  max-height: 50px;
-  object-fit: contain;
 }
 
 /* Hero */
@@ -385,6 +346,33 @@ body.mn-kolam-page .toc ol {
   list-style: none;
 }
 
+body.mn-kolam-page .toc-context-link {
+  display: block;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+body.mn-kolam-page .toc-context-link span {
+  display: block;
+  color: var(--terracotta);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+body.mn-kolam-page .toc-prelude {
+  margin-bottom: 16px;
+}
+
+body.mn-kolam-page .toc-appendix {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+
 body.mn-kolam-page .toc li {
   position: relative;
   margin: 0 0 9px;
@@ -411,6 +399,11 @@ body.mn-kolam-page .toc a:hover {
   color: var(--terracotta-deep);
 }
 
+body.mn-kolam-page .toc a.is-active {
+  color: var(--terracotta-deep);
+  font-weight: 750;
+}
+
 body.mn-kolam-page .toc-rule {
   width: 100%;
   height: 1px;
@@ -424,6 +417,10 @@ body.mn-kolam-page .toc-note {
   font-size: 13px;
   font-style: italic;
   line-height: 1.55;
+}
+
+body.mn-kolam-page .mobile-toc {
+  display: none;
 }
 
 body.mn-kolam-page .article-body {
@@ -534,6 +531,29 @@ body.mn-kolam-page .margin-quote p {
   font-size: 15px;
   font-style: italic;
   line-height: 1.55;
+}
+
+body.mn-kolam-page [lang="ta"] {
+  font-family: "Noto Serif Tamil", "Nirmala UI", Latha, var(--serif);
+}
+
+body.mn-kolam-page .cultural-sources-cue {
+  display: inline-flex;
+  margin-left: 0.25em;
+  align-items: baseline;
+  gap: 0.2em;
+  color: var(--terracotta-deep);
+  font-family: var(--sans);
+  font-size: 0.68em;
+  font-weight: 750;
+  letter-spacing: 0.035em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+body.mn-kolam-page .cultural-sources-cue:hover {
+  text-decoration: underline;
 }
 
 body.mn-kolam-page .article-body code:not(pre code) {
@@ -922,6 +942,24 @@ body.mn-kolam-page .sandbox-loading.is-hidden {
   pointer-events: none;
 }
 
+body.mn-kolam-page .sandbox-loading.is-slow {
+  padding: 32px;
+  text-align: center;
+}
+
+body.mn-kolam-page .sandbox-loading.is-slow .loading-tile {
+  animation: none;
+}
+
+body.mn-kolam-page .sandbox-loading a {
+  color: var(--sage);
+  font-weight: 750;
+}
+
+body.mn-kolam-page .sandbox-mobile-poster {
+  display: none;
+}
+
 body.mn-kolam-page .loading-tile {
   display: grid;
   width: 74px;
@@ -929,7 +967,7 @@ body.mn-kolam-page .loading-tile {
   padding: 8px;
   place-items: end center;
   border-radius: 5px;
-  background: var(--terracotta);
+  background: var(--terracotta-deep);
   color: white;
   font-family: var(--mono);
   font-size: 9px;
@@ -1434,6 +1472,10 @@ body.mn-kolam-page .table-wrap {
   background: var(--paper-white);
 }
 
+body.mn-kolam-page .table-scroll-cue {
+  display: none;
+}
+
 body.mn-kolam-page .table-wrap table {
   width: 100%;
   min-width: 620px;
@@ -1521,7 +1563,7 @@ body.mn-kolam-page .mn-burnside-result > p:first-child {
   position: relative;
   z-index: 1;
   margin: 0 0 14px;
-  color: #cde0d7;
+  color: #f3f8f5;
   font-family: var(--sans);
   font-size: 10px;
   font-weight: 800;
@@ -1692,6 +1734,14 @@ body.mn-kolam-page .draft-link {
   );
 }
 
+body.mn-kolam-page .resource-card-static {
+  cursor: default;
+}
+
+body.mn-kolam-page .resource-card-static > strong {
+  color: var(--terracotta-deep);
+}
+
 body.mn-kolam-page .code-details pre {
   margin: 0;
   padding: 0 18px 19px;
@@ -1842,6 +1892,117 @@ body.mn-kolam-page .article-keywords > section.level2 > p:last-child {
   line-height: 1.7;
 }
 
+body.mn-kolam-page .citation-section {
+  padding-top: 52px;
+  border-top: 1px solid var(--rule);
+}
+
+body.mn-kolam-page .citation-section h2,
+body.mn-kolam-page .related-section h2 {
+  font-size: 31px;
+}
+
+body.mn-kolam-page .citation-text {
+  margin: 0;
+  padding: 20px 22px;
+  border-left: 3px solid var(--terracotta);
+  background: color-mix(in srgb, var(--terracotta-pale) 20%, var(--paper-white));
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+body.mn-kolam-page .citation-actions {
+  display: flex;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+}
+
+body.mn-kolam-page .citation-actions button {
+  min-height: 42px;
+  padding: 9px 15px;
+  border: 1px solid color-mix(in srgb, var(--sage) 52%, var(--rule));
+  border-radius: 999px;
+  background: var(--paper-white);
+  color: var(--sage);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+body.mn-kolam-page .citation-actions button:hover {
+  border-color: var(--sage);
+  background: var(--sage);
+  color: white;
+}
+
+body.mn-kolam-page .citation-feedback {
+  min-height: 1.5em;
+  color: var(--terracotta-deep);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+body.mn-kolam-page .related-section {
+  margin-bottom: 70px;
+  padding-top: 52px;
+  border-top: 1px solid var(--rule);
+}
+
+body.mn-kolam-page .related-routes {
+  display: grid;
+  margin-top: 26px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+body.mn-kolam-page .related-routes a {
+  display: flex;
+  min-height: 170px;
+  padding: 23px 22px;
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  flex-direction: column;
+  background: var(--paper-white);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+body.mn-kolam-page .related-routes a:hover {
+  border-color: color-mix(in srgb, var(--terracotta) 45%, var(--rule));
+  box-shadow: 0 12px 30px rgba(75, 46, 31, 0.09);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+body.mn-kolam-page .related-routes span {
+  color: var(--terracotta);
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+body.mn-kolam-page .related-routes strong {
+  margin-top: 9px;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+body.mn-kolam-page .related-routes small {
+  margin-top: 9px;
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
 body.mn-kolam-page .article-end,
 body.mn-kolam-page .mn-closing-line {
   display: flex;
@@ -1921,6 +2082,59 @@ body.mn-kolam-page .footnotes {
     display: none;
   }
 
+  body.mn-kolam-page .mobile-toc {
+    display: block;
+    width: min(760px, calc(100% - 42px));
+    margin: 28px auto -34px;
+    border: 1px solid var(--rule);
+    border-radius: 7px;
+    background: var(--paper-white);
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 12px;
+  }
+
+  body.mn-kolam-page .mobile-toc summary {
+    padding: 14px 17px;
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  body.mn-kolam-page .mobile-toc ol {
+    margin: 0;
+    padding: 2px 20px 18px 39px;
+  }
+
+  body.mn-kolam-page .mobile-toc .toc-context-link {
+    margin-inline: 17px;
+  }
+
+  body.mn-kolam-page .mobile-toc .toc-prelude {
+    margin-top: 4px;
+  }
+
+  body.mn-kolam-page .mobile-toc .toc-appendix {
+    margin-bottom: 17px;
+  }
+
+  body.mn-kolam-page .mobile-toc li {
+    margin: 8px 0;
+  }
+
+  body.mn-kolam-page .mobile-toc a {
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  body.mn-kolam-page .mobile-toc a.is-active {
+    color: var(--terracotta-deep);
+    font-weight: 750;
+  }
+
   body.mn-kolam-page .margin-quote {
     float: none;
     width: auto;
@@ -1936,28 +2150,6 @@ body.mn-kolam-page .footnotes {
   body.mn-kolam-page {
     font-size: 17px;
     line-height: 1.7;
-  }
-
-  body.mn-kolam-page.nav-fixed {
-    padding-top: 62px !important;
-  }
-
-  body.mn-kolam-page #quarto-header .navbar,
-  body.mn-kolam-page #quarto-header .navbar-container {
-    min-height: 62px;
-  }
-
-  body.mn-kolam-page #quarto-header .navbar {
-    padding-inline: 18px !important;
-  }
-
-  body.mn-kolam-page #quarto-header .navbar-brand-logo {
-    height: 48px;
-  }
-
-  body.mn-kolam-page #quarto-header .navbar-logo {
-    max-width: min(145px, 40vw);
-    max-height: 42px;
   }
 
   body.mn-kolam-page .hero {
@@ -2143,6 +2335,25 @@ body.mn-kolam-page .footnotes {
     padding: 12px 13px;
   }
 
+  body.mn-kolam-page .table-scroll-cue {
+    position: sticky;
+    left: 0;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 8px 12px;
+    justify-content: flex-end;
+    gap: 5px;
+    border-bottom: 1px solid var(--rule);
+    background: color-mix(in srgb, var(--paper-deep) 60%, white);
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
   body.mn-kolam-page .burnside-result,
   body.mn-kolam-page .mn-burnside-result {
     padding: 39px 23px 34px;
@@ -2180,6 +2391,80 @@ body.mn-kolam-page .footnotes {
   body.mn-kolam-page .article-keywords {
     padding: 27px 22px 25px;
   }
+
+  body.mn-kolam-page .related-routes {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px), (hover: none) and (pointer: coarse) {
+  body.mn-kolam-page .sandbox-stage {
+    height: auto;
+  }
+
+  body.mn-kolam-page .sandbox-stage .mn-sandbox-iframe,
+  body.mn-kolam-page .sandbox-stage .mn-sandbox-loading {
+    display: none;
+  }
+
+  body.mn-kolam-page .sandbox-mobile-poster {
+    display: grid;
+    padding: 18px;
+    justify-items: center;
+    gap: 15px;
+    background: var(--paper-white);
+  }
+
+  body.mn-kolam-page .sandbox-mobile-poster img {
+    display: block;
+    width: min(100%, 430px);
+    height: auto;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+  }
+
+  body.mn-kolam-page .sandbox-mobile-button {
+    display: inline-flex;
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 17px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: var(--terracotta);
+    color: white;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  body.mn-kolam-page .sandbox-mobile-button:hover {
+    background: var(--terracotta-deep);
+    color: white;
+  }
+
+  body.mn-kolam-page .sandbox-mobile-poster p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 11px;
+    line-height: 1.55;
+    text-align: center;
+  }
+
+  body.mn-kolam-page .sandbox-help {
+    display: none;
+  }
+
+  body.mn-kolam-page .citation-actions {
+    align-items: flex-start;
+  }
+
+  body.mn-kolam-page .citation-feedback {
+    width: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2195,6 +2480,7 @@ body.mn-kolam-page .footnotes {
 
 @media print {
   body.mn-kolam-page .toc,
+  body.mn-kolam-page .mobile-toc,
   body.mn-kolam-page .mn-reading-progress,
   body.mn-kolam-page .sandbox-shell,
   body.mn-kolam-page .mn-sandbox-frame,

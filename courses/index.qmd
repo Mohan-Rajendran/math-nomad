@@ -1,38 +1,17 @@
 ---
 title: "Courses"
-subtitle: "Course hubs for notes, interactives, exercises and further reading."
+subtitle: "Curated pathways through notes, interactives, exercises and further reading."
 page-layout: full
 toc: false
 listing:
-  - id: mn-course-catalogue
-    contents: "*/index.qmd"
-    include:
-      kind: course
-    sort: "course-order asc"
-    type: grid
-    grid-columns: 4
-    fields: [title, description]
-    sort-ui: false
-    filter-ui: false
-  - id: mn-courses-featured
-    contents: resources
-    include:
-      featured: true
-    sort: "date desc"
-    type: grid
-    grid-columns: 2
-    max-items: 4
-    fields: [image, title, description, date, categories]
-    sort-ui: false
-    filter-ui: false
-  - id: mn-courses-latest
+  - id: mn-courses-available
     contents: resources
     sort: "date desc"
     type: grid
     grid-columns: 2
-    fields: [image, title, description, date, categories]
+    fields: [image, title, description, date]
     sort-ui: false
-    filter-ui: true
+    filter-ui: false
     feed:
       items: 20
       type: partial
@@ -40,34 +19,83 @@ listing:
 ---
 
 ::: {.content-block .mn-page-lead}
-Each course will have a home of its own. Lecture notes, interactives, exercises and references stay together so that a student can follow the course without hunting across the website.
+Each course pathway is designed as a guided route through Math Nomad’s material: a clear starting point, a sequence of ideas and links between notes, interactives, problems and further reading.
+:::
+
+::: {.content-block .mn-course-status-key}
+<p class="mn-kicker">COURSE STATUS</p>
+
+::: {.mn-three-up}
+::: {.mn-status-card .is-available}
+### Available
+
+A useful pathway or classroom-ready resource is ready to use now.
+:::
+
+::: {.mn-status-card .is-developing}
+### In development
+
+Substantial material is being assembled and a first usable release is on its way.
+:::
+
+::: {.mn-status-card .is-planned}
+### Planned
+
+The pathway belongs in the long-term map, but there is not yet enough material to make a useful page.
+:::
+:::
 :::
 
 ::: {.content-block .mn-listing-section}
-<p class="mn-kicker">COURSE DIRECTORY</p>
+<p class="mn-kicker">AVAILABLE NOW</p>
 
-## Browse the courses
+## Begin with a complete investigation
 
-Choose a course to find its growing collection of notes, interactives, exercises, resources and useful links.
+This first investigation can be used in a classroom, a teacher circle or an undergraduate problem-solving group without waiting for a full course pathway.
 
-::: {#mn-course-catalogue}
+::: {#mn-courses-available}
 :::
 :::
 
-::: {.content-block .mn-listing-section}
-<p class="mn-kicker">PINNED</p>
+::: {.content-block .mn-course-planned}
+<p class="mn-kicker">PLANNED PATHWAYS</p>
 
-## Featured course resources
+## Courses on the map
 
-::: {#mn-courses-featured}
+These names mark future directions; they are not links to empty pages. A course will move to **In development** only when there is a concrete sample or schedule, and to **Available** when it offers a genuinely useful path.
+
+::: {.mn-course-shelf}
+::: {.mn-course-shelf-item}
+<span>Elementary Number Theory</span>
+<span class="mn-course-shelf-status">Planned</span>
 :::
+::: {.mn-course-shelf-item}
+<span>Linear Algebra</span>
+<span class="mn-course-shelf-status">Planned</span>
 :::
-
-::: {.content-block .mn-listing-section}
-## Latest course materials
-
-Use the filter to search titles, descriptions and labels as this collection grows.
-
-::: {#mn-courses-latest}
+::: {.mn-course-shelf-item}
+<span>Real Analysis</span>
+<span class="mn-course-shelf-status">Planned</span>
+:::
+::: {.mn-course-shelf-item}
+<span>Complex Analysis</span>
+<span class="mn-course-shelf-status">Planned</span>
+:::
+::: {.mn-course-shelf-item}
+<span>Group Theory</span>
+<span class="mn-course-shelf-status">Planned</span>
+:::
+::: {.mn-course-shelf-item}
+<span>Ring Theory</span>
+<span class="mn-course-shelf-status">Planned</span>
+:::
+::: {.mn-course-shelf-item}
+<span>Probability Theory</span>
+<span class="mn-course-shelf-status">Planned</span>
+:::
+::: {.mn-course-shelf-item}
+<span>Discrete Mathematics</span>
+<span class="mn-course-shelf-status">Planned</span>
+:::
 :::
 :::

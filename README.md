@@ -5,7 +5,7 @@ Math Nomad is Mohan Rajendran's website for courses, mathematical writing, video
 ## Site map
 
 - `index.qmd` — home page
-- `courses/` — course hubs and reusable course resources
+- `courses/` — curated course pathways and reusable course resources
 - `writing/` — research, exposition, outreach and teaching writing
 - `videos/` — YouTube companion pages
 - `projects/` — active and archived projects
