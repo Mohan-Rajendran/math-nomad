@@ -39,6 +39,12 @@ toc: false
 anchor-sections: false
 body-classes: mn-kolam-page
 css: kolam-article.css
+header-includes:
+  - |
+    <link rel="canonical" href="https://mathnomad.in/writing/articles/binary-kolam-tiles/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-07-17T14:45:00+05:30">
+    <meta property="article:modified_time" content="2026-07-17T14:45:00+05:30">
 resources:
   - fifty-one-kolams.pdf
   - kolam-article.js
@@ -98,7 +104,8 @@ resources:
 
 :::::: {.article-layout}
 
-::: {.toc aria-label="On this page"}
+```{=html}
+<aside class="toc" aria-label="On this page">
 <p>On this page</p>
 <ol>
   <li><a href="#threshold">Kolam at the threshold</a></li>
@@ -110,9 +117,9 @@ resources:
   <li><a href="#burnside">Why the answer is 51</a></li>
   <li><a href="#appendix">Appendix: reproduce the count</a></li>
 </ol>
-:::
-
-::::: {.article-body .mn-kolam-article}
+</aside>
+<article class="article-body mn-kolam-article">
+```
 
 :::: {#threshold .article-section}
 At daybreak, many thresholds in Tamil Nadu become temporary drawing surfaces. The ground is swept, sometimes dampened, and a *kōlam* is drawn with rice flour, rice paste, or mineral powder. Historically practised and transmitted largely by women, kōlam belongs to the meeting place between home and street: it may be a gesture of welcome, a sign of auspiciousness, a daily discipline, and a work of art intended to disappear beneath footsteps, wind, rain, and time before being made anew.<a class="note-ref" href="#note-culture" aria-label="See cultural sources in note 1">1</a>
@@ -191,7 +198,7 @@ Drag the sixteen tiles into the $4\times4$ frame in the **Square Kolam Tile Chal
 
 <details class="hint-box">
   <summary>Hint 2: use the most constrained positions</summary>
-  <p>A corner has two outward-facing sides. At the top-left corner, both the north and west bits must be 0. Conversely, <code>1111</code> cannot lie on the boundary and must occupy one of the four central cells.</p>
+  <p>A corner has two outward-facing sides. At the top-left corner, both the north and west bits must be 0, so only <code>0000</code>, <code>0001</code>, <code>1000</code>, and <code>1001</code> can occur there. Conversely, <code>1111</code> cannot lie on the boundary and must occupy one of the four central cells.</p>
 </details>
 
 <details class="hint-box">
@@ -284,6 +291,8 @@ There are $16\times16=256$ such variables. The puzzle is now a Boolean satisfiab
 5. **Reach all fifteen tiles.** A breadth-first search from the unique `1111` tile must visit every nonzero tile.
 :::
 
+A general SAT solver can enumerate the answers. For this $4\times4$ square, a row-by-row search makes the three reported counts particularly transparent.
+
 ### 1,448 horizontally legal rows {.subheading}
 
 Call $R=(t_0,t_1,t_2,t_3)$ a horizontally legal row when its four labels are distinct, its left and right outer bits are 0, and each pair of facing east–west bits agrees. Testing the $16\cdot15\cdot14\cdot13=43{,}680$ ordered four-tuples gives exactly **1,448** such rows.
@@ -310,12 +319,37 @@ Finally, construct $\Gamma_f$ for each of the 652 boards and run a breadth-first
   <div><strong>408</strong><span>accepted boards</span></div>
 </div>
 
-<div class="enumeration-examples">
+```{=html}
+<div class="enumeration-examples" aria-label="Three stages of the exhaustive enumeration">
   <figure>
-    <img src="enumeration-examples.svg" width="1500" height="610" loading="lazy" alt="A horizontally legal row that cannot be extended, a locally valid board whose nonzero part is disconnected, and an accepted connected board">
-    <figcaption>A horizontally legal row that cannot be extended, a locally valid board whose nonzero part is disconnected, and an accepted connected board.</figcaption>
+    <span class="example-kicker">In the 1,448 only</span>
+    <svg viewBox="66 172 360 118" width="360" height="118" role="img" aria-labelledby="enum-row-title enum-row-desc" style="display:block;width:100%;height:auto">
+      <title id="enum-row-title">A horizontally legal row</title>
+      <desc id="enum-row-desc">A legal row whose horizontal edges match but which cannot occur in any complete locally valid board.</desc>
+      <image href="enumeration-examples.svg" width="1500" height="610" aria-hidden="true"></image>
+    </svg>
+    <figcaption>A horizontally legal row that cannot occur in any of the 652 complete boards.</figcaption>
+  </figure>
+  <figure>
+    <span class="example-kicker">In the 652, not the 408</span>
+    <svg viewBox="594 130 320 320" width="320" height="320" role="img" aria-labelledby="enum-disconnected-title enum-disconnected-desc" style="display:block;width:100%;height:auto">
+      <title id="enum-disconnected-title">A locally valid but disconnected board</title>
+      <desc id="enum-disconnected-desc">A complete locally valid board rejected because its nonzero tiles form several connected components.</desc>
+      <image href="enumeration-examples.svg" width="1500" height="610" aria-hidden="true"></image>
+    </svg>
+    <figcaption>A locally valid board rejected by connectivity. The colours distinguish components of sizes 9, 3, 3, and 1.</figcaption>
+  </figure>
+  <figure>
+    <span class="example-kicker">In the 408</span>
+    <svg viewBox="1090 130 320 320" width="320" height="320" role="img" aria-labelledby="enum-accepted-title enum-accepted-desc" style="display:block;width:100%;height:auto">
+      <title id="enum-accepted-title">An accepted connected board</title>
+      <desc id="enum-accepted-desc">An accepted board in which all fifteen nonzero tiles belong to one component and only the 0000 tile is isolated.</desc>
+      <image href="enumeration-examples.svg" width="1500" height="610" aria-hidden="true"></image>
+    </svg>
+    <figcaption>An accepted board: all fifteen nonzero tiles belong to one component, with only <code>0000</code> isolated.</figcaption>
   </figure>
 </div>
+```
 
 ::: {.proof-note}
 <span>Computer-assisted proof</span>
@@ -394,18 +428,18 @@ A finite computer-assisted proof should be inspectable. The companion material r
 
 ```{=html}
 <div class="resource-grid">
-  <div class="resource-card">
+  <a class="resource-card draft-link" href="https://github.com/Mohan-Rajendran/math-nomad" target="_blank" rel="noreferrer">
     <span class="resource-type">Code · GitHub</span>
-    <h3>Code on GitHub</h3>
-    <p>The generator and Burnside ledger will live with the article’s reproducibility material.</p>
-    <a href="https://github.com/Mohan-Rajendran/math-nomad" target="_blank" rel="noreferrer"><strong>Open the website repository <span aria-hidden="true">↗</span></strong></a>
-  </div>
-  <div class="resource-card">
+    <h3>Planned reproducibility companion</h3>
+    <p>The generator and Burnside ledger are planned for the article’s repository folder and have not yet been added.</p>
+    <strong>Open the website repository <span aria-hidden="true">↗</span></strong>
+  </a>
+  <a class="resource-card" href="fifty-one-kolams.pdf" target="_blank" rel="noreferrer">
     <span class="resource-type">Catalogue · PDF · 2 pages</span>
-    <h3>All 51 completed kolams</h3>
+    <h3>See all 51 completed kolams</h3>
     <p>One canonical representative from every square-symmetry class, rendered from the exact enumeration.</p>
-    <a href="fifty-one-kolams.pdf" target="_blank"><strong>Open the catalogue <span aria-hidden="true">↗</span></strong></a>
-  </div>
+    <strong>Open the catalogue <span aria-hidden="true">↗</span></strong>
+  </a>
 </div>
 ```
 
@@ -427,12 +461,23 @@ verify: 51 orbits × 8 boards = 408</code></pre>
 </details>
 ::::
 
+:::: {.article-section .notes-section aria-labelledby="notes-heading"}
+```{=html}
+<h2 id="notes-heading">Notes and further reading</h2>
+<ol>
+  <li id="note-culture">For the threshold setting, materials, transmission, and cultural meanings of kōlam, see Sahapedia’s <a href="https://www.sahapedia.org/significance-of-kolam-tamil-culture">“Significance of Kolam in Tamil Culture”</a> and the <a href="https://ignca.gov.in/PDF_data/Martha_Strawn_collecction_Kolam.pdf">Indira Gandhi National Centre for the Arts archive note</a>.</li>
+  <li>For mathematical approaches, see Marcia Ascher’s <a href="https://www.americanscientist.org/article/the-kolam-tradition">“The Kolam Tradition”</a>; Gift Siromoney, Rani Siromoney, and Kamala Krithivasan’s <a href="https://www.sciencedirect.com/science/article/pii/0146664X74900112">“Array Grammars and Kolam”</a>; and Venkatraman Gopalan’s <a href="https://www.tandfonline.com/doi/full/10.1080/17513472.2024.2423568">square-tile sikku-kolam enumeration</a>.</li>
+  <li>The exact-inventory puzzle is closely related to edge-matching or Wang-tile problems: local colour matching is replaced here by equality of 0–1 side data.</li>
+  <li><a href="https://mathworld.wolfram.com/BurnsidesLemma.html">Burnside’s lemma</a> is sometimes called the orbit-counting lemma. Its power is that it remains correct even when different objects have orbits of different sizes.</li>
+</ol>
+```
+::::
+
 :::: {#keywords .article-section .article-keywords aria-labelledby="keywords-heading"}
 <p class="section-number">Keywords</p>
 
-## Ideas connected in this article {#keywords-heading}
-
 ```{=html}
+<h2 id="keywords-heading">Ideas connected in this article</h2>
 <div class="keyword-links" aria-label="Article keywords">
   <a href="#threshold" data-topic="pulli-kolam">Pulli kolam</a>
   <a href="#threshold" data-topic="sikku-kolam">Sikku kolam</a>
@@ -448,23 +493,14 @@ verify: 51 orbits × 8 boards = 408</code></pre>
 The topic links are reciprocal. In particular, the [Burnside’s lemma topic page](../../topics/burnside-lemma/index.qmd) automatically lists every article tagged with the lemma; when the dedicated exposition is published there, it will already point back to this article.
 ::::
 
-:::: {.article-section .notes-section aria-labelledby="notes-heading"}
-## Notes and further reading {#notes-heading}
-
-<ol>
-  <li id="note-culture">For the threshold setting, materials, transmission, and cultural meanings of kōlam, see Sahapedia’s <a href="https://www.sahapedia.org/significance-of-kolam-tamil-culture">“Significance of Kolam in Tamil Culture”</a> and the <a href="https://ignca.gov.in/PDF_data/Martha_Strawn_collecction_Kolam.pdf">Indira Gandhi National Centre for the Arts archive note</a>.</li>
-  <li>For mathematical approaches, see Marcia Ascher’s <a href="https://www.americanscientist.org/article/the-kolam-tradition">“The Kolam Tradition”</a>; Gift Siromoney, Rani Siromoney, and Kamala Krithivasan’s <a href="https://www.sciencedirect.com/science/article/pii/0146664X74900112">“Array Grammars and Kolam”</a>; and Venkatraman Gopalan’s <a href="https://www.tandfonline.com/doi/full/10.1080/17513472.2024.2423568">square-tile sikku-kolam enumeration</a>.</li>
-  <li>The exact-inventory puzzle is closely related to edge-matching or Wang-tile problems: local colour matching is replaced here by equality of 0–1 side data.</li>
-  <li><a href="https://mathworld.wolfram.com/BurnsidesLemma.html">Burnside’s lemma</a> is sometimes called the orbit-counting lemma. Its power is that it remains correct even when different objects have orbits of different sizes.</li>
-</ol>
-::::
-
 <div class="article-end">
   <span aria-hidden="true">❧</span>
   <p>The code certifies the count; the completed kolams remind us why the objects were worth counting.</p>
 </div>
 
-:::::
+```{=html}
+</article>
+```
 
 ::::::
 
