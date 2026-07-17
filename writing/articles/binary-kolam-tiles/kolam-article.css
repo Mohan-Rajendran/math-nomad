@@ -1116,13 +1116,12 @@ body.mn-kolam-page .constraint-list > ol {
 
 body.mn-kolam-page .constraint-list > ol > li {
   position: relative;
-  display: grid;
+  display: block;
+  min-width: 0;
+  min-height: 66px;
   margin: 0;
-  padding: 18px 0;
+  padding: 18px 0 18px 57px;
   border-bottom: 1px solid var(--rule);
-  grid-template-columns: 43px 1fr;
-  align-items: start;
-  gap: 14px;
   color: var(--ink-soft);
   counter-increment: kolam-constraints;
   font-size: 15px;
@@ -1134,6 +1133,9 @@ body.mn-kolam-page .constraint-list > ol > li:first-child {
 }
 
 body.mn-kolam-page .constraint-list > ol > li::before {
+  position: absolute;
+  top: 18px;
+  left: 0;
   display: grid;
   width: 30px;
   height: 30px;
