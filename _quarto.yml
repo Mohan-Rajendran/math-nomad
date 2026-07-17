@@ -23,6 +23,13 @@ website:
   title: "Math Nomad"
   site-url: "https://mathnomad.in"
   description: "Journeys through mathematics, exploration and teaching."
+  google-analytics:
+    tracking-id: "G-61VRW5QTFH"
+    anonymize-ip: true
+  cookie-consent:
+    type: express
+    style: simple
+    palette: light
   favicon: assets/mathnomad-logo.png
   open-graph: true
   twitter-card: true
