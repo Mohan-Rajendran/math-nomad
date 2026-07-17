@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: release-kolam-article
@@ -16,6 +18,8 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      article_released: ${{ steps.publish-source.outputs.article_released }}
     steps:
       - name: Check out the website
         uses: actions/checkout@v6
@@ -31,6 +35,7 @@ jobs:
           fi
 
       - name: Publish the prepared article source
+        id: publish-source
         if: steps.gate.outputs.release == 'true'
         shell: bash
         run: |
@@ -39,6 +44,7 @@ jobs:
 
           if [[ ! -f "${source}" ]]; then
             echo "The prepared release has already been applied."
+            echo "article_released=false" >> "${GITHUB_OUTPUT}"
             exit 0
           fi
 
@@ -50,3 +56,41 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Publish From Sixteen Tiles to Fifty One Kolams"
           git push
+          echo "article_released=true" >> "${GITHUB_OUTPUT}"
+
+  build:
+    needs: release
+    if: needs.release.outputs.article_released == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the released article
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render the site
+        run: quarto render
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload the rendered site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
