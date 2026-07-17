@@ -1,0 +1,52 @@
+name: Release scheduled kolam article
+
+on:
+  schedule:
+    # 18 July 2026, 10:00 IST is 04:30 UTC.
+    - cron: "30 4 18 7 *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-kolam-article
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@v6
+
+      - name: Confirm the one-time release window
+        id: gate
+        shell: bash
+        run: |
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" || "$(date -u +%F)" == "2026-07-18" ]]; then
+            echo "release=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "release=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Publish the prepared article source
+        if: steps.gate.outputs.release == 'true'
+        shell: bash
+        run: |
+          source="writing/releases/from-sixteen-tiles-to-fifty-one-kolams/index.qmd.release"
+          target="writing/articles/binary-kolam-tiles/index.qmd"
+
+          if [[ ! -f "${source}" ]]; then
+            echo "The prepared release has already been applied."
+            exit 0
+          fi
+
+          cp "${source}" "${target}"
+          git rm "${source}"
+          git add "${target}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish From Sixteen Tiles to Fifty One Kolams"
+          git push

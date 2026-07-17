@@ -997,6 +997,40 @@ footer.footer .nav-footer-right {
   }
 }
 
+.mn-topic-article-list {
+  display: grid;
+  margin-top: 2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.mn-topic-article-card {
+  padding: 1.6rem;
+  border: 1px solid var(--mn-line);
+  border-radius: 1rem;
+  background: var(--mn-paper);
+  box-shadow: 0 12px 34px rgba(61, 40, 29, 0.06);
+}
+
+.mn-topic-article-card h3 {
+  margin: 0.55rem 0 0.75rem;
+}
+
+.mn-topic-article-card h3 a {
+  color: var(--mn-ink);
+  text-decoration-color: rgba(160, 82, 45, 0.35);
+  text-underline-offset: 0.2em;
+}
+
+.mn-topic-article-card p:not(.mn-kicker) {
+  color: var(--mn-muted);
+}
+
+.mn-topic-article-card small,
+.mn-topic-empty {
+  color: var(--mn-muted);
+}
+
 @media (max-width: 991px) {
   .mn-hero {
     grid-template-columns: 1fr;
@@ -1015,6 +1049,10 @@ footer.footer .nav-footer-right {
   .mn-course-structure,
   .mn-video-anatomy,
   .mn-project-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .mn-topic-article-list {
     grid-template-columns: 1fr;
   }
 

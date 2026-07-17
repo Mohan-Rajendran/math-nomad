@@ -30,7 +30,7 @@ The construction board, sliding puzzle and orbit challenge are available to expl
 :::
 :::
 
-[Open the interactive laboratory](https://kolam-tile-builder.littleboy300.chatgpt.site){.btn .btn-primary .btn-lg}
+[Open the interactive laboratory](https://lab.mathnomad.in/){.btn .btn-primary .btn-lg}
 
 ## Why this project
 

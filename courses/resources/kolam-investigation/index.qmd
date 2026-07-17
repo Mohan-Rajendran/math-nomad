@@ -16,7 +16,7 @@ This investigation begins with an object students can act on, then moves from ob
 
 **Central question:** Can every binary tile from $0000$ to $1111$ be used exactly once in a $4\times4$ square so that the boundary is closed, adjacent sides match and the drawing is connected?
 
-[Launch the construction board](https://kolam-tile-builder.littleboy300.chatgpt.site){.btn .btn-primary}
+[Launch the construction board](https://lab.mathnomad.in/square-kolam-tile-challenge/){.btn .btn-primary}
 [Read the mathematical exposition](../../../writing/articles/binary-kolam-tiles/index.qmd){.btn .btn-outline-dark}
 
 ## A possible classroom rhythm
