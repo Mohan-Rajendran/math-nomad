@@ -12,14 +12,14 @@ permissions:
   id-token: write
 
 concurrency:
-  group: release-kolam-article
+  group: pages
   cancel-in-progress: false
 
 jobs:
   release:
     runs-on: ubuntu-latest
     outputs:
-      article_released: ${{ steps.publish-source.outputs.article_released }}
+      article_released: ${{ steps.publish_source.outputs.article_released }}
     steps:
       - name: Check out the website
         uses: actions/checkout@v6
@@ -35,7 +35,7 @@ jobs:
           fi
 
       - name: Publish the prepared article source
-        id: publish-source
+        id: publish_source
         if: steps.gate.outputs.release == 'true'
         shell: bash
         run: |
