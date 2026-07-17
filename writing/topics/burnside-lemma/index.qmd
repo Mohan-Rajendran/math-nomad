@@ -5,10 +5,8 @@ page-layout: full
 toc: true
 listing:
   id: uses-burnside
-  contents: ../../articles
+  contents: articles.yml
   template: ../topic-articles.ejs.md
-  template-params:
-    topic: "Burnside's lemma"
   sort: "date desc"
   sort-ui: false
   filter-ui: false
