@@ -1,0 +1,72 @@
+---
+title: "Tessellations"
+description: "Interactive investigations in which periodic patterns turn area identities into movable geometric proofs."
+date: 2026-07-20
+date-modified: 2026-07-20
+author: "Mohan Rajendran"
+categories: [Active now, Interactive, Geometry, Tessellations]
+status: active
+featured: true
+toc: true
+---
+
+::: {.mn-project-summary}
+::: {}
+<p class="mn-kicker">STATUS · ACTIVE NOW</p>
+
+## The question
+
+How much geometry can be made visible by superimposing periodic tilings and moving one layer across another?
+:::
+
+::: {}
+**Current focus**  
+Extending the Pythagorean square tiling from right triangles to the full moduli space of triangle shapes.
+
+**Latest update**  
+The Law of Cosines tessellation and its companion exposition are ready to explore.
+:::
+:::
+
+[Open the Law of Cosines interactive](https://lab.mathnomad.in/law-of-cosines/){.btn .btn-primary .btn-lg}
+
+## Why this project
+
+Tessellations turn a single area diagram into a family. A periodic pattern can be clipped by a movable square grid, and every position of that grid produces another dissection of the same identity.
+
+For right triangles, squares of side lengths $a$ and $b$ fill a square period of side $c$. For a general triangle, the same architecture reveals two cosine parallelograms. They appear as overlaps for acute triangles, gaps for obtuse triangles, and collapse at a right angle.
+
+## Project strands
+
+::: {.mn-three-up}
+::: {.mn-path-card}
+### Shape
+
+Treat triangles up to similarity as a two-dimensional moduli space rather than a list of special cases.
+:::
+
+::: {.mn-path-card}
+### Tile
+
+Build periodic square patterns whose overlaps and gaps encode exact area corrections.
+:::
+
+::: {.mn-path-card}
+### Explain
+
+Turn the experiment into a proof by identifying one fundamental period and computing its signed areas.
+:::
+:::
+
+## Related material
+
+- [The Law of Cosines](../../../writing/articles/law-of-cosines/index.qmd) — the complete exposition and embedded interactive.
+- [Law of Cosines tessellation](https://lab.mathnomad.in/law-of-cosines/) — the full-screen laboratory.
+
+## Next steps
+
+- add the right-triangle family of historical Pythagorean dissections;
+- catalogue distinguished grid phases and the pieces they produce;
+- develop classroom prompts that move from experiment to vector proof;
+- investigate further identities that admit periodic signed-area interpretations.
+
