@@ -2,8 +2,8 @@
 title: "Kolams on Octahedron"
 subtitle: "How eight triangular tiles, a dual cube, and a seven-vertex tree lead to exactly three kolams—without exhaustive computation."
 description: "An expository graph-theoretic classification of triangular binary kolam tiles on an octahedron."
-date: "2026-07-20T23:54:10+05:30"
-date-modified: "2026-07-20T23:54:10+05:30"
+date: "2026-07-21T00:10:05+05:30"
+date-modified: "2026-07-21T00:10:05+05:30"
 author: "Mohan Rajendran"
 categories:
   - Everyone
@@ -45,8 +45,8 @@ header-includes:
   - |
     <link rel="canonical" href="https://mathnomad.in/writing/articles/kolams-on-an-octahedron/">
     <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2026-07-20T23:54:10+05:30">
-    <meta property="article:modified_time" content="2026-07-20T23:54:10+05:30">
+    <meta property="article:published_time" content="2026-07-21T00:10:05+05:30">
+    <meta property="article:modified_time" content="2026-07-21T00:10:05+05:30">
 resources:
   - octahedron-hero.svg
   - octahedron-hero.png
@@ -62,8 +62,8 @@ resources:
   "headline": "Kolams on Octahedron",
   "description": "How eight triangular tiles, a dual cube, and a seven-vertex tree lead to exactly three kolams—without exhaustive computation.",
   "author": { "@type": "Person", "name": "Mohan Rajendran" },
-  "datePublished": "2026-07-20T23:54:10+05:30",
-  "dateModified": "2026-07-20T23:54:10+05:30",
+  "datePublished": "2026-07-21T00:10:05+05:30",
+  "dateModified": "2026-07-21T00:10:05+05:30",
   "image": "https://mathnomad.in/writing/articles/kolams-on-an-octahedron/octahedron-hero.png",
   "articleSection": ["Everyone", "Exposition"],
   "keywords": ["Kolam", "Triangular kolam tiles", "Octahedron", "Dual cube", "Graph theory", "Euler characteristic", "Trees", "Octahedral symmetry"],
@@ -87,7 +87,7 @@ resources:
   <p class="standfirst">How eight triangular tiles, a dual cube, and a seven-vertex tree lead to exactly three kolams—without exhaustive computation.</p>
   <div class="article-meta">
     <span class="avatar" aria-hidden="true">MR</span>
-    <span><strong>Mohan Rajendran</strong><small>20 July 2026</small></span>
+    <span><strong>Mohan Rajendran</strong><small>21 July 2026</small></span>
   </div>
 </div>
 <div class="hero-grid">
@@ -542,7 +542,7 @@ The three representatives below are drawn on connected octahedron nets. Select a
 
 ```{=html}
 <h2 id="citation-heading">Cite this article</h2>
-<p id="preferred-citation" class="citation-text">Rajendran, Mohan. “Kolams on Octahedron.” <i>Math Nomad</i>, 20 July 2026, <a href="https://mathnomad.in/writing/articles/kolams-on-an-octahedron/">https://mathnomad.in/writing/articles/kolams-on-an-octahedron/</a>.</p>
+<p id="preferred-citation" class="citation-text">Rajendran, Mohan. “Kolams on Octahedron.” <i>Math Nomad</i>, 21 July 2026, <a href="https://mathnomad.in/writing/articles/kolams-on-an-octahedron/">https://mathnomad.in/writing/articles/kolams-on-an-octahedron/</a>.</p>
 <pre id="bibtex-citation" hidden>@article{rajendran2026octahedronkolams,
   author = {Mohan Rajendran},
   title = {Kolams on Octahedron},
@@ -555,7 +555,7 @@ The three representatives below are drawn on connected octahedron nets. Select a
 AU  - Rajendran, Mohan
 TI  - Kolams on Octahedron
 T2  - Math Nomad
-PY  - 2026/07/20
+PY  - 2026/07/21
 UR  - https://mathnomad.in/writing/articles/kolams-on-an-octahedron/
 ER  -</pre>
 <div class="citation-actions" aria-label="Citation copy options">
