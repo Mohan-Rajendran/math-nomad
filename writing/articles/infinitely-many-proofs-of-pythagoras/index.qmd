@@ -1,0 +1,281 @@
+---
+title: "Infinitely many ‘proofs’ of Pythagoras’ theorem"
+subtitle: "Two tilings of the plane turn one familiar area identity into a continuously moving family of dissections."
+description: "An interactive common-lattice proof of Pythagoras’ theorem, with historical anchor positions from a medieval dissection to Perigal and beyond."
+date: 2026-07-21
+author: "Mohan Rajendran"
+categories: [Everyone, Exposition, Geometry, Tessellations, Interactive]
+audience: [everyone]
+kind: exposition
+featured: true
+draft: false
+page-layout: full
+toc: true
+toc-depth: 2
+css: pythagorean-proofs-article.css
+resources:
+  - pythagorean-proofs-article.css
+---
+
+Most pictures of Pythagoras’ theorem are frozen. A right triangle sits in the middle; three squares wait around it; auxiliary lines are drawn; and the reader is expected to see that
+
+$$
+a^2+b^2=c^2.
+$$
+
+The interactive below asks to be read differently. Change the smallest angle. Move the gold anchor. Switch to the mirror image. The cuts inside all three squares change—sometimes gently, sometimes abruptly—yet the area identity never does.
+
+The motion is not decoration added to a proof. The motion *is the phenomenon*. The two leg-squares and the hypotenuse-square generate two periodic tilings of the plane with the same translation lattice. Once that fact is understood, every relative position of the tilings produces a dissection.
+
+The quotation marks in the title are deliberate. There are infinitely many pictures and cut patterns, but they are not infinitely many unrelated arguments. They are visible forms of one common principle.
+
+## Explore the moving proof
+
+```{=html}
+<div class="mn-pythagoras-interactive">
+  <iframe
+    src="https://lab.mathnomad.in/embed/pythagorean-tiling-proofs/"
+    title="Interactive family of tessellation proofs of Pythagoras' theorem"
+    loading="lazy"
+    allow="fullscreen"
+  ></iframe>
+  <p><a class="btn btn-primary" href="https://lab.mathnomad.in/pythagorean-tiling-proofs/">Open the interactive in its own page</a></p>
+</div>
+```
+
+Begin with **Perigal** selected. The square on the longer leg is cut into four congruent quadrilaterals, while the square on the shorter leg remains whole. The same five pieces appear in the square on the hypotenuse.
+
+Then choose **Free / continuous family** and drag the gold point. The black square grid slides over the pastel tiling without changing its orientation. The guidelines copied into the two leg-squares and the coloured regions copied into the hypotenuse-square change together. Nothing is being measured afresh: the same pieces are being viewed in two different fundamental regions of one periodic pattern.
+
+Finally, change the smallest angle or select the mirror orientation. The picture deforms, but the mechanism survives.
+
+## One slider contains every right triangle
+
+Up to similarity, a right triangle has only one shape parameter. We may take it to be its smallest angle
+
+$$
+0<\theta\leq \frac{\pi}{4}.
+$$
+
+The interactive fixes the hypotenuse at $c=1$, places the longer leg parallel to the horizontal axis, and displays
+
+$$
+a=\cos\theta,
+\qquad
+b=\sin\theta,
+\qquad
+0<b\leq a.
+$$
+
+These formulas are convenient coordinates for the software; they are not the logical basis of the proof. The geometric argument needs only a right triangle, the squares on its sides, and translations of the plane. Checking many numerical values of $\theta$ would not prove the theorem.
+
+As $\theta$ approaches zero, the triangle becomes thin. At $\theta=\pi/4$, it is isosceles and the pattern gains extra symmetry. Every nondegenerate right-triangle shape occurs once between these extremes after the longer and shorter legs have been distinguished.
+
+## Two tilings, one lattice
+
+Put the right-angle vertex at the origin and write
+
+$$
+O=(0,0),\qquad A=(a,0),\qquad B=(0,b).
+$$
+
+The vector along the hypotenuse, from $A$ to $B$, is
+
+$$
+\mathbf u=(-a,b).
+$$
+
+Rotate it through a right angle, towards the outside of the triangle, to obtain
+
+$$
+\mathbf v=(b,a).
+$$
+
+The vectors $\mathbf u$ and $\mathbf v$ are perpendicular and congruent because one is a quarter-turn of the other. The square they span is therefore a translated copy of the square on the hypotenuse.
+
+Now arrange one $a$-square and one $b$-square in the stair-step pattern shown by the two pastel colours. Call their union $T$. Repeating $T$ by all translations in
+
+$$
+\Lambda
+=
+\{m\mathbf u+n\mathbf v:m,n\in\mathbb Z\}
+$$
+
+fills the plane. This is the Pythagorean tiling.
+
+A $c$-square with sides parallel to $\mathbf u$ and $\mathbf v$ also fills the plane under exactly the same translations. The pastel two-square tile and the tilted hypotenuse-square are therefore two fundamental tiles for the same lattice.
+
+That shared lattice is the whole secret.
+
+## The proof hidden in the overlay
+
+The argument does not depend on a special anchor position.
+
+Let $C_p$ be the hypotenuse-square whose chosen vertex—the gold anchor—is at $p$. Its lattice translates
+
+$$
+C_p+\lambda,
+\qquad \lambda\in\Lambda,
+$$
+
+partition the plane. Intersect each of them with the pastel tile $T$:
+
+$$
+P_\lambda=T\cap(C_p+\lambda).
+$$
+
+Only finitely many intersections are nonempty, and together they cut $T$ into pieces. Translate each piece by $-\lambda$. Then
+
+$$
+P_\lambda-\lambda
+=(T-\lambda)\cap C_p.
+$$
+
+Because the translates $T-\lambda$ also partition the plane, these translated pieces partition $C_p$. Thus the union of the two leg-squares and the hypotenuse-square are made from precisely the same finite collection of pieces.
+
+::: {.mn-pythagoras-principle}
+**Common-lattice principle.** If two shapes tile the plane by translations of the same lattice, overlaying the tilings cuts the shapes into matching pieces. Every piece moves only by a translation.
+:::
+
+This proves something stronger than equality of area. The hypotenuse-square and the union of the leg-squares are *translationally equidecomposable*: after finitely many cuts, one becomes the other without rotating or reflecting any individual piece. Francesc Aguiló, Miquel Àngel Fiol and Maria Lluïsa Fiol placed this principle in a general periodic-tiling framework in 2000.
+
+In the first panel of the interactive, the three squares have been returned to their familiar positions around the triangle. The clipped guidelines and colours preserve the correspondence established in the tiling plane.
+
+## Why every anchor works
+
+Moving the anchor replaces $C_p$ by another translate $C_q$. It does not change $\Lambda$, so the common-lattice argument remains valid. This is why the gold point may be placed anywhere.
+
+There are continuously many choices of $p$, hence continuously many overlays. But the apparent plane of possibilities repeats. If $\lambda\in\Lambda$, then
+
+$$
+C_{p+\lambda}+\Lambda=C_p+\Lambda.
+$$
+
+Anchors that differ by a lattice vector produce the same overlay. The genuine phase space is
+
+$$
+\mathbb R^2/\Lambda,
+$$
+
+a flat torus: one may imagine a single $c$-square with each pair of opposite edges identified.
+
+Most nearby anchor positions have the same combinatorial pattern. The vertices and edges move continuously while the same pieces remain adjacent. A qualitative change occurs when a grid line passes through a vertex of the pastel tiling or coincides with one of its edges. At such a critical position, pieces merge or split. Aguiló, Fiol and Fiol found phases with between three and seven regions in this construction; modulo lattice translations, the three-region phase is unique.
+
+The mirror switch reflects the construction. Its handedness changes, but the proof does not.
+
+Taken together, the sandbox has three kinds of freedom:
+
+$$
+\underbrace{\theta\in(0,\pi/4]}_{\text{triangle shape}},
+\qquad
+\underbrace{p\in\mathbb R^2/\Lambda_\theta}_{\text{overlay phase}},
+\qquad
+\underbrace{\text{ordinary or mirrored}}_{\text{handedness}}.
+$$
+
+It is a family of tori, one for each similarity class of right triangle.
+
+## Three distinguished phases
+
+The historical presets are not three different theorems. They are especially symmetric or economical points on the same phase torus. In the ordinary orientation their coordinates are as follows; in the mirror image the first coordinate changes sign.
+
+### Perigal: the centre of the larger square
+
+The Perigal anchor is
+
+$$
+p_{\mathrm P}=(0,0),
+$$
+
+the centre of an $a$-square. The two grid lines through it divide that square into four congruent quadrilaterals. The $b$-square remains intact. Those five pieces fill the hypotenuse-square with fourfold symmetry.
+
+Its elegance comes from three features at once: only five pieces are used, four are congruent, and the smaller square remains whole.
+
+### The medieval corner
+
+The medieval anchor is
+
+$$
+p_{\mathrm M}
+=
+\left(-\frac a2,\frac a2\right),
+$$
+
+the shared corner of the distinguished $a$- and $b$-squares. When the two leg-squares are treated as one stair-step tile, this is the unique three-region phase. Showing the seam between the original squares—as the first panel naturally does—refines that count.
+
+The attribution requires care. A dissection of this type belongs to the medieval Arabic commentary tradition transmitted through al-Nayrīzī and is commonly attributed to Thābit ibn Qurra. The surviving record does not justify treating both names as independently documented discoverers.
+
+### The symmetric twin
+
+The centre of the adjacent $b$-square is
+
+$$
+p_{\mathrm F}
+=
+\left(
+\frac{b-a}{2},
+\frac{a+b}{2}
+\right).
+$$
+
+Here Perigal’s roles are reversed: the $a$-square remains whole while the $b$-square is cut into four congruent pieces.
+
+Modern online expositions attribute this symmetric companion to Giorgio Ferrarese. No dated scholarly publication establishing priority has been located, so the selector describes it as an attribution rather than a settled historical fact.
+
+All three coordinates are understood modulo $\Lambda$. Every lattice translate represents the same phase.
+
+## From one dissection to a moving family
+
+The history relevant here is narrower than the history of Pythagoras’ theorem itself. It is the history of this particular tiling-and-dissection mechanism.
+
+Henry Perigal said that he discovered his five-piece dissection around 1830 while pursuing the impossible problem of squaring the circle. He privately printed it in 1835. Its first known public appearance came through his friend Solomon Moses Drach on 31 May 1872; Perigal’s own article followed in the *Messenger of Mathematics* that November. Some bibliographies give 1873 because of the journal volume’s dating.
+
+The picture also has a striking earlier visual relative. An anonymous Persian compendium on ornamental geometry, whose original composition has been placed around 1300, contains a design that becomes Perigal’s arrangement when an extra central subdivision is suppressed. No proof text accompanies the figure. It is therefore a visual antecedent, not secure evidence that its draughtsperson intended a proof of the theorem.
+
+Perigal’s diagram was later recognised as one position in a continuous family. Seán Stewart’s historical study reports that Friedrich Paul Mahlo apparently made that sliding-overlay viewpoint explicit in his 1908 dissertation. Percy A. MacMahon discussed “Pythagoras’s Theorem as a Repeating Pattern” in *Nature* in 1922. Arthur W. Siddons published displaced versions of Perigal’s dissection in 1932, following a suggestion from a sixteen-year-old correspondent identified only as M. Charlesworth.
+
+The gold anchor expresses this change in viewpoint. What first looks like an ingenious isolated cut-and-paste trick becomes a point in a geometric parameter space.
+
+## The right-angle slice of a larger picture
+
+Here we stay on the right-triangle slice, where the correction term vanishes and $a^2+b^2=c^2$. The same moving tessellation extends beyond that slice. For an acute triangle, two cosine parallelograms appear as overlaps; for an obtuse triangle, they become gaps.
+
+[The Law of Cosines](../law-of-cosines/index.qmd) follows that deformation across the full two-dimensional moduli space of triangle shapes and recovers
+
+$$
+c^2=a^2+b^2-2ab\cos C.
+$$
+
+Not every historical proof of Pythagoras’ theorem appears by moving this one anchor. Euclid’s construction, similar-triangle arguments, Chinese *gougu* diagrams and Bhāskara’s rearrangement use different mechanisms. The sandbox makes a narrower claim—and already contains an infinity.
+
+## Same pieces, different pictures
+
+Pythagoras’ theorem is usually written as an equation. The tiling proof asks us to see it as a statement about periodic space.
+
+The two leg-squares form one fundamental tile. The hypotenuse-square forms another. Both live on the same lattice. Overlay them, and the plane performs the dissection.
+
+Move the anchor and the pieces change, but the lattice does not.
+
+Change the triangle and the lattice deforms, but the common-lattice relation does not.
+
+Reflect the construction and its handedness changes, but the argument does not.
+
+::: {.mn-pythagoras-closing}
+The two leg-squares and the hypotenuse-square are made from the same pieces, and the plane supplies infinitely many ways to see them.
+:::
+
+## Sources and further reading
+
+- Francesc Aguiló, Miquel Àngel Fiol and Maria Lluïsa Fiol, [“Periodic Tilings as a Dissection Method”](https://doi.org/10.1080/00029890.2000.12005202), *American Mathematical Monthly* 107 (2000), 341–352.
+- Seán M. Stewart, [“A history of Perigal’s dissection”](https://doi.org/10.33232/BIMS.0087.51.86), *Bulletin of the Irish Mathematical Society* 87 (2021), 51–86.
+- Henry Perigal, [“On geometric dissections and transformations”](https://mathshistory.st-andrews.ac.uk/Extras/Perigal_maths_astro/), *Messenger of Mathematics* 2 (1872), 103–105.
+- Percy A. MacMahon, [“Pythagoras’s Theorem as a Repeating Pattern”](https://doi.org/10.1038/109479c0), *Nature* 109 (1922), 479.
+- Arthur W. Siddons, [“Perigal’s dissection for the theorem of Pythagoras”](https://doi.org/10.2307/3608135), *Mathematical Gazette* 16 (1932), 36.
+- Roger B. Nelsen, [“Paintings, Plane Tilings, & Proofs”](https://doi.org/10.1080/10724117.2003.12021741), *Math Horizons* 11.1 (2003), 4–8.
+- Gülru Necipoğlu, ed., [*The Arts of Ornamental Geometry*](https://books.google.com/books/about/The_Arts_of_Ornamental_Geometry.html?id=8yMzDwAAQBAJ) (2017), for the Persian manuscript tradition.
+
+## Where to continue
+
+- [Open the full Pythagorean tiling interactive](https://lab.mathnomad.in/pythagorean-tiling-proofs/).
+- Explore [The Law of Cosines](../law-of-cosines/index.qmd), where the right-angle slice opens into acute and obtuse triangles.
+- Visit the [Tessellations project](../../../projects/entries/tessellations/index.qmd) for the growing collection.

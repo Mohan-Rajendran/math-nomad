@@ -2,7 +2,7 @@
 title: "Tessellations"
 description: "Interactive investigations in which periodic patterns turn area identities into movable geometric proofs."
 date: 2026-07-20
-date-modified: 2026-07-20
+date-modified: 2026-07-21
 author: "Mohan Rajendran"
 categories: [Active now, Interactive, Geometry, Tessellations]
 status: active
@@ -21,14 +21,16 @@ How much geometry can be made visible by superimposing periodic tilings and movi
 
 ::: {}
 **Current focus**  
-Extending the Pythagorean square tiling from right triangles to the full moduli space of triangle shapes.
+Understanding periodic area proofs as families over triangle shape and grid phase.
 
 **Latest update**  
-The Law of Cosines tessellation and its companion exposition are ready to explore.
+The Pythagorean tiling sandbox now includes a movable anchor, mirror orientation and historically distinguished phases.
 :::
 :::
 
-[Open the Law of Cosines interactive](https://lab.mathnomad.in/law-of-cosines/){.btn .btn-primary .btn-lg}
+[Explore infinitely many Pythagorean proofs](https://lab.mathnomad.in/pythagorean-tiling-proofs/){.btn .btn-primary .btn-lg}
+
+[Open the Law of Cosines interactive](https://lab.mathnomad.in/law-of-cosines/){.btn .btn-outline-primary .btn-lg}
 
 ## Why this project
 
@@ -60,13 +62,13 @@ Turn the experiment into a proof by identifying one fundamental period and compu
 
 ## Related material
 
+- [Infinitely many “proofs” of Pythagoras’ theorem](../../../writing/articles/infinitely-many-proofs-of-pythagoras/index.qmd) — the common-lattice proof, historical phases and embedded sandbox.
+- [Pythagorean tiling proofs](https://lab.mathnomad.in/pythagorean-tiling-proofs/) — the full-screen right-triangle laboratory.
 - [The Law of Cosines](../../../writing/articles/law-of-cosines/index.qmd) — the complete exposition and embedded interactive.
 - [Law of Cosines tessellation](https://lab.mathnomad.in/law-of-cosines/) — the full-screen laboratory.
 
 ## Next steps
 
-- add the right-triangle family of historical Pythagorean dissections;
 - catalogue distinguished grid phases and the pieces they produce;
 - develop classroom prompts that move from experiment to vector proof;
 - investigate further identities that admit periodic signed-area interpretations.
-

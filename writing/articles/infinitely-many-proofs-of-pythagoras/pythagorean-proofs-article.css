@@ -1,0 +1,40 @@
+.mn-pythagoras-interactive {
+  width: min(1500px, calc(100vw - 2rem));
+  margin: 2rem 50%;
+  transform: translateX(-50%);
+}
+
+.mn-pythagoras-interactive iframe {
+  display: block;
+  width: 100%;
+  height: 960px;
+  border: 1px solid rgba(68, 37, 28, .22);
+  border-radius: 22px;
+  background: #f6efe4;
+  box-shadow: 0 18px 52px rgba(68, 37, 28, .1);
+}
+
+.mn-pythagoras-interactive p { margin: 1rem 0 0; text-align: center; }
+
+.mn-pythagoras-principle,
+.mn-pythagoras-closing {
+  margin: 2rem 0;
+  padding: 1.25rem 1.4rem;
+  border-left: 5px solid #a0522d;
+  border-radius: 0 16px 16px 0;
+  background: #fbf1df;
+  box-shadow: 0 12px 30px rgba(68, 37, 28, .06);
+}
+
+.mn-pythagoras-principle p,
+.mn-pythagoras-closing p { margin: 0; }
+.mn-pythagoras-closing { font-family: Georgia, "Times New Roman", serif; font-size: 1.18rem; }
+
+@media (max-width: 900px) {
+  .mn-pythagoras-interactive { width: calc(100vw - 1rem); }
+  .mn-pythagoras-interactive iframe { height: 1030px; border-radius: 14px; }
+}
+
+@media (max-width: 480px) {
+  .mn-pythagoras-interactive iframe { height: 900px; }
+}
