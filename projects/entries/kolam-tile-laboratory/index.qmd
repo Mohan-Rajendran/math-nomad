@@ -1,12 +1,12 @@
 ---
-title: "Kolam Tile Laboratory"
-description: "An interactive project connecting binary edge encodings, closed kolam constructions, graph connectivity and sliding-puzzle orbits."
+title: "Kolam Tiles"
+description: "Binary kolam tiles on square boards and polyhedral surfaces: local matching, global connectivity, graph structure, symmetry, puzzles, and interactive constructions."
 date: 2026-07-15
-date-modified: 2026-07-15
+date-modified: 2026-07-20
 author: "Mohan Rajendran"
 categories: [Active now, Interactive, Combinatorics, Kolams]
-image: ../../../writing/articles/binary-kolam-tiles/kolam-01-eight-square-symmetries.webp
-image-alt: "A square kolam shown under the eight symmetries of the square"
+image: ../../../writing/articles/kolams-on-an-octahedron/octahedron-hero.png
+image-alt: "A stylised kolam drawn across the triangular faces of an octahedron"
 status: active
 featured: true
 toc: true
@@ -18,15 +18,15 @@ toc: true
 
 ## The question
 
-What becomes visible when the sixteen four-bit tiles are treated at once as a construction problem, a graph and a labelled sliding puzzle?
+What global forms emerge when binary kolam tiles are assembled under local edge-matching rules?
 :::
 
 ::: {}
 **Current focus**  
-Developing the interactive laboratory and its companion explanations.
+Connecting square-tile puzzles and triangular-tile polyhedra through graphs, symmetry, and interactive constructions.
 
 **Latest update**  
-The construction board, sliding puzzle and orbit challenge are available to explore.
+The octahedron explorer and its graph-theoretic article now join the three square-tile sandboxes.
 :::
 :::
 
@@ -34,40 +34,53 @@ The construction board, sliding puzzle and orbit challenge are available to expl
 
 ## Why this project
 
-Each of the sixteen four-bit words describes the openings of a square tile in the directions east, north, west and south. The local rule is simple: adjacent bits must match. A closed boundary adds another family of local constraints, while requiring the fifteen nonzero tiles to form one connected network introduces a genuinely global condition.
+The square branch begins with the sixteen four-bit words. Each word describes the openings of a square tile in the directions east, north, west and south. Adjacent bits must match, the outer boundary must close, and the fifteen nonzero tiles must form one connected network.
 
 Setting aside the $0000$ tile turns the same objects into a labelled 15-puzzle. The question changes from *which boards are valid?* to *which valid boards can be joined by legal slides?* This brings parity and orbit structure into the picture.
+
+The triangular branch uses the eight three-bit words on the faces of an octahedron. Passing to the dual cube turns each tile label into a vertex degree. The degree sequence forces a seven-vertex tree, and its three possible arm-length patterns give a complete classification without exhaustive computation.
 
 ## Project strands
 
 ::: {.mn-three-up}
 ::: {.mn-path-card}
-### Build
+### Square tiles
 
-Arrange all sixteen tiles while the board reports edge mismatches, boundary leaks and disconnected components.
+Build a connected $4\times4$ kolam, explore the associated labelled 15-puzzle, and compare configurations in the same sliding orbit.
 :::
 
 ::: {.mn-path-card}
-### Move
+### Triangular tiles
 
-Treat the zero tile as an empty square and examine what is preserved by every legal slide.
+Place eight oriented tiles on an octahedron, reveal the dual-cube tree, and fold each connected net into the completed solid.
 :::
 
 ::: {.mn-path-card}
 ### Explain
 
-Connect the experiments to binary encodings, graph connectivity, enumeration and proof.
+Connect the experiments to binary encodings, graph connectivity, Euler characteristic, enumeration, and symmetry.
 :::
 :::
 
-## Related material
+## Articles
 
-- [From Sixteen Tiles to Fifty-One Kolams](../../../writing/articles/binary-kolam-tiles/index.qmd) — mathematical exposition.
+- [From Sixteen Tiles to Fifty-One Kolams](../../../writing/articles/binary-kolam-tiles/index.qmd) — a computer-assisted classification of the square-tile boards.
+- [Kolams on Octahedron](../../../writing/articles/kolams-on-an-octahedron/index.qmd) — a graph-theoretic hand classification of the triangular-tile surfaces.
+
+## Interactive laboratory
+
+1. [Square Kolam Tile Challenge](https://lab.mathnomad.in/square-kolam-tile-challenge/) — use every square tile exactly once.
+2. [Slide to a New Kolam](https://lab.mathnomad.in/sandbox-2/) — explore the two sliding-puzzle orbits.
+3. [Move X to Y](https://lab.mathnomad.in/sandbox-3/) — transform one valid square kolam into another.
+4. [Kolams on an Octahedron](https://lab.mathnomad.in/kolams-on-an-octahedron/) — fold and rotate the three triangular representatives.
+
+## Classroom material
+
 - [Sixteen tiles, one closed kolam](../../../courses/resources/kolam-investigation/index.qmd) — a classroom-ready investigation.
 
 ## Next steps
 
-- expand the orbit challenge and explanations of its invariant;
-- add downloadable classroom material;
-- record a video walkthrough with a full companion page;
-- document computational experiments where they provide useful evidence.
+- give the two square sliding-puzzle routes permanent descriptive URLs while preserving the existing paths;
+- add downloadable triangular tile sheets and classroom material;
+- record a video walkthrough connecting the octahedron, dual cube, and subdivided $Y$;
+- publish reproducibility material for the computational square-tile count.
