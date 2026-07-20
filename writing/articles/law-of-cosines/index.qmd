@@ -1,0 +1,209 @@
+---
+title: "The Law of Cosines"
+subtitle: "A moving tessellation turns Pythagoras into the cosine rule, with overlaps for acute triangles and gaps for obtuse ones."
+description: "An interactive tessellation proof of the law of cosines, organised over the two-dimensional moduli space of triangle shapes."
+date: 2026-07-20
+author: "Mohan Rajendran"
+categories: [Everyone, Exposition, Geometry, Tessellations, Interactive]
+audience: [everyone]
+kind: exposition
+featured: true
+draft: false
+page-layout: full
+toc: true
+toc-depth: 2
+css: law-of-cosines-article.css
+resources:
+  - law-of-cosines-article.css
+---
+
+The Pythagorean theorem is the right-angle member of a larger picture. If a triangle has sides $a$, $b$ and $c$, with $C$ the angle between the sides $a$ and $b$, then
+
+$$
+\boxed{c^2=a^2+b^2-2ab\cos C}.
+$$
+
+The extra term measures a failure of perpendicularity. In the tessellation below it appears twice: as two overlaps when $C$ is acute, as two gaps when $C$ is obtuse, and as two collapsed parallelograms when $C$ is right.
+
+## The space of triangle shapes
+
+A triangle has three side lengths, but multiplying all of them by the same positive number does not change its shape. Removing this scale leaves two independent parameters. The moduli space of triangles up to similarity is therefore two-dimensional.
+
+There is a symmetric way to see it. Normalize the perimeter and write
+
+$$
+x=\frac{a}{a+b+c},\qquad
+y=\frac{b}{a+b+c},\qquad
+z=\frac{c}{a+b+c}.
+$$
+
+Then $x+y+z=1$. The triangle inequalities say precisely that
+
+$$
+0<x,y,z<\frac12.
+$$
+
+Thus labelled triangle shapes form the open central triangle inside the standard simplex. If the names of the sides do not matter, permutations of $(x,y,z)$ describe the same shape.
+
+For the interactive it is more convenient to choose one chamber of that quotient. Order the sides so that
+
+$$
+0<b\leq a\leq c
+$$
+
+and normalize the longest side to $c=1$. Every unlabelled nondegenerate triangle then appears exactly once in
+
+$$
+\mathcal M_\triangle
+=
+\left\{(a,b):0<b\leq a\leq1,\ a+b>1\right\}.
+$$
+
+This is the triangular chamber in the first panel of the interactive. Its distinguished features are:
+
+- $(1,1)$ is the equilateral triangle;
+- $a=b$ and $a=1$ are the two isosceles boundaries;
+- $a+b=1$ is the degenerate limit;
+- $a^2+b^2=1$ is the curve of right triangles.
+
+The right-triangle curve divides the chamber into acute and obtuse regions:
+
+$$
+\begin{aligned}
+a^2+b^2&>1 &&\Longleftrightarrow &&C<90^\circ,\\
+a^2+b^2&=1 &&\Longleftrightarrow &&C=90^\circ,\\
+a^2+b^2&<1 &&\Longleftrightarrow &&C>90^\circ.
+\end{aligned}
+$$
+
+## Explore the tessellation
+
+```{=html}
+<div class="mn-law-interactive">
+  <iframe
+    src="https://lab.mathnomad.in/embed/law-of-cosines/"
+    title="Interactive tessellation proof of the law of cosines"
+    loading="lazy"
+    allow="fullscreen"
+  ></iframe>
+  <p><a class="btn btn-primary" href="https://lab.mathnomad.in/law-of-cosines/">Open the interactive in its own page</a></p>
+</div>
+```
+
+### How to use it
+
+1. **Choose a triangle.** Drag the gold point in the moduli chamber, or use the acute, right and obtuse presets. The representative triangle and all three side-squares change with it.
+2. **Compare the two boxes.** The blue $a^2$-square, yellow $b^2$-square and patterned $c^2$-square attached to the triangle are exact translated copies of the corresponding regions in the plane tessellation.
+3. **Move the grid.** Drag the gold anchor in the plane. This translates the black $c^2$-grid without rotating it. The cut lines copied into the side-squares move at the same time.
+4. **Cross the right-triangle curve.** For an acute triangle, blue and yellow overlap in green parallelograms. For an obtuse triangle, the same parallelograms become white gaps. At a right triangle they flatten into line segments.
+
+Moving the anchor changes the dissection but not the area identity. It gives a continuous family of pictures for the same proof.
+
+## The vectors behind the picture
+
+Place the two sides meeting at $C$ as vectors $\mathbf p$ and $\mathbf q$:
+
+$$
+|\mathbf p|=a,\qquad |\mathbf q|=b,\qquad
+\angle(\mathbf p,\mathbf q)=C.
+$$
+
+The third side is the difference
+
+$$
+\mathbf d=\mathbf p-\mathbf q,
+$$
+
+so $|\mathbf d|=c$. Let $J$ denote rotation through $90^\circ$. The vectors $\mathbf d$ and $J\mathbf d$ are perpendicular and have equal length $c$; they generate the black square grid in the interactive.
+
+Now make two alternating broken lines. In one direction use the steps
+
+$$
+\mathbf p,-\mathbf q,\mathbf p,-\mathbf q,\ldots
+$$
+
+and in the perpendicular construction use
+
+$$
+J\mathbf p,-J\mathbf q,J\mathbf p,-J\mathbf q,\ldots.
+$$
+
+Every pair of horizontal-type steps has displacement $\mathbf p-\mathbf q=\mathbf d$, and every pair of rotated steps has displacement $J\mathbf d$. The pattern therefore repeats with exactly the same periods as the $c^2$-grid.
+
+Within one period there is one blue square generated by $\mathbf p$ and $J\mathbf p$, hence of area $a^2$, and one yellow square generated by $\mathbf q$ and $J\mathbf q$, hence of area $b^2$. Two congruent parallelograms complete the accounting.
+
+## The cosine parallelograms
+
+One correction parallelogram is generated by $\mathbf p$ and $J\mathbf q$. Its oriented area is
+
+$$
+\det(\mathbf p,J\mathbf q)
+=\mathbf p\mathbin{\cdot}\mathbf q
+=ab\cos C.
+$$
+
+Its ordinary area is therefore
+
+$$
+P=ab|\cos C|.
+$$
+
+There are two such parallelograms in every $c^2$ period. That is the geometric source of the coefficient $2$ in the law of cosines.
+
+## Reading the proof from the tessellation
+
+### Acute triangles: two overlaps
+
+When $C<90^\circ$, we have $\cos C>0$. The blue and yellow squares overlap in two green parallelograms, each of area
+
+$$
+P=ab\cos C.
+$$
+
+One $c^2$ cell is covered by the blue and yellow squares, but each green region has been counted twice. Inclusion–exclusion gives
+
+$$
+c^2=a^2+b^2-P-P
+=a^2+b^2-2ab\cos C.
+$$
+
+### Obtuse triangles: two gaps
+
+When $C>90^\circ$, we have $\cos C<0$. The two square families no longer overlap. Instead they leave two congruent white parallelograms in each $c^2$ cell. Their area is
+
+$$
+P=ab|\cos C|=-ab\cos C.
+$$
+
+Now the whole cell consists of the two squares and the two gaps:
+
+$$
+c^2=a^2+b^2+P+P
+=a^2+b^2-2ab\cos C.
+$$
+
+### Right triangles: the transition
+
+When $C=90^\circ$, the height of each correction parallelogram is zero. The gaps or overlaps disappear, and the picture becomes the Pythagorean tessellation:
+
+$$
+c^2=a^2+b^2.
+$$
+
+The acute, right and obtuse diagrams are not three unrelated proofs. They are three regimes of one continuously varying construction.
+
+## Why the anchor can move
+
+The black grid can be translated without changing its orientation. Two anchors differing by an integer combination of $\mathbf d$ and $J\mathbf d$ produce the same relative overlay. For a fixed triangle, the genuine phase space of the anchor is therefore
+
+$$
+\mathbb R^2/(\mathbb Z\mathbf d+\mathbb ZJ\mathbf d),
+$$
+
+a flat torus. The triangle shape supplies two parameters and the grid phase supplies two more. The full family explored by the interactive is consequently four-dimensional, even though the screen shows only one triangle and one draggable point at a time.
+
+## Where to continue
+
+- [Open the full Law of Cosines interactive](https://lab.mathnomad.in/law-of-cosines/).
+- Visit the [Tessellations project](../../../projects/entries/tessellations/index.qmd) for related experiments and future additions.
+
