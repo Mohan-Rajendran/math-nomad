@@ -192,6 +192,8 @@ $$
 
 The acute, right and obtuse diagrams are not three unrelated proofs. They are three regimes of one continuously varying construction.
 
+At this right-angle slice, the correction regions vanish but the movable common-lattice dissection remains. [Infinitely many “proofs” of Pythagoras’ theorem](../infinitely-many-proofs-of-pythagoras/index.qmd) explores that slice in depth, including its medieval corner, Perigal and symmetric-twin anchor positions.
+
 ## Why the anchor can move
 
 The black grid can be translated without changing its orientation. Two anchors differing by an integer combination of $\mathbf d$ and $J\mathbf d$ produce the same relative overlay. For a fixed triangle, the genuine phase space of the anchor is therefore
@@ -205,5 +207,5 @@ a flat torus. The triangle shape supplies two parameters and the grid phase supp
 ## Where to continue
 
 - [Open the full Law of Cosines interactive](https://lab.mathnomad.in/law-of-cosines/).
+- Explore [Infinitely many “proofs” of Pythagoras’ theorem](../infinitely-many-proofs-of-pythagoras/index.qmd), the continuously moving right-angle family.
 - Visit the [Tessellations project](../../../projects/entries/tessellations/index.qmd) for related experiments and future additions.
-
