@@ -533,6 +533,9 @@ verify: 51 orbits × 8 boards = 408</code></pre>
 ```{=html}
 <h2 id="related-heading">Take the next route</h2>
 <div class="related-routes">
+  <a href="../kolams-on-an-octahedron/">
+    <span>Companion article</span><strong>Kolams on Octahedron</strong><small>Replace the square by a triangular tile and let a structural proof find three representatives.</small>
+  </a>
   <a href="https://lab.mathnomad.in/square-kolam-tile-challenge/" target="_blank" rel="noreferrer">
     <span>Interactive</span><strong>Play the tile challenge</strong><small>Build a board in the full-screen laboratory.</small>
   </a>
