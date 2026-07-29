@@ -4,23 +4,95 @@ subtitle: "A moving tessellation turns Pythagoras into the cosine rule, with ove
 description: "An interactive tessellation proof of the law of cosines, organised over the two-dimensional moduli space of triangle shapes."
 date: 2026-07-20
 author: "Mohan Rajendran"
-categories: [Everyone, Exposition, Geometry, Tessellations, Interactive]
-audience: [everyone]
+categories: [Geometry, Tessellations, Interactive]
+keywords:
+  - law of cosines
+  - cosine rule
+  - triangle moduli space
+  - periodic tessellations
+  - cosine parallelograms
+  - vector geometry
+  - signed area
+  - acute triangles
+  - obtuse triangles
+  - interactive geometry
+topics: [Geometry, Tessellations, Interactive]
+audience: [General]
+article-type: Exposition
 kind: exposition
+msc:
+  - code: 51M04
+    role: Primary
+    label: Elementary problems in Euclidean geometries
+  - code: 52C20
+    role: Secondary
+    label: Tilings in two dimensions
+  - code: 51N20
+    role: Secondary
+    label: Euclidean analytic geometry
+citation-key: rajendran2026lawofcosines
+reading-time-label: 5 min read
 featured: true
 draft: false
 page-layout: full
 toc: true
 toc-depth: 2
-css: law-of-cosines-article.css
+body-classes: mn-article-page mn-article-cosines
+mn-custom-title: true
+css:
+  - law-of-cosines-article.css
+  - ../article-final.css
+header-includes:
+  - |
+    <link rel="canonical" href="https://mathnomad.in/writing/articles/law-of-cosines/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-07-20">
+    <meta name="citation_author" content="Mohan Rajendran">
+    <meta name="citation_title" content="The Law of Cosines">
+    <meta name="citation_publication_date" content="2026-07-20">
+    <meta name="citation_journal_title" content="Math Nomad">
+    <meta name="citation_public_url" content="https://mathnomad.in/writing/articles/law-of-cosines/">
+    <meta name="citation_msc" content="51M04; 52C20; 51N20">
+    <meta name="DC.Subject" content="51M04, 52C20, 51N20">
 resources:
   - law-of-cosines-article.css
 ---
 
+```{=html}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Law of Cosines",
+  "description": "An interactive tessellation proof of the law of cosines, organised over the two-dimensional moduli space of triangle shapes.",
+  "author": { "@type": "Person", "name": "Mohan Rajendran" },
+  "datePublished": "2026-07-20",
+  "articleSection": ["General", "Exposition"],
+  "keywords": ["Law of cosines", "Cosine rule", "Triangle moduli space", "Periodic tessellations", "Cosine parallelograms", "Vector geometry", "Signed area", "Acute triangles", "Obtuse triangles", "Interactive geometry"],
+  "about": [
+    { "@type": "DefinedTerm", "termCode": "51M04", "name": "Elementary problems in Euclidean geometries", "inDefinedTermSet": "MSC2020" },
+    { "@type": "DefinedTerm", "termCode": "52C20", "name": "Tilings in two dimensions", "inDefinedTermSet": "MSC2020" },
+    { "@type": "DefinedTerm", "termCode": "51N20", "name": "Euclidean analytic geometry", "inDefinedTermSet": "MSC2020" }
+  ],
+  "mainEntityOfPage": "https://mathnomad.in/writing/articles/law-of-cosines/"
+}
+</script>
+<header class="mn-article-hero">
+  <a class="mn-article-back" href="/writing/">← All articles</a>
+  <div class="mn-article-identity-tags" aria-label="Audience and article type">
+    <span>General</span><span>Exposition</span>
+  </div>
+  <h1>The Law of Cosines</h1>
+  <p class="mn-article-standfirst">A moving tessellation turns Pythagoras into the cosine rule, with overlaps for acute triangles and gaps for obtuse ones.</p>
+  <div class="mn-article-byline"><span>By Mohan Rajendran</span><span>20 July 2026</span><span>5 min read</span></div>
+  <div class="mn-article-topics" aria-label="Article topics"><span>Geometry</span><span>Tessellations</span><span>Interactive</span></div>
+</header>
+```
+
 The Pythagorean theorem is the right-angle member of a larger picture. If a triangle has sides $a$, $b$ and $c$, with $C$ the angle between the sides $a$ and $b$, then
 
 $$
-\boxed{c^2=a^2+b^2-2ab\cos C}.
+c^2=a^2+b^2-2ab\cos C.
 $$
 
 The extra term measures a failure of perpendicularity. In the tessellation below it appears twice: as two overlaps when $C$ is acute, as two gaps when $C$ is obtuse, and as two collapsed parallelograms when $C$ is right.
@@ -204,8 +276,44 @@ $$
 
 a flat torus. The triangle shape supplies two parameters and the grid phase supplies two more. The full family explored by the interactive is consequently four-dimensional, even though the screen shows only one triangle and one draggable point at a time.
 
-## Where to continue
+```{=html}
+<section class="mn-scholarly-metadata" aria-labelledby="article-information-heading">
+  <h2 id="article-information-heading">Article information</h2>
+  <div class="mn-metadata-group">
+    <h3>Keywords</h3>
+    <p class="mn-keywords">law of cosines · cosine rule · triangle moduli space · periodic tessellations · cosine parallelograms · vector geometry · signed area · acute triangles · obtuse triangles · interactive geometry</p>
+  </div>
+  <div class="mn-metadata-group">
+    <h3>Mathematics Subject Classification (2020)</h3>
+    <ul class="mn-msc-list">
+      <li><span>Primary</span><a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html?t=51M04">51M04</a><span>Elementary problems in Euclidean geometries</span></li>
+      <li><span>Secondary</span><a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html?t=52C20">52C20</a><span>Tilings in two dimensions</span></li>
+      <li><span>Secondary</span><a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html?t=51N20">51N20</a><span>Euclidean analytic geometry</span></li>
+    </ul>
+  </div>
+  <div class="mn-metadata-group mn-citation-information">
+    <h3>Cite this article</h3>
+    <p>Rajendran, Mohan. “The Law of Cosines.” <i>Math Nomad</i>, 20 July 2026, <a href="https://mathnomad.in/writing/articles/law-of-cosines/">https://mathnomad.in/writing/articles/law-of-cosines/</a>.</p>
+    <details>
+      <summary>BibLaTeX</summary>
+      <pre><code>@online{rajendran2026lawofcosines,
+  author       = {Rajendran, Mohan},
+  title        = {The Law of Cosines},
+  date         = {2026-07-20},
+  organization = {Math Nomad},
+  url          = {https://mathnomad.in/writing/articles/law-of-cosines/},
+  langid       = {british}
+}</code></pre>
+    </details>
+  </div>
+</section>
 
-- [Open the full Law of Cosines interactive](https://lab.mathnomad.in/law-of-cosines/).
-- Explore [Infinitely many “proofs” of Pythagoras’ theorem](../infinitely-many-proofs-of-pythagoras/index.qmd), the continuously moving right-angle family.
-- Visit the [Tessellations project](../../../projects/entries/tessellations/index.qmd) for related experiments and future additions.
+<section class="mn-related-section" aria-labelledby="cosines-continue-heading">
+  <h2 id="cosines-continue-heading">Where to continue</h2>
+  <div class="mn-related-routes">
+    <a href="https://lab.mathnomad.in/law-of-cosines/"><strong>Interactive · Open the Law of Cosines construction</strong><small>Explore the complete tessellation in the Lab.</small></a>
+    <a href="../infinitely-many-proofs-of-pythagoras/"><strong>Companion article · Infinitely many ‘proofs’ of Pythagoras’ theorem</strong><small>Return to the continuously moving right-angle family.</small></a>
+    <a href="../../../projects/entries/tessellations/"><strong>Project · Follow Tessellations</strong><small>Find related experiments and future additions.</small></a>
+  </div>
+</section>
+```

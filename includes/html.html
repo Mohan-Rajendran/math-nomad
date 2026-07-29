@@ -14,7 +14,10 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
-<!-- MathJax is loaded on demand by includes/mathjax.html. -->
+<!-- Quarto injects the configured KaTeX dependencies at this marker. -->
+$if(math)$
+$math$
+$endif$
 
 $for(css)$
 <link rel="stylesheet" href="$css$" />
@@ -27,6 +30,8 @@ $for(include-before)$
 $include-before$
 $endfor$
 
+$if(mn-custom-title)$
+$else$
 $if(title)$
 $title-block.html()$
 $elseif(subtitle)$
@@ -45,6 +50,7 @@ $elseif(abstract)$
 $title-block.html()$
 $elseif(keywords)$
 $title-block.html()$
+$endif$
 $endif$
 
 

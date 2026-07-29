@@ -86,11 +86,12 @@ format:
       - styles.scss
     include-in-header:
       - includes/fonts.html
-      - includes/mathjax.html
     include-after-body:
       - includes/site.js
-    template: includes/html-mathjax.html
-    html-math-method: mathjax
+    template: includes/html.html
+    html-math-method:
+      method: katex
+      url: "https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/"
     toc: true
     toc-depth: 3
     smooth-scroll: true

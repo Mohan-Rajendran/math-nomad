@@ -41,22 +41,28 @@ title: "A clear title"
 description: "One sentence used on listing cards and in search results."
 date: 2026-07-17
 author: "Mohan Rajendran"
-categories: [Everyone, Exposition, Geometry]
-audience: [everyone]
+categories: [Geometry]
+topics: [Geometry]
+audience: [General]
+article-type: Exposition
 kind: exposition
+keywords: [keyword one, keyword two]
+msc:
+  - code: 51M04
+    role: Primary
+    label: Elementary problems in Euclidean geometries
 featured: false
 draft: true
 toc: true
 ```
 
-For `categories`, combine audience, kind and topic labels. Prefer the shared audience labels:
+Keep topical labels in `categories` and `topics`. Audience and article type are separate identity fields and must not be repeated as topics. The only audience labels are:
 
-- `Everyone`
-- `School teachers`
+- `General`
 - `Undergraduate`
-- `Graduate & research`
+- `Graduate`
 
-Prefer the shared kinds of writing:
+The article type is a reader-facing description of form. Current types include:
 
 - `Exposition`
 - `Research`
@@ -64,7 +70,7 @@ Prefer the shared kinds of writing:
 - `Teaching`
 - `Reflections`
 
-Keep `audience`, `kind` and useful categories in the source even while the public collection is small. Add visible filters only when each choice leads to a meaningful group—ideally at least three pieces—rather than to an empty result.
+Keep `audience`, `article-type`, `kind`, `topics`, `keywords`, and verified MSC2020 classifications in the source. Article cards show audience and article type at the upper right and topics in a separate lower row.
 
 ## Feature an item
 
@@ -117,15 +123,15 @@ Reusable material that does not belong to only one course can go in `courses/res
 
 Treat a journal or institutional venue as the formal record for the work published there. Math Nomad can add what that format cannot comfortably host: interactives, code, catalogues, computational appendices, classroom adaptations and behind-the-paper notes. Before sharing a manuscript or close derivative, check the journal’s current copyright and self-archiving policy.
 
-## Write mathematics with MathJax
+## Write mathematics with KaTeX
 
-The website renders LaTeX notation with MathJax. Put inline mathematics between single dollar signs:
+The website renders LaTeX notation with KaTeX. Put ordinary mathematical expressions inline between single dollar signs:
 
 ```markdown
 There are $2^4=16$ possible tiles.
 ```
 
-Put a displayed equation between double dollar signs:
+Reserve centred display mathematics for an important result, a multiline derivation, or an expression that the discussion pauses to analyse:
 
 ```markdown
 $$
@@ -133,7 +139,7 @@ e_{x,y}=w_{x+1,y}.
 $$
 ```
 
-Standard LaTeX structures such as `aligned`, `matrix`, `cases`, `\newcommand` and `\newenvironment` are supported. Always use math delimiters; ordinary parentheses such as `(4\times4)` do not tell Quarto to run MathJax.
+Standard KaTeX structures such as `aligned`, `matrix`, and `cases` are supported. Always use math delimiters; ordinary parentheses such as `(4\times4)` do not tell Quarto to render mathematics. Keep displayed mathematics centred and do not put it in a coloured box, shaded card, or ornamental border.
 
 ## Safe publishing habit
 

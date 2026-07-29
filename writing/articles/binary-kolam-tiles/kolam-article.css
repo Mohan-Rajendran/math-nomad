@@ -1726,14 +1726,6 @@ body.mn-kolam-page a.mn-resource-card > strong {
   font-weight: 700;
 }
 
-body.mn-kolam-page .draft-link {
-  background: color-mix(
-    in srgb,
-    var(--terracotta-pale) 22%,
-    var(--paper-white)
-  );
-}
-
 body.mn-kolam-page .resource-card-static {
   cursor: default;
 }

@@ -6,47 +6,72 @@ date: "2026-07-21T00:10:05+05:30"
 date-modified: "2026-07-21T00:10:05+05:30"
 author: "Mohan Rajendran"
 categories:
-  - Everyone
-  - Exposition
   - Kolams
   - Graph theory
   - Polyhedra
   - Symmetry
 keywords:
   - kolam
-  - pulli kolam
-  - sikku kolam
   - binary kolam tiles
   - triangular kolam tiles
   - octahedron
   - Platonic solids
-  - dual cube
+  - cube–octahedron duality
   - cube graph Q3
-  - graph theory
-  - Euler characteristic
   - graph duality
+  - Euler characteristic
   - trees
-  - polyhedral symmetry
-  - octahedral group
+  - degree sequence
+  - octahedral symmetry
   - combinatorial classification
   - edge-matching puzzle
-  - recreational mathematics
-image: octahedron-hero.png
+topics: [Kolams, Graph theory, Polyhedra, Symmetry]
+image: octahedron-hero.svg
 image-alt: "A stylised white kolam drawn across the triangular faces of a terracotta octahedron"
-audience: [everyone]
+audience: [General]
+article-type: Exposition
 kind: exposition
+msc:
+  - code: 05C05
+    role: Primary
+    label: Trees
+  - code: 05C07
+    role: Secondary
+    label: Vertex degrees
+  - code: 52B10
+    role: Secondary
+    label: Three-dimensional polytopes
+  - code: 52B15
+    role: Secondary
+    label: Symmetry properties of polytopes
+  - code: 05E18
+    role: Secondary
+    label: Group actions on combinatorial structures
+citation-key: rajendran2026octahedronkolams
+reading-time-label: 16 min read
 featured: true
+draft: false
 page-layout: full
 toc: false
 anchor-sections: false
-body-classes: mn-kolam-page
-css: octahedron-article.css
+body-classes: mn-kolam-page mn-article-page mn-article-octahedron
+mn-custom-title: true
+css:
+  - octahedron-article.css
+  - ../article-final.css
 header-includes:
   - |
     <link rel="canonical" href="https://mathnomad.in/writing/articles/kolams-on-an-octahedron/">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-07-21T00:10:05+05:30">
     <meta property="article:modified_time" content="2026-07-21T00:10:05+05:30">
+    <meta name="citation_author" content="Mohan Rajendran">
+    <meta name="citation_title" content="Kolams on Octahedron">
+    <meta name="citation_publication_date" content="2026-07-21T00:10:05+05:30">
+    <meta name="citation_journal_title" content="Math Nomad">
+    <meta name="citation_public_url" content="https://mathnomad.in/writing/articles/kolams-on-an-octahedron/">
+    <meta name="citation_msc" content="05C05; 05C07; 52B10; 52B15; 05E18">
+    <meta name="DC.Subject" content="05C05, 05C07, 52B10, 52B15, 05E18">
 resources:
   - octahedron-hero.svg
   - octahedron-hero.png
@@ -64,9 +89,16 @@ resources:
   "author": { "@type": "Person", "name": "Mohan Rajendran" },
   "datePublished": "2026-07-21T00:10:05+05:30",
   "dateModified": "2026-07-21T00:10:05+05:30",
-  "image": "https://mathnomad.in/writing/articles/kolams-on-an-octahedron/octahedron-hero.png",
-  "articleSection": ["Everyone", "Exposition"],
-  "keywords": ["Kolam", "Triangular kolam tiles", "Octahedron", "Dual cube", "Graph theory", "Euler characteristic", "Trees", "Octahedral symmetry"],
+  "image": "https://mathnomad.in/writing/articles/kolams-on-an-octahedron/octahedron-hero.svg",
+  "articleSection": ["General", "Exposition"],
+  "keywords": ["Kolam", "Triangular kolam tiles", "Binary kolam tiles", "Octahedron", "Platonic solids", "Cube–octahedron duality", "Cube graph Q3", "Graph duality", "Euler characteristic", "Trees", "Degree sequence", "Octahedral symmetry", "Combinatorial classification", "Edge-matching puzzle"],
+  "about": [
+    { "@type": "DefinedTerm", "termCode": "05C05", "name": "Trees", "inDefinedTermSet": "MSC2020" },
+    { "@type": "DefinedTerm", "termCode": "05C07", "name": "Vertex degrees", "inDefinedTermSet": "MSC2020" },
+    { "@type": "DefinedTerm", "termCode": "52B10", "name": "Three-dimensional polytopes", "inDefinedTermSet": "MSC2020" },
+    { "@type": "DefinedTerm", "termCode": "52B15", "name": "Symmetry properties of polytopes", "inDefinedTermSet": "MSC2020" },
+    { "@type": "DefinedTerm", "termCode": "05E18", "name": "Group actions on combinatorial structures", "inDefinedTermSet": "MSC2020" }
+  ],
   "mainEntityOfPage": "https://mathnomad.in/writing/articles/kolams-on-an-octahedron/"
 }
 </script>
@@ -77,8 +109,8 @@ resources:
 <div class="hero-wash hero-wash-one" aria-hidden="true"></div>
 <div class="hero-wash hero-wash-two" aria-hidden="true"></div>
 <div class="hero-inner">
-  <div class="eyebrow">
-    <span>Writing</span><span aria-hidden="true">·</span><span>Everyone</span><span aria-hidden="true">·</span><span>Exposition</span>
+  <div class="mn-article-identity-tags" aria-label="Audience and article type">
+    <span>General</span><span>Exposition</span>
   </div>
   <h1 id="article-title">
     <span>Kolams on</span>
@@ -87,8 +119,9 @@ resources:
   <p class="standfirst">How eight triangular tiles, a dual cube, and a seven-vertex tree lead to exactly three kolams—without exhaustive computation.</p>
   <div class="article-meta">
     <span class="avatar" aria-hidden="true">MR</span>
-    <span><strong>Mohan Rajendran</strong><small>21 July 2026</small></span>
+    <span><strong>Mohan Rajendran</strong><small>21 July 2026 · 16 min read</small></span>
   </div>
+  <div class="mn-article-topics" aria-label="Article topics"><span>Kolams</span><span>Graph theory</span><span>Polyhedra</span><span>Symmetry</span></div>
 </div>
 <div class="hero-grid">
   <img src="octahedron-hero.svg" alt="A stylised white kolam drawn across the triangular faces of a terracotta octahedron" width="800" height="800" fetchpriority="high">
@@ -100,7 +133,7 @@ resources:
 <details class="mobile-toc">
   <summary>On this page</summary>
   <a class="toc-context-link toc-prelude" href="#from-square-to-surface"><span>Prelude</span>From a square board to a closed surface</a>
-  <ol>
+  <ul class="toc-links">
     <li><a href="#eight-tiles">Eight triangular tiles</a></li>
     <li><a href="#why-octahedron">Why an octahedron?</a></li>
     <li><a href="#dual-cube">The cube hidden inside</a></li>
@@ -111,7 +144,7 @@ resources:
     <li><a href="#symmetry">Symmetry and the final count</a></li>
     <li><a href="#without-search">A proof without exhaustive computation</a></li>
     <li><a href="#fold">Fold the three kolams</a></li>
-  </ol>
+  </ul>
 </details>
 ```
 
@@ -121,7 +154,7 @@ resources:
 <aside class="toc" aria-label="On this page">
 <p>On this page</p>
 <a class="toc-context-link toc-prelude" href="#from-square-to-surface"><span>Prelude</span>From a square board to a closed surface</a>
-<ol>
+<ul class="toc-links">
   <li><a href="#eight-tiles">Eight triangular tiles</a></li>
   <li><a href="#why-octahedron">Why an octahedron?</a></li>
   <li><a href="#dual-cube">The cube hidden inside</a></li>
@@ -132,14 +165,12 @@ resources:
   <li><a href="#symmetry">Symmetry and the final count</a></li>
   <li><a href="#without-search">A proof without exhaustive computation</a></li>
   <li><a href="#fold">Fold the three kolams</a></li>
-</ol>
+</ul>
 </aside>
 <article class="article-body mn-kolam-article">
 ```
 
 :::: {#from-square-to-surface .article-section}
-<p class="section-number">Prelude</p>
-
 ## From a square board to a closed surface
 
 In [*From Sixteen Tiles to Fifty-One Kolams*](../binary-kolam-tiles/index.qmd), we placed sixteen square tiles inside a square boundary. Every tile carried four bits, neighbouring bits had to agree, and a computer-assisted enumeration reduced the valid boards to 51 symmetry classes.
@@ -161,8 +192,6 @@ As in the companion article, this is a deliberately simplified mathematical mode
 ::::
 
 :::: {#eight-tiles .article-section}
-<p class="section-number">01</p>
-
 ## Eight triangular tiles
 
 Fix three side names on an equilateral triangle. In the upward-facing drawings below, read them in the order
@@ -204,8 +233,6 @@ The orientation is global. We may move an entire completed octahedron by a symme
 ::::
 
 :::: {#why-octahedron .article-section}
-<p class="section-number">02</p>
-
 ## Why an octahedron?
 
 Suppose a closed Platonic surface uses one triangular face for each tile. Then the number of faces is
@@ -248,8 +275,6 @@ The solid is therefore not an arbitrary container chosen after the tiles were ma
 ::::
 
 :::: {#dual-cube .article-section}
-<p class="section-number">03</p>
-
 ## The cube hidden inside the octahedron
 
 The curves are drawn on octahedral faces, but the proof becomes simpler when we record only which faces touch.
@@ -294,8 +319,6 @@ Each tile motif is connected within its triangular face. Consequently, two face 
 ::::
 
 :::: {#six-edges .article-section}
-<p class="section-number">04</p>
-
 ## Twelve exits become six edges
 
 The eight binary words have a rigid weight pattern.
@@ -329,8 +352,6 @@ This small count already tells us almost everything about the global kolam.
 ::::
 
 :::: {#automatic .article-section}
-<p class="section-number">05</p>
-
 ## Two components, automatically
 
 We intended to require two components. In fact, matching and exact inventory force them.
@@ -360,8 +381,6 @@ This is the second appearance of Euler characteristic. First, $V-E+F=2$ identifi
 ::::
 
 :::: {#three-trees .article-section}
-<p class="section-number">06</p>
-
 ## A subdivided Y
 
 The seven-vertex component is a tree with degree sequence
@@ -400,8 +419,6 @@ We now have three possible *abstract tree shapes*. One final issue remains: coul
 ::::
 
 :::: {#directions .article-section}
-<p class="section-number">07</p>
-
 ## Three tree shapes are not yet three kolams
 
 The cube remembers not only which faces are joined, but also the directions of those joins.
@@ -429,8 +446,6 @@ Thus every arm-length type has one realisation up to the full octahedral symmetr
 ::::
 
 :::: {#symmetry .article-section}
-<p class="section-number">08</p>
-
 ## Symmetry and the final count
 
 The octahedron and cube are dual, so they have the same symmetries. A full symmetry may move a chosen face to any one of eight faces. Once that face is fixed, it may permute its three side directions in any of $3!=6$ ways. Therefore the full symmetry group has
@@ -472,8 +487,6 @@ which provide the check $16+48+48=112$. The balanced type has a threefold stabil
 ::::
 
 :::: {#without-search .article-section}
-<p class="section-number">09</p>
-
 ## A proof without exhaustive computation
 
 The companion square-tile problem and the octahedral problem begin in the same way: binary edge data, exact inventory, local matching, global connectivity, and symmetry. They end by very different mathematical routes.
@@ -497,8 +510,6 @@ This is a useful mathematical contrast. Sometimes computation certifies a finite
 ::::
 
 :::: {#fold .article-section .wide-section}
-<p class="section-number">10</p>
-
 ## Fold the three kolams
 
 The three representatives below are drawn on connected octahedron nets. Select a net, fold it continuously into the solid, rotate the completed octahedron, and optionally reveal the active graph used in the proof.
@@ -512,7 +523,7 @@ The three representatives below are drawn on connected octahedron nets. Select a
   </div>
   <div class="sandbox-stage">
     <div class="sandbox-loading mn-sandbox-loading" role="status"><span class="loading-tile" aria-hidden="true">△</span><span>Preparing the foldable nets…</span></div>
-    <iframe class="mn-sandbox-iframe" data-src="https://lab.mathnomad.in/embed/kolams-on-an-octahedron/" title="Interactive explorer for the three kolams on an octahedron" loading="lazy" allowfullscreen></iframe>
+    <iframe class="mn-sandbox-iframe" src="https://lab.mathnomad.in/embed/kolams-on-an-octahedron/" title="Interactive explorer for the three kolams on an octahedron" loading="lazy" allowfullscreen></iframe>
     <div class="sandbox-mobile-poster sandbox-mobile-preview">
       <img src="octahedron-hero.svg" width="800" height="800" loading="lazy" alt="A stylised kolam on an octahedron">
       <a class="sandbox-mobile-button" href="https://lab.mathnomad.in/kolams-on-an-octahedron/" target="_blank" rel="noreferrer">Open the interactive <span aria-hidden="true">↗</span></a>
@@ -537,9 +548,27 @@ The three representatives below are drawn on connected octahedron nets. Select a
 ```
 ::::
 
-:::: {.article-section .citation-section .citation-panel aria-labelledby="citation-heading"}
-<p class="section-number">Citation</p>
+:::: {.article-section .mn-scholarly-metadata aria-labelledby="article-information-heading"}
+```{=html}
+<h2 id="article-information-heading">Article information</h2>
+<div class="mn-metadata-group">
+  <h3>Keywords</h3>
+  <p class="mn-keywords">kolam · triangular kolam tiles · binary kolam tiles · octahedron · Platonic solids · cube–octahedron duality · cube graph Q3 · graph duality · Euler characteristic · trees · degree sequence · octahedral symmetry · combinatorial classification · edge-matching puzzle</p>
+</div>
+<div class="mn-metadata-group">
+  <h3>Mathematics Subject Classification (2020)</h3>
+  <ul class="mn-msc-list">
+    <li><span>Primary</span><a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html?t=05C05">05C05</a><span>Trees</span></li>
+    <li><span>Secondary</span><a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html?t=05C07">05C07</a><span>Vertex degrees</span></li>
+    <li><span>Secondary</span><a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html?t=52B10">52B10</a><span>Three-dimensional polytopes</span></li>
+    <li><span>Secondary</span><a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html?t=52B15">52B15</a><span>Symmetry properties of polytopes</span></li>
+    <li><span>Secondary</span><a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html?t=05E18">05E18</a><span>Group actions on combinatorial structures</span></li>
+  </ul>
+</div>
+```
+::::
 
+:::: {.article-section .citation-section .citation-panel aria-labelledby="citation-heading"}
 ```{=html}
 <h2 id="citation-heading">Cite this article</h2>
 <p id="preferred-citation" class="citation-text">Rajendran, Mohan. “Kolams on Octahedron.” <i>Math Nomad</i>, 21 July 2026, <a href="https://mathnomad.in/writing/articles/kolams-on-an-octahedron/">https://mathnomad.in/writing/articles/kolams-on-an-octahedron/</a>.</p>
@@ -568,8 +597,6 @@ ER  -</pre>
 ::::
 
 :::: {.article-section .related-section aria-labelledby="related-heading"}
-<p class="section-number">Continue</p>
-
 ```{=html}
 <h2 id="related-heading">Take the next route</h2>
 <div class="related-routes">

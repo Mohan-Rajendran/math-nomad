@@ -1,15 +1,13 @@
 ---
-title: "Writing"
-subtitle: "Research, exposition, outreach and teaching ideas for readers at different levels."
+title: "Articles"
+subtitle: "Mathematical stories developed through examples, visuals, computation and proof."
 page-layout: full
 toc: false
 listing:
   - id: mn-writing-latest
     contents: articles
     sort: "date desc"
-    type: grid
-    grid-columns: 2
-    fields: [image, title, description, date, reading-time]
+    template: article-cards.ejs.md
     sort-ui: false
     filter-ui: false
     feed:
@@ -19,15 +17,15 @@ listing:
 ---
 
 ::: {.content-block .mn-page-lead}
-This is the intellectual notebook of Math Nomad: polished exposition beside research notes, outreach ideas and reflections on teaching. Audience labels suggest a starting point without placing a fence around the mathematics.
+Mathematical stories developed through examples, visuals, computation and proof.
 
 [Follow new writing via RSS](index.xml){.mn-rss-link}
 :::
 
 ::: {.content-block .mn-listing-section}
-## Latest writing
+## Latest articles
 
-Newest pieces appear first. As the collection grows, filters will make it easier to browse by audience, form and mathematical topic.
+Newest pieces appear first. Audience and article type are kept separate from the mathematical topics below each article.
 
 ::: {#mn-writing-latest}
 :::
