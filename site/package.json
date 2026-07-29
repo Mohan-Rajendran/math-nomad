@@ -1,0 +1,49 @@
+{
+  "name": "math-nomad",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "dev:main": "NEXT_PUBLIC_MATH_NOMAD_SITE_MODE=main next dev",
+    "dev:lab": "NEXT_PUBLIC_MATH_NOMAD_SITE_MODE=lab next dev",
+    "build": "npm run build:static:main",
+    "build:static:main": "NEXT_PUBLIC_MATH_NOMAD_SITE_MODE=main next build --webpack && NEXT_PUBLIC_MATH_NOMAD_SITE_MODE=main node scripts/prepare-pages-output.mjs out && node scripts/validate-static-release.mjs main out",
+    "build:static:lab": "NEXT_PUBLIC_MATH_NOMAD_SITE_MODE=lab next build --webpack && NEXT_PUBLIC_MATH_NOMAD_SITE_MODE=lab node scripts/prepare-pages-output.mjs out && node scripts/validate-static-release.mjs lab out",
+    "test": "npm run validate:main",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "validate:main": "npm run typecheck && npm run lint && npm run build:static:main",
+    "validate:lab": "npm run typecheck && npm run lint && npm run build:static:lab"
+  },
+  "dependencies": {
+    "drizzle-orm": "0.45.2",
+    "katex": "^0.16.27",
+    "lucide-react": "^1.27.0",
+    "next": "16.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "react-icons": "^5.7.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.37.1",
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "@vitejs/plugin-rsc": "0.5.26",
+    "drizzle-kit": "0.31.10",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.6",
+    "react-server-dom-webpack": "19.2.6",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3",
+    "vinext": "0.0.50",
+    "vite": "8.0.13",
+    "wrangler": "4.92.0"
+  },
+  "type": "module"
+}

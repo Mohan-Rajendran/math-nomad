@@ -21,21 +21,30 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v6
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
 
-      - name: Render the site
-        run: quarto render
+      - name: Install the approved site
+        working-directory: site
+        run: npm ci
+
+      - name: Validate and export the journal
+        working-directory: site
+        run: npm run validate:main
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
 
-      - name: Upload the rendered site
+      - name: Upload the journal
         uses: actions/upload-pages-artifact@v4
         with:
-          path: _site
+          path: site/out
 
   deploy:
     environment:
