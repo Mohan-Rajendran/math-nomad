@@ -1,0 +1,724 @@
+/*
+ * Shared final article treatment.
+ *
+ * This file carries the approved article conventions across the four migrated
+ * articles while the larger site redesign remains a separate release.
+ */
+
+body.mn-article-page {
+  --mn-canvas-final: #f6f4ef;
+  --mn-surface-final: #fdfbf7;
+  --mn-surface-muted-final: #ede9e2;
+  --mn-ink-final: #292826;
+  --mn-body-final: #514e49;
+  --mn-muted-final: #7a756e;
+  --mn-rule-final: #e1ddd6;
+  --mn-accent-final: #756e79;
+  --mn-accent-wash-final: #ece8ee;
+  --mn-article-ink: #333541;
+  --mn-serif-final: "Source Serif 4", Georgia, Cambria, "Times New Roman", serif;
+  --mn-sans-final: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mn-math-final: "STIX Two Math", "Cambria Math", "Latin Modern Math", serif;
+  background: var(--mn-canvas-final);
+  color: var(--mn-body-final);
+  font-family: var(--mn-serif-final);
+  font-size: 16px;
+  line-height: 1.68;
+}
+
+body.mn-article-pythagoras {
+  --mn-accent-final: #6a6f86;
+  --mn-accent-wash-final: #e9e7ed;
+  --mn-article-ink: #333541;
+}
+
+body.mn-article-octahedron {
+  --mn-accent-final: #a66e5a;
+  --mn-accent-wash-final: #f1e5df;
+  --mn-article-ink: #4b3027;
+}
+
+body.mn-article-cosines {
+  --mn-accent-final: #927c58;
+  --mn-accent-wash-final: #efe9dd;
+  --mn-article-ink: #463b29;
+}
+
+body.mn-article-binary-kolam {
+  --mn-accent-final: #8c6b73;
+  --mn-accent-wash-final: #eee5e8;
+  --mn-article-ink: #49353b;
+}
+
+html[data-mn-font-size="small"] body.mn-article-page {
+  font-size: 15px;
+}
+
+html[data-mn-font-size="medium"] body.mn-article-page {
+  font-size: 16px;
+}
+
+html[data-mn-font-size="large"] body.mn-article-page {
+  font-size: 18px;
+}
+
+body.mn-article-page h1,
+body.mn-article-page h2,
+body.mn-article-page h3 {
+  color: var(--mn-ink-final);
+  font-family: var(--mn-serif-final);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+body.mn-article-page p,
+body.mn-article-page li {
+  line-height: 1.68;
+}
+
+body.mn-article-page a {
+  text-decoration-color: color-mix(in srgb, var(--mn-accent-final) 45%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+body.mn-article-page a:hover {
+  color: var(--mn-article-ink);
+  text-decoration-color: currentColor;
+}
+
+body.mn-article-page .navbar,
+body.mn-article-page .nav-footer,
+body.mn-article-page #TOC,
+body.mn-article-page button {
+  font-family: var(--mn-sans-final);
+}
+
+body.mn-article-page .navbar {
+  background: color-mix(in srgb, var(--mn-canvas-final) 94%, transparent) !important;
+  border-bottom: 0;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--mn-rule-final) 75%, transparent);
+}
+
+body.mn-article-page .navbar-title,
+body.mn-article-page .navbar .nav-link,
+body.mn-article-page .navbar .navbar-toggler,
+body.mn-article-page #quarto-search {
+  color: var(--mn-ink-final) !important;
+}
+
+.mn-reader-controls {
+  display: inline-flex;
+  min-height: 34px;
+  margin-inline: 8px;
+  align-items: center;
+  gap: 2px;
+  border-radius: 999px;
+  background: var(--mn-surface-muted-final);
+  padding: 3px;
+}
+
+.mn-reader-controls button {
+  display: inline-grid;
+  width: 30px;
+  min-width: 30px;
+  height: 28px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--mn-body-final);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.mn-reader-controls button:hover,
+.mn-reader-controls button:focus-visible {
+  background: var(--mn-surface-final);
+  color: var(--mn-ink-final);
+}
+
+.mn-reader-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Shared title treatment for the geometry articles. */
+body.mn-article-page:not(.mn-kolam-page) #quarto-document-content {
+  width: min(100% - 40px, 790px);
+  max-width: 790px;
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+body.mn-article-page .mn-article-hero {
+  position: relative;
+  margin: 0 0 3.25rem;
+  padding: clamp(2.6rem, 6vw, 4.8rem) 0 clamp(2.1rem, 5vw, 3.6rem);
+  background: radial-gradient(
+    ellipse 88% 75% at 25% 8%,
+    color-mix(in srgb, var(--mn-accent-wash-final) 75%, transparent) 0%,
+    color-mix(in srgb, var(--mn-accent-wash-final) 25%, transparent) 48%,
+    transparent 82%
+  );
+}
+
+body.mn-article-page .mn-article-back {
+  display: inline-flex;
+  margin-bottom: 2.1rem;
+  color: var(--mn-muted-final);
+  font: 600 0.78rem/1.2 var(--mn-sans-final);
+  text-decoration: none;
+}
+
+body.mn-article-page .mn-article-identity-tags,
+body.mn-article-page .mn-article-topics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mn-sans-final);
+}
+
+body.mn-article-page .mn-article-identity-tags {
+  margin-bottom: 1rem;
+}
+
+body.mn-article-page .mn-article-identity-tags span,
+body.mn-article-page .mn-article-topics span {
+  display: inline-flex;
+  min-height: 28px;
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--mn-accent-final) 30%, var(--mn-rule-final));
+  border-radius: 999px;
+  align-items: center;
+  background: color-mix(in srgb, var(--mn-accent-wash-final) 58%, var(--mn-surface-final));
+  color: var(--mn-article-ink);
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+body.mn-article-page .mn-article-topics {
+  margin-top: 1rem;
+}
+
+body.mn-article-page .mn-article-topics span {
+  background: transparent;
+  color: var(--mn-muted-final);
+  font-weight: 500;
+}
+
+body.mn-article-page .mn-article-hero h1 {
+  max-width: 1000px;
+  margin: 0;
+  color: var(--mn-ink-final);
+  font-size: clamp(2.45rem, 4.7vw, 4.35rem);
+  line-height: 1.04;
+}
+
+body.mn-article-page .mn-article-standfirst {
+  max-width: 800px;
+  margin: 1.35rem 0;
+  color: var(--mn-body-final);
+  font-size: clamp(1.08rem, 1.8vw, 1.35rem);
+  line-height: 1.55;
+}
+
+body.mn-article-page .mn-article-byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.25rem;
+  color: var(--mn-muted-final);
+  font: 500 0.78rem/1.35 var(--mn-sans-final);
+}
+
+body.mn-article-page:not(.mn-kolam-page) #quarto-document-content > h2,
+body.mn-article-page:not(.mn-kolam-page) #quarto-document-content > section > h2 {
+  margin: 2.25em 0 0.65em;
+  font-size: clamp(1.8rem, 3.2vw, 2.35rem);
+}
+
+body.mn-article-page:not(.mn-kolam-page) #quarto-document-content > h3 {
+  margin: 1.7em 0 0.55em;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+}
+
+/* Bring the two bespoke kolam layouts to the same density and typography. */
+body.mn-kolam-page {
+  --paper: var(--mn-canvas-final);
+  --paper-deep: var(--mn-surface-muted-final);
+  --paper-white: var(--mn-surface-final);
+  --ink: var(--mn-ink-final);
+  --ink-soft: var(--mn-body-final);
+  --terracotta: var(--mn-accent-final);
+  --terracotta-deep: var(--mn-article-ink);
+  --terracotta-pale: var(--mn-accent-wash-final);
+  --sage: var(--mn-accent-final);
+  --sage-pale: var(--mn-accent-wash-final);
+  --rule: var(--mn-rule-final);
+  --serif: var(--mn-serif-final);
+  --sans: var(--mn-sans-final);
+  background: var(--mn-canvas-final);
+  color: var(--mn-body-final);
+  font-family: var(--mn-serif-final);
+  font-size: inherit;
+  line-height: 1.68;
+}
+
+body.mn-kolam-page .hero {
+  min-height: 570px;
+  border-bottom: 0;
+}
+
+body.mn-kolam-page .hero::before {
+  background: radial-gradient(
+    ellipse 90% 82% at 24% 10%,
+    color-mix(in srgb, var(--mn-accent-wash-final) 58%, var(--mn-canvas-final)) 0%,
+    color-mix(in srgb, var(--mn-accent-wash-final) 18%, var(--mn-canvas-final)) 52%,
+    var(--mn-canvas-final) 88%
+  );
+}
+
+body.mn-kolam-page .hero-inner {
+  padding-block: 64px;
+}
+
+body.mn-kolam-page .hero h1 {
+  font-size: clamp(2.7rem, 5.25vw, 4.95rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+body.mn-kolam-page .standfirst {
+  margin-top: 1.35rem;
+  font-size: clamp(1.08rem, 1.8vw, 1.35rem);
+}
+
+body.mn-kolam-page .article-meta {
+  margin-top: 1.45rem;
+}
+
+body.mn-kolam-page .article-layout {
+  padding-block: 56px 82px;
+}
+
+body.mn-kolam-page .toc ol,
+body.mn-kolam-page .toc ul,
+body.mn-kolam-page .mobile-toc ol,
+body.mn-kolam-page .mobile-toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+body.mn-kolam-page .toc li::before,
+body.mn-kolam-page .mobile-toc li::before,
+body.mn-kolam-page .section-number {
+  display: none !important;
+  content: none !important;
+}
+
+body.mn-kolam-page .notes-section,
+body.mn-kolam-page .citation-section,
+body.mn-kolam-page .related-section {
+  border-top: 0;
+}
+
+/* KaTeX and centred, unboxed display mathematics. */
+body.mn-article-page .math.display,
+body.mn-article-page .katex-display {
+  max-width: 100%;
+  margin: 1.45em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  color: var(--mn-ink-final);
+  text-align: center;
+}
+
+body.mn-article-page .katex {
+  font-size: 1em;
+}
+
+body.mn-article-page .katex-display > .katex {
+  white-space: normal;
+}
+
+body.mn-article-page .math-block,
+body.mn-article-page .math-display,
+body.mn-article-page .display-formula,
+body.mn-article-page .mn-proof-equation,
+body.mn-article-page .mn-cosine-equation {
+  min-height: 0 !important;
+  margin: 1.45em 0 !important;
+  padding: 0.25em 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--mn-ink-final) !important;
+  font-family: var(--mn-math-final);
+  text-align: center;
+}
+
+body.mn-article-page .math-block > p,
+body.mn-article-page .math-block .math.display,
+body.mn-article-page .math-block .katex-display {
+  margin: 0 !important;
+}
+
+/* Direct embeds remain present on touch devices as well as desktop. */
+body.mn-kolam-page .sandbox-stage {
+  height: min(880px, 76vw);
+  min-height: 620px;
+}
+
+body.mn-kolam-page .sandbox-stage .mn-sandbox-iframe {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+  opacity: 1 !important;
+}
+
+body.mn-kolam-page .sandbox-stage .mn-sandbox-loading,
+body.mn-kolam-page .sandbox-mobile-poster {
+  display: none !important;
+}
+
+body.mn-kolam-page .sandbox-help {
+  display: block !important;
+}
+
+body.mn-article-page .mn-pythagoras-interactive,
+body.mn-article-page .mn-law-interactive {
+  width: min(1320px, calc(100vw - 32px));
+  margin-block: 1.8rem;
+}
+
+body.mn-article-page .mn-pythagoras-interactive iframe,
+body.mn-article-page .mn-law-interactive iframe {
+  border: 0;
+  border-radius: 7px;
+  background: var(--mn-surface-final);
+  box-shadow: 0 12px 34px rgba(41, 40, 38, 0.08);
+}
+
+body.mn-article-page .mn-pythagoras-interactive > p,
+body.mn-article-page .mn-law-interactive > p {
+  color: var(--mn-muted-final);
+  font: 600 0.72rem/1.4 var(--mn-sans-final);
+}
+
+/* Scholarly article information. */
+body.mn-article-page .mn-scholarly-metadata {
+  margin-top: 4.5em;
+}
+
+body.mn-kolam-page .mn-scholarly-metadata {
+  padding-top: 0;
+  border-top: 0;
+}
+
+body.mn-article-page .mn-scholarly-metadata > h2 {
+  margin-bottom: 0.85em;
+  font-size: clamp(1.8rem, 3.2vw, 2.35rem);
+}
+
+body.mn-article-page .mn-metadata-group + .mn-metadata-group {
+  margin-top: 1.85em;
+}
+
+body.mn-article-page .mn-metadata-group h3 {
+  margin: 0 0 0.7em;
+  color: var(--mn-muted-final);
+  font: 600 0.76rem/1.35 var(--mn-sans-final);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+body.mn-article-page .mn-keywords,
+body.mn-article-page .mn-citation-information > p {
+  margin-bottom: 0;
+  font-size: 0.95em;
+  line-height: 1.65;
+}
+
+body.mn-article-page .mn-msc-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 0.55em;
+  list-style: none;
+}
+
+body.mn-article-page .mn-msc-list li {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: 72px 56px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.65em;
+}
+
+body.mn-article-page .mn-msc-list li > span:first-child {
+  color: var(--mn-muted-final);
+  font: 600 0.7rem/1.35 var(--mn-sans-final);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+body.mn-article-page .mn-msc-list a {
+  color: var(--mn-article-ink);
+  font: 600 0.84rem/1.35 var(--mn-sans-final);
+}
+
+body.mn-article-page .mn-msc-list li > span:last-child {
+  font-size: 0.92em;
+}
+
+body.mn-article-page .mn-citation-information details {
+  margin-top: 0.85em;
+}
+
+body.mn-article-page .mn-citation-information summary {
+  width: fit-content;
+  color: var(--mn-muted-final);
+  cursor: pointer;
+  font: 600 0.76rem/1.4 var(--mn-sans-final);
+}
+
+body.mn-article-page .mn-citation-information pre {
+  max-width: 100%;
+  margin: 0.75em 0 0;
+  overflow-x: auto;
+  border: 0;
+  border-radius: 5px;
+  background: var(--mn-surface-muted-final);
+  color: var(--mn-ink-final);
+  font-size: 0.72rem;
+}
+
+/* Shared compact continuation cards. */
+body.mn-article-page .mn-related-section {
+  margin-top: 3.5rem;
+}
+
+body.mn-article-page .mn-related-section > h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.35rem);
+}
+
+body.mn-article-page .mn-related-routes {
+  display: grid;
+  margin-top: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+body.mn-article-page .mn-related-routes a {
+  display: block;
+  min-height: 112px;
+  padding: 16px 17px;
+  border: 0;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--mn-accent-wash-final) 48%, var(--mn-surface-final));
+  color: var(--mn-ink-final);
+  text-decoration: none;
+}
+
+body.mn-article-page .mn-related-routes strong,
+body.mn-article-page .mn-related-routes small {
+  display: block;
+}
+
+body.mn-article-page .mn-related-routes strong {
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+body.mn-article-page .mn-related-routes small {
+  margin-top: 0.45rem;
+  color: var(--mn-muted-final);
+  font: 0.75rem/1.45 var(--mn-sans-final);
+}
+
+/* Match the existing kolam continuation components to the shared pattern. */
+body.mn-kolam-page .related-routes {
+  gap: 10px;
+}
+
+body.mn-kolam-page .related-routes a {
+  min-height: 112px;
+  padding: 16px 17px;
+  border: 0;
+  background: color-mix(in srgb, var(--mn-accent-wash-final) 48%, var(--mn-surface-final));
+}
+
+body.mn-kolam-page .related-routes strong {
+  font-size: 0.98rem;
+}
+
+/* Compact article footer and quotation. */
+body.mn-article-page footer.footer {
+  margin-top: 2.75rem;
+  background: var(--mn-surface-muted-final);
+  color: var(--mn-body-final);
+}
+
+body.mn-article-page footer.footer .nav-footer {
+  min-height: 0;
+  padding-block: 0.8rem;
+  font-size: 0.72rem;
+}
+
+body.mn-article-page .mn-footer-quote {
+  display: block;
+  margin: 0;
+}
+
+body.mn-article-page footer.footer .nav-footer-center {
+  display: block;
+}
+
+body.mn-article-page .mn-footer-quote blockquote {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+body.mn-article-page .mn-footer-quote figcaption {
+  margin-top: 0.25rem;
+  font-size: 0.68rem;
+}
+
+/* Reader-selected dark mode, scoped to article pages for this release. */
+html[data-mn-theme="dark"] body.mn-article-page {
+  --mn-canvas-final: #211f1d;
+  --mn-surface-final: #2a2825;
+  --mn-surface-muted-final: #322f2c;
+  --mn-ink-final: #f0ece6;
+  --mn-body-final: #d2ccc4;
+  --mn-muted-final: #aaa39a;
+  --mn-rule-final: #403c37;
+  --mn-accent-wash-final: #373238;
+  --mn-article-ink: #f0ece6;
+  color-scheme: dark;
+}
+
+html[data-mn-theme="dark"] body.mn-article-page .navbar,
+html[data-mn-theme="dark"] body.mn-article-page footer.footer {
+  background: color-mix(in srgb, var(--mn-canvas-final) 95%, transparent) !important;
+}
+
+html[data-mn-theme="dark"] body.mn-article-page .mn-article-hero,
+html[data-mn-theme="dark"] body.mn-kolam-page .hero::before {
+  background: radial-gradient(
+    ellipse 86% 78% at 28% 8%,
+    color-mix(in srgb, var(--mn-accent-final) 10%, transparent) 0%,
+    color-mix(in srgb, var(--mn-accent-final) 4%, transparent) 48%,
+    transparent 82%
+  );
+}
+
+html[data-mn-theme="dark"] body.mn-article-page .mn-article-identity-tags span,
+html[data-mn-theme="dark"] body.mn-article-page .mn-article-topics span,
+html[data-mn-theme="dark"] body.mn-article-page code,
+html[data-mn-theme="dark"] body.mn-article-page pre,
+html[data-mn-theme="dark"] body.mn-article-page .quarto-category {
+  border-color: var(--mn-rule-final);
+  background: var(--mn-surface-muted-final);
+  color: var(--mn-ink-final);
+}
+
+html[data-mn-theme="dark"] body.mn-article-page .hero-grid img {
+  filter: brightness(0.82) saturate(0.84);
+}
+
+@media (max-width: 900px) {
+  body.mn-kolam-page .article-layout {
+    padding-top: 38px;
+  }
+
+  body.mn-kolam-page .sandbox-stage {
+    height: 900px;
+    min-height: 0;
+  }
+
+  body.mn-article-page .mn-pythagoras-interactive iframe {
+    height: 980px;
+  }
+
+  body.mn-article-page .mn-law-interactive iframe {
+    height: 1320px;
+  }
+}
+
+@media (max-width: 620px) {
+  body.mn-article-page:not(.mn-kolam-page) #quarto-document-content {
+    width: min(100% - 28px, 790px);
+  }
+
+  body.mn-article-page .mn-article-hero {
+    margin-bottom: 2.25rem;
+    padding-block: 2.2rem 2.5rem;
+  }
+
+  body.mn-article-page .mn-article-back {
+    margin-bottom: 1.6rem;
+  }
+
+  body.mn-article-page .mn-article-hero h1 {
+    font-size: clamp(2.15rem, 11vw, 3.1rem);
+  }
+
+  body.mn-kolam-page .hero {
+    min-height: auto;
+  }
+
+  body.mn-kolam-page .hero-inner {
+    width: min(100% - 28px, 620px);
+    padding: 42px 0 300px;
+  }
+
+  body.mn-kolam-page .hero h1 {
+    font-size: clamp(2.25rem, 12vw, 3.35rem);
+  }
+
+  body.mn-kolam-page .hero-grid {
+    top: auto;
+    bottom: 28px;
+    left: 50%;
+    width: min(238px, 70vw);
+    transform: translateX(-50%);
+  }
+
+  body.mn-kolam-page .article-layout {
+    width: min(100% - 28px, 760px);
+    padding-bottom: 54px;
+  }
+
+  body.mn-article-page .mn-msc-list li {
+    grid-template-columns: 64px 50px minmax(0, 1fr);
+    gap: 0.45em;
+  }
+
+  body.mn-article-page .mn-related-routes {
+    grid-template-columns: 1fr;
+  }
+
+  body.mn-kolam-page .sandbox-stage {
+    height: 820px;
+  }
+
+  .mn-reader-controls {
+    margin-inline: 2px;
+  }
+
+  .mn-reader-controls button {
+    width: 28px;
+    min-width: 28px;
+  }
+}

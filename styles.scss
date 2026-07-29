@@ -74,7 +74,7 @@ math {
   font-family: "Noto Serif Tamil", "STIX Two Text", serif;
 }
 
-/* Keep MathJax legible alongside STIX Two and usable on narrow screens. */
+/* Keep rendered mathematics legible and usable on narrow screens. */
 mjx-container {
   font-size: 1.04em;
 }
@@ -1450,6 +1450,125 @@ body.mn-about-page .mn-footer-quote {
 
   .mn-home-page .mn-hero-art {
     transform: none;
+  }
+}
+
+/* Final article listing: identity metadata above, topical metadata below. */
+.mn-final-article-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.mn-final-article-card {
+  display: flex;
+  min-height: 100%;
+  padding: clamp(1.15rem, 2.4vw, 1.65rem);
+  border: 1px solid var(--mn-line);
+  border-radius: 0.35rem;
+  flex-direction: column;
+  background: #fffdf8;
+}
+
+.mn-final-article-topline {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.mn-final-article-meta,
+.mn-final-article-identity,
+.mn-final-article-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.mn-final-article-meta {
+  padding-top: 0.32rem;
+  color: var(--mn-muted);
+  font-size: 0.69rem;
+}
+
+.mn-final-article-meta span + span::before {
+  margin-right: 0.35rem;
+  content: "·";
+}
+
+.mn-final-article-identity {
+  max-width: 62%;
+  justify-content: flex-end;
+}
+
+.mn-final-article-identity span,
+.mn-final-article-topics span {
+  display: inline-flex;
+  min-height: 1.7rem;
+  padding: 0.34rem 0.55rem;
+  border: 1px solid #ddd6de;
+  border-radius: 999px;
+  align-items: center;
+  background: #eee8ef;
+  color: #514d52;
+  font-size: 0.67rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.mn-final-article-image {
+  display: block;
+  margin: 0 0 1rem;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  aspect-ratio: 16 / 8;
+}
+
+.mn-final-article-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mn-final-article-card h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  line-height: 1.12;
+}
+
+.mn-final-article-card h2 a {
+  color: var(--mn-ink);
+  text-decoration: none;
+}
+
+.mn-final-article-card > p {
+  margin: 0.75rem 0 0;
+  color: var(--mn-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.mn-final-article-topics {
+  margin-top: auto;
+  padding-top: 1.05rem;
+}
+
+.mn-final-article-topics span {
+  border-color: var(--mn-line);
+  background: transparent;
+  color: var(--mn-muted);
+  font-weight: 500;
+}
+
+@media (max-width: 680px) {
+  .mn-final-article-list {
+    grid-template-columns: 1fr;
+  }
+
+  .mn-final-article-card {
+    padding: 1rem;
   }
 }
 

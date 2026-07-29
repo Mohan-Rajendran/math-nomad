@@ -3,12 +3,23 @@ title: "A clear, specific title"
 description: "One sentence used on listing cards and in search results."
 date: YYYY-MM-DD
 author: "Mohan Rajendran"
-categories: [Everyone, Exposition, Topic]
-audience: [everyone]
+categories: [Topic]
+topics: [Topic]
+audience: [General]
+article-type: Exposition
 kind: exposition
+keywords: [keyword one, keyword two]
+msc:
+  - code: 00A00
+    role: Primary
+    label: Replace with a verified MSC2020 classification
+citation-key: rajendranYYYYshorttitle
 featured: false
 draft: true
 toc: true
+body-classes: mn-article-page
+css:
+  - ../article-final.css
 ---
 
 Begin with the question, object or phenomenon that gives the reader a reason to continue.
@@ -23,8 +34,8 @@ Give the reader a meaningful point of entry before resolving the whole argument.
 
 ## Where to continue
 
-Link to relevant interactives, course pathways, projects, videos, papers or further reading.
+Use compact related-entry cards with a type-and-title line and a brief description. Do not use a plain bulleted link list.
 
-## Citation
+## Article information
 
-Add a citation block when the piece is ready for publication. Remove `draft: true` only after checking every link, image description, mathematical expression and source.
+Add visible keywords, verified primary and secondary MSC2020 classifications, a preferred citation, and a BibLaTeX record. Remove `draft: true` only after checking every link, image description, KaTeX expression, source, canonical URL, and machine-readable record.

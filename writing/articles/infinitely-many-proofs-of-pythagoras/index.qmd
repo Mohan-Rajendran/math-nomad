@@ -4,18 +4,90 @@ subtitle: "Two tilings of the plane turn one familiar area identity into a conti
 description: "An interactive common-lattice proof of Pythagoras’ theorem, with historical anchor positions from a medieval dissection to Perigal and beyond."
 date: 2026-07-21
 author: "Mohan Rajendran"
-categories: [Everyone, Exposition, Geometry, Tessellations, Interactive]
-audience: [everyone]
+categories: [Geometry, Tessellations, Interactive]
+keywords:
+  - Pythagorean theorem
+  - periodic tilings
+  - common lattices
+  - geometric dissections
+  - translational equidecomposability
+  - Perigal dissection
+  - right triangles
+  - lattice translations
+  - phase torus
+  - interactive geometry
+topics: [Geometry, Tessellations, Interactive]
+audience: [General]
+article-type: Exposition
 kind: exposition
+msc:
+  - code: 52C20
+    role: Primary
+    label: Tilings in two dimensions
+  - code: 51M04
+    role: Secondary
+    label: Elementary problems in Euclidean geometries
+  - code: 52B45
+    role: Secondary
+    label: Dissections and valuations
+citation-key: rajendran2026pythagorasproofs
+reading-time-label: 10 min read
 featured: true
 draft: false
 page-layout: full
 toc: true
 toc-depth: 2
-css: pythagorean-proofs-article.css
+body-classes: mn-article-page mn-article-pythagoras
+mn-custom-title: true
+css:
+  - pythagorean-proofs-article.css
+  - ../article-final.css
+header-includes:
+  - |
+    <link rel="canonical" href="https://mathnomad.in/writing/articles/infinitely-many-proofs-of-pythagoras/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-07-21">
+    <meta name="citation_author" content="Mohan Rajendran">
+    <meta name="citation_title" content="Infinitely many ‘proofs’ of Pythagoras’ theorem">
+    <meta name="citation_publication_date" content="2026-07-21">
+    <meta name="citation_journal_title" content="Math Nomad">
+    <meta name="citation_public_url" content="https://mathnomad.in/writing/articles/infinitely-many-proofs-of-pythagoras/">
+    <meta name="citation_msc" content="52C20; 51M04; 52B45">
+    <meta name="DC.Subject" content="52C20, 51M04, 52B45">
 resources:
   - pythagorean-proofs-article.css
 ---
+
+```{=html}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Infinitely many ‘proofs’ of Pythagoras’ theorem",
+  "description": "An interactive common-lattice proof of Pythagoras’ theorem, with historical anchor positions from a medieval dissection to Perigal and beyond.",
+  "author": { "@type": "Person", "name": "Mohan Rajendran" },
+  "datePublished": "2026-07-21",
+  "articleSection": ["General", "Exposition"],
+  "keywords": ["Pythagorean theorem", "Periodic tilings", "Common lattices", "Geometric dissections", "Translational equidecomposability", "Perigal dissection", "Right triangles", "Lattice translations", "Phase torus", "Interactive geometry"],
+  "about": [
+    { "@type": "DefinedTerm", "termCode": "52C20", "name": "Tilings in two dimensions", "inDefinedTermSet": "MSC2020" },
+    { "@type": "DefinedTerm", "termCode": "51M04", "name": "Elementary problems in Euclidean geometries", "inDefinedTermSet": "MSC2020" },
+    { "@type": "DefinedTerm", "termCode": "52B45", "name": "Dissections and valuations", "inDefinedTermSet": "MSC2020" }
+  ],
+  "mainEntityOfPage": "https://mathnomad.in/writing/articles/infinitely-many-proofs-of-pythagoras/"
+}
+</script>
+<header class="mn-article-hero">
+  <a class="mn-article-back" href="/writing/">← All articles</a>
+  <div class="mn-article-identity-tags" aria-label="Audience and article type">
+    <span>General</span><span>Exposition</span>
+  </div>
+  <h1>Infinitely many ‘proofs’ of Pythagoras’ theorem</h1>
+  <p class="mn-article-standfirst">Two tilings of the plane turn one familiar area identity into a continuously moving family of dissections.</p>
+  <div class="mn-article-byline"><span>By Mohan Rajendran</span><span>21 July 2026</span><span>10 min read</span></div>
+  <div class="mn-article-topics" aria-label="Article topics"><span>Geometry</span><span>Tessellations</span><span>Interactive</span></div>
+</header>
+```
 
 Most pictures of Pythagoras’ theorem are frozen. A right triangle sits in the middle; three squares wait around it; auxiliary lines are drawn; and the reader is expected to see that
 
@@ -274,8 +346,44 @@ The two leg-squares and the hypotenuse-square are made from the same pieces, and
 - Roger B. Nelsen, [“Paintings, Plane Tilings, & Proofs”](https://doi.org/10.1080/10724117.2003.12021741), *Math Horizons* 11.1 (2003), 4–8.
 - Gülru Necipoğlu, ed., [*The Arts of Ornamental Geometry*](https://books.google.com/books/about/The_Arts_of_Ornamental_Geometry.html?id=8yMzDwAAQBAJ) (2017), for the Persian manuscript tradition.
 
-## Where to continue
+```{=html}
+<section class="mn-scholarly-metadata" aria-labelledby="article-information-heading">
+  <h2 id="article-information-heading">Article information</h2>
+  <div class="mn-metadata-group">
+    <h3>Keywords</h3>
+    <p class="mn-keywords">Pythagorean theorem · periodic tilings · common lattices · geometric dissections · translational equidecomposability · Perigal dissection · right triangles · lattice translations · phase torus · interactive geometry</p>
+  </div>
+  <div class="mn-metadata-group">
+    <h3>Mathematics Subject Classification (2020)</h3>
+    <ul class="mn-msc-list">
+      <li><span>Primary</span><a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html?t=52C20">52C20</a><span>Tilings in two dimensions</span></li>
+      <li><span>Secondary</span><a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html?t=51M04">51M04</a><span>Elementary problems in Euclidean geometries</span></li>
+      <li><span>Secondary</span><a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html?t=52B45">52B45</a><span>Dissections and valuations</span></li>
+    </ul>
+  </div>
+  <div class="mn-metadata-group mn-citation-information">
+    <h3>Cite this article</h3>
+    <p>Rajendran, Mohan. “Infinitely many ‘proofs’ of Pythagoras’ theorem.” <i>Math Nomad</i>, 21 July 2026, <a href="https://mathnomad.in/writing/articles/infinitely-many-proofs-of-pythagoras/">https://mathnomad.in/writing/articles/infinitely-many-proofs-of-pythagoras/</a>.</p>
+    <details>
+      <summary>BibLaTeX</summary>
+      <pre><code>@online{rajendran2026pythagorasproofs,
+  author       = {Rajendran, Mohan},
+  title        = {Infinitely many ‘proofs’ of Pythagoras’ theorem},
+  date         = {2026-07-21},
+  organization = {Math Nomad},
+  url          = {https://mathnomad.in/writing/articles/infinitely-many-proofs-of-pythagoras/},
+  langid       = {british}
+}</code></pre>
+    </details>
+  </div>
+</section>
 
-- [Open the full Pythagorean tiling interactive](https://lab.mathnomad.in/pythagorean-tiling-proofs/).
-- Explore [The Law of Cosines](../law-of-cosines/index.qmd), where the right-angle slice opens into acute and obtuse triangles.
-- Visit the [Tessellations project](../../../projects/entries/tessellations/index.qmd) for the growing collection.
+<section class="mn-related-section" aria-labelledby="pythagoras-continue-heading">
+  <h2 id="pythagoras-continue-heading">Where to continue</h2>
+  <div class="mn-related-routes">
+    <a href="https://lab.mathnomad.in/pythagorean-tiling-proofs/"><strong>Interactive · Open the Pythagorean tiling proof</strong><small>Explore the complete moving construction in the Lab.</small></a>
+    <a href="../law-of-cosines/"><strong>Companion article · The Law of Cosines</strong><small>Follow the right-angle slice into acute and obtuse triangles.</small></a>
+    <a href="../../../projects/entries/tessellations/"><strong>Project · Follow Tessellations</strong><small>Find the growing collection of related investigations.</small></a>
+  </div>
+</section>
+```
