@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, Moon, Search, Settings2, Sun, Type, X } from "lucide-react";
 import { FaGithub, FaYoutube } from "react-icons/fa";
@@ -462,6 +463,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="site-header">
         <div className="page-shell site-header-inner">
           <Link className="site-brand" href="/" aria-label="Math Nomad home">
+            <Image
+              src="/mathnomad-logo.png"
+              alt=""
+              aria-hidden="true"
+              width={36}
+              height={36}
+              priority
+            />
             <span>Math Nomad</span>
           </Link>
 
