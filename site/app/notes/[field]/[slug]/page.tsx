@@ -63,7 +63,7 @@ export default async function NoteDetailPage({
           <Link className="button button-primary" href={labInteractiveHref("kolam-tiles", "square-kolam-tile-challenge")}>
             <FlaskConical size={16} /> Launch the board
           </Link>
-          <Link className="button button-secondary" href="/articles/binary-kolam-tiles">
+          <Link className="button button-secondary" href="/articles/kolams-on-a-square">
             Read the exposition <ArrowUpRight size={15} />
           </Link>
         </aside>

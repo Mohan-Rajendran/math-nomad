@@ -1052,10 +1052,6 @@ html[data-theme="dark"] body { background: #211f1d; }
   }
 }
 
-@media (max-width: 360px) {
-  .site-brand span { display: none; }
-}
-
 /* Current public catalogue inside the local redesign */
 .status-active-now { background: var(--accent-soft); color: var(--accent-hover); }
 .status-available { background: var(--surface-muted); color: var(--body); }
@@ -1743,6 +1739,33 @@ html[data-theme="dark"] body { background: #211f1d; }
 }
 .article-prose .tag-row .article-figure img { background: transparent; }
 .article-prose .tag-row .article-figure figcaption { padding-top: 7px; }
+.article-prose .kolam-shape-row {
+  display: grid;
+  gap: clamp(3px, 1vw, 10px);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin: 30px 0;
+}
+.article-prose .kolam-shape-card {
+  background: color-mix(in srgb, var(--article-wash) 36%, var(--surface));
+  border-radius: 7px;
+  margin: 0;
+  min-width: 0;
+  padding: clamp(3px, 1vw, 10px);
+}
+.article-prose .kolam-shape-card img {
+  aspect-ratio: 1;
+  background: transparent;
+  height: auto;
+  object-fit: contain;
+  width: 100%;
+}
+.article-prose .kolam-shape-card figcaption {
+  font-size: clamp(.5rem, 1.3vw, .72rem);
+  line-height: 1.2;
+  padding-top: clamp(3px, .5vw, 7px);
+  text-align: center;
+  white-space: nowrap;
+}
 .article-prose .definition,
 .article-prose .exercise {
   background: var(--surface-muted);
@@ -1851,7 +1874,8 @@ html[data-theme="dark"] body { background: #211f1d; }
   background: color-mix(in srgb, var(--article-accent) 10%, var(--surface));
 }
 .site-shell[data-theme="dark"] .article-prose .article-figure img,
-.site-shell[data-theme="dark"] .article-prose .tag-row .article-figure {
+.site-shell[data-theme="dark"] .article-prose .tag-row .article-figure,
+.site-shell[data-theme="dark"] .article-prose .kolam-shape-card {
   background: color-mix(in srgb, var(--article-accent) 8%, var(--surface));
 }
 
@@ -1869,6 +1893,7 @@ html[data-theme="dark"] body { background: #211f1d; }
 @media (max-width: 620px) {
   .article-layout.is-complete-article .article-contents ol { grid-template-columns: 1fr; }
   .article-prose .tag-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .article-prose .kolam-shape-card { padding: 3px 2px; }
   .article-prose .definition,
   .article-prose .exercise,
   .article-prose .related-callout { padding: 18px; }

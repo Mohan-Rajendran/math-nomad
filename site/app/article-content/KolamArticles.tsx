@@ -101,7 +101,7 @@ export function BinaryKolamArticleBody() {
           to rotation, this gives six shapes. Once orientation is fixed, they yield
           sixteen distinct tiles.
         </p>
-        <div className="tag-row" aria-label="Six kolam shapes and their orientation counts">
+        <div className="kolam-shape-row" aria-label="Six kolam shapes and their orientation counts">
           {[
             ["tile-type-0000-m1.webp", "Closed-loop kolam tile", "1 tile"],
             ["tile-type-0001-m4.webp", "One-sided kolam tile", "4 tiles"],
@@ -110,7 +110,7 @@ export function BinaryKolamArticleBody() {
             ["tile-type-0111-m4.webp", "Three-sided kolam tile", "4 tiles"],
             ["tile-type-1111-m1.webp", "Four-sided kolam tile", "1 tile"],
           ].map(([src, alt, count]) => (
-            <figure className="article-figure" key={src}>
+            <figure className="article-figure kolam-shape-card" key={src}>
               <img src={`${BINARY_MEDIA}/${src}`} width="280" height="280" loading="lazy" alt={alt} />
               <figcaption>{count}</figcaption>
             </figure>
@@ -590,7 +590,7 @@ export function OctahedronArticleBody() {
         title="From a square board to a closed surface"
       >
         <p>
-          In <Link href="/articles/binary-kolam-tiles"><em>From Sixteen Tiles to Fifty-One Kolams</em></Link>,
+          In <Link href="/articles/kolams-on-a-square"><em>From Sixteen Tiles to Fifty-One Kolams</em></Link>,
           we placed sixteen square tiles inside a square boundary. Every tile
           carried four bits, neighbouring bits had to agree, and a
           computer-assisted enumeration reduced the valid boards to 51 symmetry
@@ -1035,7 +1035,7 @@ export function OctahedronArticleBody() {
             <a href="https://doi.org/10.1080/17513472.2024.2423568">“Symmetry Classification and Enumeration of Square-Tile Sikku Kolams”</a>, {" "}
             <i>Journal of Mathematics and the Arts</i> 18(3–4), 2024, pp.
             244–257, and the companion Math Nomad article {" "}
-            <Link href="/articles/binary-kolam-tiles">“From Sixteen Tiles to Fifty-One Kolams”</Link>.
+            <Link href="/articles/kolams-on-a-square">“From Sixteen Tiles to Fifty-One Kolams”</Link>.
           </li>
           <li>
             For classical background on regular polyhedra, duality, and symmetry
@@ -1057,7 +1057,7 @@ export function OctahedronArticleBody() {
         title="Take the next route"
         items={[
           {
-            href: "/articles/binary-kolam-tiles",
+            href: "/articles/kolams-on-a-square",
             title: "Companion article · From Sixteen Tiles to Fifty-One Kolams",
             description: "See how exhaustive computation solves the square-tile problem.",
           },

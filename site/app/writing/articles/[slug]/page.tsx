@@ -9,7 +9,7 @@ import { isCombinedSite, journalHref } from "../../../site-mode";
 
 export function generateStaticParams() {
   return articles.map((article) => ({
-    slug: article.slug.split("/").filter(Boolean).at(-1)!,
+    slug: article.key,
   }));
 }
 

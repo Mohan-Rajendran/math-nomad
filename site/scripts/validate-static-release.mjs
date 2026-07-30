@@ -25,11 +25,11 @@ const SITE_VARIANTS = {
 
 const ARTICLES = [
   {
-    slug: "infinitely-many-proofs-of-pythagoras",
+    slug: "law-of-cosines",
     published: "2026-07-21",
     citationDate: "2026-07-21",
     displayDate: "21 July 2026",
-    clientMarker: "Two tilings of the plane",
+    clientMarker: "Triangles up to similarity",
   },
   {
     slug: "kolams-on-an-octahedron",
@@ -40,14 +40,14 @@ const ARTICLES = [
     clientMarker: "Choose one of the three kolams",
   },
   {
-    slug: "law-of-cosines",
+    slug: "infinitely-many-proofs-of-pythagoras",
     published: "2026-07-20",
     citationDate: "2026-07-20",
     displayDate: "20 July 2026",
-    clientMarker: "Triangles up to similarity",
+    clientMarker: "Two tilings of the plane",
   },
   {
-    slug: "binary-kolam-tiles",
+    slug: "kolams-on-a-square",
     published: "2026-07-17T14:45:00+05:30",
     modified: "2026-07-17T18:40:00+05:30",
     citationDate: "2026-07-17",
@@ -105,6 +105,17 @@ const MAIN_HTML_ROUTES = [
   "/projects/",
   "/projects/tessellations/",
   "/projects/kolam-tiles/",
+];
+
+const MAIN_REDIRECT_ROUTES = [
+  {
+    route: "/articles/binary-kolam-tiles/",
+    destination: "/articles/kolams-on-a-square/",
+  },
+  {
+    route: "/writing/articles/binary-kolam-tiles/",
+    destination: "/articles/kolams-on-a-square/",
+  },
 ];
 
 const LAB_HTML_ROUTES = [
@@ -566,6 +577,15 @@ function exactSetDifference(actual, expected) {
   };
 }
 
+function markersAppearInOrder(source, markers) {
+  let cursor = -1;
+  for (const marker of markers) {
+    cursor = source.indexOf(marker, cursor + 1);
+    if (cursor < 0) return false;
+  }
+  return true;
+}
+
 const { variant, outputDirectory } = parseArguments(process.argv.slice(2));
 const site = SITE_VARIANTS[variant];
 const issues = [];
@@ -826,6 +846,53 @@ for (const route of expectedRoutes) {
       `Render the site shell using ${site.repository}.`,
     );
   }
+
+  const hasHeaderLogo = tagsNamed(page.html, "img").some(
+    ({ attributes }) =>
+      (attributes.get("src") || "").split(/[?#]/, 1)[0] ===
+      "/mathnomad-logo.png",
+  );
+  if (!hasHeaderLogo || !visibleText(page.html).includes("Math Nomad")) {
+    report(
+      route,
+      "The shared header is missing the Math Nomad logo-and-wordmark pair.",
+      "Render /mathnomad-logo.png immediately before the Math Nomad wordmark in the site brand link.",
+    );
+  }
+}
+
+if (variant === "main") {
+  for (const { route, destination } of MAIN_REDIRECT_ROUTES) {
+    const routeFile = await findRouteFile(outputDirectory, route);
+    if (!routeFile) {
+      report(
+        route,
+        "Required historical article redirect is missing.",
+        `Export a noindex redirect from ${route} to ${destination}.`,
+      );
+      continue;
+    }
+    const html = await readFile(routeFile, "utf8");
+    const expected = expectedCanonical(site.hostname, destination);
+    const destinationLinked = anchorHrefs(html).some((href) => {
+      const internal = internalReference(href, route, site.hostname);
+      return internal?.pathname === destination;
+    });
+    const robots = metaValues(html, "name", "robots");
+    if (
+      !isRedirectDocument(html) ||
+      canonicalValues(html).length !== 1 ||
+      canonicalValues(html)[0] !== expected ||
+      !destinationLinked ||
+      !robots.some((value) => /noindex/i.test(value) && /follow/i.test(value))
+    ) {
+      report(
+        route,
+        `Historical route does not fully redirect to ${destination} with canonical and noindex, follow metadata.`,
+        "Use the shared StaticRedirect page and staticRedirectMetadata helper.",
+      );
+    }
+  }
 }
 
 async function referencedClientSource(route, html) {
@@ -921,7 +988,11 @@ if (variant === "main") {
         path.join(outputDirectory, "articles", entry.name, "index.html"),
       ))
     ) {
-      renderedArticleSlugs.push(entry.name);
+      const articleHtml = await readFile(
+        path.join(outputDirectory, "articles", entry.name, "index.html"),
+        "utf8",
+      );
+      if (!isRedirectDocument(articleHtml)) renderedArticleSlugs.push(entry.name);
     }
   }
   const expectedArticleSlugs = ARTICLES.map(({ slug }) => slug);
@@ -934,6 +1005,38 @@ if (variant === "main") {
       "/articles/",
       `Expected exactly four article routes. Missing: ${articleDifference.missing.join(", ") || "none"}; unexpected: ${articleDifference.unexpected.join(", ") || "none"}.`,
       "Regenerate the article routes from the frozen four-entry publication registry.",
+    );
+  }
+
+  const expectedArticleTitles = [
+    "The Law of Cosines",
+    "Kolams on Octahedron",
+    "Infinitely many ‘proofs’ of Pythagoras’ theorem",
+    "From Sixteen Tiles to Fifty-One Kolams",
+  ];
+  const articlesIndex = requiredHtml.get("/articles/");
+  if (
+    articlesIndex &&
+    !markersAppearInOrder(visibleText(articlesIndex.html), expectedArticleTitles)
+  ) {
+    report(
+      "/articles/",
+      "Articles are not rendered in the approved newest-first order.",
+      "Use the publication-sorted article registry for the Recent first view.",
+    );
+  }
+  const homepage = requiredHtml.get("/");
+  if (
+    homepage &&
+    !markersAppearInOrder(
+      visibleText(homepage.html),
+      expectedArticleTitles.slice(0, 3),
+    )
+  ) {
+    report(
+      "/",
+      "The recently published article cards are not in the approved newest-first order.",
+      "Use the publication-sorted article registry on the homepage.",
     );
   }
 
@@ -1061,6 +1164,25 @@ if (variant === "main") {
         "Ensure the interactive remains a hydrated client component in the native Next build.",
       );
     }
+
+    if (
+      article.slug === "kolams-on-a-square" &&
+      (!page.html.includes("kolam-shape-row") ||
+        [
+          "tile-type-0000-m1.webp",
+          "tile-type-0001-m4.webp",
+          "tile-type-0011-m4.webp",
+          "tile-type-0101-m2.webp",
+          "tile-type-0111-m4.webp",
+          "tile-type-1111-m1.webp",
+        ].some((asset) => !page.html.includes(asset)))
+    ) {
+      report(
+        route,
+        "The one-row catalogue of all six kolam shape families is incomplete.",
+        "Render all six shape images inside the dedicated kolam-shape-row grid.",
+      );
+    }
   }
 
   const feedPath = path.join(outputDirectory, "feed.xml");
@@ -1074,6 +1196,29 @@ if (variant === "main") {
         "feed.xml",
         `Expected exactly four RSS article items; found ${items.length}.`,
         "Generate the feed from the same frozen four-entry article registry as the Articles page.",
+      );
+    }
+
+    const feedPaths = items.map((item) => {
+      const link = item.match(/<link\b[^>]*>([\s\S]*?)<\/link>/i)?.[1];
+      if (!link) return "";
+      try {
+        return new URL(decodeHtml(link.trim())).pathname.replace(/\/+$/, "");
+      } catch {
+        return "";
+      }
+    });
+    const expectedFeedPaths = ARTICLES.map(
+      ({ slug }) => `/articles/${slug}`,
+    );
+    if (
+      feedPaths.length !== expectedFeedPaths.length ||
+      feedPaths.some((feedPath, index) => feedPath !== expectedFeedPaths[index])
+    ) {
+      report(
+        "feed.xml",
+        `RSS items are not in approved newest-first order: ${JSON.stringify(feedPaths)}.`,
+        `Generate the feed from the sorted article registry: ${JSON.stringify(expectedFeedPaths)}.`,
       );
     }
 

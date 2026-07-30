@@ -181,7 +181,7 @@ const accents = {
   plum: { color: "#8C6B73", wash: "#EEE5E8", ink: "#49353B" },
 } as const satisfies Record<string, VisualAccent>;
 
-export const articles: Article[] = [
+const articleCatalogue: Article[] = [
   {
     id: "A01",
     key: "infinitely-many-proofs-of-pythagoras",
@@ -192,9 +192,9 @@ export const articles: Article[] = [
     title: "Infinitely many ‘proofs’ of Pythagoras’ theorem",
     subtitle:
       "Two tilings of the plane turn one familiar area identity into a continuously moving family of dissections.",
-    published: "2026-07-21",
-    displayDate: "21 July 2026",
-    date: "21 July 2026",
+    published: "2026-07-20",
+    displayDate: "20 July 2026",
+    date: "20 July 2026",
     glimpse:
       "An interactive common-lattice proof of Pythagoras’ theorem, with historical anchor positions from a medieval dissection to Perigal and beyond.",
     tags: ["Geometry", "Tessellations", "Interactive"],
@@ -386,9 +386,9 @@ export const articles: Article[] = [
     title: "The Law of Cosines",
     subtitle:
       "A moving tessellation turns Pythagoras into the cosine rule, with overlaps for acute triangles and gaps for obtuse ones.",
-    published: "2026-07-20",
-    displayDate: "20 July 2026",
-    date: "20 July 2026",
+    published: "2026-07-21",
+    displayDate: "21 July 2026",
+    date: "21 July 2026",
     glimpse:
       "An interactive tessellation proof of the law of cosines, organised over the two-dimensional moduli space of triangle shapes.",
     tags: ["Geometry", "Tessellations", "Interactive"],
@@ -473,8 +473,8 @@ export const articles: Article[] = [
     id: "A04",
     key: "binary-kolam-tiles",
     articleType: "Exposition",
-    slug: "/articles/binary-kolam-tiles",
-    sourceHref: "https://mathnomad.in/articles/binary-kolam-tiles",
+    slug: "/articles/kolams-on-a-square",
+    sourceHref: "https://mathnomad.in/articles/kolams-on-a-square/",
     title: "From Sixteen Tiles to Fifty-One Kolams",
     subtitle:
       "How a puzzle based on kolam tiles meets graph theory, Boolean satisfiability, and the mathematics of symmetry.",
@@ -588,6 +588,20 @@ export const articles: Article[] = [
   },
 ];
 
+const articleSameDateOrder: Record<string, number> = {
+  "law-of-cosines": 0,
+  "kolams-on-an-octahedron": 1,
+  "infinitely-many-proofs-of-pythagoras": 2,
+  "binary-kolam-tiles": 3,
+};
+
+export const articles: Article[] = [...articleCatalogue].sort(
+  (first, second) =>
+    second.published.slice(0, 10).localeCompare(first.published.slice(0, 10)) ||
+    (articleSameDateOrder[first.key] ?? Number.MAX_SAFE_INTEGER) -
+      (articleSameDateOrder[second.key] ?? Number.MAX_SAFE_INTEGER),
+);
+
 export const noteFields: readonly NoteField[] = ["Combinatorics"];
 
 export const notes: Note[] = [
@@ -597,7 +611,7 @@ export const notes: Note[] = [
     sourceHref:
       "https://mathnomad.in/notes/combinatorics/sixteen-tiles-one-kolam-puzzle",
     interactiveHref: "https://lab.mathnomad.in/square-kolam-tile-challenge/",
-    articleHref: "https://mathnomad.in/writing/articles/binary-kolam-tiles/",
+    articleHref: "https://mathnomad.in/articles/kolams-on-a-square/",
     title: "Sixteen Tiles, One Kolam Puzzle",
     field: "Combinatorics",
     kind: "Course resource",
@@ -700,15 +714,15 @@ export const projects: Project[] = [
     relatedWriting: [
       {
         type: "Article",
-        title: "Infinitely many ‘proofs’ of Pythagoras’ theorem",
-        meta: "21 July 2026 · 10 min",
-        href: "/articles/infinitely-many-proofs-of-pythagoras",
+        title: "The Law of Cosines",
+        meta: "21 July 2026 · 5 min",
+        href: "/articles/law-of-cosines",
       },
       {
         type: "Article",
-        title: "The Law of Cosines",
-        meta: "20 July 2026 · 5 min",
-        href: "/articles/law-of-cosines",
+        title: "Infinitely many ‘proofs’ of Pythagoras’ theorem",
+        meta: "20 July 2026 · 10 min",
+        href: "/articles/infinitely-many-proofs-of-pythagoras",
       },
     ],
     methodology:
@@ -763,7 +777,7 @@ export const projects: Project[] = [
         topics: ["Kolams", "Edge matching", "Connectivity"],
         maturity: "Beta",
         lastTested: "2026-07-29",
-        relatedArticle: "/articles/binary-kolam-tiles",
+        relatedArticle: "/articles/kolams-on-a-square",
         status: "Available",
         artLabel: "Sixteen binary kolam tiles beside a four by four board",
       },
@@ -829,7 +843,7 @@ export const projects: Project[] = [
         type: "Article",
         title: "From Sixteen Tiles to Fifty-One Kolams",
         meta: "17 July 2026 · 19 min",
-        href: "/articles/binary-kolam-tiles",
+        href: "/articles/kolams-on-a-square",
       },
       {
         type: "Article",
