@@ -12,6 +12,7 @@ import { ArticleContinuation } from "./ArticleContinuation";
 
 const BINARY_MEDIA = "/articles/binary-kolam-tiles";
 const OCTAHEDRON_MEDIA = "/articles/kolams-on-an-octahedron";
+const BURNSIDE_REFERENCE = "https://en.wikipedia.org/wiki/Burnside%27s_lemma";
 
 function ArticleSection({
   id,
@@ -83,9 +84,7 @@ export function BinaryKolamArticleBody() {
           Mathematics is only one way of seeing kōlam. The practice also carries
           aesthetic, social, ritual, ecological, and personal meanings. We will
           study one deliberately simplified square-tile model of a sikku kōlam,
-          not a classification of the living tradition. The model keeps a small
-          local grammar visible, turns every rule into an exact condition, and
-          leads to a surprising count.
+          not a classification of the living tradition.
         </p>
       </ArticleSection>
 
@@ -140,18 +139,16 @@ export function BinaryKolamArticleBody() {
             <Math tex="\mathtt{1111}" /> in east–north–west–south order.
           </figcaption>
         </figure>
-        <aside className="exercise">
+        <aside className="exercise article-challenge">
           <span>The challenge</span>
-          <h3>Can all sixteen tiles make one kolam on a <Math tex="4\times4" /> board?</h3>
+          <h3>Arrange all sixteen tiles on a <Math tex="4\times4" /> board.</h3>
           <p>
-            Use every tile exactly once. Curves must agree across shared sides and
-            may not run out through the outer boundary.
+            Use every tile exactly once. Curves must agree across shared sides,
+            and no curve may cross the outer boundary.
           </p>
           <p>
-            The tile <Math tex="\mathtt{0000}" /> can never connect to a neighbouring cell, so
-            a one-component board is impossible. We ask instead that it form the
-            one compulsory isolated component and that the other fifteen tiles
-            form a single connected component.
+            Because <Math tex="\mathtt{0000}" /> is necessarily isolated, require
+            the remaining fifteen tiles to form a single connected component.
           </p>
         </aside>
       </ArticleSection>
@@ -200,16 +197,19 @@ export function BinaryKolamArticleBody() {
       </ArticleSection>
 
       <ArticleSection id="bits" label="03" title="A precise model of the board">
-        <p>We now give names to the board, the tile inventory, and the act of placing a tile. Let</p>
-        <p><Math tex="V=\{(x,y):x,y\in\{0,1,2,3\}\}" />.</p>
         <p>
-          be the sixteen cells, with <Math tex="x" /> increasing eastwards and <Math tex="y" /> {" "}
-          increasing southwards. Let <Math tex="T=\{0,1\}^4" /> be the set of
-          sixteen <Math tex="\mathrm{ENWS}" /> words. For <Math tex="t\in T" />, write <Math tex="t_E" />, <Math tex="t_N" />,
-          <Math tex="t_W" />, <Math tex="t_S" /> for its four bits. A placement is a function
+          We now give names to the board, the tile inventory, and the act of
+          placing a tile. Let <Math tex="V=\{(x,y):x,y\in\{0,1,2,3\}\}" /> be the
+          sixteen cells, with <Math tex="x" /> increasing eastwards and <Math tex="y" /> {" "}
+          increasing southwards.
         </p>
-        <p><Math tex="f:V\to T" />,</p>
-        <p>where <Math tex="f(x,y)" /> is the globally oriented tile placed in cell <Math tex="(x,y)" />.</p>
+        <p>
+          Let <Math tex="T=\{0,1\}^4" /> be the set of
+          sixteen <Math tex="\mathrm{ENWS}" /> words. For <Math tex="t\in T" />, write <Math tex="t_E" />, <Math tex="t_N" />,
+          <Math tex="t_W" />, <Math tex="t_S" /> for its four bits. A placement is
+          a function <Math tex="f:V\to T" />, where <Math tex="f(x,y)" /> is the
+          globally oriented tile placed in cell <Math tex="(x,y)" />.
+        </p>
         <p>A successful board satisfies five precise conditions.</p>
         <ol>
           <li><strong>Exact inventory.</strong> The map <Math tex="f" /> is a bijection: every cell receives one tile and every word in <Math tex="T" /> occurs exactly once.</li>
@@ -258,12 +258,12 @@ export function BinaryKolamArticleBody() {
 
       <ArticleSection id="sat" label="04" title="From a puzzle to satisfiability">
         <p>
-          A completely unrestricted placement has <Math tex="16!=20{,}922{,}789{,}888{,}000" />
+          A completely unrestricted placement has <Math tex="16!=20{,}922{,}789{,}888{,}000" />{" "}
           possibilities. Every condition can be encoded using Boolean variables,
           while the local rules give us an efficient way to prune the search. For
           each cell <Math tex="v" /> and tile <Math tex="t" />, introduce a variable
         </p>
-        <p><Math tex="X_{v,t}=1\iff\text{tile }t\text{ occupies cell }v" />.</p>
+        <Math display tex="X_{v,t}=1\iff\text{tile }t\text{ occupies cell }v" />
         <p>
           There are <Math tex="16\times16=256" /> such variables. The puzzle is now a Boolean
           satisfiability problem, usually abbreviated to <strong>SAT</strong>.
@@ -319,7 +319,7 @@ export function BinaryKolamArticleBody() {
           every local rule but split the nonzero tiles into two or more components.
         </p>
         <Math display tex="1{,}448\text{ rows}\longrightarrow652\text{ locally valid boards}\longrightarrow\mathbf{408}\text{ accepted boards}" />
-        <div aria-label="Three stages of the exhaustive enumeration">
+        <div className="enumeration-figure-stack" aria-label="Three stages of the exhaustive enumeration">
           <figure className="article-figure">
             <svg viewBox="66 172 360 118" width="360" height="118" role="img" aria-labelledby="binary-enum-row-title binary-enum-row-desc">
               <title id="binary-enum-row-title">A horizontally legal row</title>
@@ -410,7 +410,7 @@ export function BinaryKolamArticleBody() {
           Why not immediately divide 408 by 8? A board with its own symmetry could
           return to itself under more than the identity, making its orbit smaller
           than eight. {" "}
-          <a href="https://mathnomad.in/writing/topics/burnside-lemma/">
+          <a href={BURNSIDE_REFERENCE}>
             Burnside’s lemma
           </a>{" "}
           corrects for exactly this possibility. For a symmetry <Math tex="g" />, let {" "}
@@ -530,13 +530,24 @@ verify: 51 orbits × 8 boards = 408`}</code></pre>
             of 0–1 side data.
           </li>
           <li>
-            <a href="https://mathworld.wolfram.com/BurnsidesLemma.html">Burnside’s lemma</a>{" "}
+            <a href={BURNSIDE_REFERENCE}>Burnside’s lemma</a>{" "}
             is sometimes called the orbit-counting lemma. Its power is that it
             remains correct even when different objects have orbits of different
             sizes.
           </li>
         </ol>
       </section>
+
+      <aside className="article-ai-disclosure" aria-label="AI-use declaration">
+        <p>
+          <strong>AI-use declaration.</strong> ChatGPT was used as a collaborative
+          tool in discussing the article, developing code, and drafting and
+          refining parts of its content. The original problem, its mathematical
+          formulation, and the substantive mathematical content are the author’s.
+          The author has reviewed and verified all material published here and
+          accepts responsibility for its accuracy.
+        </p>
+      </aside>
 
       <ArticleContinuation
         headingId="binary-related-heading"
@@ -563,7 +574,7 @@ verify: 51 orbits × 8 boards = 408`}</code></pre>
             description: "Take a guided route through the puzzle and its mathematics.",
           },
           {
-            href: "https://mathnomad.in/writing/topics/burnside-lemma/",
+            href: BURNSIDE_REFERENCE,
             title: "Topic · Explore Burnside’s lemma",
             description: "Connect this count to the orbit-counting principle.",
           },
