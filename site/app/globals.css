@@ -1725,6 +1725,12 @@ html[data-theme="dark"] body { background: #211f1d; }
   max-width: 68ch;
   text-align: center;
 }
+.article-prose .enumeration-figure-stack .article-figure > svg {
+  display: block;
+  height: auto;
+  margin-inline: auto;
+  max-width: 100%;
+}
 .article-prose .tag-row {
   display: grid;
   gap: 10px;
@@ -1783,6 +1789,17 @@ html[data-theme="dark"] body { background: #211f1d; }
 .article-prose details.exercise[open] summary { margin-bottom: 13px; }
 .article-prose .definition > :last-child,
 .article-prose .exercise > :last-child { margin-bottom: 0; }
+.article-prose .article-challenge > span {
+  display: block;
+  letter-spacing: .12em;
+}
+.article-prose .article-challenge > h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  line-height: 1.25;
+  margin: .55em 0 .45em;
+}
+.article-prose .article-challenge > p { max-width: 66ch; }
 .article-prose .definition dl,
 .article-prose dl.definition {
   display: grid;
@@ -1849,6 +1866,13 @@ html[data-theme="dark"] body { background: #211f1d; }
   padding: 6px 24px 20px;
 }
 .article-prose .notes-section li { font-size: .93em; }
+.article-prose .article-ai-disclosure {
+  color: var(--muted);
+  font: .82rem/1.55 var(--sans);
+  margin: 36px 0 0;
+}
+.article-prose .article-ai-disclosure p { margin: 0; }
+.article-prose .article-ai-disclosure strong { color: var(--ink); }
 .article-prose .citation-section {
   background: var(--surface-muted);
   border-radius: 7px;
