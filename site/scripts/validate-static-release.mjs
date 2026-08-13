@@ -56,6 +56,23 @@ const ARTICLES = [
   },
 ];
 
+const NOTES = [
+  {
+    route: "/notes/combinatorics/sixteen-tiles-one-kolam-puzzle/",
+    published: "2026-07-15",
+    displayDate: "15 July 2026",
+    marker: "A possible classroom rhythm",
+  },
+  {
+    route: "/notes/linear-algebra/what-row-reduction-remembers/",
+    published: "2026-08-09",
+    displayDate: "9 August 2026",
+    marker: "The object that does not move",
+    pdfAsset:
+      "notes/linear-algebra/what-row-reduction-remembers/what-row-reduction-remembers.pdf",
+  },
+];
+
 const INTERACTIVES = [
   {
     slug: "law-of-cosines",
@@ -101,7 +118,7 @@ const MAIN_HTML_ROUTES = [
   "/articles/",
   ...ARTICLES.map(({ slug }) => `/articles/${slug}/`),
   "/notes/",
-  "/notes/combinatorics/sixteen-tiles-one-kolam-puzzle/",
+  ...NOTES.map(({ route }) => route),
   "/projects/",
   "/projects/tessellations/",
   "/projects/kolam-tiles/",
@@ -145,6 +162,7 @@ const MAIN_REQUIRED_ASSETS = [
   "articles/kolams-on-an-octahedron/triangular-kolam-tiles.svg",
   "articles/binary-kolam-tiles/kolam-13-hero.webp",
   "articles/binary-kolam-tiles/fifty-one-kolams.pdf",
+  "notes/linear-algebra/what-row-reduction-remembers/what-row-reduction-remembers.pdf",
 ];
 
 const FORBIDDEN_COPY = [
@@ -1185,6 +1203,107 @@ if (variant === "main") {
     }
   }
 
+  for (const note of NOTES) {
+    const page = requiredHtml.get(note.route);
+    if (!page) continue;
+
+    const citationDates = metaValues(
+      page.html,
+      "name",
+      "citation_publication_date",
+    );
+    if (
+      citationDates.length !== 1 ||
+      citationDates[0] !== note.published
+    ) {
+      report(
+        note.route,
+        `Note citation_publication_date must be ${JSON.stringify(note.published)}; found ${JSON.stringify(citationDates)}.`,
+        "Use the note's approved publication date in citation metadata.",
+      );
+    }
+
+    const jsonLdDates = jsonLdStringValues(page.html, "datePublished");
+    if (jsonLdDates.length !== 1 || jsonLdDates[0] !== note.published) {
+      report(
+        note.route,
+        `Note JSON-LD datePublished must be ${JSON.stringify(note.published)}; found ${JSON.stringify(jsonLdDates)}.`,
+        "Keep the note publication date aligned across visible and machine-readable metadata.",
+      );
+    }
+
+    const text = visibleText(page.html);
+    if (!text.includes(note.displayDate)) {
+      report(
+        note.route,
+        `Visible publication date ${JSON.stringify(note.displayDate)} is missing.`,
+        "Render the note publication date in the note metadata panel.",
+      );
+    }
+    if (!text.includes(note.marker)) {
+      report(
+        note.route,
+        `Expected note content marker ${JSON.stringify(note.marker)} is missing.`,
+        "Render the body registered for this note instead of another note's content.",
+      );
+    }
+  }
+
+  const rrefNote = NOTES.find(({ pdfAsset }) => pdfAsset);
+  if (rrefNote) {
+    const page = requiredHtml.get(rrefNote.route);
+    const pdfPath = path.join(outputDirectory, rrefNote.pdfAsset);
+    if (await pathExists(pdfPath)) {
+      const signature = (await readFile(pdfPath)).subarray(0, 5).toString("ascii");
+      if (signature !== "%PDF-") {
+        report(
+          rrefNote.pdfAsset,
+          `The note download does not have a PDF signature; found ${JSON.stringify(signature)}.`,
+          "Copy the verified source PDF into the public note directory without transforming it.",
+        );
+      }
+    }
+
+    if (page) {
+      const text = visibleText(page.html);
+      if (text.includes("Caution:")) {
+        report(
+          rrefNote.route,
+          "The RREF note still contains the generic detail-page caution.",
+          "Keep the Notes landing caution, but omit it from this approved expository note.",
+        );
+      }
+      const homepageText = visibleText(requiredHtml.get("/")?.html || "");
+      if (!homepageText.includes("What Row Reduction Remembers")) {
+        report(
+          "/",
+          "The RREF note is missing from the Recent notes section.",
+          "Keep N02 enabled for the homepage Notes shelf.",
+        );
+      }
+      const frames = tagsNamed(page.html, "iframe").filter(({ attributes }) =>
+        (attributes.get("src") || "").includes(rrefNote.pdfAsset),
+      );
+      if (
+        frames.length !== 1 ||
+        !(frames[0].attributes.get("title") || "").trim()
+      ) {
+        report(
+          rrefNote.route,
+          "The full note must have one embedded PDF frame with an accessible title.",
+          "Keep the titled first-party PDF iframe as well as its visible open and download links.",
+        );
+      }
+      if (!/class=(?:"[^"]*\bkatex\b[^"]*"|'[^']*\bkatex\b[^']*')/i.test(page.html)) {
+        report(
+          rrefNote.route,
+          "The RREF web introduction contains no server-rendered KaTeX output.",
+          "Render its mathematical expressions through the shared KaTeX component.",
+        );
+      }
+    }
+  }
+
   const feedPath = path.join(outputDirectory, "feed.xml");
   if (await pathExists(feedPath)) {
     const feed = await readFile(feedPath, "utf8");
@@ -1402,7 +1521,7 @@ if (issues.length) {
 } else {
   const contentCount =
     variant === "main"
-      ? `${ARTICLES.length} articles`
+      ? `${ARTICLES.length} articles and ${NOTES.length} notes`
       : `${INTERACTIVES.length} interactives and ${INTERACTIVES.filter(({ embedded }) => embedded).length} embeds`;
   console.log(
     `Static release validation PASSED for ${variant} (${site.hostname}).\n` +

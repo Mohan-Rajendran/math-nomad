@@ -82,7 +82,7 @@ export default function Home() {
             <Link className="text-link" href="/notes">Browse all notes <ArrowRight size={15} /></Link>
           </div>
           <div className="note-grid note-grid-home">
-            {notes.slice(0, 3).map((note) => <NoteCard note={note} key={note.id} />)}
+            {notes.filter((note) => note.showOnHomepage).slice(0, 3).map((note) => <NoteCard note={note} key={note.id} />)}
           </div>
         </div>
       </section>
