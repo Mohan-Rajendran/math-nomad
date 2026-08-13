@@ -95,7 +95,11 @@ function normaliseEntry(
   if (!title) return null;
 
   const description = asText(
-    item.glimpse || item.description || item.summary || item.question,
+    item.glimpse ||
+      item.description ||
+      item.abstract ||
+      item.summary ||
+      item.question,
   );
   const keywords = [
     title,
@@ -103,6 +107,12 @@ function normaliseEntry(
     ...asTextList(item.tags),
     ...asTextList(item.keywords),
     ...asTextList(item.topics),
+    ...asTextList(item.prerequisites),
+    ...asTextList(item.learningGoals),
+    ...asRecords(item.msc).flatMap((classification) => [
+      asText(classification.code),
+      asText(classification.label),
+    ]),
     ...asTextList(item.technologies),
     ...asTextList(item.audience),
     ...asTextList(item.level),

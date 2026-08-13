@@ -1,4 +1,8 @@
-export type NoteField = "Combinatorics";
+export type NoteField = "Combinatorics" | "Linear Algebra";
+
+export type NoteBodyKey =
+  | "kolam-investigation"
+  | "row-reduction-exposition";
 
 export type Audience = "General" | "Undergraduate" | "Graduate";
 
@@ -25,6 +29,20 @@ export interface MscClassification {
   label: string;
   role: "Primary" | "Secondary";
 }
+
+export type NoteResource =
+  | {
+      kind: "PDF";
+      label: string;
+      href: string;
+      pages?: number;
+      embed?: boolean;
+    }
+  | {
+      kind: "Article" | "Interactive";
+      label: string;
+      href: string;
+    };
 
 export interface Article {
   id: string;
@@ -60,21 +78,39 @@ export interface Article {
 
 export interface Note {
   id: string;
+  bodyKey: NoteBodyKey;
   slug: string;
   sourceHref: string;
-  interactiveHref?: string;
-  articleHref?: string;
   title: string;
+  subtitle?: string;
   field: NoteField;
-  kind: "Course resource" | "Lecture review" | "Worksheet" | "Handout" | "Workshop notes";
+  topics: readonly string[];
+  kind:
+    | "Course resource"
+    | "Lecture review"
+    | "Worksheet"
+    | "Handout"
+    | "Workshop notes"
+    | "Expository note";
   level: readonly Audience[];
   audience: string;
   format: "Online resource" | "PDF" | "Article + PDF";
+  publishedAt: string;
   published: string;
   revisedAt: string;
   revised: string;
   displayRevision: string;
   abstract: string;
+  estimatedTime?: string;
+  prerequisites?: readonly string[];
+  keywords?: readonly string[];
+  msc?: readonly MscClassification[];
+  citationKey?: string;
+  citationSeries?: string;
+  proofStatus?: string;
+  showCaution?: boolean;
+  showOnHomepage: boolean;
+  resources: readonly NoteResource[];
   imageSrc?: string;
   imageAlt?: string;
   contents: readonly string[];
@@ -171,7 +207,7 @@ export const homeContent = {
     noteId: "N01",
     projectId: "P02",
   },
-  updateLine: "Latest publication 21 July 2026 · 2 active projects · 6 live interactives",
+  updateLine: "Latest publication 9 August 2026 · 2 active projects · 6 live interactives",
 } as const;
 
 const accents = {
@@ -602,28 +638,44 @@ export const articles: Article[] = [...articleCatalogue].sort(
       (articleSameDateOrder[second.key] ?? Number.MAX_SAFE_INTEGER),
 );
 
-export const noteFields: readonly NoteField[] = ["Combinatorics"];
+export const noteFields: readonly NoteField[] = ["Combinatorics", "Linear Algebra"];
 
-export const notes: Note[] = [
+const noteCatalogue: Note[] = [
   {
     id: "N01",
+    bodyKey: "kolam-investigation",
     slug: "/notes/combinatorics/sixteen-tiles-one-kolam-puzzle",
     sourceHref:
       "https://mathnomad.in/notes/combinatorics/sixteen-tiles-one-kolam-puzzle",
-    interactiveHref: "https://lab.mathnomad.in/square-kolam-tile-challenge/",
-    articleHref: "https://mathnomad.in/articles/kolams-on-a-square/",
     title: "Sixteen Tiles, One Kolam Puzzle",
     field: "Combinatorics",
+    topics: ["Binary tiles", "Connectivity", "Invariants"],
     kind: "Course resource",
     level: ["General", "Undergraduate"],
     audience: "Upper-secondary students, teachers, clubs and undergraduate problem-solving groups",
     format: "Online resource",
+    publishedAt: "2026-07-15",
     published: "15 July 2026",
     revisedAt: "2026-07-15",
     revised: "Published 15 July 2026",
     displayRevision: "Published 15 July 2026",
     abstract:
       "A classroom-ready investigation using binary tiles to explore local constraints, connectivity and sliding-puzzle invariants.",
+    showOnHomepage: true,
+    estimatedTime: "One or two class meetings",
+    prerequisites: ["No specialist prerequisites"],
+    resources: [
+      {
+        kind: "Interactive",
+        label: "Launch the board",
+        href: "https://lab.mathnomad.in/square-kolam-tile-challenge/",
+      },
+      {
+        kind: "Article",
+        label: "Read the exposition",
+        href: "/articles/kolams-on-a-square",
+      },
+    ],
     imageSrc: "/articles/binary-kolam-tiles/kolam-tiles.webp",
     imageAlt: "The sixteen binary kolam tiles arranged as a catalogue",
     contents: [
@@ -641,7 +693,112 @@ export const notes: Note[] = [
     sampleText:
       "Can every binary tile from 0000 to 1111 be used exactly once in a 4 × 4 square so that the boundary is closed, adjacent sides match and the fifteen nonzero tiles form one connected network?",
   },
+  {
+    id: "N02",
+    bodyKey: "row-reduction-exposition",
+    slug: "/notes/linear-algebra/what-row-reduction-remembers",
+    sourceHref:
+      "https://mathnomad.in/notes/linear-algebra/what-row-reduction-remembers",
+    title: "What Row Reduction Remembers",
+    subtitle:
+      "The geometry of intersecting lines, equation spaces, and the general-rank picture",
+    field: "Linear Algebra",
+    topics: [
+      "Row reduction",
+      "Row spaces",
+      "Affine geometry",
+      "Projective geometry",
+    ],
+    kind: "Expository note",
+    level: ["Undergraduate"],
+    audience:
+      "Advanced undergraduate readers who know systems of linear equations and the basic language of vector spaces",
+    format: "Article + PDF",
+    publishedAt: "2026-08-09",
+    published: "9 August 2026",
+    revisedAt: "2026-08-09",
+    revised: "Published 9 August 2026",
+    displayRevision: "Published 9 August 2026",
+    abstract:
+      "A geometric reading of row reduction: why RREF remembers the row space, how elimination moves through a pencil of lines, and what survives for arbitrary linear systems.",
+    estimatedTime: "12-minute introduction · 25-page full note",
+    prerequisites: [
+      "Systems of linear equations and Gaussian elimination",
+      "Span, linear independence, basis and rank",
+    ],
+    keywords: [
+      "row reduction",
+      "reduced row echelon form",
+      "Gaussian elimination",
+      "linear systems",
+      "row space",
+      "affine geometry",
+      "projective geometry",
+      "Grassmannians",
+    ],
+    msc: [
+      {
+        code: "15A06",
+        label: "Linear equations (linear algebraic aspects)",
+        role: "Primary",
+      },
+      {
+        code: "15A03",
+        label: "Vector spaces, linear dependence and rank",
+        role: "Secondary",
+      },
+      {
+        code: "15A21",
+        label: "Canonical forms, reductions and classification",
+        role: "Secondary",
+      },
+      {
+        code: "51N10",
+        label: "Affine analytic geometry",
+        role: "Secondary",
+      },
+      {
+        code: "51N15",
+        label: "Projective analytic geometry",
+        role: "Secondary",
+      },
+    ],
+    citationKey: "rajendran2026rowreduction",
+    citationSeries: "Math Nomad Undergraduate Exposition",
+    proofStatus:
+      "Complete author-verified exposition; standard background results are cited where they are not reproved.",
+    showCaution: false,
+    showOnHomepage: true,
+    resources: [
+      {
+        kind: "PDF",
+        label: "Open the full PDF",
+        href: "/notes/linear-algebra/what-row-reduction-remembers/what-row-reduction-remembers.pdf",
+        pages: 25,
+        embed: true,
+      },
+    ],
+    contents: [
+      "Two lines, one intersection",
+      "The object that does not move",
+      "A coordinate-adapted basis",
+      "What the full note develops",
+      "Read the full note",
+    ],
+    learningGoals: [
+      "Interpret an elementary row operation as a change of generators in the space of equations.",
+      "Explain why row-equivalent matrices have the same row space and solution set.",
+      "See RREF as a canonical, coordinate-adapted basis rather than only an algorithmic endpoint.",
+      "Recognise how the planar picture extends towards projective geometry and arbitrary linear systems.",
+    ],
+    sampleText:
+      "Row reduction preserves the space of equations generated by a system while forgetting the ordered basis used to present it.",
+  },
 ];
+
+export const notes: Note[] = [...noteCatalogue].sort((first, second) =>
+  second.publishedAt.localeCompare(first.publishedAt),
+);
 
 export const projects: Project[] = [
   {
