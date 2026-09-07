@@ -27,7 +27,7 @@ function journalEntries(): SitemapEntry[] {
       changeFrequency: "weekly",
       priority: 0.9,
     },
-    ...articles.map(
+    ...articles.filter((article) => !article.draft).map(
       (article): SitemapEntry => ({
         url: routeUrl(article.slug),
         lastModified: article.modified ?? article.published,

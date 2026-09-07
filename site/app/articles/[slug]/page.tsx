@@ -10,6 +10,7 @@ import {
   BinaryKolamArticleBody,
   OctahedronArticleBody,
 } from "../../article-content/KolamArticles";
+import { StirlingBoundsArticleBody } from "../../article-content/StirlingBoundsArticle";
 import { Tag } from "../../components/ContentCards";
 import { articles, type Article } from "../../data";
 
@@ -18,6 +19,7 @@ const articleBodies = {
   "kolams-on-an-octahedron": OctahedronArticleBody,
   "law-of-cosines": LawOfCosinesArticleBody,
   "binary-kolam-tiles": BinaryKolamArticleBody,
+  "moving-the-starting-line-in-stirlings-formula": StirlingBoundsArticleBody,
 } as const;
 
 const articleTocIds: Record<keyof typeof articleBodies, readonly string[]> = {
@@ -54,6 +56,11 @@ const articleTocIds: Record<keyof typeof articleBodies, readonly string[]> = {
     "symmetry",
     "burnside",
   ],
+  "moving-the-starting-line-in-stirlings-formula": [
+    "stirling-geometric-core",
+    "stirling-move-start",
+    "stirling-real-extension",
+  ],
 };
 
 export function generateStaticParams() {
@@ -77,12 +84,13 @@ export async function generateMetadata({
         description: article.glimpse,
         authors: [{ name: "Mohan Rajendran" }],
         keywords: [...article.keywords],
+        robots: article.draft ? { index: false, follow: false } : undefined,
         alternates: { canonical: article.sourceHref },
         openGraph: {
           type: "article",
           title: article.title,
           description: article.glimpse,
-          publishedTime: article.published,
+          ...(article.draft ? {} : { publishedTime: article.published }),
           modifiedTime: article.modified,
           authors: ["Mohan Rajendran"],
           images: article.imageSrc
@@ -92,7 +100,9 @@ export async function generateMetadata({
         other: {
           citation_author: "Mohan Rajendran",
           citation_title: article.title,
-          citation_publication_date: article.published.slice(0, 10),
+          ...(article.draft
+            ? { citation_status: "unpublished draft" }
+            : { citation_publication_date: article.published.slice(0, 10) }),
           citation_journal_title: "Math Nomad",
           citation_public_url: article.sourceHref,
           citation_keywords: article.keywords.join("; "),
@@ -104,8 +114,17 @@ export async function generateMetadata({
 }
 
 function ArticleScholarlyMetadata({ article }: { article: Article }) {
-  const preferredCitation = `Rajendran, Mohan. “${article.title}.” Math Nomad, ${article.displayDate}, ${article.sourceHref}`;
-  const biblatex = `@online{${article.citationKey},
+  const preferredCitation = article.draft
+    ? `Rajendran, Mohan. “${article.title}.” Unpublished Math Nomad draft.`
+    : `Rajendran, Mohan. “${article.title}.” Math Nomad, ${article.displayDate}, ${article.sourceHref}`;
+  const biblatex = article.draft
+    ? `@unpublished{${article.citationKey},
+  author       = {Rajendran, Mohan},
+  title        = {${article.title}},
+  note         = {Unpublished Math Nomad draft},
+  langid       = {british}
+}`
+    : `@online{${article.citationKey},
   author       = {Rajendran, Mohan},
   title        = {${article.title}},
   date         = {${article.published.slice(0, 10)}},
@@ -175,7 +194,7 @@ export default async function ArticleDetailPage({
     headline: article.title,
     description: article.glimpse,
     author: { "@type": "Person", name: "Mohan Rajendran" },
-    datePublished: article.published,
+    ...(article.draft ? {} : { datePublished: article.published }),
     dateModified: article.modified,
     image: article.imageSrc,
     keywords: article.keywords,
@@ -191,7 +210,11 @@ export default async function ArticleDetailPage({
   return (
     <main
       id="main-content"
-      className="article-detail"
+      className={`article-detail${
+        article.key === "moving-the-starting-line-in-stirlings-formula"
+          ? " stirling-article-detail"
+          : ""
+      }`}
       style={
         {
           "--article-accent": article.palette.color,
@@ -218,7 +241,7 @@ export default async function ArticleDetailPage({
         <p className="article-standfirst">{article.subtitle}</p>
         <div className="article-byline">
           <span>By Mohan R</span>
-          <span>{article.displayDate}</span>
+          <span>{article.draft ? `Draft · ${article.displayDate}` : article.displayDate}</span>
           <span>{article.readingTime} read</span>
         </div>
         <div className="tag-row" aria-label="Article topics">
