@@ -2068,6 +2068,525 @@ html[data-theme="dark"] body { background: #211f1d; }
   padding-block: 7px;
 }
 
+/* Stirling reflection: three article-native geometric laboratories */
+.stirling-article-detail .back-link { margin-bottom: 32px; }
+.stirling-article-detail .article-hero { padding-block: 34px 28px; }
+.stirling-article-detail .article-standfirst { margin-block: 18px; }
+.stirling-article-detail .article-byline { margin-bottom: 18px; }
+.stirling-article-detail .article-layout.is-complete-article {
+  padding-top: 24px;
+  row-gap: 26px;
+}
+.stirling-article-detail .article-prose .article-section h2 { margin-top: 1.45em; }
+.stirling-article-detail .article-prose .article-section h3 { margin-top: 1.35em; }
+.stirling-article-detail .draft-editor-note { margin-bottom: 22px; }
+.stirling-article-detail .article-scholarly-metadata { margin-top: 3em; }
+.draft-editor-note {
+  background: color-mix(in srgb, var(--article-wash) 58%, var(--surface));
+  border-radius: 6px;
+  color: var(--body);
+  font: .82rem/1.55 var(--sans);
+  margin: 0 0 34px;
+  padding: 17px 19px;
+}
+.draft-editor-note strong {
+  color: var(--article-ink);
+  display: block;
+  font-size: .72rem;
+  letter-spacing: .07em;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.draft-editor-note p { margin: 0; }
+.stirling-interactive {
+  --stirling-chord: var(--article-accent);
+  --stirling-tangent: var(--clay);
+  background: color-mix(in srgb, var(--article-wash) 38%, var(--surface));
+  border-radius: 7px;
+  margin: 34px 0;
+  min-width: 0;
+  padding: clamp(17px, 3vw, 25px);
+}
+.stirling-interactive-heading {
+  align-items: end;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.article-prose .stirling-interactive-heading h3 {
+  font-size: clamp(1.32rem, 2.4vw, 1.75rem);
+  margin: 0;
+}
+.stirling-interactive-heading .eyebrow { margin-bottom: 6px; }
+.stirling-control-pair {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(112px, 1fr));
+  width: min(100%, 330px);
+}
+.stirling-control {
+  color: var(--muted);
+  display: grid;
+  font: 600 .72rem/1.35 var(--sans);
+  gap: 6px;
+  min-width: 140px;
+}
+.stirling-control > span {
+  align-items: baseline;
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+}
+.stirling-control strong {
+  color: var(--ink);
+  font-size: .83rem;
+}
+.stirling-control input[type="range"] {
+  accent-color: var(--article-accent);
+  cursor: pointer;
+  margin: 0;
+  min-height: 30px;
+  touch-action: pan-y;
+  width: 100%;
+}
+.stirling-layer-controls {
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 18px;
+  margin: 0 0 15px;
+  padding: 0;
+}
+.stirling-layer-controls legend {
+  color: var(--muted);
+  font: 600 .65rem/1.4 var(--sans);
+  letter-spacing: .06em;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  width: 100%;
+}
+.stirling-layer-controls label {
+  align-items: center;
+  color: var(--body);
+  display: inline-flex;
+  font: 600 .7rem/1.35 var(--sans);
+  gap: 6px;
+  min-height: 30px;
+}
+.stirling-layer-controls input {
+  accent-color: var(--article-accent);
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+}
+.stirling-local-plot,
+.stirling-composite-plot,
+.stirling-corridor-plot,
+.stirling-gamma-plot {
+  display: block;
+  height: auto;
+  overflow: visible;
+  width: 100%;
+}
+.stirling-axis,
+.stirling-guide,
+.stirling-corridor-guide {
+  stroke: color-mix(in srgb, var(--ink) 28%, transparent);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-guide,
+.stirling-corridor-guide { stroke-dasharray: 3 5; }
+.stirling-axis-label,
+.stirling-curve-label,
+.stirling-row-label,
+.stirling-limit-label,
+.stirling-actual-label {
+  fill: var(--muted);
+  font: 600 12px/1 var(--sans);
+  text-anchor: middle;
+}
+.stirling-axis-label.is-start { text-anchor: start; }
+.stirling-axis-label.is-end { text-anchor: end; }
+.stirling-curve-label {
+  fill: var(--ink);
+  font-family: KaTeX_Main, var(--serif);
+  font-style: normal;
+  font-weight: 400;
+  paint-order: stroke fill;
+  stroke: color-mix(in srgb, var(--surface) 92%, transparent);
+  stroke-linejoin: round;
+  stroke-width: 3px;
+  text-anchor: start;
+}
+.stirling-log-operator { font-family: KaTeX_Main, var(--serif); }
+.stirling-log-variable {
+  font-family: KaTeX_Math, KaTeX_Main, var(--serif);
+  font-style: italic;
+}
+.stirling-log-curve {
+  fill: none;
+  stroke: var(--ink);
+  stroke-linecap: round;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-log-area {
+  fill: color-mix(in srgb, var(--muted) 24%, transparent);
+}
+.stirling-chord-line,
+.stirling-tangent-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-chord-line { stroke: var(--stirling-chord); }
+.stirling-tangent-line { stroke: var(--stirling-tangent); }
+.stirling-point { fill: var(--ink); }
+.stirling-readouts,
+.stirling-bound-values {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 9px;
+}
+.stirling-readouts p,
+.stirling-bound-values p {
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  border-radius: 5px;
+  display: grid;
+  font-family: var(--sans);
+  gap: 2px 7px;
+  grid-template-columns: auto 1fr auto;
+  margin: 0;
+  min-width: 0;
+  padding: 10px 11px;
+}
+.stirling-readouts strong,
+.stirling-bound-values strong {
+  color: var(--ink);
+  font-size: .77rem;
+}
+.stirling-readouts p > span:not(.stirling-swatch),
+.stirling-bound-values p > strong {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.stirling-readouts small {
+  color: var(--muted);
+  font-size: .66rem;
+  grid-column: 2 / -1;
+}
+.stirling-swatch {
+  align-self: center;
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+}
+.stirling-swatch.is-chord { background: var(--stirling-chord); }
+.stirling-swatch.is-tangent { background: var(--stirling-tangent); }
+.stirling-interactive-note {
+  color: var(--muted);
+  font: .72rem/1.5 var(--sans);
+  margin: 13px 0 0;
+}
+.stirling-interactive-note strong { color: var(--ink); }
+.stirling-proof-pair {
+  display: grid;
+  gap: 9px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.stirling-proof-pair figure {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  border-radius: 5px;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  padding: 11px;
+}
+.stirling-proof-pair figcaption {
+  display: grid;
+  font-family: var(--sans);
+  gap: 2px;
+}
+.stirling-proof-pair figcaption strong {
+  color: var(--ink);
+  font-size: .77rem;
+}
+.stirling-proof-pair figcaption span {
+  color: var(--muted);
+  font-size: .64rem;
+}
+.stirling-proof-pair figure > p {
+  color: var(--muted);
+  font: .67rem/1.3 var(--sans);
+  margin: 2px 0 0;
+  text-align: center;
+}
+.stirling-proof-pair figure > p strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.stirling-proof-pair figure > small {
+  color: var(--muted);
+  display: block;
+  font: 600 .61rem/1.35 var(--sans);
+  font-variant-numeric: tabular-nums;
+  margin-top: 3px;
+  text-align: center;
+}
+.stirling-source-pair figure > small {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 12px;
+  justify-content: center;
+  margin-top: 9px;
+}
+.stirling-composite-cell {
+  stroke: color-mix(in srgb, var(--ink) 40%, transparent);
+  stroke-width: .8;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-composite-cell.is-under {
+  fill: color-mix(in srgb, var(--stirling-chord) 20%, transparent);
+}
+.stirling-composite-cell.is-over {
+  fill: color-mix(in srgb, var(--stirling-tangent) 20%, transparent);
+}
+.stirling-composite-cell.is-final {
+  fill: color-mix(in srgb, var(--stirling-tangent) 32%, transparent);
+}
+.stirling-telescope {
+  display: grid;
+  gap: 7px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 9px;
+}
+.stirling-telescope p {
+  color: var(--ink);
+  display: grid;
+  font: 600 .78rem/1.4 var(--sans);
+  gap: 5px;
+  margin: 0;
+  padding: 6px 8px;
+  text-align: center;
+}
+.stirling-telescope p > span:first-child {
+  color: var(--muted);
+  font-size: .64rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.stirling-row-label {
+  fill: var(--body);
+  text-anchor: start;
+}
+.stirling-corridor-track {
+  stroke-linecap: round;
+  stroke-width: 8;
+}
+.stirling-corridor-row.is-rudin .stirling-corridor-track {
+  stroke: color-mix(in srgb, var(--muted) 34%, transparent);
+}
+.stirling-corridor-row.is-source .stirling-corridor-track {
+  stroke: color-mix(in srgb, var(--clay) 54%, transparent);
+}
+.stirling-corridor-row.is-selected .stirling-corridor-track {
+  stroke: color-mix(in srgb, var(--article-accent) 64%, transparent);
+}
+.stirling-bound-point {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-limit-line {
+  stroke: var(--ink);
+  stroke-dasharray: 5 5;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-limit-label { fill: var(--ink); }
+.stirling-actual-point { fill: var(--ink); }
+.stirling-actual-label { fill: var(--ink); }
+.stirling-bound-values { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stirling-bound-values p {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.stirling-bound-values p > span {
+  color: var(--muted);
+  font: .67rem/1.35 var(--sans);
+}
+.stirling-bound-values p > strong {
+  font: 600 .76rem/1.35 var(--sans);
+  text-align: left;
+}
+.stirling-gamma-control { width: min(100%, 230px); }
+.stirling-gamma-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 0 0 7px;
+}
+.stirling-gamma-legend span {
+  align-items: center;
+  color: var(--muted);
+  display: inline-flex;
+  font: 600 .68rem/1.35 var(--sans);
+  gap: 6px;
+}
+.stirling-gamma-legend i {
+  border-top: 2px solid var(--ink);
+  display: inline-block;
+  width: 18px;
+}
+.stirling-gamma-legend .is-r i { border-color: var(--stirling-chord); }
+.stirling-gamma-legend .is-l i {
+  border-color: var(--stirling-tangent);
+  border-top-style: dashed;
+}
+.stirling-gamma-legend .is-limit i {
+  border-color: var(--ink);
+  border-top-style: dotted;
+}
+.stirling-gamma-guide,
+.stirling-gamma-tick {
+  stroke: color-mix(in srgb, var(--ink) 20%, transparent);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-gamma-guide { stroke-dasharray: 2 5; }
+.stirling-gamma-gap {
+  fill: color-mix(in srgb, var(--article-accent) 10%, transparent);
+}
+.stirling-gamma-r,
+.stirling-gamma-l {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-gamma-r { stroke: var(--stirling-chord); }
+.stirling-gamma-l {
+  stroke: var(--stirling-tangent);
+  stroke-dasharray: 6 5;
+}
+.stirling-gamma-limit {
+  stroke: var(--ink);
+  stroke-dasharray: 2 5;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-gamma-probe {
+  stroke: color-mix(in srgb, var(--ink) 38%, transparent);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-gamma-r-point {
+  fill: var(--surface);
+  stroke: var(--stirling-chord);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-gamma-l-point {
+  fill: var(--surface);
+  stroke: var(--stirling-tangent);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.stirling-axis-title {
+  fill: var(--muted);
+  font: 600 12px/1 var(--sans);
+  text-anchor: middle;
+}
+.stirling-axis-label.is-y { text-anchor: end; }
+.article-prose .stirling-theorem > .math-expression-display {
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  margin-block: 1.2em;
+}
+.site-shell[data-theme="dark"] .draft-editor-note,
+.site-shell[data-theme="dark"] .stirling-interactive {
+  background: color-mix(in srgb, var(--article-accent) 9%, var(--surface));
+}
+.site-shell[data-theme="dark"] .stirling-proof-pair figure,
+.site-shell[data-theme="dark"] .stirling-readouts p,
+.site-shell[data-theme="dark"] .stirling-bound-values p {
+  background: color-mix(in srgb, var(--surface-muted) 78%, transparent);
+}
+
+@media (pointer: coarse) {
+  .stirling-control input[type="range"],
+  .stirling-layer-controls label {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 620px) {
+  .stirling-article-detail .back-link { margin-bottom: 24px; }
+  .stirling-article-detail .article-hero { padding-block: 28px 22px; }
+  .stirling-article-detail .article-layout.is-complete-article {
+    padding-top: 18px;
+    row-gap: 20px;
+  }
+  .draft-editor-note { padding: 15px; }
+  .stirling-interactive-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .stirling-control-pair { max-width: none; width: 100%; }
+  .stirling-control { min-width: 0; }
+  .stirling-control input[type="range"] { min-height: 44px; }
+  .stirling-gamma-control { width: 100%; }
+  .stirling-layer-controls {
+    display: grid;
+    gap: 1px 8px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stirling-layer-controls legend { grid-column: 1 / -1; }
+  .stirling-layer-controls label { min-height: 44px; }
+  .stirling-readouts { grid-template-columns: 1fr; }
+  .stirling-proof-pair { gap: 5px; }
+  .stirling-proof-pair figure { padding: 8px 4px; }
+  .stirling-proof-pair figcaption { padding-inline: 4px; }
+  .stirling-proof-pair figcaption span { display: none; }
+  .stirling-composite-plot .stirling-axis-label,
+  .stirling-composite-plot .stirling-curve-label { font-size: 24px; }
+  .stirling-source-pair figure > small { display: none; }
+  .stirling-telescope { gap: 3px; }
+  .stirling-telescope p { font-size: .66rem; padding-inline: 2px; }
+  .stirling-corridor-plot .stirling-axis-label,
+  .stirling-corridor-plot .stirling-row-label,
+  .stirling-corridor-plot .stirling-limit-label,
+  .stirling-corridor-plot .stirling-actual-label { font-size: 21px; }
+  .stirling-gamma-plot .stirling-axis-label,
+  .stirling-gamma-plot .stirling-axis-title { font-size: 22px; }
+  .stirling-bound-values { gap: 4px; }
+  .stirling-bound-values p { padding: 8px 6px; }
+  .stirling-bound-values p > span,
+  .stirling-bound-values p > strong { font-size: .62rem; }
+  .article-prose .stirling-bound-table table {
+    min-width: 0;
+    table-layout: fixed;
+  }
+  .stirling-bound-table th:nth-child(2),
+  .stirling-bound-table td:nth-child(2),
+  .stirling-bound-table th:nth-child(5),
+  .stirling-bound-table td:nth-child(5) { display: none; }
+  .article-prose .stirling-bound-table th,
+  .article-prose .stirling-bound-table td {
+    font-size: .68rem;
+    padding: 8px 5px;
+  }
+  .stirling-bound-table th:first-child,
+  .stirling-bound-table td:first-child { width: 19%; }
+}
+
 @media (max-width: 980px) {
   .mn-proof-stage {
     gap: 8px;

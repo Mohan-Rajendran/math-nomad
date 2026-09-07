@@ -8,6 +8,7 @@ function escapeXml(value: string) {
 
 export async function GET() {
   const items = articles
+    .filter((article) => !article.draft)
     .map(
       (article) =>
         `<item><title>${escapeXml(article.title)}</title><link>${escapeXml(article.sourceHref)}</link><guid isPermaLink="true">${escapeXml(article.sourceHref)}</guid><pubDate>${new Date(article.published).toUTCString()}</pubDate><description>${escapeXml(article.glimpse)}</description></item>`,

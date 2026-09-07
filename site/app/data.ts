@@ -71,6 +71,7 @@ export interface Article {
   imageAlt?: string;
   interactiveHref?: string;
   featured?: boolean;
+  draft?: boolean;
   contents: readonly string[];
   sections: readonly ArticleSection[];
   closing?: string;
@@ -207,7 +208,7 @@ export const homeContent = {
     noteId: "N01",
     projectId: "P02",
   },
-  updateLine: "Latest publication 9 August 2026 · 2 active projects · 6 live interactives",
+  updateLine: "Latest publication 7 September 2026 · 2 active projects · 6 live interactives",
 } as const;
 
 const accents = {
@@ -215,6 +216,7 @@ const accents = {
   terracotta: { color: "#A66E5A", wash: "#F1E5DF", ink: "#4B3027" },
   ochre: { color: "#927C58", wash: "#EFE9DD", ink: "#463B29" },
   plum: { color: "#8C6B73", wash: "#EEE5E8", ink: "#49353B" },
+  sage: { color: "#708077", wash: "#E7ECE9", ink: "#35413B" },
 } as const satisfies Record<string, VisualAccent>;
 
 const articleCatalogue: Article[] = [
@@ -622,6 +624,68 @@ const articleCatalogue: Article[] = [
     closing:
       "The full article includes the live puzzle, reproducibility notes, sources, and a downloadable catalogue of all fifty-one representatives.",
   },
+  {
+    id: "A05",
+    key: "moving-the-starting-line-in-stirlings-formula",
+    articleType: "Reflection",
+    slug: "/articles/moving-the-starting-line-in-stirlings-formula",
+    sourceHref:
+      "https://mathnomad.in/articles/moving-the-starting-line-in-stirlings-formula/",
+    title: "Starting Later: Geometric Bounds for Stirling’s Formula",
+    subtitle:
+      "A reflection on Bikash Chakraborty’s article in The College Mathematics Journal, with a geometric extension of its bounds.",
+    published: "2026-09-07",
+    displayDate: "7 September 2026",
+    date: "7 September 2026",
+    glimpse:
+      "Beginning with a chord-and-tangent proof for log x, we move the starting point and uncover a nested family of bounds for the normalized factorial.",
+    tags: ["Stirling’s formula", "Asymptotic analysis", "Inequalities", "Interactive"],
+    audience: ["Undergraduate"],
+    keywords: [
+      "Stirling’s formula",
+      "asymptotic analysis",
+      "inequalities",
+      "Stirling approximation",
+    ],
+    msc: [
+      { code: "41A60", label: "Asymptotic approximations and expansions", role: "Primary" },
+      { code: "26D15", label: "Inequalities for sums, series and integrals", role: "Secondary" },
+    ],
+    citationKey: "rajendranStirlingBounds",
+    readingMinutes: 12,
+    readingTime: "12 min",
+    accent: accents.sage.color,
+    palette: accents.sage,
+    artLabel: "Chords and tangents enclosing the graph of the natural logarithm",
+    draft: false,
+    contents: [
+      "The geometric core idea of Chakraborty’s argument",
+      "Move the starting point",
+      "When the integer becomes real",
+    ],
+    sections: [
+      {
+        heading: "The geometric core idea of Chakraborty’s argument",
+        paragraphs: [
+          "Chords joining consecutive integer points lie below the graph of log x, while tangents at integers cover centred intervals with half-integer endpoints from above.",
+        ],
+      },
+      {
+        heading: "Move the starting point",
+        paragraphs: [
+          "Keeping the first few factors exact and applying the same area comparison only from a later integer k produces a parameter rather than a single pair of constants.",
+        ],
+      },
+      {
+        heading: "When the integer becomes real",
+        paragraphs: [
+          "Replacing the factorial by the Gamma function turns the discrete normalized sequence into a continuous function and reveals a companion lower curve.",
+        ],
+      },
+    ],
+    closing:
+      "Moving the starting point preserves the geometric method while producing a nested family of sharper bounds.",
+  },
 ];
 
 const articleSameDateOrder: Record<string, number> = {
@@ -631,12 +695,17 @@ const articleSameDateOrder: Record<string, number> = {
   "binary-kolam-tiles": 3,
 };
 
-export const articles: Article[] = [...articleCatalogue].sort(
+const includeDraftArticles =
+  process.env.NEXT_PUBLIC_MATH_NOMAD_PREVIEW_DRAFTS === "true";
+
+export const articles: Article[] = articleCatalogue
+  .filter((article) => !article.draft || includeDraftArticles)
+  .sort(
   (first, second) =>
     second.published.slice(0, 10).localeCompare(first.published.slice(0, 10)) ||
     (articleSameDateOrder[first.key] ?? Number.MAX_SAFE_INTEGER) -
       (articleSameDateOrder[second.key] ?? Number.MAX_SAFE_INTEGER),
-);
+  );
 
 export const noteFields: readonly NoteField[] = ["Combinatorics", "Linear Algebra"];
 

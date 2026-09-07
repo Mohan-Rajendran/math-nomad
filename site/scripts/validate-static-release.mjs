@@ -25,6 +25,13 @@ const SITE_VARIANTS = {
 
 const ARTICLES = [
   {
+    slug: "moving-the-starting-line-in-stirlings-formula",
+    published: "2026-09-07",
+    citationDate: "2026-09-07",
+    displayDate: "7 September 2026",
+    clientMarker: "The areas in the proof",
+  },
+  {
     slug: "law-of-cosines",
     published: "2026-07-21",
     citationDate: "2026-07-21",
@@ -1021,12 +1028,13 @@ if (variant === "main") {
   if (articleDifference.missing.length || articleDifference.unexpected.length) {
     report(
       "/articles/",
-      `Expected exactly four article routes. Missing: ${articleDifference.missing.join(", ") || "none"}; unexpected: ${articleDifference.unexpected.join(", ") || "none"}.`,
-      "Regenerate the article routes from the frozen four-entry publication registry.",
+      `Expected exactly ${ARTICLES.length} article routes. Missing: ${articleDifference.missing.join(", ") || "none"}; unexpected: ${articleDifference.unexpected.join(", ") || "none"}.`,
+      "Regenerate the article routes from the frozen publication registry.",
     );
   }
 
   const expectedArticleTitles = [
+    "Starting Later: Geometric Bounds for Stirling’s Formula",
     "The Law of Cosines",
     "Kolams on Octahedron",
     "Infinitely many ‘proofs’ of Pythagoras’ theorem",
@@ -1313,8 +1321,8 @@ if (variant === "main") {
     if (items.length !== ARTICLES.length) {
       report(
         "feed.xml",
-        `Expected exactly four RSS article items; found ${items.length}.`,
-        "Generate the feed from the same frozen four-entry article registry as the Articles page.",
+        `Expected exactly ${ARTICLES.length} RSS article items; found ${items.length}.`,
+        "Generate the feed from the same frozen publication registry as the Articles page.",
       );
     }
 
