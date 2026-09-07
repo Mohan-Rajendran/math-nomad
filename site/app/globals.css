@@ -2510,6 +2510,11 @@ html[data-theme="dark"] body { background: #211f1d; }
   font-size: clamp(1rem, 2.2vw, 1.35rem);
   margin-block: 1.2em;
 }
+@media (min-width: 921px) {
+  .stirling-article-detail .article-prose .display-formula {
+    font-size: clamp(1.18rem, 2vw, 1.4rem);
+  }
+}
 .site-shell[data-theme="dark"] .draft-editor-note,
 .site-shell[data-theme="dark"] .stirling-interactive {
   background: color-mix(in srgb, var(--article-accent) 9%, var(--surface));
