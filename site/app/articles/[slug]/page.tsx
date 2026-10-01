@@ -11,6 +11,7 @@ import {
   OctahedronArticleBody,
 } from "../../article-content/KolamArticles";
 import { StirlingBoundsArticleBody } from "../../article-content/StirlingBoundsArticle";
+import { SlidingKolamArticleBody } from "../../article-content/sliding-between-kolams/SlidingKolamArticle";
 import { Tag } from "../../components/ContentCards";
 import { articles, type Article } from "../../data";
 
@@ -20,6 +21,7 @@ const articleBodies = {
   "law-of-cosines": LawOfCosinesArticleBody,
   "binary-kolam-tiles": BinaryKolamArticleBody,
   "moving-the-starting-line-in-stirlings-formula": StirlingBoundsArticleBody,
+  "sliding-between-kolams": SlidingKolamArticleBody,
 } as const;
 
 const articleTocIds: Record<keyof typeof articleBodies, readonly string[]> = {
@@ -60,6 +62,18 @@ const articleTocIds: Record<keyof typeof articleBodies, readonly string[]> = {
     "stirling-geometric-core",
     "stirling-move-start",
     "stirling-real-extension",
+  ],
+  "sliding-between-kolams": [
+    "a-15-puzzle-with-kolam-tiles",
+    "try-now",
+    "why-can-some-kolams-never-reach-one-another",
+    "move-x-to-y-a-complete-example",
+    "knowing-that-a-route-exists-is-not-finding-the-route",
+    "where-the-408-kolams-sit",
+    "rotating-a-kolam-is-a-different-operation",
+    "questions-to-take-back-to-the-sandboxes",
+    "notes-and-further-reading",
+    "sliding-kolam-continue",
   ],
 };
 

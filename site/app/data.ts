@@ -208,7 +208,7 @@ export const homeContent = {
     noteId: "N01",
     projectId: "P02",
   },
-  updateLine: "Latest publication 7 September 2026 · 2 active projects · 6 live interactives",
+  updateLine: "Latest publication 1 October 2026 · 2 active projects · 6 live interactives",
 } as const;
 
 const accents = {
@@ -685,6 +685,109 @@ const articleCatalogue: Article[] = [
     ],
     closing:
       "Moving the starting point preserves the geometric method while producing a nested family of sharper bounds.",
+  },
+  {
+    id: "A06",
+    key: "sliding-between-kolams",
+    articleType: "Exposition",
+    slug: "/articles/sliding-between-kolams",
+    sourceHref: "https://mathnomad.in/articles/sliding-between-kolams/",
+    title: "Sliding Between Kolams",
+    subtitle:
+      "The 15-puzzle, a hidden invariant, and the paths between patterns.",
+    published: "2026-10-01",
+    displayDate: "1 October 2026",
+    date: "1 October 2026",
+    glimpse:
+      "Turn a square kolam into a sliding puzzle, discover the parity invariant, and see why 408 valid boards divide into two equally sized reachability classes.",
+    tags: ["Kolams", "Combinatorics", "Graph theory", "Symmetry", "Interactive"],
+    audience: ["General"],
+    keywords: [
+      "binary kolam tiles",
+      "15-puzzle",
+      "sliding puzzles",
+      "parity",
+      "invariants",
+      "permutations",
+      "reachability",
+      "shortest paths",
+      "square symmetries",
+    ],
+    msc: [
+      { code: "00A08", label: "Recreational mathematics", role: "Primary" },
+      { code: "05A05", label: "Permutations, words, matrices", role: "Secondary" },
+      { code: "05C12", label: "Distance in graphs", role: "Secondary" },
+    ],
+    citationKey: "rajendranSlidingBetweenKolams",
+    readingMinutes: 22,
+    readingTime: "22 min",
+    accent: accents.sage.color,
+    palette: accents.sage,
+    artLabel:
+      "A sliding-puzzle board made from fifteen oriented kolam tiles and one empty cell",
+    imageSrc: "/articles/sliding-between-kolams/kolam-with-blank.svg",
+    imageAlt:
+      "A valid square kolam with the isolated loop tile removed to leave one empty cell",
+    interactiveHref: "https://lab.mathnomad.in/sandbox-2/",
+    draft: false,
+    contents: [
+      "A 15-puzzle with kolam tiles",
+      "Try now",
+      "Why can some kolams never reach one another?",
+      "Move X to Y: a complete example",
+      "Knowing that a route exists is not finding the route",
+      "Where the 408 kolams sit",
+      "Rotating a kolam is a different operation",
+      "Questions to take back to the sandboxes",
+      "Notes and further reading",
+      "Where to continue",
+    ],
+    sections: [
+      {
+        heading: "A 15-puzzle with kolam tiles",
+        paragraphs: [
+          "Removing the isolated loop tile turns each valid square kolam into a fifteen-tile sliding puzzle with one empty cell.",
+        ],
+      },
+      {
+        heading: "Try now",
+        paragraphs: [
+          "The first embedded experiment invites the reader to slide the tiles and recover a different connected kolam.",
+        ],
+      },
+      {
+        heading: "Why can some kolams never reach one another?",
+        paragraphs: [
+          "A parity invariant combines the inversion count with the checkerboard colour of the blank and separates all positions into two sliding orbits.",
+        ],
+      },
+      {
+        heading: "Move X to Y: a complete example",
+        paragraphs: [
+          "A verified twelve-slide route joins two valid boards, and its Manhattan lower bound certifies that the route is shortest.",
+        ],
+      },
+      {
+        heading: "Knowing that a route exists is not finding the route",
+        paragraphs: [
+          "The invariant decides reachability, while shortest-path questions require a separate distance calculation or search.",
+        ],
+      },
+      {
+        heading: "Where the 408 kolams sit",
+        paragraphs: [
+          "Exhaustive enumeration places 204 valid kolams in each of the two sliding orbits.",
+        ],
+      },
+      {
+        heading: "Rotating a kolam is a different operation",
+        paragraphs: [
+          "Quarter-turns reverse the invariant, clarifying the difference between square symmetry and legal sliding moves.",
+        ],
+      },
+    ],
+    closing:
+      "Local sliding moves reveal a global division of all arrangements into two reachability classes.",
   },
 ];
 

@@ -1,0 +1,358 @@
+---
+title: "Sliding Between Kolams"
+subtitle: "The 15-puzzle, a hidden invariant, and the paths between patterns."
+description: "Turn a square kolam into a sliding puzzle, discover the parity invariant, and learn why 408 valid boards fall into two equally sized families of reachable targets."
+author: "Mohan Rajendran"
+date: 2026-10-01
+audience: [General]
+article-type: Exposition
+kind: exposition
+topics: [Kolams, Combinatorics, Graph theory, Symmetry]
+categories: [Kolams, Combinatorics, Graph theory, Symmetry]
+keywords: [binary kolam tiles, 15-puzzle, sliding puzzles, parity, invariants, permutations, reachability, shortest paths, square symmetries]
+msc:
+  - code: 00A08
+    role: Primary
+    label: Recreational mathematics
+  - code: 05A05
+    role: Secondary
+    label: "Permutations, words, matrices"
+  - code: 05C12
+    role: Secondary
+    label: Distance in graphs
+citation-key: rajendranSlidingBetweenKolams
+featured: false
+draft: false
+toc: true
+reading-time-label: "22 min"
+---
+
+## A 15-puzzle with kolam tiles
+
+We have seen that arranging sixteen oriented square kolam tiles on a $4\times4$ grid, subject to the matching, boundary, and connectivity rules, gives rise to **408 kolams**. Each has two components in its tile-connection graph: one contains fifteen tiles; the other is the isolated tile $\mathtt{0000}$, whose drawing is a closed loop. The model and the count are developed in [From Sixteen Tiles to Fifty-One Kolams](https://mathnomad.in/articles/kolams-on-a-square/).
+
+Remove that isolated loop tile. The completed kolam now has fifteen tiles and one empty cell, just like the familiar **15-puzzle**. It is natural to ask: **can we play the 15-puzzle game on these kolam grids?**
+
+<figure class="puzzle-comparison-figure">
+<div class="puzzle-comparison">
+<div><img src="fifteen-puzzle.svg" width="450" height="450" alt="A solved 15-puzzle with tiles numbered 1 to 15 and position 16, the bottom-right cell, empty."><p>The familiar 15-puzzle<br><span>Position 16 left empty</span></p></div>
+<div><img src="kolam-with-blank.svg" width="450" height="450" alt="A completed valid kolam with the isolated 0000 loop tile removed, leaving position 16, the bottom-right cell, empty."><p>A kolam with one empty cell<br><span>0000 removed</span></p></div>
+</div>
+<figcaption>Figure 1. The same frame, a different set of tiles: a numbered 15-puzzle and a valid kolam with the isolated loop tile removed. In both boards, position 16 (the bottom-right cell) is empty.</figcaption>
+</figure>
+
+The sliding rules carry over immediately. A tile sharing a side with the empty cell may slide into it, leaving a new empty cell behind. Tiles keep their orientations throughout: we do not rotate them, lift them out, or exchange two occupied cells.
+
+The destination changes. In the numbered puzzle, we try to put the numbers in order. Here, we begin with a valid kolam and ask whether the tiles can be slid into **another valid kolam**. Once we choose a particular target, we can ask a more demanding question: can this kolam be transformed into that one?
+
+## Try now
+
+Start with the completed kolam below. **Select a highlighted tile beside the empty cell, or focus the board and use the arrow keys,** to slide it. Try to reach a different valid kolam; simply undoing your moves to recover the starting pattern does not count.
+
+The lines may stop matching while you play. That is allowed: the challenge is to restore a complete, connected pattern at a different endpoint. **Scramble** loads a new valid starting kolam, **Reset** restores the current starting board, and **Undo** retraces one move.
+
+Choose **Show a route from the start** to watch an example. A small grid traces the path taken by the empty cell, with arrows recording each move. Follow the gap as the tiles slide around it.
+
+<div class="kolam-interactive" data-kolam-game="explore" aria-label="Slide to a new kolam"></div>
+
+Before reading on, try three small experiments:
+
+- Make one slide and inspect the connections around the cell you have emptied.
+- Slide that tile straight back. Why is the restored pattern not a new answer?
+- Find a way to move several tiles while eventually returning the blank to its starting cell.
+
+## Why can some kolams never reach one another?
+
+Playing the puzzle raises a question that trial and error alone cannot settle. If we choose any two of the 408 valid kolams, must there be a sliding route between them? Or can two perfectly valid patterns be separated by an obstruction that no sequence of moves can overcome?
+
+There are such pairs. One example is a valid board and the board obtained by turning its entire design through a quarter-turn, including the directions on every tile. Both are valid kolams, yet they cannot be joined by the permitted slides. We will verify a concrete pair below.
+
+To explain why, we need a way to record a board, a quantity preserved by every slide, and a theorem that tells us whether that quantity detects every obstruction.
+
+### A precise description of the tiles
+
+We use the square-tile model introduced in [From Sixteen Tiles to Fifty-One Kolams](https://mathnomad.in/articles/kolams-on-a-square/). It is a deliberately simplified mathematical model inspired by kolam, with its own precise rules.
+
+Each tile carries a four-bit word in the fixed order **east, north, west, south**. A $1$ records a connection on that side; a $0$ records no connection. Thus $\mathtt{1011}$ connects east, west, and south, while $\mathtt{0100}$ connects only north. There are $2^4=16$ words, and the inventory contains each one exactly once.
+
+The orientation is part of a tile's identity. A tile may slide, but it may not turn. For calculations, we also give the word $(e,n,w,s)$ its ordinary binary value $8e+4n+2w+s$. The labels then run from $0$ to $15$: for example, $\mathtt{0100}=4$ and $\mathtt{1011}=11$.
+
+A **valid kolam board** satisfies three requirements, in addition to using the full inventory:
+
+1. **Matching:** the facing bits across every shared side agree.
+2. **A closed boundary:** every bit pointing out of the board is $0$.
+3. **Connectivity:** the fifteen nonzero tiles form one connected network through their matched $1$-connections.
+
+The tile $\mathtt{0000}$ is part of the complete inventory and contains a closed loop. It has no connection to its neighbours, so it is necessarily isolated. Setting it aside gives the sliding puzzle its blank. Whenever we check whether a sliding position is a valid kolam, we imagine putting $\mathtt{0000}$ back in the empty cell.
+
+Connectivity here refers to the graph of tiles joined across their sides. It should not be confused with a claim that the entire drawing consists of one continuous strand.
+
+### Two changing quantities, one unchanging sign
+
+An invariant is a quantity that remains unchanged under every allowed move. To find one here, we combine the order of the labels with the position of the blank.
+
+#### Read the board as a list
+
+Read the cells from left to right across the top row, then the second row, and so on. Include the blank as the label $0$.
+
+An **inversion** is a pair of entries that occur in the wrong numerical order: the earlier entry is larger than the later one. The list $(3,1,2,0)$ has five inversions: $(3,1)$, $(3,2)$, $(3,0)$, $(1,0)$, and $(2,0)$.
+
+Write $N(X)$ for the inversion count of a board $X$. We need only its parity—whether it is even or odd.
+
+**The zero counts.** Omitting the blank produces another common convention for the 15-puzzle, but its formula is different. We keep the blank in the list throughout this article, as the sandboxes do.
+
+#### Locate the blank
+
+Number the columns $1,2,3,4$ from left to right and the rows $1,2,3,4$ from bottom to top. If the blank is at $(a_0,b_0)$, the parity of $a_0+b_0$ records its checkerboard colour.
+
+Notice the two conventions: we **read** the board from the top down, but the vertical coordinate **increases** upwards. Stating both removes an easy source of sign errors.
+
+Define
+
+$$
+\varepsilon(X)=(-1)^{N(X)+a_0+b_0}.
+$$
+
+This is the value displayed in the comparison below. It is $+1$ when the exponent is even and $-1$ when it is odd.
+
+#### Why a slide preserves it
+
+Every legal slide exchanges the blank with one tile. As a permutation of the sixteen labels, this is a single transposition, so it reverses the parity of the inversion count.
+
+The same slide moves the blank to an adjacent square, reversing its checkerboard colour. Thus the parity of $a_0+b_0$ reverses too.
+
+Both contributions change by an odd amount. Their sum changes by an even amount, and therefore
+
+$$
+\varepsilon(X')=\varepsilon(X)
+$$
+
+whenever one legal slide takes $X$ to $X'$.
+
+The inversion count itself need not stay fixed. Nor does the blank's colour. The invariant is obtained by combining them.
+
+### Two valid boards that cannot meet
+
+For the **Unreachable pair** in the comparison below, the starting board $X$ has $N(X)=67$ and its blank is at $(1,1)$. The target $Y$ is its clockwise quarter-turned image: it has $N(Y)=53$ and its blank is at $(1,4)$. Hence
+
+$$
+\varepsilon(X)=(-1)^{67+1+1}=-1,
+\qquad
+\varepsilon(Y)=(-1)^{53+1+4}=+1.
+$$
+
+Both endpoints satisfy all the kolam rules. But every slide preserves $\varepsilon$, so no sequence can take this $X$ to this $Y$. Failure to reach the target is not a failure of strategy: a route does not exist.
+
+Switch between **Reachable pair** and **Unreachable pair** below. Slide tiles on $X$ and watch its sign stay fixed. The target $Y$ stays still. The reachable example is the twelve-slide pair analysed in the next section; **Show a route from the start** demonstrates it and traces the path of the empty cell.
+
+<div class="kolam-interactive" data-kolam-game="reachability" aria-label="Move X to Y"></div>
+
+### Wilson's theorem: when does a path exist?
+
+The invariant gives an impossibility test. If $\varepsilon(X)\ne\varepsilon(Y)$, it rules out every possible sliding path, however long or inventive. But equal values need a further argument: an invariant might fail to detect some other obstruction.
+
+Think of the sixteen board cells as vertices of a graph, joining cells that share a side. This fixed **board graph** records where the blank may move; it is different from the changing graph of matched kolam connections. Its checkerboard colouring makes it *bipartite*: every edge joins opposite colours.
+
+**Wilson's theorem**, applied to this grid, says that all sliding-puzzle positions form exactly two connected components. Its general statement concerns finite simple graphs that remain connected when any one vertex is deleted, excluding cycles and one exceptional seven-vertex graph. For such graphs, the puzzle graph has two components when the board graph is bipartite, and one otherwise. The $4\times4$ grid meets these conditions. [Wilson, “Graph Puzzles, Homotopy, and the Alternating Group” (1974)](https://doi.org/10.1016/0095-8956(74)90098-7).
+
+We have already found an invariant taking two values and proved that no slide crosses between them. Since Wilson's theorem says there are exactly two components, these two invariant classes must be the components. There is no further obstruction. With our convention,
+
+$$
+X\longleftrightarrow Y
+\quad\Longleftrightarrow\quad
+\varepsilon(X)=\varepsilon(Y).
+$$
+
+Here $X\longleftrightarrow Y$ means that some finite sequence of legal slides joins the two boards, allowing invalid kolams along the way. The result for the classical 15-puzzle predates Wilson's generalisation: Johnson and Story established its necessity and sufficiency in 1879. The introduction to [Karpman and Roldán's study of sliding puzzles](https://arxiv.org/html/2201.00919) reviews this earlier criterion.
+
+One local move helps explain why permutations enter the story. Move the blank once around a $2\times2$ square. After four slides the blank returns, while the other three tiles have undergone a cyclic permutation. Such a three-cycle is even. With the blank returned to a fixed cell, every even permutation of the other fifteen tiles can be achieved. The little circuit illustrates the mechanism; it is not by itself a proof of that full statement.
+
+The two components are the **sliding orbits**, distinguished by $\varepsilon=+1$ and $\varepsilon=-1$. Each contains $16!/2$ arrangements. Choosing a new pair in the interactive loads a new problem; it does not make a move that crosses from one orbit to the other.
+
+## Move X to Y: a complete example
+
+In the second experiment, the target is fixed. Reaching a different valid kolam is no longer enough: every tile, including the blank, must match $Y$.
+
+Here is a pair drawn from the sandbox's challenge set. The numbers are decimal labels for the binary tiles; $0$ marks the blank.
+
+<figure class="sliding-kolam-figure">
+<img src="worked-pair.svg" alt="Two valid square kolam boards X and Y, with fixed tile orientations and decimal labels. Both have their blank at the lower-left corner. The arrangements differ in the lower three rows.">
+<figcaption>Figure 2. Two valid kolams in the same sliding orbit. A shortest route between them takes twelve slides.</figcaption>
+</figure>
+
+For an exact record of the arrangements,
+
+$$
+X=\begin{pmatrix}
+9&10&3&1\\
+13&11&14&7\\
+12&15&2&5\\
+0&4&8&6
+\end{pmatrix},
+\qquad
+Y=\begin{pmatrix}
+9&10&3&1\\
+13&11&7&5\\
+4&12&15&6\\
+0&8&14&2
+\end{pmatrix}.
+$$
+
+The inversion counts are $N(X)=67$ and $N(Y)=61$. Both blanks are at $(1,1)$, giving
+
+$$
+\varepsilon(X)=(-1)^{67+1+1}=-1,
+\qquad
+\varepsilon(Y)=(-1)^{61+1+1}=-1.
+$$
+
+The invariant permits a route. To exhibit one, slide the following tiles into the blank, in the order shown:
+
+$$
+4,\ 8,\ 2,\ 14,\ 7,\ 5,\ 6,\ 2,\ 14,\ 15,\ 12,\ 4.
+$$
+
+Each number names the **tile that moves**, not a cell to click or a direction for the blank. After the last slide, the board is exactly $Y$.
+
+The first few steps show how the invariant works numerically:
+
+| Position | Inversions $N$ | Blank $(a_0,b_0)$ | $N+a_0+b_0$ | $\varepsilon$ |
+|---|---:|:---:|---:|:---:|
+| Start at $X$ | 67 | $(1,1)$ | 69 | $-1$ |
+| Slide tile $4$ | 68 | $(2,1)$ | 71 | $-1$ |
+| Then tile $8$ | 69 | $(3,1)$ | 73 | $-1$ |
+| Then tile $2$ | 68 | $(3,2)$ | 73 | $-1$ |
+| Finish at $Y$ | 61 | $(1,1)$ | 63 | $-1$ |
+
+The integer in the fourth column changes, but its parity does not. Direct checking also confirms that all eleven intermediate boards in this route are invalid kolams. The valid patterns occur at the two ends.
+
+### Why twelve is the shortest possible
+
+For each nonzero tile, count how many horizontal and vertical steps separate its current cell from its target cell. Add these quantities over the fifteen tiles. This is the total **Manhattan distance**, denoted $H(X,Y)$.
+
+A single slide moves exactly one numbered tile by one grid step, so it can reduce this total by at most one. Every solution must therefore use at least $H(X,Y)$ slides. The blank is omitted from the sum to avoid counting the same slide twice.
+
+For the displayed pair, $H(X,Y)=12$. We have both a lower bound of twelve moves and an explicit twelve-move route. Consequently,
+
+$$
+d(X,Y)=12.
+$$
+
+No search over every possible solution is needed to certify this particular route. The lower bound and the construction meet exactly.
+
+## Knowing that a route exists is not finding the route
+
+The invariant answers a yes-or-no question. It does not tell us which tile to move next, and it does not measure how far away the target is.
+
+For a fixed reachable target $Y$, let $d(X,Y)$ be the minimum number of slides from $X$ to $Y$. Manhattan distance gives a useful lower bound, but it need not equal the true distance. Tiles can obstruct one another, and some routes must temporarily move a tile away from its destination to make room.
+
+The fixed-target experiment makes this distinction visible. Try the reachable pair yourself, then use **Show a route** to replay the verified twelve-slide solution from the starting board. This control returns to the start before demonstrating the route; it does not claim to find a shortest path from an arbitrary position you have reached. Follow the empty cell on the route diagram: each arrow records where the gap moved, in the direction opposite to the tile that filled it. The original [Move X to Y sandbox](https://lab.mathnomad.in/sandbox-3/) also offers a shortest-solution search from the current position.
+
+There is also a precise fact about the distance indicator: **after one legal slide, the exact distance to a fixed target changes by either $+1$ or $-1$. It cannot stay unchanged.**
+
+The triangle inequality first tells us that it changes by at most one. To rule out zero, observe that every move switches the blank's checkerboard colour. Every path between two fixed boards therefore has the same parity of length: even when the blanks occupy cells of the same colour, and odd when they occupy cells of opposite colours. Moving to a neighbouring board reverses this parity. The new distance must differ by one.
+
+This statement concerns distance to one fixed target. The open-ended challenge in Sandbox 2 accepts any different valid kolam; the nearest acceptable board and a particular designated target are separate notions. Sandbox 3 is the natural setting for studying exact distance and shortest routes.
+
+## Where the 408 kolams sit
+
+The full sliding-puzzle graph has $16!$ vertices. Only a very small subset of these vertices satisfies the kolam conditions.
+
+The earlier square-kolam investigation found **652** boards satisfying the inventory, matching, and boundary rules. Of these, **408** have all fifteen nonzero tiles connected. These are the valid kolams used here. The enumeration and its constraints are explained in [From Sixteen Tiles to Fifty-One Kolams](https://mathnomad.in/articles/kolams-on-a-square/).
+
+Classifying these valid boards by their sliding invariant gives
+
+$$
+\#\{X:\ X\text{ is valid},\ \varepsilon(X)=+1\}=204,
+$$
+
+$$
+\#\{X:\ X\text{ is valid},\ \varepsilon(X)=-1\}=204.
+$$
+
+These counts have been checked by exhaustive enumeration of the tile placements. The equality of the two counts also has a symmetry explanation, which we will prove next.
+
+From any valid starting board, exactly **203 other valid boards** are reachable, with tile orientations held fixed and invalid intermediate positions allowed. The starting board itself is the remaining member of its set of 204.
+
+It is useful to keep three scales separate:
+
+| Collection | Number | What is being counted? |
+|---|---:|---|
+| All labelled sliding states | $16!$ | Arbitrary tile placements, including invalid kolams |
+| One sliding orbit | $16!/2$ | All states reachable from one starting state |
+| Valid kolams in that orbit | $204$ | Reachable states satisfying the kolam rules |
+
+The number 204 is not the size of the sliding orbit. It counts the valid kolams encountered within that much larger component.
+
+## Rotating a kolam is a different operation
+
+The earlier article identifies **51 kolams up to the eight symmetries of the square**. How does that count fit with the two sliding orbits?
+
+A whole-board symmetry moves the cells and transforms the directions on every tile. A clockwise quarter-turn, for example, sends an east connection to a south connection. A legal slide changes a tile's position while keeping its directions fixed. These are different operations, with different equivalence classes.
+
+Here is a striking consequence: **a valid board and its quarter-turned image always have opposite sliding invariants.** They represent the same design up to symmetry, but one cannot be reached from the other by legal slides alone.
+
+### The quarter-turn calculation
+
+Consider what a clockwise quarter-turn does to the three ingredients of $\varepsilon$.
+
+First, it permutes the sixteen cell positions in four cycles of length four. Each four-cycle is odd, so the combined permutation is even.
+
+Second, it permutes the four compass bits in every label. Any exchange of two bit positions swaps four pairs among the sixteen binary words, leaving the other words fixed. It therefore induces an even permutation of the sixteen labels. Since any permutation of bit positions is built from such exchanges, the quarter-turn's relabelling is even too.
+
+Thus neither operation changes the parity of the full inversion count.
+
+Finally, a clockwise quarter-turn sends the blank at $(a_0,b_0)$ to $(b_0,5-a_0)$. The coordinate sum changes by $5-2a_0$, which is odd. The checkerboard colour reverses, and hence
+
+$$
+\varepsilon(RX)=-\varepsilon(X).
+$$
+
+Rotation is a bijection on the valid boards, so it pairs the two invariant classes in equal numbers. Combined with the total of 408, this proves the split into 204 and 204.
+
+For completeness, the eight square symmetries behave as follows. Each includes the corresponding transformation of the tile directions.
+
+| Whole-board transformation | Effect on $\varepsilon$ |
+|---|:---:|
+| Identity or a half-turn | Preserves it |
+| Reflection in either diagonal | Preserves it |
+| Clockwise or anticlockwise quarter-turn | Reverses it |
+| Horizontal or vertical reflection | Reverses it |
+
+Every valid board has eight distinct images under these symmetries, as established in the earlier enumeration. Four images lie in each sliding orbit. Thus each of the 51 designs has four representatives in each orbit, and $51\times4=204$.
+
+This also clarifies what a target means. If the target is the exact displayed board, its invariant decides reachability. If any rotation or reflection of a design is acceptable, the question has changed: every one of the 51 designs has representatives in each sliding orbit.
+
+## Questions to take back to the sandboxes
+
+1. **Explain an impossible target.** Starting from a valid board, form its quarter-turned image on paper. Predict the new $\varepsilon$ value before counting any inversions. Explain why the same design up to rotation does not guarantee a sliding route to that orientation.
+
+2. **Make a three-cycle.** Move the blank around a $2\times2$ square and back to its starting cell. Record which three tiles move. Perform the same circuit three times in total. Why does the board return to its original state?
+
+3. **Measure a route.** For a pair in Move X to Y, count the Manhattan distance before playing. Compare that lower bound with the length of a shortest solution. Equality supplies an immediate certificate of optimality; a gap records the extra work needed to organise the tiles.
+
+4. **Count without the zero.** Let $I(X)$ count inversions after deleting the blank from the row-by-row list, and let $r(X)$ be the blank's row counted from the bottom, starting at $1$. Show that our convention gives $\varepsilon(X)=(-1)^{I(X)+r(X)+1}$. Hint: if the blank is in the $k$th cell of the full list, it contributes $k-1$ inversions. Different conventions may reverse the names of the two invariant classes without changing the reachability test.
+
+5. **Change the permitted endpoints.** Compare two challenges: reach an exact labelled board, and reach any symmetric image of that board. Determine how many target orientations are reachable before attempting a solution.
+
+The blank gives the tiles room to move. The invariant tells us which destinations that freedom can reach. A local action—one tile entering one space—leads to a global division of all possible arrangements.
+
+## Notes and further reading
+
+**The companion experiments.** The first embedded game adapts [Slide to a New Kolam](https://lab.mathnomad.in/sandbox-2/) so that readers can play before meeting the invariant. The second adapts [Move X to Y](https://lab.mathnomad.in/sandbox-3/), adding a comparison between reachable and unreachable targets. Both embedded games run within this page. Their tile geometry, conventions, and worked pair follow the corresponding Math Nomad sandboxes; the route demonstrations use explicitly verified paths.
+
+**The square-tile model.** Mohan Rajendran, [From Sixteen Tiles to Fifty-One Kolams](https://mathnomad.in/articles/kolams-on-a-square/), Math Nomad. This supplies the tile model, the matching and connectivity conditions, and the count of 408 valid boards in 51 square-symmetry classes.
+
+**The classical source.** Wm. Woolsey Johnson and William E. Story, [“Notes on the ‘15’ Puzzle”](https://www.jstor.org/stable/2369492), *American Journal of Mathematics* **2**(4) (1879), 397–404. The paired notes establish the classical parity obstruction and its converse.
+
+**The graph-theoretic generalisation.** Richard M. Wilson, [“Graph Puzzles, Homotopy, and the Alternating Group”](https://doi.org/10.1016/0095-8956(74)90098-7), *Journal of Combinatorial Theory, Series B* **16** (1974), 86–96. Theorems 1 and 2 describe reachability on general board graphs and the permutations possible when the blank returns to its starting vertex.
+
+**A modern treatment.** Aaron F. Archer, [“A Modern Treatment of the 15 Puzzle”](https://research.google/pubs/a-modern-treatment-of-the-15-puzzle/), *The American Mathematical Monthly* **106** (1999), 793–799. A further route into the permutation-group structure behind sliding puzzles.
+
+**Beyond square tiles.** Ray Karpman and Érika Roldán, [“Parity Property of Hexagonal Sliding Puzzles”](https://arxiv.org/abs/2201.00919) (2022). Its introduction reviews the square-puzzle criterion; the paper studies how the answers change with board shape and the number of blanks.
+
+**What was proved and what was computed.** The invariance of $\varepsilon$, the behaviour of exact distance, and the quarter-turn sign change have direct proofs above. Reachability for equal invariants follows from Wilson's theorem applied to the square grid, consistent with the earlier classical 15-puzzle result. The counts were checked by exhaustive enumeration; the twelve-move example was verified move by move and certified shortest by its Manhattan lower bound.
+
+<aside class="article-ai-disclosure" aria-label="AI-use declaration">
+<p><strong>AI-use declaration.</strong> ChatGPT and Codex were used while discussing and refining the exposition, checking sources and calculations, verifying the computations, and developing the embedded interactives. The underlying mathematical questions, formulation, and final editorial judgments belong to the author. The author has reviewed and verified the mathematical statements and computations in this published version and accepts responsibility for its contents.</p>
+</aside>

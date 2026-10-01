@@ -1,0 +1,663 @@
+.sliding-kolam-article {
+  min-width: 0;
+}
+
+.sliding-kolam-article .sliding-kolam-section + .sliding-kolam-section {
+  margin-top: 2.5rem;
+}
+
+.sliding-kolam-article .sliding-kolam-section h2 {
+  scroll-margin-top: 7.5rem;
+}
+
+.sliding-kolam-article .sliding-kolam-section h4 {
+  color: var(--ink);
+  font: 600 1.02rem/1.35 var(--serif);
+  margin: 1.5em 0 .55em;
+}
+
+.sliding-kolam-article .puzzle-comparison-figure,
+.sliding-kolam-article .sliding-kolam-figure {
+  margin: 1.9rem 0 2rem;
+}
+
+.sliding-kolam-article .puzzle-comparison {
+  display: grid;
+  gap: clamp(.65rem, 2.5vw, 1.25rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sliding-kolam-article .puzzle-comparison > div {
+  background: color-mix(in srgb, var(--article-wash) 38%, var(--surface));
+  border-radius: 7px;
+  min-width: 0;
+  padding: clamp(.55rem, 2vw, 1rem);
+}
+
+.sliding-kolam-article .puzzle-comparison img {
+  aspect-ratio: 1;
+  height: auto;
+  width: 100%;
+}
+
+.sliding-kolam-article .puzzle-comparison p {
+  color: var(--ink);
+  font: 600 clamp(.7rem, 1.6vw, .82rem)/1.3 var(--sans);
+  margin: .7rem 0 .15rem;
+  text-align: center;
+}
+
+.sliding-kolam-article .puzzle-comparison p span {
+  color: var(--muted);
+  font-size: .76rem;
+  font-weight: 500;
+}
+
+.sliding-kolam-article figcaption {
+  color: var(--muted);
+  font: .78rem/1.55 var(--sans);
+  margin-top: .8rem;
+}
+
+.sliding-kolam-article .sliding-kolam-figure img {
+  height: auto;
+  margin-inline: auto;
+  width: min(100%, 690px);
+}
+
+.sliding-kolam-article .sliding-kolam-equation {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: var(--ink);
+  font-size: 1rem;
+  margin: 1.3rem 0;
+  overflow-x: auto;
+  padding: .2rem 0 .35rem;
+  text-align: center;
+}
+
+/* KaTeX visually clips its MathML layer; containing that layer also prevents
+   its intrinsic width from creating a page-level scrollbar on narrow screens. */
+.sliding-kolam-article .katex {
+  position: relative;
+}
+
+.sliding-kolam-article .katex-mathml {
+  max-width: 1px;
+  overflow: hidden;
+}
+
+.sliding-kolam-article .sliding-kolam-equation:focus-visible,
+.sliding-kolam-article .sliding-kolam-table-wrap:focus-visible {
+  outline: 3px solid var(--article-accent);
+  outline-offset: 4px;
+}
+
+.sliding-kolam-article .sliding-kolam-table-wrap {
+  margin: 1.6rem 0 1.9rem;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.sliding-kolam-article table {
+  border-collapse: collapse;
+  font: .84rem/1.45 var(--sans);
+  min-width: 36rem;
+  width: 100%;
+}
+
+.sliding-kolam-article th,
+.sliding-kolam-article td {
+  border-bottom: 1px solid var(--rule);
+  padding: .7rem .75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.sliding-kolam-article th {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.sliding-kolam-article .notes-section {
+  background: color-mix(in srgb, var(--surface-muted) 72%, transparent);
+  border-radius: 7px;
+  padding: .15rem 1.35rem 1rem;
+}
+
+.sliding-kolam-article .article-ai-disclosure {
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font: .82rem/1.55 var(--sans);
+  margin-top: 2rem;
+  padding-top: 1.1rem;
+}
+
+.sliding-kolam-article .article-ai-disclosure p {
+  margin: 0;
+}
+
+/* Embedded sliding puzzles */
+.sliding-kolam-article .kp-widget {
+  --kp-tile: color-mix(in srgb, var(--article-wash) 54%, var(--surface));
+  --kp-curve: color-mix(in srgb, var(--article-ink) 88%, var(--ink));
+  --kp-accent: color-mix(in srgb, var(--article-accent) 74%, var(--ink));
+  --kp-accent-soft: color-mix(in srgb, var(--article-wash) 72%, var(--surface));
+  background: color-mix(in srgb, var(--surface) 82%, var(--article-wash));
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  color: var(--body);
+  font: 400 .88rem/1.55 var(--sans);
+  margin: 1.8rem 0 2rem;
+  padding: clamp(1rem, 3vw, 1.45rem);
+}
+
+.sliding-kolam-article .kp-eyebrow {
+  color: var(--kp-accent);
+  font-size: .72rem;
+  font-weight: 650;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.sliding-kolam-article .kp-intro h3 {
+  color: var(--ink);
+  font: 500 clamp(1.45rem, 3vw, 1.72rem)/1.2 var(--serif);
+  letter-spacing: -.02em;
+  margin: .35rem 0 .6rem;
+}
+
+.sliding-kolam-article .kp-intro p {
+  font: 400 .88rem/1.58 var(--sans);
+  margin: 0 0 1rem;
+  max-width: 67ch;
+}
+
+.sliding-kolam-article .kp-boards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 25rem);
+  justify-content: center;
+  margin: 1rem 0 .8rem;
+}
+
+.sliding-kolam-article .kp-two-boards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sliding-kolam-article .kp-board-panel {
+  background: color-mix(in srgb, var(--surface-muted) 62%, var(--surface));
+  border-radius: 6px;
+  min-width: 0;
+  padding: clamp(.5rem, 2vw, .8rem);
+}
+
+.sliding-kolam-article .kp-board-heading {
+  align-items: baseline;
+  display: flex;
+  font-size: .78rem;
+  gap: .45rem;
+  justify-content: space-between;
+  margin-bottom: .55rem;
+}
+
+.sliding-kolam-article .kp-count,
+.sliding-kolam-article .kp-fixed {
+  background: var(--chip-bg);
+  border-radius: 4px;
+  color: var(--chip-text);
+  font-size: .75rem;
+  font-variant-numeric: tabular-nums;
+  padding: .2rem .4rem;
+  white-space: nowrap;
+}
+
+.sliding-kolam-article .kp-board {
+  aspect-ratio: 1;
+  background: color-mix(in srgb, var(--article-accent) 22%, var(--surface-muted));
+  border: 1px solid var(--rule-dark);
+  border-radius: 5px;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 4px;
+}
+
+.sliding-kolam-article .kp-cell {
+  appearance: none;
+  aspect-ratio: 1;
+  background: var(--kp-tile);
+  border: 0;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 .5px color-mix(in srgb, var(--rule-dark) 55%, transparent);
+  display: block;
+  line-height: 1;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.sliding-kolam-article button.kp-cell {
+  cursor: default;
+  opacity: 1;
+}
+
+.sliding-kolam-article .kp-cell svg {
+  display: block;
+  height: 100%;
+  pointer-events: none;
+  width: 100%;
+}
+
+.sliding-kolam-article .kp-cell svg path {
+  fill: none;
+  stroke: var(--kp-curve);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 6.1;
+}
+
+.sliding-kolam-article .kp-cell svg circle {
+  fill: var(--kp-curve);
+}
+
+.sliding-kolam-article .kp-cell.kp-empty {
+  align-items: center;
+  background: color-mix(in srgb, var(--surface-muted) 78%, var(--article-wash));
+  display: flex;
+  justify-content: center;
+}
+
+.sliding-kolam-article .kp-empty-label {
+  color: var(--muted);
+  font: 500 clamp(.6rem, 1.4vw, .7rem)/1 var(--sans);
+  letter-spacing: .02em;
+}
+
+.sliding-kolam-article button.kp-movable {
+  background: var(--kp-accent-soft);
+  box-shadow: inset 0 0 0 2px var(--kp-accent);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.sliding-kolam-article button.kp-movable:hover {
+  background: color-mix(in srgb, var(--article-wash) 88%, var(--surface));
+  box-shadow: inset 0 0 0 3px var(--kp-accent);
+}
+
+.sliding-kolam-article .kp-sign {
+  color: var(--article-ink);
+  font: 500 1.03rem/1.4 var(--serif);
+  padding-top: .55rem;
+  text-align: center;
+}
+
+.sliding-kolam-article .kp-feedback {
+  background: color-mix(in srgb, var(--surface-muted) 72%, var(--surface));
+  border-left: 3px solid var(--article-accent);
+  border-radius: 0 4px 4px 0;
+  font-size: .8rem;
+  line-height: 1.5;
+  margin: .75rem 0 .9rem;
+  min-height: 3.4rem;
+  padding: .65rem .75rem;
+}
+
+.sliding-kolam-article .kp-feedback.kp-success {
+  background: var(--kp-accent-soft);
+  color: var(--ink);
+}
+
+.sliding-kolam-article .kp-actions,
+.sliding-kolam-article .kp-mode {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.sliding-kolam-article .kp-mode {
+  margin-top: .9rem;
+}
+
+.sliding-kolam-article .kp-actions button,
+.sliding-kolam-article .kp-mode button {
+  appearance: none;
+  background: var(--surface);
+  border: 1px solid var(--rule-dark);
+  border-radius: 4px;
+  color: var(--ink);
+  cursor: pointer;
+  font: 600 .76rem/1.25 var(--sans);
+  min-height: 44px;
+  padding: .62rem .75rem;
+}
+
+.sliding-kolam-article .kp-actions button:hover,
+.sliding-kolam-article .kp-mode button:hover {
+  background: var(--kp-accent-soft);
+  border-color: var(--article-accent);
+}
+
+.sliding-kolam-article .kp-actions button:disabled {
+  cursor: default;
+  opacity: .48;
+}
+
+.sliding-kolam-article .kp-actions .kp-primary,
+.sliding-kolam-article .kp-two-boards ~ .kp-actions .kp-route {
+  background: var(--article-ink);
+  border-color: var(--article-ink);
+  color: var(--surface);
+}
+
+.sliding-kolam-article .kp-mode button[aria-pressed="true"] {
+  background: var(--kp-accent-soft);
+  border-color: var(--article-accent);
+  color: var(--ink);
+}
+
+.sliding-kolam-article .kp-bottom,
+.sliding-kolam-article p.kp-help,
+.sliding-kolam-article p.kp-route-note {
+  color: var(--muted);
+  font: 400 .76rem/1.55 var(--sans);
+}
+
+.sliding-kolam-article .kp-bottom {
+  margin-top: .75rem;
+}
+
+.sliding-kolam-article p.kp-help,
+.sliding-kolam-article p.kp-route-note {
+  margin: .55rem 0 0;
+}
+
+.sliding-kolam-article .kp-route-panel {
+  background: color-mix(in srgb, var(--surface-muted) 65%, var(--surface));
+  border-radius: 6px;
+  margin-top: 1rem;
+  padding: .9rem;
+}
+
+.sliding-kolam-article .kp-route-heading {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  justify-content: space-between;
+  margin-bottom: .75rem;
+}
+
+.sliding-kolam-article .kp-route-heading h4 {
+  color: var(--ink);
+  font: 650 .88rem/1.4 var(--sans);
+  margin: 0;
+}
+
+.sliding-kolam-article .kp-route-progress {
+  color: var(--muted);
+  font-size: .75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.sliding-kolam-article .kp-route-body {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 10rem minmax(0, 1fr);
+}
+
+.sliding-kolam-article .kp-route-map {
+  line-height: 0;
+  max-width: 10rem;
+}
+
+.sliding-kolam-article .kp-route-map svg {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.sliding-kolam-article .kp-route-cell {
+  fill: color-mix(in srgb, var(--surface) 70%, var(--article-wash));
+}
+
+.sliding-kolam-article .kp-route-future {
+  fill: var(--muted);
+  stroke: var(--muted);
+}
+
+.sliding-kolam-article .kp-route-done,
+.sliding-kolam-article .kp-route-start {
+  fill: none;
+  stroke: var(--article-ink);
+}
+
+.sliding-kolam-article .kp-route-marker.kp-route-done {
+  fill: var(--article-ink);
+  stroke: none;
+}
+
+.sliding-kolam-article .kp-route-current {
+  fill: var(--article-accent);
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+
+.sliding-kolam-article .kp-route-line.kp-route-current {
+  fill: none;
+  stroke: var(--article-accent);
+}
+
+.sliding-kolam-article .kp-route-marker.kp-route-current {
+  fill: var(--article-accent);
+  stroke: none;
+}
+
+.sliding-kolam-article .kp-route-finish {
+  fill: none;
+  stroke: var(--article-accent);
+  stroke-dasharray: 3 2;
+  stroke-width: 1.5;
+}
+
+.sliding-kolam-article .kp-route-description p {
+  color: var(--muted);
+  font: 400 .76rem/1.55 var(--sans);
+  margin: 0 0 .55rem;
+}
+
+.sliding-kolam-article .kp-route-description p.kp-route-position {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.sliding-kolam-article .kp-route-key {
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: .72rem;
+  gap: .45rem .75rem;
+  line-height: 1.4;
+}
+
+.sliding-kolam-article .kp-route-key span {
+  align-items: center;
+  display: inline-flex;
+  gap: .3rem;
+}
+
+.sliding-kolam-article .kp-route-key i {
+  box-sizing: border-box;
+  display: inline-block;
+  flex: none;
+  height: .75rem;
+  width: .75rem;
+}
+
+.sliding-kolam-article .kp-key-start {
+  border: 2px solid var(--article-ink);
+  border-radius: 50%;
+}
+
+.sliding-kolam-article .kp-key-finish {
+  border: 1.5px dashed var(--article-accent);
+  border-radius: 3px;
+}
+
+.sliding-kolam-article .kp-key-current {
+  background: var(--article-accent);
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--article-accent);
+}
+
+.sliding-kolam-article ol.kp-route-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  list-style: none;
+  margin: .8rem 0 .7rem;
+  padding: 0;
+}
+
+.sliding-kolam-article .kp-route-steps li {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  font: 500 .72rem/1 var(--sans);
+  gap: .1rem;
+  justify-content: center;
+  margin: 0;
+  min-height: 2.65rem;
+  min-width: 2.35rem;
+  padding: .35rem;
+}
+
+.sliding-kolam-article .kp-route-steps li strong {
+  font: 500 1.15rem/1 var(--sans);
+}
+
+.sliding-kolam-article .kp-route-steps li.kp-step-done {
+  background: var(--kp-accent-soft);
+  border-color: color-mix(in srgb, var(--article-accent) 45%, var(--rule));
+  color: var(--article-ink);
+}
+
+.sliding-kolam-article .kp-route-steps li.kp-step-current {
+  border-color: var(--article-accent);
+  box-shadow: inset 0 0 0 1px var(--article-accent);
+  color: var(--ink);
+}
+
+.sliding-kolam-article .kp-route-controls {
+  border-top: 1px solid var(--rule);
+  padding-top: .7rem;
+}
+
+.sliding-kolam-article .kp-widget [hidden] {
+  display: none !important;
+}
+
+.sliding-kolam-article .kp-widget :focus-visible {
+  outline: 3px solid var(--article-accent);
+  outline-offset: 3px;
+}
+
+.site-shell[data-theme="dark"] .sliding-kolam-article .puzzle-comparison img,
+.site-shell[data-theme="dark"] .sliding-kolam-article .sliding-kolam-figure img {
+  filter: brightness(.86) saturate(.82);
+}
+
+@media (max-width: 600px) {
+  .sliding-kolam-article .sliding-kolam-section + .sliding-kolam-section {
+    margin-top: 2rem;
+  }
+
+  .sliding-kolam-article .puzzle-comparison > div {
+    padding: .45rem;
+  }
+
+  .sliding-kolam-article .puzzle-comparison p span {
+    font-size: .68rem;
+  }
+
+  .sliding-kolam-article .kp-widget {
+    padding: .85rem .65rem;
+  }
+
+  .sliding-kolam-article .kp-two-boards {
+    gap: .45rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sliding-kolam-article .kp-board-panel {
+    padding: .4rem;
+  }
+
+  .sliding-kolam-article .kp-board-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: .7rem;
+    gap: .2rem;
+  }
+
+  .sliding-kolam-article .kp-board {
+    padding: 2px;
+  }
+
+  .sliding-kolam-article .kp-count,
+  .sliding-kolam-article .kp-fixed {
+    font-size: .65rem;
+  }
+
+  .sliding-kolam-article .kp-route-body {
+    gap: .65rem;
+    grid-template-columns: 8rem minmax(0, 1fr);
+  }
+
+  .sliding-kolam-article .kp-route-map {
+    max-width: 8rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .sliding-kolam-article .kp-route-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sliding-kolam-article .kp-route-map {
+    justify-self: center;
+    max-width: 10rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sliding-kolam-article .kp-widget * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  .sliding-kolam-article .kp-actions,
+  .sliding-kolam-article .kp-mode,
+  .sliding-kolam-article .kp-bottom,
+  .sliding-kolam-article .kp-route-note {
+    display: none;
+  }
+
+  .sliding-kolam-article .kp-widget {
+    break-inside: avoid;
+  }
+}

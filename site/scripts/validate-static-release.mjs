@@ -25,6 +25,13 @@ const SITE_VARIANTS = {
 
 const ARTICLES = [
   {
+    slug: "sliding-between-kolams",
+    published: "2026-10-01",
+    citationDate: "2026-10-01",
+    displayDate: "1 October 2026",
+    clientMarker: "Slide to a new kolam",
+  },
+  {
     slug: "moving-the-starting-line-in-stirlings-formula",
     published: "2026-09-07",
     citationDate: "2026-09-07",
@@ -165,6 +172,9 @@ const SHARED_REQUIRED_ASSETS = [
 const MAIN_REQUIRED_ASSETS = [
   "feed.xml",
   "mohan-r.jpeg",
+  "articles/sliding-between-kolams/fifteen-puzzle.svg",
+  "articles/sliding-between-kolams/kolam-with-blank.svg",
+  "articles/sliding-between-kolams/worked-pair.svg",
   "articles/kolams-on-an-octahedron/octahedron-hero.svg",
   "articles/kolams-on-an-octahedron/triangular-kolam-tiles.svg",
   "articles/binary-kolam-tiles/kolam-13-hero.webp",
@@ -1034,6 +1044,7 @@ if (variant === "main") {
   }
 
   const expectedArticleTitles = [
+    "Sliding Between Kolams",
     "Starting Later: Geometric Bounds for Stirling’s Formula",
     "The Law of Cosines",
     "Kolams on Octahedron",

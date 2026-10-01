@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 450" role="img" aria-labelledby="title desc">
+  <title id="title">The familiar 15-puzzle</title>
+  <desc id="desc">A solved 4 by 4 sliding puzzle. Fifteen sage-green tiles are numbered 1 to 15 in row order. Position 16, the bottom-right cell, is empty.</desc>
+  <rect width="450" height="450" rx="10" fill="#ede9e2" />
+  <g transform="translate(25 25)">
+    <rect x="-8" y="-8" width="416" height="416" rx="10" fill="#fdfbf7" stroke="#d4cfc7" stroke-width="1.5" />
+    <rect width="400" height="400" fill="#e1ddd6" />
+    <rect x="3" y="3" width="94" height="94" rx="7" fill="#708077" />
+    <text x="50" y="64" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">1</text>
+    <rect x="103" y="3" width="94" height="94" rx="7" fill="#708077" />
+    <text x="150" y="64" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">2</text>
+    <rect x="203" y="3" width="94" height="94" rx="7" fill="#708077" />
+    <text x="250" y="64" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">3</text>
+    <rect x="303" y="3" width="94" height="94" rx="7" fill="#708077" />
+    <text x="350" y="64" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">4</text>
+    <rect x="3" y="103" width="94" height="94" rx="7" fill="#708077" />
+    <text x="50" y="164" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">5</text>
+    <rect x="103" y="103" width="94" height="94" rx="7" fill="#708077" />
+    <text x="150" y="164" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">6</text>
+    <rect x="203" y="103" width="94" height="94" rx="7" fill="#708077" />
+    <text x="250" y="164" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">7</text>
+    <rect x="303" y="103" width="94" height="94" rx="7" fill="#708077" />
+    <text x="350" y="164" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">8</text>
+    <rect x="3" y="203" width="94" height="94" rx="7" fill="#708077" />
+    <text x="50" y="264" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">9</text>
+    <rect x="103" y="203" width="94" height="94" rx="7" fill="#708077" />
+    <text x="150" y="264" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">10</text>
+    <rect x="203" y="203" width="94" height="94" rx="7" fill="#708077" />
+    <text x="250" y="264" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">11</text>
+    <rect x="303" y="203" width="94" height="94" rx="7" fill="#708077" />
+    <text x="350" y="264" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">12</text>
+    <rect x="3" y="303" width="94" height="94" rx="7" fill="#708077" />
+    <text x="50" y="364" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">13</text>
+    <rect x="103" y="303" width="94" height="94" rx="7" fill="#708077" />
+    <text x="150" y="364" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">14</text>
+    <rect x="203" y="303" width="94" height="94" rx="7" fill="#708077" />
+    <text x="250" y="364" text-anchor="middle" fill="#fdfbf7" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="600">15</text>
+    <rect x="310" y="310" width="80" height="80" rx="5" fill="none" stroke="#aaa49b" stroke-width="2" stroke-dasharray="6 6" />
+  </g>
+</svg>
