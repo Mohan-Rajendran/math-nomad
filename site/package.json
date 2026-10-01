@@ -13,9 +13,10 @@
     "build:static:main": "NEXT_PUBLIC_MATH_NOMAD_SITE_MODE=main next build --webpack && NEXT_PUBLIC_MATH_NOMAD_SITE_MODE=main node scripts/prepare-pages-output.mjs out && node scripts/validate-static-release.mjs main out",
     "build:static:lab": "NEXT_PUBLIC_MATH_NOMAD_SITE_MODE=lab next build --webpack && NEXT_PUBLIC_MATH_NOMAD_SITE_MODE=lab node scripts/prepare-pages-output.mjs out && node scripts/validate-static-release.mjs lab out",
     "test": "npm run validate:main",
+    "test:nested-roots": "node --test app/article-content/nested-roots/numerics.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
-    "validate:main": "npm run typecheck && npm run lint && npm run build:static:main",
+    "validate:main": "npm run typecheck && npm run lint && npm run test:nested-roots && npm run build:static:main",
     "validate:lab": "npm run typecheck && npm run lint && npm run build:static:lab"
   },
   "dependencies": {
