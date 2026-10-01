@@ -1,0 +1,450 @@
+<!-- ================= INTRODUCTION ================= -->
+<section id="intro" class="article-section">
+  <div class="companion-prose">
+    <p class="eyebrow">Introduction</p>
+    <h2>A sequence you might already know</h2>
+
+    <div class="eqn" role="math" aria-label="The square root of 2 plus the square
+         root of 2 plus the square root of 2, and so on for ever, equals 2.">
+      \[ \sqrt{2+\sqrt{2+\sqrt{2+\cdots}}}=2. \]
+    </div>
+
+    <h3>For <var>x</var> &gt; 0, let</h3>
+
+    <div class="eqn hero" role="math" aria-label="The x-th root of, x plus the x-th
+         root of, x plus the x-th root of, x plus and so on for ever, equals L.">
+      \[ \sqrt[x]{\,x+\sqrt[x]{\,x+\sqrt[x]{\,x+\cdots}}}=L. \]
+    </div>
+
+    <h3>Two questions</h3>
+    <ol style="padding-left:1.4rem">
+      <li style="margin-bottom:.6rem">For which values of <var>x</var> does <var>L</var> make
+        sense?</li>
+      <li>What type of values can <var>L</var> take?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= PANEL 1 ================= -->
+<section id="panel1" class="article-section">
+  <div class="companion-prose">
+    <p class="eyebrow">Panel 1</p>
+    <h2>Experimentation</h2>
+    <p>For a particular value of <var>x</var>, compute</p>
+    <div class="eqn" role="math" aria-label="The x-th root of x; then the x-th root
+         of, x plus the x-th root of x; then the x-th root of, x plus the x-th root
+         of, x plus the x-th root of x; and so on.">
+      \[ \sqrt[x]{x},\quad \sqrt[x]{\,x+\sqrt[x]{x}},\quad
+          \sqrt[x]{\,x+\sqrt[x]{\,x+\sqrt[x]{x}}},\ \ldots \]
+    </div>
+    <p>Count how many steps it needs before the terms settle. We see a gap
+      (&alpha;,&nbsp;1] for which</p>
+    <div class="eqn" role="math" aria-label="L, the infinite x-th root, tends to
+         infinity.">
+      \[ L=\sqrt[x]{\,x+\sqrt[x]{\,x+\sqrt[x]{\,x+\cdots}}}\;\longrightarrow\;\infty. \]
+    </div>
+  </div>
+
+  <div class="companion-wide">
+    <div class="sandbox">
+      <header>
+        <h3>Sandbox 1 · Run it</h3>
+        <span class="hint">Drag the slider, or focus it and use the arrow keys.</span>
+      </header>
+      <div class="sb-body">
+        <div class="canvas-row">
+          <figure class="canvas-box">
+            <canvas id="c-orbit" height="300" role="img"
+                    aria-label="Plot of the first terms of the sequence."></canvas>
+            <figcaption>The first 40 terms at this value of <var>x</var></figcaption>
+          </figure>
+          <figure class="canvas-box">
+            <canvas id="c-steps" height="300" role="img"
+                    aria-label="Steps needed to settle, against x."></canvas>
+            <figcaption>Steps needed to settle, for every value of <var>x</var></figcaption>
+          </figure>
+        </div>
+
+        <div class="controls">
+          <div class="ctrl">
+            <label for="dec1">&ldquo;Settled&rdquo; means two consecutive terms agree to</label>
+            <select id="dec1">
+              <option value="2">2 decimals</option>
+              <option value="4">4 decimals</option>
+              <option value="6">6 decimals</option>
+              <option value="9" selected>9 decimals — as plotted on the poster</option>
+            </select>
+          </div>
+          <div class="ctrl">
+            <label for="x1"><var>x</var> = <span class="val" id="x1v">0.350</span></label>
+            <input type="range" id="x1" min="0.02" max="3" step="0.001" value="0.35">
+          </div>
+          <div class="ctrl tight">
+            <div class="btnrow" role="group" aria-label="Jump to a notable value of x">
+              <button type="button" data-x="0.2">0.2</button>
+              <button type="button" data-x="0.3601300017">&alpha;</button>
+              <button type="button" data-x="0.5">0.5</button>
+              <button type="button" data-x="1">1</button>
+              <button type="button" data-x="2">2</button>
+              <button type="button" data-x="3">3</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="verdict" id="v1" role="status" aria-live="polite"></p>
+
+        <details class="numbers">
+          <summary>Read the numbers</summary>
+          <div class="tablewrap">
+            <table id="t1">
+              <thead><tr>
+                <th scope="col"><var>n</var></th>
+                <th scope="col"><var>n</var>th term</th>
+              </tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="companion-prose">
+    <div class="callout answer">
+      <span class="label">The answer to question 1</span>
+      <p><var>L</var> makes sense exactly when</p>
+      <div role="math" aria-label="0 is less than x, which is less than or equal to
+           alpha; or x is greater than 1.">
+        \[ 0 &lt; x \le \alpha \qquad\text{or}\qquad x &gt; 1 \]
+      </div>
+      <p style="margin-bottom:0">where &alpha; is a particular number between
+        0 and 1: &alpha;&nbsp;=&nbsp;0.3601300017…</p>
+    </div>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 96" role="img"
+           aria-label="A number line from 0 to beyond 2, drawn to scale. The stretch from 0 to alpha, about 0.36, is marked settles. The stretch from alpha to 1 is marked runs away. Everything past 1 is marked settles.">
+        <g font-family="Source Sans 3, sans-serif" font-size="13">
+          <line x1="20" y1="52" x2="620" y2="52" stroke="var(--line-2)" stroke-width="1.5"/>
+          <line x1="20" y1="52" x2="120" y2="52" stroke="var(--accent-2)" stroke-width="9" stroke-linecap="butt"/>
+          <line x1="120" y1="52" x2="297" y2="52" stroke="var(--amber-fill)" stroke-width="9"
+                stroke-dasharray="14 9" stroke-linecap="butt"/>
+          <line x1="297" y1="52" x2="612" y2="52" stroke="var(--accent-2)" stroke-width="9" stroke-linecap="butt"/>
+          <path d="M612 45 L626 52 L612 59 Z" fill="var(--accent-2)"/>
+          <g stroke="var(--line-2)" stroke-width="1.5">
+            <line x1="20" y1="44" x2="20" y2="60"/><line x1="120" y1="44" x2="120" y2="60"/>
+            <line x1="297" y1="44" x2="297" y2="60"/><line x1="574" y1="44" x2="574" y2="60"/>
+          </g>
+          <g fill="var(--ink-2)" text-anchor="middle">
+            <text x="20" y="78">0</text><text x="120" y="78">&#x3B1;</text>
+            <text x="297" y="78">1</text><text x="574" y="78">2</text>
+          </g>
+          <g text-anchor="middle" font-size="12.5">
+            <text x="70" y="34" fill="var(--accent)">settles</text>
+            <text x="208" y="34" fill="var(--amber)">runs away</text>
+            <text x="450" y="34" fill="var(--accent)">settles</text>
+          </g>
+        </g>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= PANEL 2 ================= -->
+<section id="panel2" class="article-section">
+  <div class="companion-prose">
+    <p class="eyebrow">Panel 2</p>
+    <h2>Where does the gap come from?</h2>
+    <p>If <var>L</var> is that infinite root, then it must satisfy</p>
+    <div class="eqn hero" role="math"
+         aria-label="L to the power x, minus L, equals x.">
+      \[ L^{x}-L=x \]
+    </div>
+    <p>Read it as a picture. The curve \(L^{x}-L\) rises to a peak and then falls
+      away. A resting place exists only where that curve reaches the height
+      <var>x</var>.</p>
+  </div>
+
+  <div class="companion-wide">
+    <div class="sandbox">
+      <header>
+        <h3>Sandbox 2 · The hill and the line</h3>
+        <span class="hint">The bar is the same gap in both charts: left, between the
+          peak and the line; right, between the two curves.</span>
+      </header>
+      <div class="sb-body">
+        <div class="canvas-row">
+          <figure class="canvas-box">
+            <canvas id="c-hill" height="300" role="img"
+                    aria-label="The curve L to the power x minus L, with a horizontal line at height x."></canvas>
+            <figcaption>The hill, and the height it must reach</figcaption>
+          </figure>
+          <figure class="canvas-box">
+            <canvas id="c-race" height="300" role="img"
+                    aria-label="The height of the peak and the required height, both against x."></canvas>
+            <figcaption>The same gap, read off the two curves</figcaption>
+          </figure>
+        </div>
+        <div class="controls">
+          <div class="ctrl">
+            <label for="x2"><var>x</var> = <span class="val" id="x2v">0.330</span></label>
+            <input type="range" id="x2" min="0.08" max="0.86" step="0.001" value="0.33">
+          </div>
+          <div class="ctrl tight">
+            <div class="btnrow" role="group" aria-label="Jump to a notable value of x">
+              <button type="button" data-x2="0.15">0.15</button>
+              <button type="button" data-x2="0.33">0.33</button>
+              <button type="button" data-x2="0.3601300017">&alpha;</button>
+              <button type="button" data-x2="0.55">0.55</button>
+            </div>
+          </div>
+        </div>
+        <p class="verdict" id="v2" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="companion-prose">
+    <p>Those two effects race each other. The peak wins for small <var>x</var>, the line
+      wins for large <var>x</var>, and they are level at exactly one value. <b>That value is
+      &alpha;.</b></p>
+    <div class="callout">
+      <span class="label">The boundary constant</span>
+      <p style="margin:0">&alpha; is the one number in (0,&nbsp;1) with</p>
+      <div role="math" aria-label="Alpha raised to the power alpha over one minus
+           alpha, equals alpha over one minus alpha.">
+        \[ \alpha^{\frac{\alpha}{1-\alpha}}=\frac{\alpha}{1-\alpha} \]
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PANEL 3 ================= -->
+<section id="panel3" class="article-section">
+  <div class="companion-prose">
+    <p class="eyebrow">Panel 3</p>
+    <h2>Which solution is <var>L</var>?</h2>
+    <p>For \(0 &lt; x &lt; \alpha\) the equation \(L^{x}-L=x\) has <b>two</b> positive
+      solutions. Only the smaller one is <var>L</var>.</p>
+    <p>The sequence starts at \(\sqrt[x]{x}\) and every step makes it larger. It
+      therefore climbs until it meets a solution, and it meets the smaller one first,
+      so it stops there. The larger solution is a <i>ceiling</i> the sequence never
+      reaches: a sequence would have to <i>begin</i> above it to escape, and
+      \(\sqrt[x]{x}\) never does.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 112" role="img"
+           aria-label="A line with arrows. A tick on the left marks the starting value, the x-th root of x. Arrows from there point right, toward a solid dot marked L. Arrows to the right of L point left, back toward it. Further right a hollow dot marks the other solution; arrows beyond it point right, away from it, labelled escapes.">
+        <defs>
+          <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5"
+                  markerHeight="5.5" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--accent-2)"/>
+          </marker>
+        </defs>
+        <g font-family="Source Sans 3, sans-serif" font-size="12.5">
+          <line x1="14" y1="46" x2="630" y2="46" stroke="var(--line-2)" stroke-width="1.5"/>
+          <g stroke="var(--accent-2)" stroke-width="2.4" fill="none">
+            <path d="M104 46 h46" marker-end="url(#ar3)"/>
+            <path d="M176 46 h46" marker-end="url(#ar3)"/>
+            <path d="M372 46 h-46" marker-end="url(#ar3)"/>
+            <path d="M444 46 h-46" marker-end="url(#ar3)"/>
+            <path d="M524 46 h46" marker-end="url(#ar3)"/>
+            <path d="M584 46 h40" marker-end="url(#ar3)"/>
+          </g>
+          <line x1="62" y1="36" x2="62" y2="56" stroke="var(--amber-fill)" stroke-width="3"/>
+          <circle cx="282" cy="46" r="8" fill="var(--accent)"/>
+          <circle cx="482" cy="46" r="7.5" fill="var(--surface)"
+                  stroke="var(--ink-2)" stroke-width="2.2"/>
+          <text x="62" y="74" text-anchor="middle" fill="var(--amber)">starts here</text>
+          <text x="282" y="74" text-anchor="middle" fill="var(--accent)" font-style="italic">L</text>
+          <text x="482" y="74" text-anchor="middle" fill="var(--ink-2)">the other</text>
+          <text x="482" y="90" text-anchor="middle" fill="var(--ink-2)">solution</text>
+          <text x="282" y="26" text-anchor="middle" fill="var(--accent)">climbs to L</text>
+          <text x="578" y="26" text-anchor="middle" fill="var(--ink-2)">escapes</text>
+        </g>
+      </svg>
+      <figcaption class="footnote">Arrows show which way the sequence moves.
+        Everything below the hollow point drifts to <var>L</var>; only something
+        starting above it runs away.</figcaption>
+    </figure>
+  </div>
+
+  <div class="companion-wide">
+    <div class="sandbox">
+      <header>
+        <h3>Sandbox 3 · The ceiling, and what it keeps out</h3>
+        <span class="hint">Push the starting value above the hollow point and watch
+          the staircase leave.</span>
+      </header>
+      <div class="sb-body">
+        <div class="canvas-row">
+          <figure class="canvas-box">
+            <canvas id="c-web" height="330" role="img"
+                    aria-label="A staircase diagram showing the sequence climbing toward the smaller solution."></canvas>
+            <figcaption>One step at a time, from the chosen start</figcaption>
+          </figure>
+          <figure class="canvas-box">
+            <canvas id="c-sol" height="330" role="img"
+                    aria-label="Both solutions plotted against x."></canvas>
+            <figcaption>Both solutions of \(L^{x}-L=x\), as <var>x</var> varies</figcaption>
+          </figure>
+        </div>
+        <div class="controls">
+          <div class="ctrl">
+            <label for="x3"><var>x</var> = <span class="val" id="x3v">0.330</span></label>
+            <input type="range" id="x3" min="0.05" max="0.9" step="0.001" value="0.33">
+          </div>
+          <div class="ctrl">
+            <label for="start3">starting value =
+              <span class="val" id="start3v">0.050</span></label>
+            <input type="range" id="start3" min="0.005" max="0.7" step="0.005" value="0.05">
+          </div>
+          <div class="ctrl tight">
+            <div class="btnrow">
+              <button type="button" id="step3" class="primary">Take a step</button>
+              <button type="button" id="run3">Run 20 steps</button>
+              <button type="button" id="reset3">Reset</button>
+            </div>
+          </div>
+        </div>
+        <p class="verdict" id="v3" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="companion-prose">
+    <div class="callout">
+      <span class="label">Reading the graph</span>
+      <p style="margin:0">The <b>solid</b> curve is <var>L</var> itself. The <b>dotted</b>
+        curve is the second solution, which is never attained, so it is ignored. As
+        <var>x</var> grows the two move together, <b>collide at &alpha; and vanish</b>:
+        with no solution left, <var>L</var>&nbsp;=&nbsp;&infin;. That is the gap. Past <var>x</var>&nbsp;=&nbsp;1 a single
+        solution returns and <var>L</var> makes sense again.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PANEL 4 ================= -->
+<section id="panel4" class="article-section">
+  <div class="companion-prose">
+    <p class="eyebrow">Panel 4</p>
+    <h2>What kind of number is &alpha;?</h2>
+    <p>A number is <b>algebraic</b> if it solves some polynomial equation with
+      whole-number coefficients. Every fraction \(p/q\) does, since it solves
+      \(qT-p=0\); so does \(\sqrt2\), which solves \(T^{2}-2=0\); so does the
+      golden ratio, which solves \(T^{2}-T-1=0\). A number that solves <i>no</i>
+      such equation is <b>transcendental</b>. Almost every number is therefore
+      transcendental. Proving it of any <i>particular</i> number is another matter:
+      &pi; and <var>e</var> took until the 1870s and 1880s.</p>
+
+    <figure class="fig layers">
+      <div class="layer outer">
+        <span class="lab">all real numbers</span>
+        <div class="row">
+          <div class="layer mid" style="flex:1 1 20rem">
+            <span class="lab alg">algebraic</span>
+            <div class="row">
+              <div class="layer inner" style="flex:1 1 11rem">
+                <span class="lab alg">fractions</span>
+                <div class="ex">\(-5,\; \tfrac{3}{2},\; \tfrac{22}{7}\)</div>
+              </div>
+              <div class="ex">\(\sqrt{2},\; \sqrt[3]{5},\; \tfrac{1+\sqrt5}{2}\)</div>
+            </div>
+          </div>
+          <div class="ex tra">\(\pi,\; e,\; 2^{\sqrt2},\; \alpha\)</div>
+        </div>
+        <span class="lab tra">transcendental</span>
+      </div>
+      <figcaption class="footnote">The fractions sit inside the algebraic numbers,
+        which sit inside the reals. Everything in the outermost band is
+        transcendental.</figcaption>
+    </figure>
+
+    <p>One theorem tells the layers apart.</p>
+    <div class="callout">
+      <span class="label">Gelfond–Schneider, 1934 · Hilbert's 7th problem</span>
+      <p style="margin:0">If <var>a</var> and <var>b</var> are algebraic, \(a\neq 0,1\), and
+        <var>b</var> is irrational, then \(a^{b}\) is <b>transcendental</b>.</p>
+    </div>
+
+    <h3>The boundary constant is transcendental</h3>
+    <p>Panel 2 defined &alpha; by exactly this: a power of &alpha; equal to
+      a simple fraction in &alpha;. If &alpha; were algebraic, the theorem
+      would make one side transcendental and the other algebraic — impossible. So
+      &alpha; is transcendental, and so is the value 0.2027… that the
+      sequence settles on there.</p>
+
+    <h3>And what about <var>L</var>?</h3>
+    <p>The same theorem, applied to \(L^{x}-L=x\), sorts every value of <var>x</var> into
+      one of three cases.</p>
+  </div>
+
+  <div class="companion-prose">
+    <figure class="fig cases">
+      <div class="case">
+        <div class="from"><var>x</var> a fraction</div>
+        <div class="arrow" aria-hidden="true">&rarr;</div>
+        <div class="to"><var>L</var> is <b>algebraic</b></div>
+      </div>
+      <div class="case">
+        <div class="from"><var>x</var> algebraic, not a fraction</div>
+        <div class="arrow" aria-hidden="true">&rarr;</div>
+        <div class="to"><var>L</var> is <b>transcendental</b></div>
+      </div>
+      <div class="case open">
+        <div class="from"><var>x</var> transcendental</div>
+        <div class="arrow" aria-hidden="true">&rarr;</div>
+        <div class="to"><b>nobody knows</b></div>
+      </div>
+    </figure>
+  </div>
+
+</section>
+
+<!-- ================= REFERENCES ================= -->
+<section id="refs" class="article-section">
+  <div class="companion-prose">
+    <p class="eyebrow">Colophon</p>
+    <h2>References</h2>
+
+    <p class="refgroup">Panels 1–2 · nested radicals</p>
+    <ul class="refs">
+      <li>[1] A. Herschfeld, <i>On infinite radicals</i>, American Mathematical
+        Monthly <b>42</b> (1935), 419–429.</li>
+      <li>[2] L. D. Servi, <i>Nested square roots of 2</i>, American Mathematical
+        Monthly <b>110</b> (2003), 326–330.</li>
+    </ul>
+
+    <p class="refgroup">Panel 3 · dynamics</p>
+    <ul class="refs">
+      <li>[3] S. H. Strogatz, <i>Nonlinear Dynamics and Chaos</i>, 2nd ed.,
+        Westview Press, 2015.</li>
+      <li>[4] R. L. Devaney, <i>An Introduction to Chaotic Dynamical Systems</i>,
+        2nd ed., Addison–Wesley, 1989.</li>
+    </ul>
+
+    <p class="refgroup">Panel 4 · transcendence</p>
+    <ul class="refs">
+      <li>[5] D. Hilbert, <i>Mathematische Probleme</i>, Göttinger Nachrichten
+        (1900), 253–297.</li>
+      <li>[6] A. O. Gelfond, <i>Sur le septième problème de Hilbert</i>, Bulletin de
+        l'Académie des Sciences de l'URSS, Série VII, no. 4 (1934), 623–634.</li>
+      <li>[7] A. Baker, <i>Transcendental Number Theory</i>, Cambridge University
+        Press, 1975.</li>
+      <li>[8] A. O. Gelfond, <i>Transcendental and Algebraic Numbers</i>, Dover,
+        1960.</li>
+      <li>[9] I. Niven, <i>Irrational Numbers</i>, Carus Mathematical Monographs 11,
+        Mathematical Association of America, 1956.</li>
+    </ul>
+
+    <h3>About this page</h3>
+    <p>This is the companion to a poster presented at a university research
+      conference. It carries the same content in a form that can be read at your own
+      pace, enlarged, or read aloud.</p>
+    <p class="footnote">Every figure has a text description, every sandbox reports its
+      result in words as well as pictures, the sliders and menus work from the
+      keyboard, and the page follows your Math Nomad display settings. All the
+      numbers are computed live in your browser.</p>
+  </div>
+</section>
