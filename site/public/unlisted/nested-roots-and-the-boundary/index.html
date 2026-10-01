@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/mathnomad-logo.png">
+<title>Nested Roots and the Boundary · Math Nomad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<script>
+// MathJax 3 with SVG output: the glyph outlines ship inside the bundle, so no
+// web fonts or stylesheets are fetched at runtime.
+window.MathJax = {
+  tex: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    processEscapes: true,
+    processEnvironments: false
+  },
+  svg: { fontCache: "global", scale: 1.0 },
+  options: {
+    enableMenu: false,
+    skipHtmlTags: ["script","noscript","style","textarea","pre","code","canvas","svg"],
+    ignoreHtmlClass: "no-mathjax"
+  },
+  startup: {
+    pageReady: function(){
+      return MathJax.startup.defaultPageReady().then(function(){
+        document.documentElement.classList.add("mathjax-ready");
+      });
+    }
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg-full.js"></script>
+
+<style>
+:root{
+  color-scheme: light;
+  --bg:#FAFBFC; --surface:#FFFFFF; --panel:#EFF3F9; --panel-2:#E4EBF5;
+  --ink:#16191F; --ink-2:#4A515C; --ink-3:#6B7484;
+  --line:#D3DAE4; --line-2:#BCC6D4;
+  --accent:#14407A; --accent-2:#2E6FB7; --accent-soft:#8FB4DC;
+  --amber:#A35F12; --amber-fill:#C1761A; --amber-wash:#FAF1E4;
+  --serif:"Spectral", Georgia, "Times New Roman", serif;
+  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --maxprose:38rem; --maxwide:62rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0F1216; --surface:#161A21; --panel:#1B2129; --panel-2:#222A35;
+    --ink:#E7EAEF; --ink-2:#A7AFBC; --ink-3:#8A93A1;
+    --line:#2A313C; --line-2:#3A4351;
+    --accent:#8FB8EC; --accent-2:#6FA3E0; --accent-soft:#3D5E8C;
+    --amber:#E5A95F; --amber-fill:#D9944A; --amber-wash:#241C11;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0F1216; --surface:#161A21; --panel:#1B2129; --panel-2:#222A35;
+  --ink:#E7EAEF; --ink-2:#A7AFBC; --ink-3:#8A93A1;
+  --line:#2A313C; --line-2:#3A4351;
+  --accent:#8FB8EC; --accent-2:#6FA3E0; --accent-soft:#3D5E8C;
+  --amber:#E5A95F; --amber-fill:#D9944A; --amber-wash:#241C11;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--serif); font-size:1.0625rem; line-height:1.65;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{padding-inline:16px; padding-block:0}
+.prose{max-width:var(--maxprose); margin-inline:auto}
+.wide{max-width:var(--maxwide); margin-inline:auto}
+
+a{color:var(--accent-2); text-underline-offset:.18em}
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, summary:focus-visible{
+  outline:3px solid var(--accent-2); outline-offset:2px; border-radius:2px;
+}
+.skip{
+  position:absolute; left:-9999px; top:0; background:var(--accent);
+  color:var(--surface); padding:.6rem 1rem; z-index:99; font-family:var(--sans);
+}
+.skip:focus{left:8px; top:8px}
+
+h1,h2,h3{font-family:var(--serif); text-wrap:balance; line-height:1.18; margin:0}
+h1{font-size:clamp(2rem,5.2vw,3rem); font-weight:600; letter-spacing:-.01em}
+h2{font-size:clamp(1.5rem,3.4vw,2.05rem); font-weight:600; color:var(--accent)}
+h3{font-size:1.18rem; font-weight:600; margin-top:2rem}
+p{margin:0 0 1rem}
+
+header.mast{border-bottom:3px solid var(--accent); background:var(--surface)}
+.mast-inner{padding-block:2.6rem 1.8rem}
+.byline{font-family:var(--sans); font-size:.98rem; color:var(--ink-2); margin:.9rem 0 0}
+
+nav.toc{
+  position:sticky; top:env(safe-area-inset-top, 0px); z-index:20;
+  background:var(--bg); border-bottom:1px solid var(--line);
+}
+nav.toc ol{
+  display:flex; gap:.25rem; list-style:none; margin:0; padding:.5rem 0;
+  overflow-x:auto; font-family:var(--sans); font-size:.86rem;
+}
+nav.toc a{
+  display:block; white-space:nowrap; padding:.35rem .6rem; border-radius:999px;
+  color:var(--ink-2); text-decoration:none; border:1px solid transparent;
+}
+nav.toc a:hover{border-color:var(--line-2); color:var(--ink)}
+nav.toc .n{color:var(--accent-2); font-weight:600; margin-right:.35em}
+
+section{padding-block:2.6rem}
+section + section{border-top:1px solid var(--line)}
+.eyebrow{
+  font-family:var(--sans); font-size:.78rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 .45rem;
+}
+
+mjx-container{font-size:1.04em}
+mjx-container[display="true"]{font-size:1.18em; margin:0 !important}
+.eqn{
+  margin:1.25rem 0; padding:1rem 1rem 1.1rem; background:var(--panel);
+  border:1px solid var(--line); border-radius:4px; text-align:center;
+  overflow-x:auto; overflow-y:hidden;
+}
+.eqn.hero{border-color:var(--accent); border-width:2px; background:var(--panel-2)}
+.eqn.hero mjx-container[display="true"]{font-size:1.42em}
+/* before MathJax arrives the TeX source is visible; keep it unobtrusive */
+.eqn{font-variant-ligatures:none}
+var{font-style:italic; font-family:var(--serif)}
+
+/* nested number systems, as real text rather than SVG labels */
+.layers .layer{border:2px solid; border-radius:14px; padding:.85rem .9rem}
+.layers .outer{background:var(--amber-wash); border-color:var(--line-2)}
+.layers .mid{background:var(--panel); border-color:var(--accent-2)}
+.layers .inner{background:var(--panel-2); border-color:var(--accent)}
+.layers .lab{
+  display:block; font-family:var(--sans); font-size:.74rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); margin-bottom:.5rem;
+}
+.layers .lab.alg{color:var(--accent)}
+.layers .lab.tra{color:var(--amber); text-align:right; margin:.6rem 0 0}
+.layers .row{display:flex; gap:.8rem; align-items:center; flex-wrap:wrap}
+.layers .ex{flex:1 1 7rem; text-align:center; padding:.2rem;
+  overflow-x:auto; overflow-y:hidden}
+.layers .ex.tra{color:var(--amber)}
+
+.sandbox{
+  margin:1.8rem auto; background:var(--surface);
+  border:1px solid var(--line); border-radius:6px; overflow:hidden;
+}
+.sandbox > header{
+  padding:.85rem 1rem; border-bottom:1px solid var(--line);
+  display:flex; flex-wrap:wrap; gap:.5rem 1rem; align-items:baseline;
+  background:var(--panel);
+}
+.sandbox h3{margin:0; font-size:1.05rem; font-family:var(--sans); font-weight:600}
+.sandbox .hint{font-family:var(--sans); font-size:.82rem; color:var(--ink-3)}
+.sb-body{padding:1rem}
+.canvas-row{display:flex; gap:1rem; flex-wrap:wrap}
+.canvas-box{flex:1 1 300px; min-width:0; margin:0}
+.canvas-box figcaption{
+  font-family:var(--sans); font-size:.8rem; color:var(--ink-3);
+  margin-top:.4rem; text-align:center;
+}
+canvas{display:block; width:100%; height:auto; max-width:100%; border-radius:3px}
+
+.controls{
+  display:flex; flex-wrap:wrap; gap:1rem 1.6rem; align-items:end;
+  margin-top:1.1rem; padding-top:1rem; border-top:1px solid var(--line);
+  font-family:var(--sans);
+}
+.ctrl{flex:1 1 230px; min-width:0}
+.ctrl.tight{flex:0 0 auto}
+.ctrl label{display:block; font-size:.85rem; font-weight:500; margin-bottom:.3rem}
+.ctrl .val{font-variant-numeric:tabular-nums; color:var(--accent); font-weight:600}
+input[type=range]{width:100%; accent-color:var(--accent-2); height:1.6rem}
+select{
+  font-family:var(--sans); font-size:.9rem; padding:.4rem .5rem; max-width:100%;
+  border:1px solid var(--line-2); border-radius:4px;
+  background:var(--surface); color:var(--ink);
+}
+.btnrow{display:flex; gap:.5rem; flex-wrap:wrap}
+button{
+  font-family:var(--sans); font-size:.88rem; font-weight:500;
+  padding:.45rem .9rem; border-radius:4px; cursor:pointer;
+  border:1px solid var(--line-2); background:var(--surface); color:var(--ink);
+}
+button:hover{background:var(--panel)}
+button.primary{background:var(--accent); border-color:var(--accent); color:var(--surface)}
+
+.verdict{
+  margin-top:1rem; padding:.75rem .9rem; border-radius:4px;
+  font-family:var(--sans); font-size:.95rem; line-height:1.5;
+  border-left:5px solid var(--accent-2); background:var(--panel);
+}
+.verdict.escapes{border-left-color:var(--amber-fill); background:var(--amber-wash)}
+.verdict b{font-variant-numeric:tabular-nums}
+
+details.numbers{margin-top:.9rem; font-family:var(--sans); font-size:.88rem}
+details.numbers summary{cursor:pointer; color:var(--accent-2); font-weight:500}
+.tablewrap{overflow-x:auto; margin-top:.6rem}
+table{border-collapse:collapse; font-family:var(--sans); font-size:.88rem; width:100%}
+th,td{
+  text-align:left; padding:.35rem .7rem; border-bottom:1px solid var(--line);
+  font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+th{font-weight:600; color:var(--ink-2)}
+
+.callout{
+  margin:1.5rem 0; padding:1rem 1.15rem; border:1px solid var(--line);
+  border-radius:5px; background:var(--surface);
+}
+.callout .label{
+  font-family:var(--sans); font-size:.78rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--accent); font-weight:600;
+  display:block; margin-bottom:.4rem;
+}
+.answer{border:2px solid var(--accent); background:var(--panel-2)}
+
+.cases .case{
+  display:flex; align-items:center; gap:.6rem; margin-bottom:.6rem;
+  flex-wrap:wrap;
+}
+/* these stay block-level: a flex container would swallow the spaces
+   between their inline children */
+.cases .from, .cases .to{
+  flex:1 1 11rem; padding:.7rem .85rem; border:1px solid var(--line-2);
+  border-radius:5px; background:var(--panel); font-family:var(--sans);
+  font-size:.95rem;
+}
+.cases var{font-family:var(--serif); font-style:italic; font-size:1.05em}
+.cases .arrow{
+  flex:0 0 1.6rem; text-align:center; color:var(--accent); font-size:1.4rem;
+  line-height:1;
+}
+.cases .open .from, .cases .open .to{background:var(--surface); color:var(--ink-2)}
+
+figure.fig{margin:1.5rem 0}
+figure.fig svg{width:100%; height:auto; max-width:100%}
+
+.footnote{font-family:var(--sans); font-size:.87rem; color:var(--ink-2)}
+.refgroup{
+  font-family:var(--sans); font-size:.72rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--accent); font-weight:600;
+  margin:1.6rem 0 .55rem;
+}
+ul.refs{list-style:none; padding:0; margin:0; font-family:var(--sans); font-size:.9rem}
+ul.refs li{margin-bottom:.55rem; padding-left:1.9rem; text-indent:-1.9rem}
+
+footer{padding-block:2.5rem 3.5rem; border-top:1px solid var(--line); color:var(--ink-2)}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="mast">
+  <div class="wrap prose mast-inner">
+    <p class="eyebrow">Research poster · companion page</p>
+    <h1>A Recurrence, a Critical Parameter, and Its Transcendence</h1>
+    <p class="byline">Mohan R · School of Sciences, Azim Premji University, Bengaluru</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <div class="wrap prose">
+    <ol>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#panel1"><span class="n">1</span>Experimentation</a></li>
+      <li><a href="#panel2"><span class="n">2</span>Where does the gap come from?</a></li>
+      <li><a href="#panel3"><span class="n">3</span>Which solution is <i>L</i>?</a></li>
+      <li><a href="#panel4"><span class="n">4</span>What kind of number is &alpha;?</a></li>
+      <li><a href="#refs">References</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ================= INTRODUCTION ================= -->
+<section id="intro">
+  <div class="wrap prose">
+    <p class="eyebrow">Introduction</p>
+    <h2>A sequence you might already know</h2>
+
+    <div class="eqn" role="math" aria-label="The square root of 2 plus the square
+         root of 2 plus the square root of 2, and so on for ever, equals 2.">
+      \[ \sqrt{2+\sqrt{2+\sqrt{2+\cdots}}}=2. \]
+    </div>
+
+    <h3 style="margin-top:2.4rem">For <var>x</var> &gt; 0, let</h3>
+
+    <div class="eqn hero" role="math" aria-label="The x-th root of, x plus the x-th
+         root of, x plus the x-th root of, x plus and so on for ever, equals L.">
+      \[ \sqrt[x]{\,x+\sqrt[x]{\,x+\sqrt[x]{\,x+\cdots}}}=L. \]
+    </div>
+
+    <h3 style="margin-top:2.4rem">Two questions</h3>
+    <ol style="padding-left:1.4rem">
+      <li style="margin-bottom:.6rem">For which values of <var>x</var> does <var>L</var> make
+        sense?</li>
+      <li>What type of values can <var>L</var> take?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= PANEL 1 ================= -->
+<section id="panel1">
+  <div class="wrap prose">
+    <p class="eyebrow">Panel 1</p>
+    <h2>Experimentation</h2>
+    <p>For a particular value of <var>x</var>, compute</p>
+    <div class="eqn" role="math" aria-label="The x-th root of x; then the x-th root
+         of, x plus the x-th root of x; then the x-th root of, x plus the x-th root
+         of, x plus the x-th root of x; and so on.">
+      \[ \sqrt[x]{x},\quad \sqrt[x]{\,x+\sqrt[x]{x}},\quad
+          \sqrt[x]{\,x+\sqrt[x]{\,x+\sqrt[x]{x}}},\ \ldots \]
+    </div>
+    <p>Count how many steps it needs before the terms settle. We see a gap
+      (&alpha;,&nbsp;1] for which</p>
+    <div class="eqn" role="math" aria-label="L, the infinite x-th root, tends to
+         infinity.">
+      \[ L=\sqrt[x]{\,x+\sqrt[x]{\,x+\sqrt[x]{\,x+\cdots}}}\;\longrightarrow\;\infty. \]
+    </div>
+  </div>
+
+  <div class="wrap wide">
+    <div class="sandbox">
+      <header>
+        <h3>Sandbox 1 · Run it</h3>
+        <span class="hint">Drag the slider, or focus it and use the arrow keys.</span>
+      </header>
+      <div class="sb-body">
+        <div class="canvas-row">
+          <figure class="canvas-box">
+            <canvas id="c-orbit" height="300" role="img"
+                    aria-label="Plot of the first terms of the sequence."></canvas>
+            <figcaption>The first 40 terms at this value of <var>x</var></figcaption>
+          </figure>
+          <figure class="canvas-box">
+            <canvas id="c-steps" height="300" role="img"
+                    aria-label="Steps needed to settle, against x."></canvas>
+            <figcaption>Steps needed to settle, for every value of <var>x</var></figcaption>
+          </figure>
+        </div>
+
+        <div class="controls">
+          <div class="ctrl">
+            <label for="dec1">&ldquo;Settled&rdquo; means two consecutive terms agree to</label>
+            <select id="dec1">
+              <option value="2">2 decimals</option>
+              <option value="4">4 decimals</option>
+              <option value="6">6 decimals</option>
+              <option value="9" selected>9 decimals — as plotted on the poster</option>
+            </select>
+          </div>
+          <div class="ctrl">
+            <label for="x1"><var>x</var> = <span class="val" id="x1v">0.350</span></label>
+            <input type="range" id="x1" min="0.02" max="3" step="0.001" value="0.35">
+          </div>
+          <div class="ctrl tight">
+            <div class="btnrow" role="group" aria-label="Jump to a notable value of x">
+              <button type="button" data-x="0.2">0.2</button>
+              <button type="button" data-x="0.3601300017">&alpha;</button>
+              <button type="button" data-x="0.5">0.5</button>
+              <button type="button" data-x="1">1</button>
+              <button type="button" data-x="2">2</button>
+              <button type="button" data-x="3">3</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="verdict" id="v1" role="status" aria-live="polite"></p>
+
+        <details class="numbers">
+          <summary>Read the numbers</summary>
+          <div class="tablewrap">
+            <table id="t1">
+              <thead><tr>
+                <th scope="col"><var>n</var></th>
+                <th scope="col"><var>n</var>th term</th>
+              </tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap prose">
+    <div class="callout answer">
+      <span class="label">The answer to question 1</span>
+      <p><var>L</var> makes sense exactly when</p>
+      <div role="math" aria-label="0 is less than x, which is less than or equal to
+           alpha; or x is greater than 1.">
+        \[ 0 &lt; x \le \alpha \qquad\text{or}\qquad x &gt; 1 \]
+      </div>
+      <p style="margin-bottom:0">where &alpha; is a particular number between
+        0 and 1: &alpha;&nbsp;=&nbsp;0.3601300017…</p>
+    </div>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 96" role="img"
+           aria-label="A number line from 0 to beyond 2, drawn to scale. The stretch from 0 to alpha, about 0.36, is marked settles. The stretch from alpha to 1 is marked runs away. Everything past 1 is marked settles.">
+        <g font-family="IBM Plex Sans, sans-serif" font-size="13">
+          <line x1="20" y1="52" x2="620" y2="52" stroke="var(--line-2)" stroke-width="1.5"/>
+          <line x1="20" y1="52" x2="120" y2="52" stroke="var(--accent-2)" stroke-width="9" stroke-linecap="butt"/>
+          <line x1="120" y1="52" x2="297" y2="52" stroke="var(--amber-fill)" stroke-width="9"
+                stroke-dasharray="14 9" stroke-linecap="butt"/>
+          <line x1="297" y1="52" x2="612" y2="52" stroke="var(--accent-2)" stroke-width="9" stroke-linecap="butt"/>
+          <path d="M612 45 L626 52 L612 59 Z" fill="var(--accent-2)"/>
+          <g stroke="var(--line-2)" stroke-width="1.5">
+            <line x1="20" y1="44" x2="20" y2="60"/><line x1="120" y1="44" x2="120" y2="60"/>
+            <line x1="297" y1="44" x2="297" y2="60"/><line x1="574" y1="44" x2="574" y2="60"/>
+          </g>
+          <g fill="var(--ink-2)" text-anchor="middle">
+            <text x="20" y="78">0</text><text x="120" y="78">&#x3B1;</text>
+            <text x="297" y="78">1</text><text x="574" y="78">2</text>
+          </g>
+          <g text-anchor="middle" font-size="12.5">
+            <text x="70" y="34" fill="var(--accent)">settles</text>
+            <text x="208" y="34" fill="var(--amber)">runs away</text>
+            <text x="450" y="34" fill="var(--accent)">settles</text>
+          </g>
+        </g>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= PANEL 2 ================= -->
+<section id="panel2">
+  <div class="wrap prose">
+    <p class="eyebrow">Panel 2</p>
+    <h2>Where does the gap come from?</h2>
+    <p>If <var>L</var> is that infinite root, then it must satisfy</p>
+    <div class="eqn hero" role="math"
+         aria-label="L to the power x, minus L, equals x.">
+      \[ L^{x}-L=x \]
+    </div>
+    <p>Read it as a picture. The curve \(L^{x}-L\) rises to a peak and then falls
+      away. A resting place exists only where that curve reaches the height
+      <var>x</var>.</p>
+  </div>
+
+  <div class="wrap wide">
+    <div class="sandbox">
+      <header>
+        <h3>Sandbox 2 · The hill and the line</h3>
+        <span class="hint">The bar is the same gap in both charts: left, between the
+          peak and the line; right, between the two curves.</span>
+      </header>
+      <div class="sb-body">
+        <div class="canvas-row">
+          <figure class="canvas-box">
+            <canvas id="c-hill" height="300" role="img"
+                    aria-label="The curve L to the power x minus L, with a horizontal line at height x."></canvas>
+            <figcaption>The hill, and the height it must reach</figcaption>
+          </figure>
+          <figure class="canvas-box">
+            <canvas id="c-race" height="300" role="img"
+                    aria-label="The height of the peak and the required height, both against x."></canvas>
+            <figcaption>The same gap, read off the two curves</figcaption>
+          </figure>
+        </div>
+        <div class="controls">
+          <div class="ctrl">
+            <label for="x2"><var>x</var> = <span class="val" id="x2v">0.330</span></label>
+            <input type="range" id="x2" min="0.08" max="0.86" step="0.001" value="0.33">
+          </div>
+          <div class="ctrl tight">
+            <div class="btnrow" role="group" aria-label="Jump to a notable value of x">
+              <button type="button" data-x2="0.15">0.15</button>
+              <button type="button" data-x2="0.33">0.33</button>
+              <button type="button" data-x2="0.3601300017">&alpha;</button>
+              <button type="button" data-x2="0.55">0.55</button>
+            </div>
+          </div>
+        </div>
+        <p class="verdict" id="v2" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap prose">
+    <p>Those two effects race each other. The peak wins for small <var>x</var>, the line
+      wins for large <var>x</var>, and they are level at exactly one value. <b>That value is
+      &alpha;.</b></p>
+    <div class="callout">
+      <span class="label">The boundary constant</span>
+      <p style="margin:0">&alpha; is the one number in (0,&nbsp;1) with</p>
+      <div role="math" aria-label="Alpha raised to the power alpha over one minus
+           alpha, equals alpha over one minus alpha.">
+        \[ \alpha^{\frac{\alpha}{1-\alpha}}=\frac{\alpha}{1-\alpha} \]
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PANEL 3 ================= -->
+<section id="panel3">
+  <div class="wrap prose">
+    <p class="eyebrow">Panel 3</p>
+    <h2>Which solution is <var>L</var>?</h2>
+    <p>For \(0 &lt; x &lt; \alpha\) the equation \(L^{x}-L=x\) has <b>two</b> positive
+      solutions. Only the smaller one is <var>L</var>.</p>
+    <p>The sequence starts at \(\sqrt[x]{x}\) and every step makes it larger. It
+      therefore climbs until it meets a solution, and it meets the smaller one first,
+      so it stops there. The larger solution is a <i>ceiling</i> the sequence never
+      reaches: a sequence would have to <i>begin</i> above it to escape, and
+      \(\sqrt[x]{x}\) never does.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 112" role="img"
+           aria-label="A line with arrows. A tick on the left marks the starting value, the x-th root of x. Arrows from there point right, toward a solid dot marked L. Arrows to the right of L point left, back toward it. Further right a hollow dot marks the other solution; arrows beyond it point right, away from it, labelled escapes.">
+        <defs>
+          <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5"
+                  markerHeight="5.5" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--accent-2)"/>
+          </marker>
+        </defs>
+        <g font-family="IBM Plex Sans, sans-serif" font-size="12.5">
+          <line x1="14" y1="46" x2="630" y2="46" stroke="var(--line-2)" stroke-width="1.5"/>
+          <g stroke="var(--accent-2)" stroke-width="2.4" fill="none">
+            <path d="M104 46 h46" marker-end="url(#ar3)"/>
+            <path d="M176 46 h46" marker-end="url(#ar3)"/>
+            <path d="M372 46 h-46" marker-end="url(#ar3)"/>
+            <path d="M444 46 h-46" marker-end="url(#ar3)"/>
+            <path d="M524 46 h46" marker-end="url(#ar3)"/>
+            <path d="M584 46 h40" marker-end="url(#ar3)"/>
+          </g>
+          <line x1="62" y1="36" x2="62" y2="56" stroke="var(--amber-fill)" stroke-width="3"/>
+          <circle cx="282" cy="46" r="8" fill="var(--accent)"/>
+          <circle cx="482" cy="46" r="7.5" fill="var(--surface)"
+                  stroke="var(--ink-2)" stroke-width="2.2"/>
+          <text x="62" y="74" text-anchor="middle" fill="var(--amber)">starts here</text>
+          <text x="282" y="74" text-anchor="middle" fill="var(--accent)" font-style="italic">L</text>
+          <text x="482" y="74" text-anchor="middle" fill="var(--ink-2)">the other</text>
+          <text x="482" y="90" text-anchor="middle" fill="var(--ink-2)">solution</text>
+          <text x="282" y="26" text-anchor="middle" fill="var(--accent)">climbs to L</text>
+          <text x="578" y="26" text-anchor="middle" fill="var(--ink-2)">escapes</text>
+        </g>
+      </svg>
+      <figcaption class="footnote">Arrows show which way the sequence moves.
+        Everything below the hollow point drifts to <var>L</var>; only something
+        starting above it runs away.</figcaption>
+    </figure>
+  </div>
+
+  <div class="wrap wide">
+    <div class="sandbox">
+      <header>
+        <h3>Sandbox 3 · The ceiling, and what it keeps out</h3>
+        <span class="hint">Push the starting value above the hollow point and watch
+          the staircase leave.</span>
+      </header>
+      <div class="sb-body">
+        <div class="canvas-row">
+          <figure class="canvas-box">
+            <canvas id="c-web" height="330" role="img"
+                    aria-label="A staircase diagram showing the sequence climbing toward the smaller solution."></canvas>
+            <figcaption>One step at a time, from the chosen start</figcaption>
+          </figure>
+          <figure class="canvas-box">
+            <canvas id="c-sol" height="330" role="img"
+                    aria-label="Both solutions plotted against x."></canvas>
+            <figcaption>Both solutions of \(L^{x}-L=x\), as <var>x</var> varies</figcaption>
+          </figure>
+        </div>
+        <div class="controls">
+          <div class="ctrl">
+            <label for="x3"><var>x</var> = <span class="val" id="x3v">0.330</span></label>
+            <input type="range" id="x3" min="0.05" max="0.9" step="0.001" value="0.33">
+          </div>
+          <div class="ctrl">
+            <label for="start3">starting value =
+              <span class="val" id="start3v">0.050</span></label>
+            <input type="range" id="start3" min="0.005" max="0.7" step="0.005" value="0.05">
+          </div>
+          <div class="ctrl tight">
+            <div class="btnrow">
+              <button type="button" id="step3" class="primary">Take a step</button>
+              <button type="button" id="run3">Run 20 steps</button>
+              <button type="button" id="reset3">Reset</button>
+            </div>
+          </div>
+        </div>
+        <p class="verdict" id="v3" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap prose">
+    <div class="callout">
+      <span class="label">Reading the graph</span>
+      <p style="margin:0">The <b>solid</b> curve is <var>L</var> itself. The <b>dotted</b>
+        curve is the second solution, which is never attained, so it is ignored. As
+        <var>x</var> grows the two move together, <b>collide at &alpha; and vanish</b>:
+        with no solution left, <var>L</var>&nbsp;=&nbsp;&infin;. That is the gap. Past <var>x</var>&nbsp;=&nbsp;1 a single
+        solution returns and <var>L</var> makes sense again.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PANEL 4 ================= -->
+<section id="panel4">
+  <div class="wrap prose">
+    <p class="eyebrow">Panel 4</p>
+    <h2>What kind of number is &alpha;?</h2>
+    <p>A number is <b>algebraic</b> if it solves some polynomial equation with
+      whole-number coefficients. Every fraction \(p/q\) does, since it solves
+      \(qT-p=0\); so does \(\sqrt2\), which solves \(T^{2}-2=0\); so does the
+      golden ratio, which solves \(T^{2}-T-1=0\). A number that solves <i>no</i>
+      such equation is <b>transcendental</b>. Almost every number is therefore
+      transcendental. Proving it of any <i>particular</i> number is another matter:
+      &pi; and <var>e</var> took until the 1870s and 1880s.</p>
+
+    <figure class="fig layers">
+      <div class="layer outer">
+        <span class="lab">all real numbers</span>
+        <div class="row">
+          <div class="layer mid" style="flex:1 1 20rem">
+            <span class="lab alg">algebraic</span>
+            <div class="row">
+              <div class="layer inner" style="flex:1 1 11rem">
+                <span class="lab alg">fractions</span>
+                <div class="ex">\(-5,\; \tfrac{3}{2},\; \tfrac{22}{7}\)</div>
+              </div>
+              <div class="ex">\(\sqrt{2},\; \sqrt[3]{5},\; \tfrac{1+\sqrt5}{2}\)</div>
+            </div>
+          </div>
+          <div class="ex tra">\(\pi,\; e,\; 2^{\sqrt2},\; \alpha\)</div>
+        </div>
+        <span class="lab tra">transcendental</span>
+      </div>
+      <figcaption class="footnote">The fractions sit inside the algebraic numbers,
+        which sit inside the reals. Everything in the outermost band is
+        transcendental.</figcaption>
+    </figure>
+
+    <p>One theorem tells the layers apart.</p>
+    <div class="callout">
+      <span class="label">Gelfond–Schneider, 1934 · Hilbert's 7th problem</span>
+      <p style="margin:0">If <var>a</var> and <var>b</var> are algebraic, \(a\neq 0,1\), and
+        <var>b</var> is irrational, then \(a^{b}\) is <b>transcendental</b>.</p>
+    </div>
+
+    <h3>The boundary constant is transcendental</h3>
+    <p>Panel 2 defined &alpha; by exactly this: a power of &alpha; equal to
+      a simple fraction in &alpha;. If &alpha; were algebraic, the theorem
+      would make one side transcendental and the other algebraic — impossible. So
+      &alpha; is transcendental, and so is the value 0.2027… that the
+      sequence settles on there.</p>
+
+    <h3>And what about <var>L</var>?</h3>
+    <p>The same theorem, applied to \(L^{x}-L=x\), sorts every value of <var>x</var> into
+      one of three cases.</p>
+  </div>
+
+  <div class="wrap prose">
+    <figure class="fig cases">
+      <div class="case">
+        <div class="from"><var>x</var> a fraction</div>
+        <div class="arrow" aria-hidden="true">&rarr;</div>
+        <div class="to"><var>L</var> is <b>algebraic</b></div>
+      </div>
+      <div class="case">
+        <div class="from"><var>x</var> algebraic, not a fraction</div>
+        <div class="arrow" aria-hidden="true">&rarr;</div>
+        <div class="to"><var>L</var> is <b>transcendental</b></div>
+      </div>
+      <div class="case open">
+        <div class="from"><var>x</var> transcendental</div>
+        <div class="arrow" aria-hidden="true">&rarr;</div>
+        <div class="to"><b>nobody knows</b></div>
+      </div>
+    </figure>
+  </div>
+
+</section>
+
+<!-- ================= REFERENCES ================= -->
+<section id="refs">
+  <div class="wrap prose">
+    <p class="eyebrow">Colophon</p>
+    <h2>References</h2>
+
+    <p class="refgroup">Panels 1–2 · nested radicals</p>
+    <ul class="refs">
+      <li>[1] A. Herschfeld, <i>On infinite radicals</i>, American Mathematical
+        Monthly <b>42</b> (1935), 419–429.</li>
+      <li>[2] L. D. Servi, <i>Nested square roots of 2</i>, American Mathematical
+        Monthly <b>110</b> (2003), 326–330.</li>
+    </ul>
+
+    <p class="refgroup">Panel 3 · dynamics</p>
+    <ul class="refs">
+      <li>[3] S. H. Strogatz, <i>Nonlinear Dynamics and Chaos</i>, 2nd ed.,
+        Westview Press, 2015.</li>
+      <li>[4] R. L. Devaney, <i>An Introduction to Chaotic Dynamical Systems</i>,
+        2nd ed., Addison–Wesley, 1989.</li>
+    </ul>
+
+    <p class="refgroup">Panel 4 · transcendence</p>
+    <ul class="refs">
+      <li>[5] D. Hilbert, <i>Mathematische Probleme</i>, Göttinger Nachrichten
+        (1900), 253–297.</li>
+      <li>[6] A. O. Gelfond, <i>Sur le septième problème de Hilbert</i>, Bulletin de
+        l'Académie des Sciences de l'URSS, Série VII, no. 4 (1934), 623–634.</li>
+      <li>[7] A. Baker, <i>Transcendental Number Theory</i>, Cambridge University
+        Press, 1975.</li>
+      <li>[8] A. O. Gelfond, <i>Transcendental and Algebraic Numbers</i>, Dover,
+        1960.</li>
+      <li>[9] I. Niven, <i>Irrational Numbers</i>, Carus Mathematical Monographs 11,
+        Mathematical Association of America, 1956.</li>
+    </ul>
+
+    <h3>About this page</h3>
+    <p>This is the companion to a poster presented at a university research
+      conference. It carries the same content in a form that can be read at your own
+      pace, enlarged, or read aloud.</p>
+    <p class="footnote">Every figure has a text description, every sandbox reports its
+      result in words as well as pictures, the sliders and menus work from the
+      keyboard, and the page follows your system's light or dark setting. All the
+      numbers are computed live in your browser — nothing is sent anywhere.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap prose">
+    <p class="footnote" style="margin:0">Mohan R · School of Sciences,
+      Azim Premji University, Bengaluru</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+// ---------- the mathematics ----------
+var ALPHA = 0.3601300017321704;
+var L_ALPHA = ALPHA*ALPHA/(1-ALPHA);
+
+function g(t,x){ return Math.pow(x+t, 1/x); }
+function h(L,x){ return Math.pow(L,x) - L; }
+function Lstar(x){ return Math.pow(x, 1/(1-x)); }
+function Mpeak(x){ return Math.pow(x, x/(1-x))*(1-x); }
+
+function bisect(f,a,b,it){
+  var fa=f(a), m, fm;
+  for(var i=0;i<(it||90);i++){ m=0.5*(a+b); fm=f(m);
+    if((fa<0)===(fm<0)){ a=m; fa=fm; } else { b=m; } }
+  return 0.5*(a+b);
+}
+// the positive solutions of L^x - L = x
+function restPoints(x){
+  if(x>=1) return [bisect(function(t){return Math.pow(t,x)-t-x;},1,1e6)];
+  var ls=Lstar(x);
+  if(Math.abs(Mpeak(x)-x) < 1e-12) return [ls];
+  if(Mpeak(x) < x) return [];
+  return [ bisect(function(L){return h(L,x)-x;},1e-14,ls),
+           bisect(function(L){return h(L,x)-x;},ls,1e6) ];
+}
+function orbit(x,n,cap){
+  cap = cap || 1e7;
+  var t=Math.pow(x,1/x), out=[t];
+  for(var i=1;i<n;i++){
+    t=g(t,x);
+    if(!isFinite(t) || t>cap){ out.push(cap*2); break; }
+    out.push(t);
+  }
+  return out;
+}
+// "settled" = two consecutive terms agree to `dec` decimals
+function tolFor(dec){ return 0.5*Math.pow(10,-dec); }
+function settleSteps(x,dec,cap){
+  var tol=tolFor(dec); cap = cap || 60000;
+  var t=Math.pow(x,1/x), nt;
+  for(var k=1;k<=cap;k++){
+    nt=g(t,x);
+    if(!isFinite(nt) || nt>1e12) return null;
+    if(Math.abs(nt-t) < tol*Math.max(1,Math.abs(nt))) return {steps:k, value:nt};
+    t=nt;
+  }
+  return null;
+}
+function fmt(v,d){ return v.toFixed(d===undefined?4:d); }
+function group(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+
+// ---------- canvas plumbing ----------
+function tok(name){
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#888";
+}
+function setup(cv, cssH){
+  var dpr = Math.min(window.devicePixelRatio||1, 2);
+  var w = cv.clientWidth || 320, h = cssH;
+  cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
+  cv.style.height = h+"px";
+  var ctx = cv.getContext("2d");
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,w,h);
+  return {ctx:ctx, w:w, h:h};
+}
+function Frame(s, pad){
+  this.s=s; this.L=pad.l; this.R=s.w-pad.r; this.T=pad.t; this.B=s.h-pad.b;
+}
+Frame.prototype.setRange=function(x0,x1,y0,y1){
+  this.x0=x0; this.x1=x1; this.y0=y0; this.y1=y1; return this;
+};
+Frame.prototype.X=function(v){ return this.L + (v-this.x0)/(this.x1-this.x0)*(this.R-this.L); };
+Frame.prototype.Y=function(v){ return this.B - (v-this.y0)/(this.y1-this.y0)*(this.B-this.T); };
+Frame.prototype.axes=function(xt,yt,xl,yl,fx,fy){
+  var c=this.s.ctx, i;
+  c.font = "11px 'IBM Plex Sans', system-ui, sans-serif";
+  c.strokeStyle = tok("--line"); c.lineWidth = 1;
+  c.fillStyle = tok("--ink-3"); c.textAlign="center"; c.textBaseline="top";
+  for(i=0;i<xt.length;i++){
+    var px=this.X(xt[i]);
+    c.beginPath(); c.moveTo(px,this.T); c.lineTo(px,this.B); c.stroke();
+    c.fillText(fx?fx(xt[i]):String(xt[i]), px, this.B+6);
+  }
+  c.textAlign="right"; c.textBaseline="middle";
+  for(i=0;i<yt.length;i++){
+    var py=this.Y(yt[i]);
+    c.beginPath(); c.moveTo(this.L,py); c.lineTo(this.R,py); c.stroke();
+    c.fillText(fy?fy(yt[i]):String(yt[i]), this.L-8, py);
+  }
+  c.strokeStyle = tok("--line-2"); c.lineWidth = 1.4;
+  c.beginPath(); c.moveTo(this.L,this.T); c.lineTo(this.L,this.B);
+  c.lineTo(this.R,this.B); c.stroke();
+  c.fillStyle = tok("--ink-3"); c.textAlign="center"; c.textBaseline="bottom";
+  if(xl) c.fillText(xl, (this.L+this.R)/2, this.s.h-1);
+  if(yl){ c.save(); c.translate(11,(this.T+this.B)/2); c.rotate(-Math.PI/2);
+    c.textBaseline="top"; c.fillText(yl,0,0); c.restore(); }
+};
+Frame.prototype.poly=function(pts,color,width,dash){
+  var c=this.s.ctx, i, started=false;
+  c.save(); c.beginPath(); c.strokeStyle=color; c.lineWidth=width||2;
+  c.setLineDash(dash||[]); c.lineJoin="round"; c.lineCap="round";
+  for(i=0;i<pts.length;i++){
+    var p=pts[i];
+    if(!isFinite(p[1])){ started=false; continue; }
+    var X=this.X(p[0]), Y=this.Y(p[1]);
+    if(!started){ c.moveTo(X,Y); started=true; } else c.lineTo(X,Y);
+  }
+  c.stroke(); c.restore();
+};
+Frame.prototype.dot=function(x,y,color,r,hollow){
+  var c=this.s.ctx;
+  c.beginPath(); c.arc(this.X(x),this.Y(y),r||4,0,6.284);
+  if(hollow){ c.fillStyle=tok("--surface"); c.fill(); c.lineWidth=2.2;
+              c.strokeStyle=color; c.stroke(); }
+  else { c.fillStyle=color; c.fill(); }
+};
+Frame.prototype.band=function(a,b,color){
+  var c=this.s.ctx;
+  c.fillStyle=color; c.fillRect(this.X(a),this.T,this.X(b)-this.X(a),this.B-this.T);
+};
+Frame.prototype.gapbar=function(x,y0,y1,color,cap){
+  var c=this.s.ctx, X=this.X(x), A=this.Y(y0), B=this.Y(y1);
+  if(Math.abs(A-B) < 2) return;
+  cap = cap===undefined ? 6 : cap;
+  c.save(); c.strokeStyle=color; c.lineCap="butt";
+  c.lineWidth=3.4; c.beginPath(); c.moveTo(X,A); c.lineTo(X,B); c.stroke();
+  c.lineWidth=2.4; c.beginPath();
+  c.moveTo(X-cap,A); c.lineTo(X+cap,A);
+  c.moveTo(X-cap,B); c.lineTo(X+cap,B);
+  c.stroke(); c.restore();
+};
+Frame.prototype.vline=function(x,color,dash){
+  var c=this.s.ctx;
+  c.save(); c.setLineDash(dash||[5,4]); c.strokeStyle=color; c.lineWidth=1.4;
+  c.beginPath(); c.moveTo(this.X(x),this.T); c.lineTo(this.X(x),this.B);
+  c.stroke(); c.restore();
+};
+Frame.prototype.label=function(x,y,text,color,align){
+  var c=this.s.ctx;
+  c.font="12px 'IBM Plex Sans', system-ui, sans-serif";
+  c.fillStyle=color; c.textAlign=align||"center"; c.textBaseline="middle";
+  c.fillText(text,this.X(x),this.Y(y));
+};
+
+// ---------- the steps-to-settle curve, one per stopping rule ----------
+var curveCache = {};
+function stepsCurve(dec){
+  if(curveCache[dec]) return curveCache[dec];
+  var left=[], right=[], i, x, r;
+  for(i=0;i<=170;i++){
+    x = 0.02 + (ALPHA-0.02)*Math.pow(i/170, 2.2);
+    r = settleSteps(x, dec, 60000);
+    left.push([x, r? Math.log10(r.steps) : NaN]);
+  }
+  for(i=0;i<=170;i++){
+    x = 1.004 + (3-1.004)*Math.pow(i/170, 2.0);
+    r = settleSteps(x, dec, 60000);
+    right.push([x, r? Math.log10(r.steps) : NaN]);
+  }
+  curveCache[dec] = {left:left, right:right};
+  return curveCache[dec];
+}
+function curveTop(dec){ return dec<=2 ? 1.6 : dec<=4 ? 2.6 : dec<=6 ? 3.6 : 4.9; }
+
+// ---------- the two solution branches, for panel 3 ----------
+var branches = (function(){
+  var lower=[], upper=[], single=[], i, x, r, L;
+  for(i=0;i<=220;i++){
+    x = 0.004 + (ALPHA-0.004)*Math.pow(i/220, 1.6);
+    r = restPoints(x);
+    if(r.length===2){ lower.push([x,r[0]]); upper.push([x,r[1]]); }
+  }
+  lower.push([ALPHA, L_ALPHA]); upper.push([ALPHA, L_ALPHA]);
+  for(i=0;i<=160;i++){
+    x = 1.3 + (2.6-1.3)*i/160;
+    L = restPoints(x)[0];
+    if(L<=3.02) single.push([x,L]);
+  }
+  return {lower:lower, upper:upper, single:single};
+})();
+
+// ================= SANDBOX 1 =================
+var s1x   = document.getElementById("x1");
+var s1ExactX = null;
+var s1xv  = document.getElementById("x1v");
+var s1dec = document.getElementById("dec1");
+var v1 = document.getElementById("v1");
+var t1body = document.querySelector("#t1 tbody");
+var cOrbit = document.getElementById("c-orbit");
+var cSteps = document.getElementById("c-steps");
+
+function drawOrbit(x,dec){
+  var s = setup(cOrbit, 300);
+  var f = new Frame(s, {l:56,r:14,t:16,b:32});
+  var N=40, o=orbit(x,N), i, mx=0;
+  var res = settleSteps(x, dec, 60000), top;
+  if(res){ top = Math.max(res.value*1.35, o[0]*1.2); }
+  else { for(i=0;i<Math.min(o.length,9);i++) mx=Math.max(mx,o[i]); top = mx*1.1; }
+  if(!isFinite(top) || top<=0) top = 1;
+  f.setRange(0.5, N+0.5, 0, top);
+  f.axes([10,20,30,40], [0, top/2, top], "step n", "value of the nth term",
+         null, function(v){ return v.toFixed(top<1?3:2); });
+  if(res){
+    f.poly([[0.5,res.value],[N+0.5,res.value]], tok("--amber-fill"), 1.6, [7,5]);
+    f.label(N*0.72, res.value*1.09, "settles near "+fmt(res.value), tok("--amber"));
+  }
+  var pts=[];
+  for(i=0;i<o.length;i++) pts.push([i+1, o[i]]);
+  f.poly(pts, tok("--accent-2"), 2.2);
+  for(i=0;i<o.length && i<N;i++) if(o[i]<=top) f.dot(i+1, o[i], tok("--accent"), 3.1);
+}
+function drawSteps(x,dec){
+  var s = setup(cSteps, 300);
+  var top = curveTop(dec);
+  var f = new Frame(s, {l:56,r:14,t:16,b:32}).setRange(0,3,-0.05*top,top);
+  f.band(ALPHA, 1, tok("--amber-wash"));
+  var yt=[], k;
+  for(k=0;k<=Math.floor(top);k++) yt.push(k);
+  f.axes([0,1,2,3], yt, "x", "steps until two terms agree to "+dec+" decimals",
+         null, function(v){ return ["1","10","100","1k","10k"][v]; });
+  f.label((ALPHA+1)/2, top*0.74, "never settles", tok("--amber"));
+  var cu = stepsCurve(dec);
+  f.poly(cu.left,  tok("--accent-2"), 2.2);
+  f.poly(cu.right, tok("--accent-2"), 2.2);
+  f.vline(x, tok("--ink-3"));
+  var r = settleSteps(x, dec, 60000);
+  if(r) f.dot(x, Math.min(Math.log10(r.steps), top), tok("--accent"), 5.5);
+}
+function update1(){
+  var x = s1ExactX === null ? parseFloat(s1x.value) : s1ExactX, dec = parseInt(s1dec.value,10);
+  s1xv.textContent = s1ExactX === ALPHA ? "α ≈ 0.360130" : x.toFixed(3);
+  s1x.setAttribute("aria-valuetext", s1ExactX === ALPHA ? "x = alpha, approximately 0.360130" : "x = "+x.toFixed(3));
+  drawOrbit(x,dec); drawSteps(x,dec);
+
+  var res = settleSteps(x, dec, 60000), msg, cls;
+  if(res){
+    msg = "<b>Settles.</b> At x = "+x.toFixed(3)+" the terms agree to "+dec+
+          " decimals after <b>"+group(res.steps)+"</b> step"+(res.steps===1?"":"s")+
+          ", by which point the value is <b>"+fmt(res.value,Math.min(dec+1,9))+"</b>.";
+    cls = "verdict";
+  } else {
+    var o = orbit(x, 30), k=0;
+    for(var i=0;i<o.length;i++){ if(o[i]>1000){ k=i+1; break; } }
+    msg = "<b>Runs away.</b> At x = "+x.toFixed(3)+" the terms never stop growing"+
+          (k? " — they pass 1000 by step <b>"+k+"</b>." : ".");
+    cls = "verdict escapes";
+  }
+  if(Math.abs(x-1)<0.004){
+    msg += " At x = 1 exactly the rule becomes &ldquo;add 1&rdquo;, so the nth term is just n.";
+  }
+  if(Math.abs(x-ALPHA)<0.002 && res && dec>=6){
+    msg += " Careful here: at &alpha; the two solutions have merged, so the approach is "+
+           "slow (the error falls like 0.634/n). The terms have stopped moving at this "+
+           "resolution but are still well short of the true value 0.2026874.";
+  }
+  v1.className = cls; v1.innerHTML = msg;
+
+  cOrbit.setAttribute("aria-label", "Plot of the first 40 terms at x = "+x.toFixed(3)+". "+
+    (res? "They level off near "+fmt(res.value)+"."
+        : "They keep growing off the top of the chart."));
+  cSteps.setAttribute("aria-label", "Steps until two terms agree to "+dec+
+    " decimals, against x; a marker sits at "+x.toFixed(3)+
+    ". The band between alpha and 1 is empty because the terms never settle there.");
+
+  var o2 = orbit(x, 9), rows="";
+  for(var j=0;j<o2.length;j++){
+    rows += "<tr><td>"+(j+1)+"</td><td>"+
+            (o2[j]>1e6? "larger than a million" : fmt(o2[j],6))+"</td></tr>";
+  }
+  t1body.innerHTML = rows;
+}
+s1x.addEventListener("input", function(){ s1ExactX = null; update1(); });
+s1dec.addEventListener("change", update1);
+Array.prototype.forEach.call(document.querySelectorAll("[data-x]"), function(b){
+  b.addEventListener("click", function(){ s1ExactX = b.getAttribute("data-x") === "0.3601300017" ? ALPHA : null; s1x.value = b.getAttribute("data-x"); update1(); });
+});
+
+// ================= SANDBOX 2 =================
+var s2x = document.getElementById("x2");
+var s2ExactX = null;
+var s2xv = document.getElementById("x2v");
+var v2 = document.getElementById("v2");
+var cHill = document.getElementById("c-hill");
+var cRace = document.getElementById("c-race");
+
+function drawHill(x){
+  var s = setup(cHill, 300);
+  var f = new Frame(s, {l:56,r:14,t:16,b:32}).setRange(0, 1.05, -0.18, 0.62);
+  f.axes([0,0.5,1],[0,0.25,0.5], "candidate value L", "height", null,
+         function(v){ return v.toFixed(2); });
+  var pts=[], i, L;
+  for(i=0;i<=240;i++){ L = 1e-4 + (1.05-1e-4)*i/240; pts.push([L, h(L,x)]); }
+  f.poly(pts, tok("--accent-2"), 2.4);
+  f.poly([[0,x],[1.05,x]], tok("--amber-fill"), 2, [8,5]);
+  f.label(0.92, x+0.055, "height x", tok("--amber"), "right");
+  var r = restPoints(x), j;
+  for(j=0;j<r.length;j++) f.dot(r[j], x, tok("--accent"), 5);
+  var ls = Lstar(x), pk = Mpeak(x);
+  var gc = pk >= x ? tok("--accent") : tok("--ink-2");
+  f.gapbar(ls, Math.min(pk,x), Math.max(pk,x), gc);
+  f.dot(ls, pk, gc, 3.2);
+}
+function drawRace(x){
+  var s = setup(cRace, 300);
+  // y-span 0.80 matches the hill chart's, so the gap bar is the same length
+  var f = new Frame(s, {l:56,r:14,t:16,b:32}).setRange(0.08, 0.88, 0, 0.80);
+  f.axes([0.1,0.3,0.5,0.7],[0,0.25,0.5,0.75], "x", "height",
+         function(v){ return v.toFixed(1); }, function(v){ return v.toFixed(2); });
+  var pts=[], i, xx;
+  for(i=0;i<=200;i++){ xx = 0.08 + (0.88-0.08)*i/200; pts.push([xx, Mpeak(xx)]); }
+  f.poly(pts, tok("--accent-2"), 2.4);
+  f.poly([[0.08,0.08],[0.80,0.80]], tok("--amber-fill"), 2, [8,5]);
+  f.dot(ALPHA, ALPHA, tok("--amber-fill"), 5.5);
+  f.label(0.60, 0.40, "they cross at α", tok("--amber"));
+  f.vline(x, tok("--ink-3"));
+  var pk2 = Mpeak(x);
+  var gc2 = pk2 >= x ? tok("--accent") : tok("--ink-2");
+  f.gapbar(x, Math.min(pk2,x), Math.max(pk2,x), gc2);
+  f.dot(x, pk2, gc2, 4.2);
+}
+function update2(){
+  var x = s2ExactX === null ? parseFloat(s2x.value) : s2ExactX;
+  s2xv.textContent = s2ExactX === ALPHA ? "α ≈ 0.360130" : x.toFixed(3);
+  s2x.setAttribute("aria-valuetext", s2ExactX === ALPHA ? "x = alpha, approximately 0.360130" : "x = "+x.toFixed(3));
+  drawHill(x); drawRace(x);
+  var r = restPoints(x), msg, cls;
+  if(r.length===2){
+    msg = "<b>The hill reaches the line twice.</b> Solutions at <b>"+fmt(r[0])+
+          "</b> and <b>"+fmt(r[1])+"</b>. The peak clears the line by <b>"+
+          fmt(Mpeak(x)-x)+"</b> — that is the bar, in both charts.";
+    cls="verdict";
+  } else if(r.length===1){
+    msg = "<b>The hill just touches the line.</b> The two solutions have merged into "+
+          "one, at <b>"+fmt(r[0])+"</b>. This is the boundary value, x = α.";
+    cls="verdict";
+  } else {
+    msg = "<b>The hill never reaches the line.</b> The peak only gets to "+fmt(Mpeak(x))+
+          ", falling short of the required "+fmt(x)+" by <b>"+fmt(x-Mpeak(x))+
+          "</b>. There is no solution, so L = ∞.";
+    cls="verdict escapes";
+  }
+  v2.className=cls; v2.innerHTML=msg;
+  cHill.setAttribute("aria-label","The curve L to the power "+x.toFixed(2)+
+    " minus L, against a horizontal line at height "+x.toFixed(2)+". They meet "+
+    (r.length===2?"twice.":r.length===1?"once, tangentially.":"not at all.")+
+    " A bar marks the gap of "+fmt(Math.abs(Mpeak(x)-x))+
+    " between the peak and the line.");
+  cRace.setAttribute("aria-label","Peak height and required height, both against x. At "+
+    x.toFixed(2)+" the same bar marks the gap of "+fmt(Math.abs(Mpeak(x)-x))+
+    " between the two curves. They cross at alpha, 0.36.");
+}
+s2x.addEventListener("input", function(){ s2ExactX = null; update2(); });
+Array.prototype.forEach.call(document.querySelectorAll("[data-x2]"), function(b){
+  b.addEventListener("click", function(){ s2ExactX = b.getAttribute("data-x2") === "0.3601300017" ? ALPHA : null; s2x.value = b.getAttribute("data-x2"); update2(); });
+});
+
+// ================= SANDBOX 3 =================
+var s3x=document.getElementById("x3"), s3xv=document.getElementById("x3v");
+var s3s=document.getElementById("start3"), s3sv=document.getElementById("start3v");
+var v3=document.getElementById("v3");
+var cWeb=document.getElementById("c-web"), cSol=document.getElementById("c-sol");
+var web = {x:0.33, t0:0.05, pts:[[0.05,0]], n:0};
+
+function webReset(){
+  web.x = parseFloat(s3x.value); web.t0 = parseFloat(s3s.value);
+  web.pts = [[web.t0, 0]]; web.n = 0; drawWeb(); drawSol(); say3();
+}
+function webStep(k){
+  for(var i=0;i<(k||1);i++){
+    var cur = web.pts[web.pts.length-1][0];
+    var gt = g(cur, web.x);
+    if(!isFinite(gt) || gt>50) break;
+    web.pts.push([cur, gt]); web.pts.push([gt, gt]); web.n++;
+  }
+  drawWeb(); say3();
+}
+function drawWeb(){
+  var x = web.x, r = restPoints(x);
+  var top = r.length ? Math.max(r[r.length-1]*1.5, web.t0*1.3, 0.35)
+                     : Math.max(0.9, web.t0*1.4);
+  top = Math.min(Math.max(top, 0.3), 1.25);
+  var s = setup(cWeb, 330);
+  var f = new Frame(s, {l:56,r:14,t:16,b:34}).setRange(0, top, 0, top);
+  f.axes([0, top/2, top],[0, top/2, top], "current value", "next value",
+         function(v){ return v.toFixed(2); }, function(v){ return v.toFixed(2); });
+  f.poly([[0,0],[top,top]], tok("--ink-3"), 1.6, [7,5]);
+  var pts=[], i, t;
+  for(i=0;i<=220;i++){ t = top*i/220; pts.push([t, g(t,x)]); }
+  f.poly(pts, tok("--accent-2"), 2.6);
+  if(r.length===2){
+    f.dot(r[0], r[0], tok("--accent"), 5.5);
+    f.dot(r[1], r[1], tok("--ink-2"), 5.5, true);
+    f.label(r[0], -0.035*top, "L", tok("--accent"));
+    f.label(r[1], r[1]+top*0.085, "ceiling", tok("--ink-2"));
+  } else if(r.length===1){
+    f.dot(r[0], r[0], tok("--amber-fill"), 5.5);
+  }
+  if(web.pts.length>1) f.poly(web.pts, tok("--amber-fill"), 1.8);
+  f.dot(web.t0, 0, tok("--amber-fill"), 4);
+}
+function drawSol(){
+  var x = web.x;
+  var s = setup(cSol, 330);
+  var f = new Frame(s, {l:56,r:14,t:16,b:34}).setRange(0, 2.6, 0, 3.0);
+  f.band(ALPHA, 1, tok("--panel"));
+  f.axes([0,1,2],[0,1,2,3], "x", "both solutions");
+  f.label((ALPHA+1)/2, 2.48, "no solution:", tok("--ink-3"));
+  f.label((ALPHA+1)/2, 2.22, "L = ∞", tok("--ink-3"));
+  f.poly(branches.lower,  tok("--accent"), 2.4);
+  f.poly(branches.single, tok("--accent"), 2.4);
+  f.poly(branches.upper,  tok("--ink-2"), 2.2, [6,5]);
+  f.dot(ALPHA, L_ALPHA, tok("--amber-fill"), 5);
+  f.label(0.45, 0.62, "they collide here", tok("--amber"), "left");
+  f.vline(x, tok("--ink-3"));
+  var r = restPoints(x);
+  if(r.length===2){ f.dot(x,r[0],tok("--accent"),5); f.dot(x,r[1],tok("--ink-2"),5,true); }
+  else if(r.length===1) f.dot(x,r[0],tok("--accent"),5);
+}
+function say3(){
+  var x=web.x, r=restPoints(x), cur=web.pts[web.pts.length-1][0], msg, cls;
+  if(r.length===2 && web.t0 < r[1]){
+    msg = "Started below the ceiling <b>"+fmt(r[1])+"</b>, so it climbs to <b>"+
+          fmt(r[0])+"</b>. After <b>"+web.n+"</b> step"+(web.n===1?"":"s")+
+          " the value is <b>"+fmt(cur,6)+"</b>.";
+    cls="verdict";
+  } else if(r.length===2){
+    msg = "Started above the ceiling <b>"+fmt(r[1])+"</b>, so it escapes. After <b>"+
+          web.n+"</b> step"+(web.n===1?"":"s")+" the value is <b>"+fmt(cur,4)+
+          "</b>. The infinite root of the poster starts at the x-th root of x, "+
+          "which never lands up here.";
+    cls="verdict escapes";
+  } else if(r.length===1 && web.t0 < r[0]){
+    msg = "At the boundary value x = α, where the two solutions have merged. "+
+          "Creeping up to <b>"+fmt(r[0])+"</b> — slowly. After <b>"+web.n+
+          "</b> step"+(web.n===1?"":"s")+" the value is <b>"+fmt(cur,6)+"</b>.";
+    cls="verdict";
+  } else {
+    msg = "No solution at this value of x: the curve stays above the diagonal, so the "+
+          "staircase climbs for ever. After <b>"+web.n+"</b> step"+(web.n===1?"":"s")+
+          " the value is <b>"+fmt(cur,4)+"</b>.";
+    cls="verdict escapes";
+  }
+  v3.className=cls; v3.innerHTML=msg;
+  cWeb.setAttribute("aria-label","Staircase diagram at x = "+x.toFixed(3)+". "+
+    (r.length===2 ? "The curve crosses the diagonal twice, at "+fmt(r[0])+" and "+fmt(r[1])+"."
+     : r.length===1 ? "The curve touches the diagonal once."
+     : "The curve never touches the diagonal.")+
+    " The staircase has taken "+web.n+" steps and stands at "+fmt(cur,4)+".");
+  cSol.setAttribute("aria-label","Both solutions plotted against x. The solid lower "+
+    "branch is L; the dotted upper branch is the ceiling. They meet at alpha and "+
+    "vanish; a single solution returns past x = 1. A marker sits at x = "+x.toFixed(3)+".");
+}
+s3x.addEventListener("input", function(){
+  s3xv.textContent=parseFloat(s3x.value).toFixed(3); webReset(); });
+s3s.addEventListener("input", function(){
+  s3sv.textContent=parseFloat(s3s.value).toFixed(3); webReset(); });
+document.getElementById("step3").addEventListener("click", function(){ webStep(1); });
+document.getElementById("run3").addEventListener("click", function(){ webStep(20); });
+document.getElementById("reset3").addEventListener("click", webReset);
+
+// ---------- boot, and redraw on resize or theme change ----------
+function redrawAll(){ update1(); update2(); drawWeb(); drawSol(); }
+update1(); update2(); webReset();
+
+var rt;
+window.addEventListener("resize", function(){
+  clearTimeout(rt); rt = setTimeout(redrawAll, 140);
+});
+if(window.matchMedia){
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+  if(mq.addEventListener) mq.addEventListener("change", redrawAll);
+  else if(mq.addListener) mq.addListener(redrawAll);
+}
+new MutationObserver(redrawAll).observe(document.documentElement,
+  {attributes:true, attributeFilter:["data-theme"]});
+})();
+</script>
+
+</body>
+</html>
