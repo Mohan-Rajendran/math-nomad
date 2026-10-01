@@ -9,18 +9,24 @@
       \[ \sqrt{2+\sqrt{2+\sqrt{2+\cdots}}}=2. \]
     </div>
 
-    <h3>For <var>x</var> &gt; 0, let</h3>
+    <h3>For <var>x</var> &gt; 0, consider</h3>
 
     <div class="eqn hero" role="math" aria-label="The x-th root of, x plus the x-th
          root of, x plus the x-th root of, x plus and so on for ever, equals L.">
       \[ \sqrt[x]{\,x+\sqrt[x]{\,x+\sqrt[x]{\,x+\cdots}}}=L. \]
     </div>
+    <p>We interpret this expression as the limit of its finite truncations. More
+      precisely, define</p>
+    <div class="eqn">
+      \[ a_0=0,\qquad a_{n+1}=(x+a_n)^{1/x}\quad(n\ge0). \]
+    </div>
+    <p>We write \(L=L(x)=\lim_{n\to\infty}a_n\) only when this limit is finite.</p>
 
     <h3>Two questions</h3>
     <ol style="padding-left:1.4rem">
-      <li style="margin-bottom:.6rem">For which values of <var>x</var> does <var>L</var> make
-        sense?</li>
-      <li>What type of values can <var>L</var> take?</li>
+      <li style="margin-bottom:.6rem">For which values of <var>x</var> does the sequence
+        have a finite limit?</li>
+      <li>When the limit exists, is it algebraic or transcendental?</li>
     </ol>
   </div>
 </section>
@@ -37,12 +43,16 @@
       \[ \sqrt[x]{x},\quad \sqrt[x]{\,x+\sqrt[x]{x}},\quad
           \sqrt[x]{\,x+\sqrt[x]{\,x+\sqrt[x]{x}}},\ \ldots \]
     </div>
-    <p>Count how many steps it needs before the terms settle. We see a gap
-      (&alpha;,&nbsp;1] for which</p>
-    <div class="eqn" role="math" aria-label="L, the infinite x-th root, tends to
-         infinity.">
-      \[ L=\sqrt[x]{\,x+\sqrt[x]{\,x+\sqrt[x]{\,x+\cdots}}}\;\longrightarrow\;\infty. \]
+    <p>The experiment suggests a gap, \(\alpha&lt;x\le1\), in which the terms
+      grow without bound:</p>
+    <div class="eqn" role="math" aria-label="The sequence a n tends to positive infinity as n tends to infinity.">
+      \[ a_n\longrightarrow+\infty\qquad(n\to\infty). \]
     </div>
+    <p>For convergent parameters, the experiment records the first index \(n\ge1\)
+      for which \(\lvert a_{n+1}-a_n\rvert&lt;10^{-d}\).
+      A small change between successive terms does <em>not</em> guarantee that
+      either term is within \(10^{-d}\) of the limit. The convergence verdict uses
+      the mathematical criterion proved below, not this numerical stopping rule.</p>
   </div>
 
   <div class="companion-wide">
@@ -56,23 +66,23 @@
           <figure class="canvas-box">
             <canvas id="c-orbit" height="300" role="img"
                     aria-label="Plot of the first terms of the sequence."></canvas>
-            <figcaption>The first 40 terms at this value of <var>x</var></figcaption>
+            <figcaption>Up to the first 40 terms at this value of <var>x</var></figcaption>
           </figure>
           <figure class="canvas-box">
             <canvas id="c-steps" height="300" role="img"
-                    aria-label="Steps needed to settle, against x."></canvas>
-            <figcaption>Steps needed to settle, for every value of <var>x</var></figcaption>
+                    aria-label="Index at the successive-change threshold, for sampled convergent values of x."></canvas>
+            <figcaption>Index at the change threshold, for sampled convergent values of <var>x</var></figcaption>
           </figure>
         </div>
 
         <div class="controls">
           <div class="ctrl">
-            <label for="dec1">&ldquo;Settled&rdquo; means two consecutive terms agree to</label>
+            <label for="dec1">Threshold for the change between successive terms</label>
             <select id="dec1">
-              <option value="2">2 decimals</option>
-              <option value="4">4 decimals</option>
-              <option value="6">6 decimals</option>
-              <option value="9" selected>9 decimals — as plotted on the poster</option>
+              <option value="2">10⁻² (0.01)</option>
+              <option value="4">10⁻⁴ (0.0001)</option>
+              <option value="6">10⁻⁶ (0.000001)</option>
+              <option value="9" selected>10⁻⁹ (0.000000001)</option>
             </select>
           </div>
           <div class="ctrl">
@@ -99,7 +109,7 @@
             <table id="t1">
               <thead><tr>
                 <th scope="col"><var>n</var></th>
-                <th scope="col"><var>n</var>th term</th>
+                <th scope="col">\(a_n\)</th>
               </tr></thead>
               <tbody></tbody>
             </table>
@@ -113,19 +123,20 @@
   <div class="companion-prose">
     <div class="callout answer">
       <span class="label">The answer to question 1</span>
-      <p><var>L</var> makes sense exactly when</p>
+      <p>The sequence has a finite limit exactly when</p>
       <div role="math" aria-label="0 is less than x, which is less than or equal to
            alpha; or x is greater than 1.">
         \[ 0 &lt; x \le \alpha \qquad\text{or}\qquad x &gt; 1 \]
       </div>
       <p style="margin-bottom:0">where &alpha; is a particular number between
-        0 and 1: &alpha;&nbsp;=&nbsp;0.3601300017…</p>
+        0 and 1: \(\alpha\approx0.36013000173217046\).</p>
     </div>
 
     <figure class="fig">
+      <div class="diagram-scroll" tabindex="0" role="region" aria-label="Convergence number line; scroll horizontally on smaller screens.">
       <svg viewBox="0 0 640 96" role="img"
-           aria-label="A number line from 0 to beyond 2, drawn to scale. The stretch from 0 to alpha, about 0.36, is marked settles. The stretch from alpha to 1 is marked runs away. Everything past 1 is marked settles.">
-        <g font-family="Source Sans 3, sans-serif" font-size="13">
+           aria-label="The sequence converges for 0 less than x less than or equal to alpha, and for x greater than 1. Zero is outside the domain. Alpha is included in the convergence interval; x equals 1 belongs to the divergent interval.">
+        <g font-family="Source Sans 3, sans-serif" font-size="14">
           <line x1="20" y1="52" x2="620" y2="52" stroke="var(--line-2)" stroke-width="1.5"/>
           <line x1="20" y1="52" x2="120" y2="52" stroke="var(--accent-2)" stroke-width="9" stroke-linecap="butt"/>
           <line x1="120" y1="52" x2="297" y2="52" stroke="var(--amber-fill)" stroke-width="9"
@@ -136,17 +147,21 @@
             <line x1="20" y1="44" x2="20" y2="60"/><line x1="120" y1="44" x2="120" y2="60"/>
             <line x1="297" y1="44" x2="297" y2="60"/><line x1="574" y1="44" x2="574" y2="60"/>
           </g>
+          <circle cx="20" cy="52" r="5" fill="var(--canvas)" stroke="var(--accent)" stroke-width="2"/>
+          <circle cx="120" cy="52" r="5" fill="var(--accent)"/>
+          <circle cx="297" cy="52" r="5" fill="var(--amber-fill)"/>
           <g fill="var(--ink-2)" text-anchor="middle">
             <text x="20" y="78">0</text><text x="120" y="78">&#x3B1;</text>
             <text x="297" y="78">1</text><text x="574" y="78">2</text>
           </g>
-          <g text-anchor="middle" font-size="12.5">
-            <text x="70" y="34" fill="var(--accent)">settles</text>
-            <text x="208" y="34" fill="var(--amber)">runs away</text>
-            <text x="450" y="34" fill="var(--accent)">settles</text>
+          <g text-anchor="middle">
+            <text x="70" y="34" fill="var(--accent)">converges</text>
+            <text x="208" y="34" fill="var(--amber)">diverges</text>
+            <text x="450" y="34" fill="var(--accent)">converges</text>
           </g>
         </g>
       </svg>
+      </div>
     </figure>
   </div>
 </section>
@@ -156,14 +171,18 @@
   <div class="companion-prose">
     <p class="eyebrow">Panel 2</p>
     <h2>Where does the gap come from?</h2>
-    <p>If <var>L</var> is that infinite root, then it must satisfy</p>
+    <p>If the sequence has a finite limit <var>L</var>, continuity gives</p>
     <div class="eqn hero" role="math"
          aria-label="L to the power x, minus L, equals x.">
       \[ L^{x}-L=x \]
     </div>
-    <p>Read it as a picture. The curve \(L^{x}-L\) rises to a peak and then falls
-      away. A resting place exists only where that curve reaches the height
-      <var>x</var>.</p>
+    <p>For \(0&lt;x&lt;1\), read this as a picture: the curve \(y=t^x-t\), for
+      \(t\ge0\), rises to a peak and then falls. A positive fixed point exists
+      exactly where this curve meets the horizontal line \(y=x\).</p>
+    <p>The sequence is increasing. Every positive fixed point bounds it above,
+      because the map \(t\mapsto(x+t)^{1/x}\) is increasing. Thus the sequence
+      converges to a finite limit if and only if a positive fixed point exists;
+      otherwise its terms tend to infinity.</p>
   </div>
 
   <div class="companion-wide">
@@ -177,7 +196,7 @@
         <div class="canvas-row">
           <figure class="canvas-box">
             <canvas id="c-hill" height="300" role="img"
-                    aria-label="The curve L to the power x minus L, with a horizontal line at height x."></canvas>
+                    aria-label="The curve t to the power x minus t, with a horizontal line at height x."></canvas>
             <figcaption>The hill, and the height it must reach</figcaption>
           </figure>
           <figure class="canvas-box">
@@ -206,9 +225,12 @@
   </div>
 
   <div class="companion-prose">
-    <p>Those two effects race each other. The peak wins for small <var>x</var>, the line
-      wins for large <var>x</var>, and they are level at exactly one value. <b>That value is
-      &alpha;.</b></p>
+    <p>For \(0&lt;x&lt;1\), the peak occurs at \(t=x^{1/(1-x)}\) and has height</p>
+    <div class="eqn">\[ M(x)=(1-x)x^{x/(1-x)}. \]</div>
+    <p>This height decreases from 1 to 0 as <var>x</var> increases from 0 to 1:
+      \((\log M(x))'=\log x/(1-x)^2&lt;0\). Meanwhile, the required height
+      <var>x</var> increases. The two are equal at exactly one value,
+      <b>&alpha;</b>.</p>
     <div class="callout">
       <span class="label">The boundary constant</span>
       <p style="margin:0">&alpha; is the one number in (0,&nbsp;1) with</p>
@@ -217,6 +239,10 @@
         \[ \alpha^{\frac{\alpha}{1-\alpha}}=\frac{\alpha}{1-\alpha} \]
       </div>
     </div>
+    <p>At \(x=1\), the recurrence is \(a_{n+1}=1+a_n\), so \(a_n=n\) and
+      the sequence diverges. For \(x&gt;1\), the function \(t^x-t\) is nonpositive
+      on \([0,1]\) and strictly increases from 0 to infinity for \(t&gt;1\).
+      It therefore meets \(y=x\) exactly once, giving a finite limit.</p>
   </div>
 </section>
 
@@ -225,15 +251,17 @@
   <div class="companion-prose">
     <p class="eyebrow">Panel 3</p>
     <h2>Which solution is <var>L</var>?</h2>
-    <p>For \(0 &lt; x &lt; \alpha\) the equation \(L^{x}-L=x\) has <b>two</b> positive
+    <p>For \(0 &lt; x &lt; \alpha\), the equation \(t^{x}-t=x\) has <b>two</b> positive
       solutions. Only the smaller one is <var>L</var>.</p>
-    <p>The sequence starts at \(\sqrt[x]{x}\) and every step makes it larger. It
-      therefore climbs until it meets a solution, and it meets the smaller one first,
-      so it stops there. The larger solution is a <i>ceiling</i> the sequence never
-      reaches: a sequence would have to <i>begin</i> above it to escape, and
-      \(\sqrt[x]{x}\) never does.</p>
+    <p>The first positive term is \(a_1=\sqrt[x]{x}\). The sequence increases and stays strictly below
+      the smaller solution. It therefore converges to that solution without
+      reaching it in finitely many steps. The larger fixed point acts as a
+      <i>ceiling</i>: any nonnegative starting value below it converges to the
+      smaller fixed point, a start exactly at it stays fixed, and a start above it
+      diverges to infinity.</p>
 
     <figure class="fig">
+      <div class="diagram-scroll" tabindex="0" role="region" aria-label="Fixed-point diagram; scroll horizontally on smaller screens.">
       <svg viewBox="0 0 640 112" role="img"
            aria-label="A line with arrows. A tick on the left marks the starting value, the x-th root of x. Arrows from there point right, toward a solid dot marked L. Arrows to the right of L point left, back toward it. Further right a hollow dot marks the other solution; arrows beyond it point right, away from it, labelled escapes.">
         <defs>
@@ -242,7 +270,7 @@
             <path d="M0 0 L10 5 L0 10 z" fill="var(--accent-2)"/>
           </marker>
         </defs>
-        <g font-family="Source Sans 3, sans-serif" font-size="12.5">
+        <g font-family="Source Sans 3, sans-serif" font-size="14">
           <line x1="14" y1="46" x2="630" y2="46" stroke="var(--line-2)" stroke-width="1.5"/>
           <g stroke="var(--accent-2)" stroke-width="2.4" fill="none">
             <path d="M104 46 h46" marker-end="url(#ar3)"/>
@@ -260,13 +288,15 @@
           <text x="282" y="74" text-anchor="middle" fill="var(--accent)" font-style="italic">L</text>
           <text x="482" y="74" text-anchor="middle" fill="var(--ink-2)">the other</text>
           <text x="482" y="90" text-anchor="middle" fill="var(--ink-2)">solution</text>
-          <text x="282" y="26" text-anchor="middle" fill="var(--accent)">climbs to L</text>
+          <text x="282" y="26" text-anchor="middle" fill="var(--accent)">tends to L</text>
           <text x="578" y="26" text-anchor="middle" fill="var(--ink-2)">escapes</text>
         </g>
       </svg>
+      </div>
       <figcaption class="footnote">Arrows show which way the sequence moves.
-        Everything below the hollow point drifts to <var>L</var>; only something
-        starting above it runs away.</figcaption>
+        Every nonnegative starting value below the hollow point approaches
+        <var>L</var>. A start at the hollow point stays fixed; a start above it
+        diverges.</figcaption>
     </figure>
   </div>
 
@@ -281,13 +311,13 @@
         <div class="canvas-row">
           <figure class="canvas-box">
             <canvas id="c-web" height="330" role="img"
-                    aria-label="A staircase diagram showing the sequence climbing toward the smaller solution."></canvas>
+                    aria-label="A staircase diagram showing the sequence from the chosen starting value."></canvas>
             <figcaption>One step at a time, from the chosen start</figcaption>
           </figure>
           <figure class="canvas-box">
             <canvas id="c-sol" height="330" role="img"
                     aria-label="Both solutions plotted against x."></canvas>
-            <figcaption>Both solutions of \(L^{x}-L=x\), as <var>x</var> varies</figcaption>
+            <figcaption>Positive solutions of \(t^{x}-t=x\), as <var>x</var> varies</figcaption>
           </figure>
         </div>
         <div class="controls">
@@ -316,11 +346,12 @@
   <div class="companion-prose">
     <div class="callout">
       <span class="label">Reading the graph</span>
-      <p style="margin:0">The <b>solid</b> curve is <var>L</var> itself. The <b>dotted</b>
-        curve is the second solution, which is never attained, so it is ignored. As
-        <var>x</var> grows the two move together, <b>collide at &alpha; and vanish</b>:
-        with no solution left, <var>L</var>&nbsp;=&nbsp;&infin;. That is the gap. Past <var>x</var>&nbsp;=&nbsp;1 a single
-        solution returns and <var>L</var> makes sense again.</p>
+      <p style="margin:0">The <b>solid</b> curve gives the limit of the original
+        sequence. The <b>dotted</b> curve is the larger fixed point, which is not
+        the limit of that sequence. The two fixed points merge at &alpha;, where
+        the sequence still converges. For \(\alpha&lt;x&lt;1\), there is no positive
+        fixed point, and the sequence diverges; it also diverges at \(x=1\).
+        For \(x&gt;1\), there is a unique positive fixed point and a finite limit.</p>
     </div>
   </div>
 </section>
@@ -330,23 +361,27 @@
   <div class="companion-prose">
     <p class="eyebrow">Panel 4</p>
     <h2>What kind of number is &alpha;?</h2>
-    <p>A number is <b>algebraic</b> if it solves some polynomial equation with
-      whole-number coefficients. Every fraction \(p/q\) does, since it solves
-      \(qT-p=0\); so does \(\sqrt2\), which solves \(T^{2}-2=0\); so does the
+    <p>A number is <b>algebraic</b> if it is a root of a nonzero polynomial with
+      integer coefficients. Every rational number \(p/q\), with \(q\ne0\), is
+      algebraic, since it solves
+      \(qT-p=0\). The same is true of \(\sqrt2\), which solves \(T^{2}-2=0\), and the
       golden ratio, which solves \(T^{2}-T-1=0\). A number that solves <i>no</i>
-      such equation is <b>transcendental</b>. Almost every number is therefore
-      transcendental. Proving it of any <i>particular</i> number is another matter:
-      &pi; and <var>e</var> took until the 1870s and 1880s.</p>
+      such equation is <b>transcendental</b>. The algebraic numbers form a countable
+      set, so almost every real number is transcendental. Proving it for a
+      <i>particular</i> number is another matter: the proofs for
+      <a href="https://www.e-rara.ch/zut/content/titleinfo/27940137"><var>e</var></a>
+      and <a href="https://eudml.org/doc/157031">&pi;</a> date from 1873 and 1882,
+      respectively.</p>
 
     <figure class="fig layers">
       <div class="layer outer">
         <span class="lab">all real numbers</span>
         <div class="row">
           <div class="layer mid" style="flex:1 1 20rem">
-            <span class="lab alg">algebraic</span>
+            <span class="lab alg">real algebraic numbers</span>
             <div class="row">
               <div class="layer inner" style="flex:1 1 11rem">
-                <span class="lab alg">fractions</span>
+                <span class="lab alg">rational numbers</span>
                 <div class="ex">\(-5,\; \tfrac{3}{2},\; \tfrac{22}{7}\)</div>
               </div>
               <div class="ex">\(\sqrt{2},\; \sqrt[3]{5},\; \tfrac{1+\sqrt5}{2}\)</div>
@@ -356,48 +391,72 @@
         </div>
         <span class="lab tra">transcendental</span>
       </div>
-      <figcaption class="footnote">The fractions sit inside the algebraic numbers,
-        which sit inside the reals. Everything in the outermost band is
-        transcendental.</figcaption>
+      <figcaption class="footnote">The rational numbers sit inside the real algebraic
+        numbers. The remaining real numbers are transcendental.</figcaption>
     </figure>
 
-    <p>One theorem tells the layers apart.</p>
+    <p>A theorem about powers gives us a way to prove transcendence.</p>
     <div class="callout">
-      <span class="label">Gelfond–Schneider, 1934 · Hilbert's 7th problem</span>
-      <p style="margin:0">If <var>a</var> and <var>b</var> are algebraic, \(a\neq 0,1\), and
+      <span class="label">Gelfond–Schneider, 1934 · Hilbert's 7th problem <a href="#ref-gelfond">[6]</a></span>
+      <p style="margin:0">If <var>a</var> and <var>b</var> are real algebraic numbers, \(a&gt;0\), \(a\neq1\), and
         <var>b</var> is irrational, then \(a^{b}\) is <b>transcendental</b>.</p>
     </div>
 
     <h3>The boundary constant is transcendental</h3>
-    <p>Panel 2 defined &alpha; by exactly this: a power of &alpha; equal to
-      a simple fraction in &alpha;. If &alpha; were algebraic, the theorem
-      would make one side transcendental and the other algebraic — impossible. So
-      &alpha; is transcendental, and so is the value 0.2027… that the
-      sequence settles on there.</p>
+    <p>First, &alpha; is irrational. Suppose \(\alpha=p/q\) in lowest terms,
+      with \(0&lt;p&lt;q\). Raising its defining equation to the power \(q-p\)
+      gives</p>
+    <div class="eqn">\[ \left(\frac pq\right)^p=
+      \left(\frac{p}{q-p}\right)^{q-p}. \]</div>
+    <p>Both fractions are in lowest terms, so their denominators must agree:
+      \(q^p=(q-p)^{q-p}\). This is impossible because \(q\) and \(q-p\) are
+      coprime and \(q&gt;1\).</p>
+    <p>If &alpha; were algebraic, the exponent \(\alpha/(1-\alpha)\) would
+      therefore be algebraic and irrational. Gelfond–Schneider would make
+      \(\alpha^{\alpha/(1-\alpha)}\) transcendental, whereas the defining
+      equation makes it equal to the algebraic number \(\alpha/(1-\alpha)\).
+      This contradiction proves that <b>&alpha; is transcendental</b>.</p>
+    <p>At the boundary, the finite limit is</p>
+    <div class="eqn">\[ L(\alpha)=\frac{\alpha^2}{1-\alpha}
+      \approx0.20268744979246145. \]</div>
+    <p>This limit is also transcendental. If it were algebraic, the equation
+      \(\alpha^2+L(\alpha)\alpha-L(\alpha)=0\) would make &alpha; algebraic,
+      since a root of a nonzero polynomial with algebraic coefficients is algebraic.</p>
 
     <h3>And what about <var>L</var>?</h3>
-    <p>The same theorem, applied to \(L^{x}-L=x\), sorts every value of <var>x</var> into
-      one of three cases.</p>
+    <p>Whenever the sequence has a <b>finite limit</b>, elementary algebra and
+      Gelfond–Schneider give the following conclusions.</p>
   </div>
 
   <div class="companion-prose">
     <figure class="fig cases">
       <div class="case">
-        <div class="from"><var>x</var> a fraction</div>
+        <div class="from"><var>x</var> rational</div>
         <div class="arrow" aria-hidden="true">&rarr;</div>
         <div class="to"><var>L</var> is <b>algebraic</b></div>
       </div>
       <div class="case">
-        <div class="from"><var>x</var> algebraic, not a fraction</div>
+        <div class="from"><var>x</var> algebraic and irrational</div>
         <div class="arrow" aria-hidden="true">&rarr;</div>
         <div class="to"><var>L</var> is <b>transcendental</b></div>
       </div>
       <div class="case open">
         <div class="from"><var>x</var> transcendental</div>
         <div class="arrow" aria-hidden="true">&rarr;</div>
-        <div class="to"><b>nobody knows</b></div>
+        <div class="to">Gelfond–Schneider alone gives <b>no general conclusion</b></div>
       </div>
     </figure>
+    <p>For rational \(x=p/q&gt;0\) in lowest terms, raising
+      \(L^{p/q}=L+p/q\) to the power \(q\) gives a nonzero polynomial equation with
+      integer coefficients:</p>
+    <div class="eqn">\[ q^qL^p-(qL+p)^q=0. \]</div>
+    <p>A finite limit satisfies \(L&gt;0\) and \(L\ne1\), since substituting
+      \(L=1\) into \(L^x=L+x\) would give \(x=0\).
+      If <var>x</var> is algebraic and irrational, an algebraic limit
+      would make \(L^x\) transcendental by
+      Gelfond–Schneider, contradicting \(L^x=L+x\). The theorem gives no such
+      general classification when <var>x</var> is transcendental. Particular
+      cases can still be settled: at \(x=\alpha\), the limit is transcendental.</p>
   </div>
 
 </section>
@@ -410,9 +469,9 @@
 
     <p class="refgroup">Panels 1–2 · nested radicals</p>
     <ul class="refs">
-      <li>[1] A. Herschfeld, <i>On infinite radicals</i>, American Mathematical
+      <li>[1] A. Herschfeld, <a href="https://doi.org/10.1080/00029890.1935.11987745"><i>On infinite radicals</i></a>, American Mathematical
         Monthly <b>42</b> (1935), 419–429.</li>
-      <li>[2] L. D. Servi, <i>Nested square roots of 2</i>, American Mathematical
+      <li>[2] L. D. Servi, <a href="https://doi.org/10.1080/00029890.2003.11919968"><i>Nested square roots of 2</i></a>, American Mathematical
         Monthly <b>110</b> (2003), 326–330.</li>
     </ul>
 
@@ -428,7 +487,7 @@
     <ul class="refs">
       <li>[5] D. Hilbert, <i>Mathematische Probleme</i>, Göttinger Nachrichten
         (1900), 253–297.</li>
-      <li>[6] A. O. Gelfond, <i>Sur le septième problème de Hilbert</i>, Bulletin de
+      <li id="ref-gelfond">[6] A. O. Gelfond, <a href="https://www.mathnet.ru/eng/im4924"><i>Sur le septième problème de Hilbert</i></a>, Bulletin de
         l'Académie des Sciences de l'URSS, Série VII, no. 4 (1934), 623–634.</li>
       <li>[7] A. Baker, <i>Transcendental Number Theory</i>, Cambridge University
         Press, 1975.</li>
@@ -440,11 +499,11 @@
 
     <h3>About this page</h3>
     <p>This is the companion to a poster presented at a university research
-      conference. It carries the same content in a form that can be read at your own
+      conference. It develops the poster’s ideas in a form that can be read at your own
       pace, enlarged, or read aloud.</p>
     <p class="footnote">Every figure has a text description, every sandbox reports its
       result in words as well as pictures, the sliders and menus work from the
       keyboard, and the page follows your Math Nomad display settings. All the
-      numbers are computed live in your browser.</p>
+      sandbox values are computed live in your browser using finite-precision arithmetic.</p>
   </div>
 </section>

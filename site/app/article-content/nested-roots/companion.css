@@ -66,7 +66,8 @@
 .nested-roots-article button:hover { background: var(--accent-soft); color: var(--accent-hover); }
 .nested-roots-article button.primary { background: var(--accent); color: var(--canvas); }
 .nested-roots-article button.primary:hover { background: var(--accent-hover); }
-.nested-roots-article :is(button, input, select, summary):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.nested-roots-article button:disabled { cursor: default; opacity: .55; }
+.nested-roots-article :is(button, input, select, summary, .diagram-scroll):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .nested-roots-article .verdict { background: var(--surface); border-radius: 5px; font: .9rem/1.55 var(--sans); margin: 20px 0 0; padding: 15px 17px; }
 .nested-roots-article .verdict.escapes { background: var(--clay-soft); }
 .nested-roots-article .verdict b { color: var(--ink); font-variant-numeric: tabular-nums; }
@@ -82,6 +83,8 @@
 .nested-roots-article .callout .label { color: var(--accent-hover); display: block; font: 600 .76rem/1.4 var(--sans); letter-spacing: .07em; margin-bottom: 10px; text-transform: uppercase; }
 .nested-roots-article figure.fig { margin: 34px 0; }
 .nested-roots-article figure.fig svg { display: block; height: auto; max-width: 100%; width: 100%; }
+.nested-roots-article .diagram-scroll { overflow-x: auto; }
+.nested-roots-article .diagram-scroll svg { min-width: 640px; }
 .nested-roots-article .footnote { color: var(--muted); font: .875rem/1.55 var(--sans); }
 .nested-roots-article figcaption.footnote { margin-top: 12px; text-align: center; }
 .nested-roots-article .layers .layer { border: 1px solid var(--rule-dark); border-radius: 7px; padding: 16px; }

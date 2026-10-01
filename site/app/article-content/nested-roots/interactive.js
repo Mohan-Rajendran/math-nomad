@@ -1,3 +1,5 @@
+import { ALPHA, L_ALPHA, g, h, Lstar, Mpeak, restPoints, orbit, settleSteps, fmt, startBehavior, converges } from "./numerics.mjs";
+
 /** Initialize the supplied companion's diagrams inside the shared article shell. */
 export function initializeNestedRoots(root) {
 const listeners = new AbortController();
@@ -6,54 +8,6 @@ function listen(target, event, callback) {
   target.addEventListener(event, callback, { signal: listeners.signal });
 }
 
-// ---------- the mathematics ----------
-var ALPHA = 0.3601300017321704;
-var L_ALPHA = ALPHA*ALPHA/(1-ALPHA);
-
-function g(t,x){ return Math.pow(x+t, 1/x); }
-function h(L,x){ return Math.pow(L,x) - L; }
-function Lstar(x){ return Math.pow(x, 1/(1-x)); }
-function Mpeak(x){ return Math.pow(x, x/(1-x))*(1-x); }
-
-function bisect(f,a,b,it){
-  var fa=f(a), m, fm;
-  for(var i=0;i<(it||90);i++){ m=0.5*(a+b); fm=f(m);
-    if((fa<0)===(fm<0)){ a=m; fa=fm; } else { b=m; } }
-  return 0.5*(a+b);
-}
-// the positive solutions of L^x - L = x
-function restPoints(x){
-  if(x>=1) return [bisect(function(t){return Math.pow(t,x)-t-x;},1,1e6)];
-  var ls=Lstar(x);
-  if(Math.abs(Mpeak(x)-x) < 1e-12) return [ls];
-  if(Mpeak(x) < x) return [];
-  return [ bisect(function(L){return h(L,x)-x;},1e-14,ls),
-           bisect(function(L){return h(L,x)-x;},ls,1e6) ];
-}
-function orbit(x,n,cap){
-  cap = cap || 1e7;
-  var t=Math.pow(x,1/x), out=[t];
-  for(var i=1;i<n;i++){
-    t=g(t,x);
-    if(!isFinite(t) || t>cap){ out.push(cap*2); break; }
-    out.push(t);
-  }
-  return out;
-}
-// "settled" = two consecutive terms agree to `dec` decimals
-function tolFor(dec){ return 0.5*Math.pow(10,-dec); }
-function settleSteps(x,dec,cap){
-  var tol=tolFor(dec); cap = cap || 60000;
-  var t=Math.pow(x,1/x), nt;
-  for(var k=1;k<=cap;k++){
-    nt=g(t,x);
-    if(!isFinite(nt) || nt>1e12) return null;
-    if(Math.abs(nt-t) < tol*Math.max(1,Math.abs(nt))) return {steps:k, value:nt};
-    t=nt;
-  }
-  return null;
-}
-function fmt(v,d){ return v.toFixed(d===undefined?4:d); }
 function group(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
 
 // ---------- canvas plumbing ----------
@@ -80,7 +34,7 @@ Frame.prototype.X=function(v){ return this.L + (v-this.x0)/(this.x1-this.x0)*(th
 Frame.prototype.Y=function(v){ return this.B - (v-this.y0)/(this.y1-this.y0)*(this.B-this.T); };
 Frame.prototype.axes=function(xt,yt,xl,yl,fx,fy){
   var c=this.s.ctx, i;
-  c.font = "11px 'Source Sans 3', system-ui, sans-serif";
+  c.font = "12px 'Source Sans 3', system-ui, sans-serif";
   c.strokeStyle = tok("--line"); c.lineWidth = 1;
   c.fillStyle = tok("--ink-3"); c.textAlign="center"; c.textBaseline="top";
   for(i=0;i<xt.length;i++){
@@ -102,9 +56,13 @@ Frame.prototype.axes=function(xt,yt,xl,yl,fx,fy){
   if(yl){ c.save(); c.translate(11,(this.T+this.B)/2); c.rotate(-Math.PI/2);
     c.textBaseline="top"; c.fillText(yl,0,0); c.restore(); }
 };
+Frame.prototype.clip=function(){
+  var c=this.s.ctx;
+  c.beginPath(); c.rect(this.L,this.T,this.R-this.L,this.B-this.T); c.clip();
+};
 Frame.prototype.poly=function(pts,color,width,dash){
   var c=this.s.ctx, i, started=false;
-  c.save(); c.beginPath(); c.strokeStyle=color; c.lineWidth=width||2;
+  c.save(); this.clip(); c.beginPath(); c.strokeStyle=color; c.lineWidth=width||2;
   c.setLineDash(dash||[]); c.lineJoin="round"; c.lineCap="round";
   for(i=0;i<pts.length;i++){
     var p=pts[i];
@@ -116,20 +74,25 @@ Frame.prototype.poly=function(pts,color,width,dash){
 };
 Frame.prototype.dot=function(x,y,color,r,hollow){
   var c=this.s.ctx;
+  if(!Number.isFinite(x) || !Number.isFinite(y)) return;
+  c.save(); this.clip();
   c.beginPath(); c.arc(this.X(x),this.Y(y),r||4,0,6.284);
   if(hollow){ c.fillStyle=tok("--surface"); c.fill(); c.lineWidth=2.2;
               c.strokeStyle=color; c.stroke(); }
   else { c.fillStyle=color; c.fill(); }
+  c.restore();
 };
 Frame.prototype.band=function(a,b,color){
   var c=this.s.ctx;
+  c.save(); this.clip();
   c.fillStyle=color; c.fillRect(this.X(a),this.T,this.X(b)-this.X(a),this.B-this.T);
+  c.restore();
 };
 Frame.prototype.gapbar=function(x,y0,y1,color,cap){
   var c=this.s.ctx, X=this.X(x), A=this.Y(y0), B=this.Y(y1);
   if(Math.abs(A-B) < 2) return;
   cap = cap===undefined ? 6 : cap;
-  c.save(); c.strokeStyle=color; c.lineCap="butt";
+  c.save(); this.clip(); c.strokeStyle=color; c.lineCap="butt";
   c.lineWidth=3.4; c.beginPath(); c.moveTo(X,A); c.lineTo(X,B); c.stroke();
   c.lineWidth=2.4; c.beginPath();
   c.moveTo(X-cap,A); c.lineTo(X+cap,A);
@@ -138,7 +101,7 @@ Frame.prototype.gapbar=function(x,y0,y1,color,cap){
 };
 Frame.prototype.vline=function(x,color,dash){
   var c=this.s.ctx;
-  c.save(); c.setLineDash(dash||[5,4]); c.strokeStyle=color; c.lineWidth=1.4;
+  c.save(); this.clip(); c.setLineDash(dash||[5,4]); c.strokeStyle=color; c.lineWidth=1.4;
   c.beginPath(); c.moveTo(this.X(x),this.T); c.lineTo(this.X(x),this.B);
   c.stroke(); c.restore();
 };
@@ -146,7 +109,13 @@ Frame.prototype.label=function(x,y,text,color,align){
   var c=this.s.ctx;
   c.font="12px 'Source Sans 3', system-ui, sans-serif";
   c.fillStyle=color; c.textAlign=align||"center"; c.textBaseline="middle";
-  c.fillText(text,this.X(x),this.Y(y));
+  var half=c.measureText(text).width/2, px=this.X(x);
+  if(c.textAlign === "center") px=Math.max(this.L+half,Math.min(this.R-half,px));
+  else if(c.textAlign === "left") px=Math.min(this.R-2*half,Math.max(this.L,px));
+  else px=Math.max(this.L+2*half,Math.min(this.R,px));
+  c.save(); this.clip();
+  c.fillText(text,px,Math.max(this.T+8,Math.min(this.B-8,this.Y(y))));
+  c.restore();
 };
 
 // ---------- the steps-to-settle curve, one per stopping rule ----------
@@ -157,17 +126,22 @@ function stepsCurve(dec){
   for(i=0;i<=170;i++){
     x = 0.02 + (ALPHA-0.02)*Math.pow(i/170, 2.2);
     r = settleSteps(x, dec, 60000);
-    left.push([x, r? Math.log10(r.steps) : NaN]);
+    left.push([x, r.status === "reached" ? Math.log10(r.steps) : NaN]);
   }
   for(i=0;i<=170;i++){
-    x = 1.004 + (3-1.004)*Math.pow(i/170, 2.0);
+    x = 1.001 + (3-1.001)*Math.pow(i/170, 2.0);
     r = settleSteps(x, dec, 60000);
-    right.push([x, r? Math.log10(r.steps) : NaN]);
+    right.push([x, r.status === "reached" ? Math.log10(r.steps) : NaN]);
   }
   curveCache[dec] = {left:left, right:right};
   return curveCache[dec];
 }
-function curveTop(dec){ return dec<=2 ? 1.6 : dec<=4 ? 2.6 : dec<=6 ? 3.6 : 4.9; }
+function curveTop(dec, selected){
+  var cu = stepsCurve(dec), high = 1;
+  cu.left.concat(cu.right).forEach(function(p){ if(Number.isFinite(p[1])) high=Math.max(high,p[1]); });
+  if(selected.status === "reached") high=Math.max(high,Math.log10(selected.steps));
+  return Math.ceil(high+0.15);
+}
 
 // ---------- the two solution branches, for panel 3 ----------
 var branches = (function(){
@@ -196,20 +170,20 @@ var t1body = root.querySelector("#t1 tbody");
 var cOrbit = root.querySelector("#c-orbit");
 var cSteps = root.querySelector("#c-steps");
 
-function drawOrbit(x,dec){
+function drawOrbit(x){
   var s = setup(cOrbit, 300);
-  var f = new Frame(s, {l:56,r:14,t:16,b:32});
-  var N=40, o=orbit(x,N), i, mx=0;
-  var res = settleSteps(x, dec, 60000), top;
-  if(res){ top = Math.max(res.value*1.35, o[0]*1.2); }
-  else { for(i=0;i<Math.min(o.length,9);i++) mx=Math.max(mx,o[i]); top = mx*1.1; }
-  if(!isFinite(top) || top<=0) top = 1;
+  var f = new Frame(s, {l:88,r:18,t:16,b:32});
+  var N=40, o=orbit(x,N).values, i, mx=0;
+  var roots=restPoints(x), limit=roots[0], top;
+  if(converges(x) && Number.isFinite(limit)){ top = Math.max(limit*1.3, o[0]*1.2); }
+  else { for(i=0;i<o.length;i++) mx=Math.max(mx,o[i]); top = Math.min(mx*1.1,1e7); }
+  if(!Number.isFinite(top) || top<=0) top = 1;
   f.setRange(0.5, N+0.5, 0, top);
-  f.axes([10,20,30,40], [0, top/2, top], "step n", "value of the nth term",
-         null, function(v){ return v.toFixed(top<1?3:2); });
-  if(res){
-    f.poly([[0.5,res.value],[N+0.5,res.value]], tok("--amber-fill"), 1.6, [7,5]);
-    f.label(N*0.72, res.value*1.09, "settles near "+fmt(res.value), tok("--amber"));
+  f.axes([10,20,30,40], [0, top/2, top], "term n", "value aₙ",
+         null, function(v){ return fmt(v,2); });
+  if(converges(x) && Number.isFinite(limit)){
+    f.poly([[0.5,limit],[N+0.5,limit]], tok("--amber-fill"), 1.6, [7,5]);
+    f.label(N*0.64, limit*1.09, "limit ≈ "+fmt(limit), tok("--amber"));
   }
   var pts=[];
   for(i=0;i<o.length;i++) pts.push([i+1, o[i]]);
@@ -217,63 +191,71 @@ function drawOrbit(x,dec){
   for(i=0;i<o.length && i<N;i++) if(o[i]<=top) f.dot(i+1, o[i], tok("--accent"), 3.1);
 }
 function drawSteps(x,dec){
-  var s = setup(cSteps, 300);
-  var top = curveTop(dec);
-  var f = new Frame(s, {l:56,r:14,t:16,b:32}).setRange(0,3,-0.05*top,top);
+  var s = setup(cSteps, 300), r = settleSteps(x, dec, 60000);
+  var top = curveTop(dec,r);
+  var f = new Frame(s, {l:88,r:18,t:16,b:32}).setRange(0,3,-0.05*top,top);
   f.band(ALPHA, 1, tok("--amber-wash"));
   var yt=[], k;
   for(k=0;k<=Math.floor(top);k++) yt.push(k);
-  f.axes([0,1,2,3], yt, "x", "steps until two terms agree to "+dec+" decimals",
-         null, function(v){ return ["1","10","100","1k","10k"][v]; });
-  f.label((ALPHA+1)/2, top*0.74, "never settles", tok("--amber"));
+  f.axes([0,1,2,3], yt, "x", "step index n (log scale)",
+         null, function(v){ return v<3 ? String(Math.pow(10,v)) : Math.pow(10,v-3)+"k"; });
+  f.label((ALPHA+1)/2, top*0.78, "diverges", tok("--amber"));
   var cu = stepsCurve(dec);
   f.poly(cu.left,  tok("--accent-2"), 2.2);
   f.poly(cu.right, tok("--accent-2"), 2.2);
   f.vline(x, tok("--ink-3"));
-  var r = settleSteps(x, dec, 60000);
-  if(r) f.dot(x, Math.min(Math.log10(r.steps), top), tok("--accent"), 5.5);
+  if(r.status === "reached") f.dot(x, Math.log10(r.steps), tok("--accent"), 5.5);
 }
 function update1(){
   var x = s1ExactX === null ? parseFloat(s1x.value) : s1ExactX, dec = parseInt(s1dec.value,10);
-  s1xv.textContent = s1ExactX === ALPHA ? "α ≈ 0.360130" : x.toFixed(3);
-  s1x.setAttribute("aria-valuetext", s1ExactX === ALPHA ? "x = alpha, approximately 0.360130" : "x = "+x.toFixed(3));
-  drawOrbit(x,dec); drawSteps(x,dec);
+  var xLabel = x === ALPHA ? "α ≈ 0.360130" : x.toFixed(3);
+  s1xv.textContent = xLabel;
+  s1x.setAttribute("aria-valuetext", "x = "+xLabel);
+  drawOrbit(x); drawSteps(x,dec);
 
-  var res = settleSteps(x, dec, 60000), msg, cls;
-  if(res){
-    msg = "<b>Settles.</b> At x = "+x.toFixed(3)+" the terms agree to "+dec+
-          " decimals after <b>"+group(res.steps)+"</b> step"+(res.steps===1?"":"s")+
-          ", by which point the value is <b>"+fmt(res.value,Math.min(dec+1,9))+"</b>.";
-    cls = "verdict";
-  } else {
-    var o = orbit(x, 30), k=0;
+  var res = settleSteps(x, dec, 60000), msg, cls="verdict";
+  if(res.status === "reached"){
+    msg = "<b>Converges.</b> At x = "+xLabel+", the first change smaller than 10<sup>−"+dec+
+          "</sup> occurs between terms <b>"+group(res.steps)+"</b> and <b>"+group(res.steps+1)+
+          "</b>. The latter term is <b>"+fmt(res.value,Math.min(dec+1,9))+"</b>. "+
+          "A small change between terms does not guarantee that many correct decimal places in the limit.";
+  } else if(res.status === "diverges") {
+    var o = orbit(x, 40).values, k=0;
     for(var i=0;i<o.length;i++){ if(o[i]>1000){ k=i+1; break; } }
-    msg = "<b>Runs away.</b> At x = "+x.toFixed(3)+" the terms never stop growing"+
-          (k? " — they pass 1000 by step <b>"+k+"</b>." : ".");
+    msg = "<b>Diverges to infinity.</b> At x = "+xLabel+", the sequence has no finite limit"+
+          (k? "; it passes 1,000 at term <b>"+k+"</b>." : ".")+
+          " A temporarily small change between terms would not establish convergence.";
     cls = "verdict escapes";
+  } else {
+    msg = "<b>Converges mathematically.</b> At x = "+xLabel+", "+
+          (res.status === "budget" ? "the change threshold was not reached within the 60,000-step calculation limit." :
+           "the calculation exceeded numerical range before the change threshold was reached.");
   }
-  if(Math.abs(x-1)<0.004){
-    msg += " At x = 1 exactly the rule becomes &ldquo;add 1&rdquo;, so the nth term is just n.";
+  if(x === 1){
+    msg += " Here the rule is exactly ‘add 1’, so a<sub>n</sub> = n.";
   }
-  if(Math.abs(x-ALPHA)<0.002 && res && dec>=6){
-    msg += " Careful here: at &alpha; the two solutions have merged, so the approach is "+
-           "slow (the error falls like 0.634/n). The terms have stopped moving at this "+
-           "resolution but are still well short of the true value 0.2026874.";
+  if(x === ALPHA && res.status === "reached"){
+    msg += " At α the two fixed points merge. The error decreases only like 0.634/n; the true limit is approximately 0.2026874498.";
   }
+  var plotOrbit=orbit(x,40);
+  if(plotOrbit.stopped) msg += plotOrbit.stopped === "display-limit" ?
+    " The orbit plot is cut off at its display limit of 10,000,000." :
+    " The orbit plot is truncated because later terms exceed numerical range.";
   v1.className = cls; v1.innerHTML = msg;
 
-  cOrbit.setAttribute("aria-label", "Plot of the first 40 terms at x = "+x.toFixed(3)+". "+
-    (res? "They level off near "+fmt(res.value)+"."
-        : "They keep growing off the top of the chart."));
-  cSteps.setAttribute("aria-label", "Steps until two terms agree to "+dec+
-    " decimals, against x; a marker sits at "+x.toFixed(3)+
-    ". The band between alpha and 1 is empty because the terms never settle there.");
+  cOrbit.setAttribute("aria-label", "Plot of up to the first 40 terms at x = "+xLabel+". "+
+    (converges(x)? "The sequence converges to approximately "+fmt(restPoints(x)[0])+"."
+        : "The terms increase without bound.")+
+    (plotOrbit.stopped ? " The displayed orbit is cut off once it exceeds the plotting or numerical range." : ""));
+  cSteps.setAttribute("aria-label", "For convergent x, the first step index n for which the absolute change from term n to term n plus 1 is below 10 to the power minus "+dec+
+    ", plotted on a logarithmic vertical scale. The selected x is "+xLabel+
+    ". The shaded gap, alpha less than x less than or equal to 1, diverges. Calculations are limited to 60,000 steps.");
 
-  var o2 = orbit(x, 9), rows="";
+  var sequence = orbit(x, 9), o2=sequence.values, rows="";
   for(var j=0;j<o2.length;j++){
-    rows += "<tr><td>"+(j+1)+"</td><td>"+
-            (o2[j]>1e6? "larger than a million" : fmt(o2[j],6))+"</td></tr>";
+    rows += "<tr><td>"+(j+1)+"</td><td>"+fmt(o2[j],6)+"</td></tr>";
   }
+  if(sequence.stopped) rows += "<tr><td colspan='2'>Further terms exceed the display or numerical range.</td></tr>";
   t1body.innerHTML = rows;
 }
 listen(s1x, "input", function(){ s1ExactX = null; update1(); });
@@ -292,10 +274,10 @@ var cRace = root.querySelector("#c-race");
 
 function drawHill(x){
   var s = setup(cHill, 300);
-  var f = new Frame(s, {l:56,r:14,t:16,b:32}).setRange(0, 1.05, -0.18, 0.62);
-  f.axes([0,0.5,1],[0,0.25,0.5], "candidate value L", "height", null,
+  var f = new Frame(s, {l:88,r:18,t:16,b:32}).setRange(0, 1.05, -0.1, 1.02);
+  f.axes([0,0.5,1],[0,0.5,1], "candidate t", "height", null,
          function(v){ return v.toFixed(2); });
-  var pts=[], i, L;
+  var pts=[[0,0]], i, L;
   for(i=0;i<=240;i++){ L = 1e-4 + (1.05-1e-4)*i/240; pts.push([L, h(L,x)]); }
   f.poly(pts, tok("--accent-2"), 2.4);
   f.poly([[0,x],[1.05,x]], tok("--amber-fill"), 2, [8,5]);
@@ -309,14 +291,14 @@ function drawHill(x){
 }
 function drawRace(x){
   var s = setup(cRace, 300);
-  // y-span 0.80 matches the hill chart's, so the gap bar is the same length
-  var f = new Frame(s, {l:56,r:14,t:16,b:32}).setRange(0.08, 0.88, 0, 0.80);
-  f.axes([0.1,0.3,0.5,0.7],[0,0.25,0.5,0.75], "x", "height",
+  // Identical y-ranges keep the gap bars the same length throughout the slider.
+  var f = new Frame(s, {l:88,r:18,t:16,b:32}).setRange(0.08, 0.88, -0.1, 1.02);
+  f.axes([0.1,0.3,0.5,0.7],[0,0.5,1], "x", "height",
          function(v){ return v.toFixed(1); }, function(v){ return v.toFixed(2); });
   var pts=[], i, xx;
   for(i=0;i<=200;i++){ xx = 0.08 + (0.88-0.08)*i/200; pts.push([xx, Mpeak(xx)]); }
   f.poly(pts, tok("--accent-2"), 2.4);
-  f.poly([[0.08,0.08],[0.80,0.80]], tok("--amber-fill"), 2, [8,5]);
+  f.poly([[0.08,0.08],[0.88,0.88]], tok("--amber-fill"), 2, [8,5]);
   f.dot(ALPHA, ALPHA, tok("--amber-fill"), 5.5);
   f.label(0.60, 0.40, "they cross at α", tok("--amber"));
   f.vline(x, tok("--ink-3"));
@@ -343,18 +325,20 @@ function update2(){
   } else {
     msg = "<b>The hill never reaches the line.</b> The peak only gets to "+fmt(Mpeak(x))+
           ", falling short of the required "+fmt(x)+" by <b>"+fmt(x-Mpeak(x))+
-          "</b>. There is no solution, so L = ∞.";
+          "</b>. There is no finite fixed point, so the sequence diverges to infinity.";
     cls="verdict escapes";
   }
   v2.className=cls; v2.innerHTML=msg;
-  cHill.setAttribute("aria-label","The curve L to the power "+x.toFixed(2)+
-    " minus L, against a horizontal line at height "+x.toFixed(2)+". They meet "+
+  var xDescription=x === ALPHA ? "alpha, approximately 0.360130" : x.toFixed(3);
+  var gapDescription=x === ALPHA ? "zero" : fmt(Math.abs(Mpeak(x)-x));
+  cHill.setAttribute("aria-label","The curve t to the power x minus t, with x equal to "+xDescription+
+    ", against a horizontal line at height x. They meet "+
     (r.length===2?"twice.":r.length===1?"once, tangentially.":"not at all.")+
-    " A bar marks the gap of "+fmt(Math.abs(Mpeak(x)-x))+
+    " The gap is "+gapDescription+
     " between the peak and the line.");
-  cRace.setAttribute("aria-label","Peak height and required height, both against x. At "+
-    x.toFixed(2)+" the same bar marks the gap of "+fmt(Math.abs(Mpeak(x)-x))+
-    " between the two curves. They cross at alpha, 0.36.");
+  cRace.setAttribute("aria-label","Peak height and required height, both against x. At x equal to "+
+    xDescription+", the gap is "+gapDescription+
+    " between the two curves. They cross at alpha, approximately 0.360130.");
 }
 listen(s2x, "input", function(){ s2ExactX = null; update2(); });
 Array.prototype.forEach.call(root.querySelectorAll("[data-x2]"), function(b){
@@ -366,18 +350,19 @@ var s3x=root.querySelector("#x3"), s3xv=root.querySelector("#x3v");
 var s3s=root.querySelector("#start3"), s3sv=root.querySelector("#start3v");
 var v3=root.querySelector("#v3");
 var cWeb=root.querySelector("#c-web"), cSol=root.querySelector("#c-sol");
-var web = {x:0.33, t0:0.05, pts:[[0.05,0]], n:0};
+var web = {x:0.33, t0:0.05, pts:[[0.05,0]], n:0, stopped:null};
 
 function webReset(){
   web.x = parseFloat(s3x.value); web.t0 = parseFloat(s3s.value);
-  web.pts = [[web.t0, 0]]; web.n = 0; drawWeb(); drawSol(); say3();
+  web.pts = [[web.t0, 0]]; web.n = 0; web.stopped=null; drawWeb(); drawSol(); say3();
 }
 function webStep(k){
-  for(var i=0;i<(k||1);i++){
+  for(var i=0;i<(k||1) && !web.stopped;i++){
     var cur = web.pts[web.pts.length-1][0];
     var gt = g(cur, web.x);
-    if(!isFinite(gt) || gt>50) break;
+    if(!Number.isFinite(gt)){ web.stopped="overflow"; break; }
     web.pts.push([cur, gt]); web.pts.push([gt, gt]); web.n++;
+    if(gt>50) web.stopped="display-limit";
   }
   drawWeb(); say3();
 }
@@ -387,7 +372,7 @@ function drawWeb(){
                      : Math.max(0.9, web.t0*1.4);
   top = Math.min(Math.max(top, 0.3), 1.25);
   var s = setup(cWeb, 330);
-  var f = new Frame(s, {l:56,r:14,t:16,b:34}).setRange(0, top, 0, top);
+  var f = new Frame(s, {l:88,r:18,t:16,b:34}).setRange(0, top, 0, top);
   f.axes([0, top/2, top],[0, top/2, top], "current value", "next value",
          function(v){ return v.toFixed(2); }, function(v){ return v.toFixed(2); });
   f.poly([[0,0],[top,top]], tok("--ink-3"), 1.6, [7,5]);
@@ -397,7 +382,7 @@ function drawWeb(){
   if(r.length===2){
     f.dot(r[0], r[0], tok("--accent"), 5.5);
     f.dot(r[1], r[1], tok("--ink-2"), 5.5, true);
-    f.label(r[0], -0.035*top, "L", tok("--accent"));
+    f.label(r[0], 0.065*top, "L", tok("--accent"));
     f.label(r[1], r[1]+top*0.085, "ceiling", tok("--ink-2"));
   } else if(r.length===1){
     f.dot(r[0], r[0], tok("--amber-fill"), 5.5);
@@ -408,11 +393,10 @@ function drawWeb(){
 function drawSol(){
   var x = web.x;
   var s = setup(cSol, 330);
-  var f = new Frame(s, {l:56,r:14,t:16,b:34}).setRange(0, 2.6, 0, 3.0);
+  var f = new Frame(s, {l:88,r:18,t:16,b:34}).setRange(0, 2.6, 0, 3.0);
   f.band(ALPHA, 1, tok("--panel"));
-  f.axes([0,1,2],[0,1,2,3], "x", "both solutions");
-  f.label((ALPHA+1)/2, 2.48, "no solution:", tok("--ink-3"));
-  f.label((ALPHA+1)/2, 2.22, "L = ∞", tok("--ink-3"));
+  f.axes([0,1,2],[0,1,2,3], "x", "positive fixed points");
+  f.label((ALPHA+1)/2, 2.48, "diverges", tok("--ink-3"));
   f.poly(branches.lower,  tok("--accent"), 2.4);
   f.poly(branches.single, tok("--accent"), 2.4);
   f.poly(branches.upper,  tok("--ink-2"), 2.2, [6,5]);
@@ -424,38 +408,36 @@ function drawSol(){
   else if(r.length===1) f.dot(x,r[0],tok("--accent"),5);
 }
 function say3(){
-  var x=web.x, r=restPoints(x), cur=web.pts[web.pts.length-1][0], msg, cls;
-  if(r.length===2 && web.t0 < r[1]){
-    msg = "Started below the ceiling <b>"+fmt(r[1])+"</b>, so it climbs to <b>"+
-          fmt(r[0])+"</b>. After <b>"+web.n+"</b> step"+(web.n===1?"":"s")+
-          " the value is <b>"+fmt(cur,6)+"</b>.";
-    cls="verdict";
-  } else if(r.length===2){
-    msg = "Started above the ceiling <b>"+fmt(r[1])+"</b>, so it escapes. After <b>"+
-          web.n+"</b> step"+(web.n===1?"":"s")+" the value is <b>"+fmt(cur,4)+
-          "</b>. The infinite root of the poster starts at the x-th root of x, "+
-          "which never lands up here.";
-    cls="verdict escapes";
-  } else if(r.length===1 && web.t0 < r[0]){
-    msg = "At the boundary value x = α, where the two solutions have merged. "+
-          "Creeping up to <b>"+fmt(r[0])+"</b> — slowly. After <b>"+web.n+
-          "</b> step"+(web.n===1?"":"s")+" the value is <b>"+fmt(cur,6)+"</b>.";
-    cls="verdict";
+  var x=web.x, r=restPoints(x), cur=web.pts[web.pts.length-1][0], msg, cls="verdict";
+  var behavior=startBehavior(x,web.t0,r);
+  if(behavior === "fixed"){
+    msg = "The chosen start is a fixed point, so the sequence stays there.";
+  } else if(behavior === "increases" || behavior === "decreases"){
+    msg = "The sequence "+(behavior === "increases" ? "increases" : "decreases")+
+      " toward the smaller fixed point, <b>"+fmt(r[0])+"</b>.";
+    if(x === ALPHA) msg = "At α, the sequence approaches the merged fixed point <b>"+fmt(r[0])+"</b> slowly from below.";
   } else {
-    msg = "No solution at this value of x: the curve stays above the diagonal, so the "+
-          "staircase climbs for ever. After <b>"+web.n+"</b> step"+(web.n===1?"":"s")+
-          " the value is <b>"+fmt(cur,4)+"</b>.";
+    msg = r.length ? "The start is above the upper fixed point <b>"+fmt(r[r.length-1])+"</b>, so this sequence grows without bound." :
+      "There is no finite fixed point at this x, so the sequence grows without bound.";
     cls="verdict escapes";
   }
+  msg += " After <b>"+web.n+"</b> update"+(web.n===1?"":"s")+", its value is <b>"+fmt(cur,6)+"</b>.";
+  if(web.stopped) msg += web.stopped === "overflow" ?
+    " The simulation has stopped: the next value exceeds numerical range. Reset to try another start." :
+    " The simulation has stopped after exceeding its display limit of 50. Reset to try another start.";
   v3.className=cls; v3.innerHTML=msg;
+  root.querySelector("#step3").disabled=!!web.stopped;
+  root.querySelector("#run3").disabled=!!web.stopped;
   cWeb.setAttribute("aria-label","Staircase diagram at x = "+x.toFixed(3)+". "+
     (r.length===2 ? "The curve crosses the diagonal twice, at "+fmt(r[0])+" and "+fmt(r[1])+"."
      : r.length===1 ? "The curve touches the diagonal once."
      : "The curve never touches the diagonal.")+
-    " The staircase has taken "+web.n+" steps and stands at "+fmt(cur,4)+".");
-  cSol.setAttribute("aria-label","Both solutions plotted against x. The solid lower "+
-    "branch is L; the dotted upper branch is the ceiling. They meet at alpha and "+
-    "vanish; a single solution returns past x = 1. A marker sits at x = "+x.toFixed(3)+".");
+    " The chosen sequence "+(behavior === "fixed" ? "stays fixed" : behavior === "diverges" ? "diverges" : behavior)+
+    ". After "+web.n+" updates its value is "+fmt(cur,6)+"."+
+    (web.stopped ? " Simulation stopped at the display or numerical limit." : ""));
+  cSol.setAttribute("aria-label","Positive fixed points plotted against x. The solid lower "+
+    "branch is the nested-root limit; the dashed upper branch is the other fixed point. They meet at alpha and "+
+    "vanish for alpha less than x less than or equal to 1; a single solution returns for x greater than 1. A marker sits at x = "+x.toFixed(3)+".");
 }
 listen(s3x, "input", function(){
   s3xv.textContent=parseFloat(s3x.value).toFixed(3); webReset(); });
