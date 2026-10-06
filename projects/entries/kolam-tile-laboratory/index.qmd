@@ -64,7 +64,7 @@ Connect the experiments to binary encodings, graph connectivity, Euler character
 
 ## Articles
 
-- [From Sixteen Tiles to Fifty-One Kolams](../../../writing/articles/binary-kolam-tiles/index.qmd) — a computer-assisted classification of the square-tile boards.
+- [From 16! possibilities to 51 kolams](../../../writing/articles/binary-kolam-tiles/index.qmd) — a computer-assisted classification of the square-tile boards.
 - [Kolams on Octahedron](../../../writing/articles/kolams-on-an-octahedron/index.qmd) — a graph-theoretic hand classification of the triangular-tile surfaces.
 
 ## Interactive laboratory

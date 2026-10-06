@@ -45,7 +45,7 @@ Math Nomad is a growing home for course materials, mathematical exposition, vide
 ::: {.mn-feature-copy}
 <p class="mn-kicker">FEATURED INVESTIGATION</p>
 
-## From sixteen tiles to fifty-one kolams
+## From 16! possibilities to 51 kolams
 
 Every four-bit word encodes a square tile. Arrange all sixteen so that neighbouring edges match and the boundary closes, with the nonzero tiles forming one connected network. Then classify the accepted boards up to the symmetries of the square.
 

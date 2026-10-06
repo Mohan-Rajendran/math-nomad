@@ -1,5 +1,5 @@
 ---
-title: "From Sixteen Tiles to Fifty-One Kolams"
+title: "From 16! possibilities to 51 kolams"
 subtitle: "How a puzzle based on kolam tiles meets graph theory, Boolean satisfiability, and the mathematics of symmetry."
 description: "An interactive exposition connecting square kolam tiles, graph theory, Boolean satisfiability, exhaustive enumeration, and Burnside’s lemma."
 date: "2026-07-17T14:45:00+05:30"
@@ -68,7 +68,7 @@ header-includes:
     <meta property="article:published_time" content="2026-07-17T14:45:00+05:30">
     <meta property="article:modified_time" content="2026-07-17T18:40:00+05:30">
     <meta name="citation_author" content="Mohan Rajendran">
-    <meta name="citation_title" content="From Sixteen Tiles to Fifty-One Kolams">
+    <meta name="citation_title" content="From 16! possibilities to 51 kolams">
     <meta name="citation_publication_date" content="2026-07-17T14:45:00+05:30">
     <meta name="citation_journal_title" content="Math Nomad">
     <meta name="citation_public_url" content="https://mathnomad.in/writing/articles/binary-kolam-tiles/">
@@ -95,7 +95,7 @@ resources:
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "From Sixteen Tiles to Fifty-One Kolams",
+  "headline": "From 16! possibilities to 51 kolams",
   "description": "How a puzzle based on kolam tiles meets graph theory, Boolean satisfiability, and the mathematics of symmetry.",
   "author": { "@type": "Person", "name": "Mohan Rajendran" },
   "datePublished": "2026-07-17T14:45:00+05:30",
@@ -124,9 +124,9 @@ resources:
     <span>General</span><span>Exposition</span>
   </div>
   <h1 id="article-title">
-    <span>From Sixteen</span>
-    <span>Tiles to</span>
-    <span><em>Fifty-One Kolams</em></span>
+    <span>From 16!</span>
+    <span>possibilities to</span>
+    <span><em>51 kolams</em></span>
   </h1>
   <p class="standfirst">How a puzzle based on kolam tiles meets graph theory, Boolean satisfiability, and the mathematics of symmetry.</p>
   <div class="article-meta">
@@ -542,10 +542,10 @@ verify: 51 orbits × 8 boards = 408</code></pre>
 :::: {.article-section .citation-section .citation-panel aria-labelledby="citation-heading"}
 ```{=html}
 <h2 id="citation-heading">Cite this article</h2>
-<p id="preferred-citation" class="citation-text">Rajendran, Mohan. “From Sixteen Tiles to Fifty-One Kolams.” <i>Math Nomad</i>, 17 July 2026, <a href="https://mathnomad.in/writing/articles/binary-kolam-tiles/">https://mathnomad.in/writing/articles/binary-kolam-tiles/</a>.</p>
+<p id="preferred-citation" class="citation-text">Rajendran, Mohan. “From 16! possibilities to 51 kolams.” <i>Math Nomad</i>, 17 July 2026, <a href="https://mathnomad.in/writing/articles/binary-kolam-tiles/">https://mathnomad.in/writing/articles/binary-kolam-tiles/</a>.</p>
 <pre id="bibtex-citation" hidden>@article{rajendran2026kolams,
   author = {Mohan Rajendran},
-  title = {From Sixteen Tiles to Fifty-One Kolams},
+  title = {From 16! possibilities to 51 kolams},
   journal = {Math Nomad},
   year = {2026},
   month = {July},

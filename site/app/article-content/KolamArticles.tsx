@@ -601,7 +601,7 @@ export function OctahedronArticleBody() {
         title="From a square board to a closed surface"
       >
         <p>
-          In <Link href="/articles/kolams-on-a-square"><em>From Sixteen Tiles to Fifty-One Kolams</em></Link>,
+          In <Link href="/articles/kolams-on-a-square"><em>From 16! possibilities to 51 kolams</em></Link>,
           we placed sixteen square tiles inside a square boundary. Every tile
           carried four bits, neighbouring bits had to agree, and a
           computer-assisted enumeration reduced the valid boards to 51 symmetry
@@ -1046,7 +1046,7 @@ export function OctahedronArticleBody() {
             <a href="https://doi.org/10.1080/17513472.2024.2423568">“Symmetry Classification and Enumeration of Square-Tile Sikku Kolams”</a>, {" "}
             <i>Journal of Mathematics and the Arts</i> 18(3–4), 2024, pp.
             244–257, and the companion Math Nomad article {" "}
-            <Link href="/articles/kolams-on-a-square">“From Sixteen Tiles to Fifty-One Kolams”</Link>.
+            <Link href="/articles/kolams-on-a-square">“From 16! possibilities to 51 kolams”</Link>.
           </li>
           <li>
             For classical background on regular polyhedra, duality, and symmetry
@@ -1069,7 +1069,7 @@ export function OctahedronArticleBody() {
         items={[
           {
             href: "/articles/kolams-on-a-square",
-            title: "Companion article · From Sixteen Tiles to Fifty-One Kolams",
+            title: "Companion article · From 16! possibilities to 51 kolams",
             description: "See how exhaustive computation solves the square-tile problem.",
           },
           {

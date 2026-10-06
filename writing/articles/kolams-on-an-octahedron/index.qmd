@@ -173,7 +173,7 @@ resources:
 :::: {#from-square-to-surface .article-section}
 ## From a square board to a closed surface
 
-In [*From Sixteen Tiles to Fifty-One Kolams*](../binary-kolam-tiles/index.qmd), we placed sixteen square tiles inside a square boundary. Every tile carried four bits, neighbouring bits had to agree, and a computer-assisted enumeration reduced the valid boards to 51 symmetry classes.
+In [*From 16! possibilities to 51 kolams*](../binary-kolam-tiles/index.qmd), we placed sixteen square tiles inside a square boundary. Every tile carried four bits, neighbouring bits had to agree, and a computer-assisted enumeration reduced the valid boards to 51 symmetry classes.
 
 What changes if the tiles are equilateral triangles?
 
@@ -541,7 +541,7 @@ The three representatives below are drawn on connected octahedron nets. Select a
 <ol>
   <li id="note-culture">For the threshold setting, materials, transmission, and cultural meanings of kōlam, see Sahapedia's <a href="https://www.sahapedia.org/significance-of-kolam-tamil-culture">“Significance of Kolam in Tamil Culture”</a> and the <a href="https://ignca.gov.in/PDF_data/Martha_Strawn_collecction_Kolam.pdf">Indira Gandhi National Centre for the Arts archive note on Martha Strawn's kōlam photographs</a>.</li>
   <li>For mathematical approaches to kōlam, see Marcia Ascher, <a href="https://www.americanscientist.org/node/1141">“The Kolam Tradition”</a>, <i>American Scientist</i> 90(1), 2002, p. 56, doi: 10.1511/2002.13.56; and Gift Siromoney, Rani Siromoney, and Kamala Krithivasan, <a href="https://doi.org/10.1016/0146-664X(74)90011-2">“Array Grammars and Kolam”</a>, <i>Computer Graphics and Image Processing</i> 3(1), 1974, pp. 63–82.</li>
-  <li>For the square-tile model and its symmetry classification, see Venkatraman Gopalan, <a href="https://doi.org/10.1080/17513472.2024.2423568">“Symmetry Classification and Enumeration of Square-Tile Sikku Kolams”</a>, <i>Journal of Mathematics and the Arts</i> 18(3–4), 2024, pp. 244–257, and the companion Math Nomad article <a href="../binary-kolam-tiles/">“From Sixteen Tiles to Fifty-One Kolams”</a>.</li>
+  <li>For the square-tile model and its symmetry classification, see Venkatraman Gopalan, <a href="https://doi.org/10.1080/17513472.2024.2423568">“Symmetry Classification and Enumeration of Square-Tile Sikku Kolams”</a>, <i>Journal of Mathematics and the Arts</i> 18(3–4), 2024, pp. 244–257, and the companion Math Nomad article <a href="../binary-kolam-tiles/">“From 16! possibilities to 51 kolams”</a>.</li>
   <li>For classical background on regular polyhedra, duality, and symmetry groups, see H. S. M. Coxeter, <i>Regular Polytopes</i>, 3rd ed., Dover, 1973. The cube–octahedron duality identifies the two solids' symmetry groups; the full octahedral group has order 48.</li>
   <li>The cube graph used here is the three-dimensional hypercube $Q_3$. The active subgraph is not an extra approximation: under the stated connected-tile convention, its connected components agree with the components of the drawn kolam.</li>
 </ol>
@@ -601,7 +601,7 @@ ER  -</pre>
 <h2 id="related-heading">Take the next route</h2>
 <div class="related-routes">
   <a href="../binary-kolam-tiles/">
-    <span>Companion article</span><strong>From Sixteen Tiles to Fifty-One Kolams</strong><small>See how exhaustive computation solves the square-tile problem.</small>
+    <span>Companion article</span><strong>From 16! possibilities to 51 kolams</strong><small>See how exhaustive computation solves the square-tile problem.</small>
   </a>
   <a href="https://lab.mathnomad.in/kolams-on-an-octahedron/" target="_blank" rel="noreferrer">
     <span>Interactive</span><strong>Fold the three representatives</strong><small>Explore the connected nets and completed octahedra.</small>

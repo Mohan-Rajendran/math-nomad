@@ -54,7 +54,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Publish From Sixteen Tiles to Fifty One Kolams"
+          git commit -m "Publish From 16! possibilities to 51 kolams"
           git push
           echo "article_released=true" >> "${GITHUB_OUTPUT}"
 

@@ -8,7 +8,7 @@ const destination = journalHref("/articles/kolams-on-a-square");
 
 export const metadata = staticRedirectMetadata(
   destination,
-  "From Sixteen Tiles to Fifty-One Kolams has moved",
+  "From 16! possibilities to 51 kolams has moved",
   "This article now has a new permanent address.",
 );
 
@@ -17,7 +17,7 @@ export default function BinaryKolamTilesRedirectPage() {
     <StaticRedirect
       destination={destination}
       title="This article has moved."
-      description="From Sixteen Tiles to Fifty-One Kolams now has a new permanent address."
+      description="From 16! possibilities to 51 kolams now has a new permanent address."
       linkLabel="Continue to the article"
     />
   );

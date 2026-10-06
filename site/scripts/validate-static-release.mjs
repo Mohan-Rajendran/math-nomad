@@ -1049,7 +1049,7 @@ if (variant === "main") {
     "The Law of Cosines",
     "Kolams on Octahedron",
     "Infinitely many ‘proofs’ of Pythagoras’ theorem",
-    "From Sixteen Tiles to Fifty-One Kolams",
+    "From 16! possibilities to 51 kolams",
   ];
   const articlesIndex = requiredHtml.get("/articles/");
   if (

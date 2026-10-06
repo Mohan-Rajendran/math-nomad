@@ -29,7 +29,7 @@ reading-time-label: "22 min"
 
 ## A 15-puzzle with kolam tiles
 
-We have seen that arranging sixteen oriented square kolam tiles on a $4\times4$ grid, subject to the matching, boundary, and connectivity rules, gives rise to **408 kolams**. Each has two components in its tile-connection graph: one contains fifteen tiles; the other is the isolated tile $\mathtt{0000}$, whose drawing is a closed loop. The model and the count are developed in [From Sixteen Tiles to Fifty-One Kolams](https://mathnomad.in/articles/kolams-on-a-square/).
+We have seen that arranging sixteen oriented square kolam tiles on a $4\times4$ grid, subject to the matching, boundary, and connectivity rules, gives rise to **408 kolams**. Each has two components in its tile-connection graph: one contains fifteen tiles; the other is the isolated tile $\mathtt{0000}$, whose drawing is a closed loop. The model and the count are developed in [From 16! possibilities to 51 kolams](https://mathnomad.in/articles/kolams-on-a-square/).
 
 Remove that isolated loop tile. The completed kolam now has fifteen tiles and one empty cell, just like the familiar **15-puzzle**. It is natural to ask: **can we play the 15-puzzle game on these kolam grids?**
 
@@ -71,7 +71,7 @@ To explain why, we need a way to record a board, a quantity preserved by every s
 
 ### A precise description of the tiles
 
-We use the square-tile model introduced in [From Sixteen Tiles to Fifty-One Kolams](https://mathnomad.in/articles/kolams-on-a-square/). It is a deliberately simplified mathematical model inspired by kolam, with its own precise rules.
+We use the square-tile model introduced in [From 16! possibilities to 51 kolams](https://mathnomad.in/articles/kolams-on-a-square/). It is a deliberately simplified mathematical model inspired by kolam, with its own precise rules.
 
 Each tile carries a four-bit word in the fixed order **east, north, west, south**. A $1$ records a connection on that side; a $0$ records no connection. Thus $\mathtt{1011}$ connects east, west, and south, while $\mathtt{0100}$ connects only north. There are $2^4=16$ words, and the inventory contains each one exactly once.
 
@@ -258,7 +258,7 @@ This statement concerns distance to one fixed target. The open-ended challenge i
 
 The full sliding-puzzle graph has $16!$ vertices. Only a very small subset of these vertices satisfies the kolam conditions.
 
-The earlier square-kolam investigation found **652** boards satisfying the inventory, matching, and boundary rules. Of these, **408** have all fifteen nonzero tiles connected. These are the valid kolams used here. The enumeration and its constraints are explained in [From Sixteen Tiles to Fifty-One Kolams](https://mathnomad.in/articles/kolams-on-a-square/).
+The earlier square-kolam investigation found **652** boards satisfying the inventory, matching, and boundary rules. Of these, **408** have all fifteen nonzero tiles connected. These are the valid kolams used here. The enumeration and its constraints are explained in [From 16! possibilities to 51 kolams](https://mathnomad.in/articles/kolams-on-a-square/).
 
 Classifying these valid boards by their sliding invariant gives
 
@@ -341,7 +341,7 @@ The blank gives the tiles room to move. The invariant tells us which destination
 
 **The companion experiments.** The first embedded game adapts [Slide to a New Kolam](https://lab.mathnomad.in/sandbox-2/) so that readers can play before meeting the invariant. The second adapts [Move X to Y](https://lab.mathnomad.in/sandbox-3/), adding a comparison between reachable and unreachable targets. Both embedded games run within this page. Their tile geometry, conventions, and worked pair follow the corresponding Math Nomad sandboxes; the route demonstrations use explicitly verified paths.
 
-**The square-tile model.** Mohan Rajendran, [From Sixteen Tiles to Fifty-One Kolams](https://mathnomad.in/articles/kolams-on-a-square/), Math Nomad. This supplies the tile model, the matching and connectivity conditions, and the count of 408 valid boards in 51 square-symmetry classes.
+**The square-tile model.** Mohan Rajendran, [From 16! possibilities to 51 kolams](https://mathnomad.in/articles/kolams-on-a-square/), Math Nomad. This supplies the tile model, the matching and connectivity conditions, and the count of 408 valid boards in 51 square-symmetry classes.
 
 **The classical source.** Wm. Woolsey Johnson and William E. Story, [“Notes on the ‘15’ Puzzle”](https://www.jstor.org/stable/2369492), *American Journal of Mathematics* **2**(4) (1879), 397–404. The paired notes establish the classical parity obstruction and its converse.
 

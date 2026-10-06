@@ -1,5 +1,5 @@
 ---
-title: "From Sixteen Tiles to Fifty-One Kolams"
+title: "From 16! possibilities to 51 kolams"
 description: "This article has moved to the Writing section."
 page-layout: full
 toc: false
@@ -13,5 +13,5 @@ search: false
 
 The permanent article and all future mathematical exposition are collected in the new Writing section.
 
-[Continue to “From Sixteen Tiles to Fifty-One Kolams”](../../../writing/articles/binary-kolam-tiles/index.qmd){.btn .btn-primary}
+[Continue to “From 16! possibilities to 51 kolams”](../../../writing/articles/binary-kolam-tiles/index.qmd){.btn .btn-primary}
 :::

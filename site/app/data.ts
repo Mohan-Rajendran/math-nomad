@@ -202,7 +202,7 @@ export const homeContent = {
   },
   featured: {
     label: "Featured investigation",
-    title: "From sixteen tiles to fifty-one kolams",
+    title: "From 16! possibilities to 51 kolams",
     text: "Begin with the published exposition, take the classroom investigation further, then build and move the tiles in the Lab.",
     articleId: "A04",
     noteId: "N01",
@@ -513,7 +513,7 @@ const articleCatalogue: Article[] = [
     articleType: "Exposition",
     slug: "/articles/kolams-on-a-square",
     sourceHref: "https://mathnomad.in/articles/kolams-on-a-square/",
-    title: "From Sixteen Tiles to Fifty-One Kolams",
+    title: "From 16! possibilities to 51 kolams",
     subtitle:
       "How a puzzle based on kolam tiles meets graph theory, Boolean satisfiability, and the mathematics of symmetry.",
     published: "2026-07-17T14:45:00+05:30",
@@ -1170,7 +1170,7 @@ export const projects: Project[] = [
     relatedWriting: [
       {
         type: "Article",
-        title: "From Sixteen Tiles to Fifty-One Kolams",
+        title: "From 16! possibilities to 51 kolams",
         meta: "17 July 2026 · 19 min",
         href: "/articles/kolams-on-a-square",
       },

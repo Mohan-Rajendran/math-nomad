@@ -36,7 +36,7 @@ export function SlidingKolamArticleBody() {
           },
           {
             href: "/articles/kolams-on-a-square/",
-            title: "From Sixteen Tiles to Fifty-One Kolams",
+            title: "From 16! possibilities to 51 kolams",
             description:
               "Read the tile model, enumeration, and symmetry argument behind the 408 valid boards.",
           },
